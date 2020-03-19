@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 
 const MaterialComponents = [
   MatCardModule,
@@ -31,7 +32,8 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent,
-    SitterContainer
+    SitterContainer,
+    SitterRegistrationComponent
   ],
   imports: [
     BrowserModule,
