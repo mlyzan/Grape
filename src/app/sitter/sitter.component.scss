@@ -1,0 +1,63 @@
+.card {
+    display: flex;
+    align-items: flex-start;
+    width: 90%;
+    margin: 0 auto;
+    &_header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+}
+.photo {
+    width: 200px;
+    margin: 0 20px 20px 0;
+    border-radius: 10px;
+}
+
+.title_name {
+    display: inline-block;
+    margin: auto 40px auto 20px;
+}
+.input {
+    margin: 0 20px 10px 0;
+}
+sub {
+    color: gray;
+}
+hr {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+.accordion {
+    margin: 15px 0;
+}
+button {
+    display: flex;
+    align-items: center;
+    i {
+        padding: 0 6px;
+    }
+}
+.profile {
+    i {
+        margin-right: 10px;
+    }
+    &_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+    &_about {
+        &_header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        &_descr {
+            margin-left: 34px;
+        }
+    }
+}

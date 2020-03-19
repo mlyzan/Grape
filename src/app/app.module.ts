@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { SitterContainer } from './sitter/sitter.container';
+import { SitterComponent } from './sitter/sitter.component';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -31,7 +32,8 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent,
-    SitterContainer
+    SitterContainer,
+    SitterComponent
   ],
   imports: [
     BrowserModule,
