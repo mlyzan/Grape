@@ -17,10 +17,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatTabsModule} from '@angular/material/tabs';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 import { UserService } from './user/user.service';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 
 const MaterialComponents = [
   MatCardModule,
@@ -30,7 +32,8 @@ const MaterialComponents = [
   MatButtonModule,
   MatDividerModule,
   MatExpansionModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTabsModule
 ];
 
 @NgModule({
@@ -38,7 +41,8 @@ const MaterialComponents = [
     AppComponent,
     SitterContainer,
     UserComponent,
-    SignUpComponent
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

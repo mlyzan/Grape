@@ -15,8 +15,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(user: any) {
+  registerUser(user: User) {
     return this.http.post('http://localhost:3000/api/register', user);
+  }
+
+  loginUser(authCredentials) {
+    return this.http.post('http://localhost:3000/api/authenticate', authCredentials);
   }
 
 }
