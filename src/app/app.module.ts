@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { SitterContainer } from './sitter/sitter.container';
 
@@ -16,6 +17,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+
+import { UserService } from './user/user.service';
 
 const MaterialComponents = [
   MatCardModule,
@@ -31,7 +36,9 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent,
-    SitterContainer
+    SitterContainer,
+    UserComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +46,10 @@ const MaterialComponents = [
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialComponents
+    MaterialComponents,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

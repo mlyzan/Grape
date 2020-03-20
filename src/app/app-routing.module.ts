@@ -1,9 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SitterContainer } from './sitter/sitter.container';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+
 
 const routes: Routes = [
-  {path: 'sitter', component: SitterContainer}
+  {
+    path: 'signup', component: UserComponent,
+    children: [{path: '', component: SignUpComponent}]
+  },
+  { 
+    path: 'sitter', component: SitterContainer 
+  },
+  {
+    path: '', redirectTo: '/signup', pathMatch: 'full'
+  }
+
 ];
 
 @NgModule({
