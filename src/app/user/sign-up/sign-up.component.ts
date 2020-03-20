@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
 
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   showSuccessMessage: boolean;
   serverErrorMessage: string;
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,10 @@ export class SignUpComponent implements OnInit {
     this.userService.registerUser(form.value).subscribe(
       res => {
         this.showSuccessMessage = true;
-        setTimeout(() => this.showSuccessMessage = false, 4000);
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.router.navigateByUrl('/login');
+        }, 2000);
       }, 
       err => {
         if(err.status === 422) {
