@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 
 const MaterialComponents = [
@@ -26,7 +27,8 @@ const MaterialComponents = [
   MatButtonModule,
   MatDividerModule,
   MatExpansionModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatSelectModule
 ];
 
 @NgModule({
