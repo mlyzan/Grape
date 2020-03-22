@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
+import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
@@ -33,6 +35,7 @@ const MaterialComponents = [
   MatDividerModule,
   MatExpansionModule,
   MatBadgeModule,
+  MatSelectModule,
   MatTabsModule
 ];
 
@@ -40,6 +43,7 @@ const MaterialComponents = [
   declarations: [
     AppComponent,
     SitterContainer,
+    SitterRegistrationComponent,
     UserComponent,
     SignUpComponent,
     SignInComponent
