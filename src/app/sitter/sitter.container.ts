@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'container-sitter',
-  templateUrl: './sitter.component.html',
+  selector: 'grape-container-sitter',
+  templateUrl: './sitter.container.html',
   styleUrls: ['./sitter.component.scss']
 })
 
-export class SitterContainer implements OnInit {
+export class SitterContainerComponent implements OnInit {
+    
+  constructor(){}
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
-import { SitterContainer } from './sitter/sitter.container';
+import { SitterContainerComponent } from './sitter/sitter.container';
+import { SitterComponent } from './sitter/sitter.component';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -17,14 +18,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSelectModule } from '@angular/material/select';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
-
 import { UserService } from './user/user.service';
 import { SignInComponent } from './user/sign-in/sign-in.component';
+
 
 const MaterialComponents = [
   MatCardModule,
@@ -42,7 +44,8 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent,
-    SitterContainer,
+    SitterContainerComponent,
+    SitterComponent
     SitterRegistrationComponent,
     UserComponent,
     SignUpComponent,
@@ -55,7 +58,10 @@ const MaterialComponents = [
     FormsModule,
     BrowserAnimationsModule,
     MaterialComponents,
-    HttpClientModule
+    HttpClientModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, 
+    })
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

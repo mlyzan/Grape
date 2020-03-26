@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-sitter',
+  selector: 'grape-sitter',
   templateUrl: './sitter.component.html',
   styleUrls: ['./sitter.component.scss']
 })
@@ -10,4 +10,5 @@ export class SitterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 }
