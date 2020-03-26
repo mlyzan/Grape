@@ -45,7 +45,7 @@ const MaterialComponents = [
   declarations: [
     AppComponent,
     SitterContainerComponent,
-    SitterComponent
+    SitterComponent,
     SitterRegistrationComponent,
     UserComponent,
     SignUpComponent,
