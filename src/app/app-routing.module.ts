@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SitterContainer } from './sitter/sitter.container';
+import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 
 const routes: Routes = [
   {
-    path: 'sitter', component: SitterContainer,
+    path: 'sitter', component: SitterContainerComponent,
     children: [{path: '', component: SitterComponent}]
   }
 ];
