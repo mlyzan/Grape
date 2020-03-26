@@ -10,14 +10,17 @@ import { HttpClientModule} from '@angular/common/http';
 import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatBadgeModule } from '@angular/material/badge';
+import  {MatSidenavModule } from '@angular/material/sidenav'
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatListModule} from '@angular/material/list';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSelectModule } from '@angular/material/select';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
@@ -26,6 +29,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { UserService } from './user/user.service';
 import { SignInComponent } from './user/sign-in/sign-in.component';
+import { HeaderComponent } from './header/header.component';
 
 
 const MaterialComponents = [
@@ -38,7 +42,10 @@ const MaterialComponents = [
   MatExpansionModule,
   MatBadgeModule,
   MatSelectModule,
-  MatTabsModule
+  MatTabsModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule
 ];
 
 @NgModule({
@@ -49,7 +56,8 @@ const MaterialComponents = [
     SitterRegistrationComponent,
     UserComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
