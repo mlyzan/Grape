@@ -17,7 +17,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
-import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const MaterialComponents = [
@@ -44,7 +43,6 @@ const MaterialComponents = [
     FormsModule,
     BrowserAnimationsModule,
     MaterialComponents,
-    HttpClientModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
     }),
