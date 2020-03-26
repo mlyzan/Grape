@@ -19,9 +19,6 @@ const routes: Routes = [
   {
     path: 'sitter', component: SitterContainerComponent,
     children: [{path: '', component: SitterComponent}]
-  },
-  {
-    path: '', redirectTo: '/login', pathMatch: 'full'
   }
 ];
 
