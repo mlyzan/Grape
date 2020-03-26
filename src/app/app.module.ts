@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
@@ -18,6 +19,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {MatTabsModule} from '@angular/material/tabs';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { UserService } from './user/user.service';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+
 
 const MaterialComponents = [
   MatCardModule,
@@ -27,7 +34,8 @@ const MaterialComponents = [
   MatButtonModule,
   MatDividerModule,
   MatExpansionModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTabsModule
 ];
 
 @NgModule({
@@ -35,6 +43,9 @@ const MaterialComponents = [
     AppComponent,
     SitterContainerComponent,
     SitterComponent
+    UserComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -43,11 +54,12 @@ const MaterialComponents = [
     FormsModule,
     BrowserAnimationsModule,
     MaterialComponents,
+    HttpClientModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
-    }),
+    })
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
