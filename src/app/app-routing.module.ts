@@ -6,6 +6,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
+import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
   {
     path: 'sitter', component: SitterContainerComponent,
     children: [{path: '', component: SitterComponent}]
+  },
+  {
+    path: 'create-sitter', component: SitterRegistrationComponent
   }
 ];
 
