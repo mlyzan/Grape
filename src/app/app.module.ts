@@ -1,14 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AppComponent } from './app.component';
 import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
+import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
+import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { HeaderComponent } from './header/header.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,15 +26,12 @@ import { MatBadgeModule } from '@angular/material/badge';
 import  {MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MatSelectModule } from '@angular/material/select';
-import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import {MatTabsModule} from '@angular/material/tabs';
-import { UserComponent } from './user/user.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+
 import { UserService } from './user/user.service';
-import { SignInComponent } from './user/sign-in/sign-in.component';
-import { HeaderComponent } from './header/header.component';
+import { SitterService } from './root-state/sitter/sitter.service';
+
 
 
 const MaterialComponents = [
@@ -71,7 +73,7 @@ const MaterialComponents = [
       maxAge: 25, 
     })
   ],
-  providers: [UserService],
+  providers: [UserService, SitterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
