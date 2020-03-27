@@ -71,7 +71,8 @@
     <div class="form-button">
       <button mat-button type="submit" 
       [disabled]="!sitterPersonalInfo.valid" 
-      (click)="onSubmit()">Create!</button>
+      (click)="onSubmit()"
+      [routerLink]="'/sitter'">Create!</button>
       <button mat-button>Go back</button>
     </div>
   </form>
