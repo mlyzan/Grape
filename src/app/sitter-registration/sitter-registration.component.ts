@@ -38,6 +38,6 @@ export class SitterRegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    this.sitterService.saveSitter(this.sitterPersonalInfo.value);
+    this.sitterService.saveSitter({...this.sitterPersonalInfo.value, photo: this.selectedFile.src});
   }
 }
