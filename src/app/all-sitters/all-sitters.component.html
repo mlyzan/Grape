@@ -1,0 +1,16 @@
+
+<mat-card class="sitter" *ngFor="let item of sitters$">
+    <div class="img">
+        <img [src]="item.photo" alt="photo">
+    </div>
+    <div class="description">
+        <div class="name">{{item.name}}</div>
+        <div class="payment"><i class="material-icons">attach_money</i> {{item.payment}} per hour </div>
+        <div class="location"><i class="material-icons">location_on</i> {{item.address}}</div>
+        <div class="about">
+            <i class="material-icons"> create</i> 
+            {{item.information}}
+        </div>
+        <button class="btn" mat-raised-button color="primary"><i class="material-icons">pets</i>See profile</button>
+    </div>
+</mat-card>
