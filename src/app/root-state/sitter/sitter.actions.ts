@@ -14,4 +14,18 @@ export const createSitterSuccess = createAction(
 export const createSitterFail = createAction(
     '[Sitter] create sitter fail',
     (error: Error) => ({ error }),
+); 
+
+export const loadSitters = createAction(
+    '[Sitter] load sitters'
+)
+
+export const loadSittersSuccess = createAction(
+    '[Sitter] load sitters success',
+    (sitter: Sitter[]) => ( {sitter} ),
 );
+
+export const loadSittersFail = createAction(
+    '[Sitter] load sitter fail',
+    (error: Error) => ({ error }),
+); 

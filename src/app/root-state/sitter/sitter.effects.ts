@@ -13,8 +13,20 @@ export class SitterEffects {
       ofType(createSitter),
       switchMap(( {sitter} ) =>
           this.sitterService.saveSitter(sitter).pipe(
-          map(res => sitterAction.createSitterSuccess(res)),
+          map((res) => sitterAction.createSitterSuccess(res)),
           catchError(error => of(sitterAction.createSitterFail(error)))
+          ),
+      ),
+    )
+  );
+
+  loadSitters$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sitterAction.loadSitters),
+      switchMap(() =>
+          this.sitterService.getSitters().pipe(
+          map(res => sitterAction.loadSittersSuccess(res)),
+          catchError(error => of(sitterAction.loadSittersFail(error)))
           ),
       ),
     )
@@ -24,4 +36,4 @@ export class SitterEffects {
     private actions$: Actions,
     private sitterService: SitterService,
   ) {}
-}
+} 

@@ -4,7 +4,7 @@ import { Sitter } from './sitter.interfaces';
 
 export interface SitterState {
     loading: boolean;
-    sitter: Sitter;
+    sitter: Sitter[];
     error: Error;
   }
 
@@ -29,6 +29,21 @@ export const sitterReducer = createReducer(
     ...state,
     loading: false,
     error
+    })),
+    on(sitterAction.loadSitters, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.loadSittersSuccess, (state, {sitter}) => ({
+        ...state,
+        sitter,
+        loading: false
+    })),
+    on(sitterAction.loadSittersFail, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error: error
     }))
 );
 
+ 
