@@ -32,7 +32,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { UserService } from './user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
 
-
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { sitterReducer } from './root-state/sitter/sitter.reducer';
+import { SitterEffects } from './root-state/sitter/sitter.effects';
+import { SITTER_KEY } from './root-state/sitter/sitter.selectors';  
 
 const MaterialComponents = [
   MatCardModule,
@@ -69,6 +73,10 @@ const MaterialComponents = [
     BrowserAnimationsModule,
     MaterialComponents,
     HttpClientModule,
+    StoreModule.forRoot({ 
+      [SITTER_KEY]: sitterReducer
+    }),
+    EffectsModule.forRoot([SitterEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
     })

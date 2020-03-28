@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SitterService } from '../root-state/sitter/sitter.service';
+import { Store } from '@ngrx/store';
+import { createSitter } from './../root-state/sitter/sitter.actions';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -33,11 +35,11 @@ export class SitterRegistrationComponent implements OnInit {
 
     reader.readAsDataURL(file); 
   }
-  constructor(private sitterService: SitterService) { }
+  constructor(private sitterService: SitterService, private store: Store) { }
 
   ngOnInit(): void {
   }
   onSubmit() {
-    this.sitterService.saveSitter({...this.sitterPersonalInfo.value, photo: this.selectedFile.src});
+    this.store.dispatch(createSitter({...this.sitterPersonalInfo.value, photo: this.selectedFile.src}))
   }
 }
