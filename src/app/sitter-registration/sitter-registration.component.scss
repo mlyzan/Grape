@@ -1,6 +1,6 @@
-@mixin item {
+@mixin item($width) {
   margin: 20px;
-  width: 400px;
+  width: $width;
   border-radius: 10px;  
   background: #ffffff;
 }
@@ -17,27 +17,31 @@
   display: flex;
 }
 .input-item {
-  @include item;
+  @include item($width: 400px);
 }
 .sitter-photo {
-  @include item;
+  @include item($width: 400px);
   display: flex;
-  align-items: center;  
-  height: 100px;
+  align-items: center; 
+  justify-content: space-around; 
+  height: 202px;
 
-  .img-preview-container {
+  .img-preview-container {    
     width: auto;
-    background-color: #f7f7f7;
-    position: relative;
-    border-radius: 10px;
+    background-color: #fff;
+    position: relative;    
 
-    .img-preview {
+    .img-preview {      
       background: center center no-repeat;
-      background-size: contain;
-      height: 100px;
-      width: 100px;
+      background-size: cover;
+      border-radius: 10px;
+      height: 200px;
+      width: 200px;
     }
   }
+}
+.about {
+  @include item($width: 844px);  
 }
 .form-button {
   margin: 30px 20px;
