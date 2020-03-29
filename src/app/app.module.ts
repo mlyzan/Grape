@@ -30,6 +30,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { UserService } from './user/user.service';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { HeaderComponent } from './header/header.component';
+import { AllSittersComponent } from './all-sitters/all-sitters.component';
 
 
 const MaterialComponents = [
@@ -57,7 +58,8 @@ const MaterialComponents = [
     UserComponent,
     SignUpComponent,
     SignInComponent,
-    HeaderComponent
+    HeaderComponent,
+    AllSittersComponent
   ],
   imports: [
     BrowserModule,

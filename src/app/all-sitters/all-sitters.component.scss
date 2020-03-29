@@ -1,0 +1,31 @@
+.sitter {
+    display: flex;
+    justify-content: space-around;
+    max-width: 90%;
+    margin: 25px auto;
+    .img {
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 6px;
+            margin: 0 15px;
+        }
+    }
+    display: flex;
+    justify-content: space-between;
+    .name {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0 0 10px 10px;
+    }
+    .btn {
+        margin: 10px 0;
+    }
+    i {
+        padding: 4px;
+    }
+    .name, .payment, .location {
+        display: flex;
+        align-items: center;
+    }
+}
