@@ -63,7 +63,7 @@
         </mat-form-field><br>
         <mat-form-field class="input-item"appearance="fill">
           <mat-label>Tell about you</mat-label>
-          <textarea matInput formControlName="information"></textarea>
+          <textarea matInput formControlName="information"></textarea> 
         </mat-form-field>
         <br> 
       </div>
@@ -71,7 +71,8 @@
     <div class="form-button">
       <button mat-button type="submit" 
       [disabled]="!sitterPersonalInfo.valid" 
-      (click)="onSubmit()">Create!</button>
+      (click)="onSubmit()"
+      >Create!</button>
       <button mat-button>Go back</button>
     </div>
   </form>
