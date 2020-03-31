@@ -1,31 +1,38 @@
-
-<mat-card class="card">
-      <img src="{{sitter$.photo}}" alt="photo" class="photo">
-    <div>
-        <div class="card_header">
-            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-            <h2 class="title_name">{{sitter$.userName}}</h2>
-            <div>{{sitter$.payment | currency}}</div>
-        </div>
-        <sub>My profile</sub>
-        <hr>
-        <div class="profile">
-          <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
-          <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
-          <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
-          <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
-          <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
-          <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals}}</div>
-          <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services}}</div>
-          <div class="profile_title"><i class="material-icons">schedule</i>{{sitter$.availability}}</div>
-          <div class="profile_about">
-            <div class="profile_about_header">
-              <i class="material-icons"> create</i>
-              About me
-            </div>
-            <div class='profile_about_descr'>{{sitter$.information}}</div>
+<div *ngIf="!!isEmpty && isEmpty.length > 0 && !!isExist; else clearPage">
+  <mat-card class="card">
+    <img src="{{sitter$.photo}}" alt="photo" class="photo">
+  <div>
+      <div class="card_header">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          <h2 class="title_name">{{sitter$.userName}}</h2>
+          <div>{{sitter$.payment | currency}}</div>
+      </div>
+      <sub>My profile</sub>
+      <hr>
+      <div class="profile">
+        <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
+        <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
+        <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
+        <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
+        <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
+        <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals}}</div>
+        <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services}}</div>
+        <div class="profile_title"><i class="material-icons">schedule</i>{{sitter$.availability}}</div>
+        <div class="profile_about">
+          <div class="profile_about_header">
+            <i class="material-icons"> create</i>
+            About me
           </div>
+          <div class='profile_about_descr'>{{sitter$.information}}</div>
         </div>
-    </div>
+      </div>
+  </div>
 </mat-card>
+</div>
+<ng-template #clearPage>
+  <h1>WELCOME :). Please, signup or login and create a profile, if you don`t have one, to see something here</h1>
+</ng-template>
+
+
+
 

@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { createSitter } from './sitter.actions';
 import { SitterService } from './sitter.service';
-import { UserService } from '../../user/user.service';
 import { of } from 'rxjs';
 import * as sitterAction from './sitter.actions';
 
