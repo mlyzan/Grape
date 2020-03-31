@@ -1,28 +1,29 @@
+
 <mat-card class="card">
-      <img src="https://www.petsit.com/stuff/contentmgr/files/0/884b1fb69d6413f97b81a120eee3402e/image/hp_petsitterresources_2018_as_man.jpg" alt="photo" class="photo">
+      <img src="{{sitter$.photo}}" alt="photo" class="photo">
     <div>
         <div class="card_header">
             <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
-            <h2 class="title_name">Alan</h2>
-            <div>p/h: 20$</div>
+            <h2 class="title_name">{{sitter$.userName}}</h2>
+            <div>{{sitter$.payment | currency}}</div>
         </div>
         <sub>My profile</sub>
         <hr>
         <div class="profile">
-          <div class="profile_title"><i class="material-icons">perm_identity</i>Alan</div>
-          <div class="profile_title"><i class="material-icons">email</i>alan@mail.com</div>
-          <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>25</div>
-          <div class="profile_title"><i class="material-icons">location_on </i>Lviv</div>
-          <div class="profile_title"><i class="material-icons">attach_money</i>20</div>
-          <div class="profile_title"><i class="material-icons">pets</i>Dogs, Cats</div>
-          <div class="profile_title"><i class="material-icons">settings</i>Dog walking, Pet Boarding</div>
-          <div class="profile_title"><i class="material-icons">schedule</i>from 5 to 7</div>
+          <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
+          <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
+          <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
+          <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
+          <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
+          <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals}}</div>
+          <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services}}</div>
+          <div class="profile_title"><i class="material-icons">schedule</i>{{sitter$.availability}}</div>
           <div class="profile_about">
             <div class="profile_about_header">
               <i class="material-icons"> create</i>
               About me
             </div>
-            <div class='profile_about_descr'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, adipisci. Quisquam fugiat vitae mollitia porro atque quod nam, alias et.</div>
+            <div class='profile_about_descr'>{{sitter$.information}}</div>
           </div>
         </div>
     </div>

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SitterService } from '../root-state/sitter/sitter.service';
+import { Store, select } from '@ngrx/store';
+import { createSitter } from './../root-state/sitter/sitter.actions';
+import { Router } from '@angular/router';
+import { getUserInfo } from '../root-state/user/user.selectors';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -10,6 +15,7 @@ class ImageSnippet {
   styleUrls: ['./sitter-registration.component.scss']
 })
 export class SitterRegistrationComponent implements OnInit {
+  
   sitterPersonalInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
@@ -30,13 +36,31 @@ export class SitterRegistrationComponent implements OnInit {
       this.selectedFile = new ImageSnippet(event.target.result, file)
     });
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); 
   }
-  constructor() { }
+
+  userInfo;
+  constructor(private sitterService: SitterService, private store: Store, private router: Router) {
+    this.store.pipe(
+      select(getUserInfo)
+    ).subscribe(userInfo => this.userInfo = userInfo);
+   }
 
   ngOnInit(): void {
+    
   }
+
   onSubmit() {
-    console.log(this.sitterPersonalInfo.value)
+    this.store.dispatch(createSitter({
+      ...this.sitterPersonalInfo.value, 
+      photo: this.selectedFile.src, 
+      userId: this.userInfo.userId,
+      userName: this.userInfo.userName,
+      userEmail: this.userInfo.userEmail
+    }));
+    setTimeout(() => {
+      this.router.navigateByUrl('/all-sitters');
+    }, 5000);
   }
-}
+  
+} 
