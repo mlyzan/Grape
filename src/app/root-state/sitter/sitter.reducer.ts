@@ -39,6 +39,7 @@ export const sitterReducer = createReducer(
     /////////////////////////////////////////////////
     on(sitterAction.loadSitters, (state) => ({
       ...state,
+      sitters: null,
       loading:true
     })),
     on(sitterAction.loadSittersSuccess, (state, {sitters}) => ({
