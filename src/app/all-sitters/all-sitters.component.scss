@@ -1,6 +1,6 @@
 .sitter {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     max-width: 90%;
     margin: 25px auto;
     .img {
@@ -11,8 +11,6 @@
             margin: 0 15px;
         }
     }
-    display: flex;
-    justify-content: space-between;
     .name {
         font-weight: bold;
         font-size: 18px;
@@ -27,5 +25,17 @@
     .name, .payment, .location {
         display: flex;
         align-items: center;
+    }
+}
+.spinner {
+    margin: 0 auto;
+}
+.error {
+    text-align: center;
+    font-size: 22px;
+
+    &_ops {
+        color: red;
+        margin-bottom: 15px;
     }
 }

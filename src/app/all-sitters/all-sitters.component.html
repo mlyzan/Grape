@@ -1,16 +1,28 @@
-
-<mat-card class="sitter" *ngFor="let sitter of sitters$ | async">
-    <div class="img">
-        <img [src]="sitter.photo" alt="photo">
-    </div>
-    <div class="description">
-        <div class="name">{{sitter.userName}}</div>
-        <div class="payment"><i class="material-icons">attach_money</i> {{sitter.payment | currency}} per hour </div>
-        <div class="location"><i class="material-icons">location_on</i> {{sitter.address}}</div>
-        <div class="about">
-            <i class="material-icons"> create</i> 
-            {{sitter.information}}
+<ng-container *ngIf="loading$ | async"> 
+    <mat-spinner class="spinner"></mat-spinner>
+</ng-container>
+<div class="error" *ngIf="error$ | async"> 
+    <div class="error_ops">Ooops!</div> Something wrong. Please try again later.
+</div>
+<ng-container *ngIf="sitters$ | async">
+    <mat-card class="sitter" *ngFor="let sitter of sitters$ | async">
+        <div class="img">
+            <ng-container *ngIf="sitter.photo; else defaultPhoto">
+                <img mat-card-image [src]="sitter.photo" alt="photo">
+            </ng-container>
+            <ng-template #defaultPhoto>
+                <img mat-card-image src="../../assets/img/default-user.png" alt="photo">
+            </ng-template>
         </div>
-        <button class="btn" mat-raised-button color="primary"><i class="material-icons">pets</i>See profile</button>
-    </div>
-</mat-card>
+        <div class="description">
+            <div class="name">{{sitter.userName}}</div>
+            <div class="payment"><i class="material-icons">attach_money</i> {{sitter.payment | currency}} per hour </div>
+            <div class="location"><i class="material-icons">location_on</i> {{sitter.address}}</div>
+            <div class="about">
+                <i class="material-icons"> create</i> 
+                {{sitter.information}}
+            </div>
+            <button class="btn" mat-raised-button color="primary"><i class="material-icons">pets</i>See profile</button>
+        </div>
+    </mat-card>
+</ng-container>
