@@ -41,11 +41,4 @@ export class SignInComponent implements OnInit {
           this.router.navigateByUrl('/create-sitter');
         }, 1500);
   }
-      // err => {
-      //   this.serverErrorMessage = err.error.message;
-      //   this.serverMessage = true;
-      //   setTimeout(() => {
-      //     this.serverMessage = false;
-      //   }, 1500)
-      // })
 }

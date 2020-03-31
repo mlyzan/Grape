@@ -1,10 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import * as sitterAction from './sitter.actions';
 import { Sitter } from './sitter.interfaces';
-import { User } from '../../user/user.model';
 
 export interface SitterState {
-    //userInfo: {userId: string, userName: string, userEmail: string},
     loading: boolean;
     activeSitter: Sitter;
     sitters: Sitter[];
@@ -12,7 +10,6 @@ export interface SitterState {
   } 
  
 export const initialState = {
-    //userInfo: {userId: null, userName: null, userEmail: null},
     sitters: null,
     activeSitter: null,
     loading: true,

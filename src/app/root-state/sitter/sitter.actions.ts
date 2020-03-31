@@ -1,6 +1,5 @@
 import { createAction } from '@ngrx/store';
 import { Sitter } from './sitter.interfaces';
-import { User } from '../../user/user.model';
 
 //////////////////////////////////////////
 export const createSitter = createAction(
