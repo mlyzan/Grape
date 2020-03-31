@@ -14,6 +14,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { HeaderComponent } from './header/header.component';
+import { AllSittersComponent } from './all-sitters/all-sitters.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,6 +38,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { sitterReducer } from './root-state/sitter/sitter.reducer';
 import { SitterEffects } from './root-state/sitter/sitter.effects';
 import { SITTER_KEY } from './root-state/sitter/sitter.selectors';  
+import { USER_KEY } from './root-state/user/user.selectors';
+import { userReducer } from './root-state/user/user.reducer';
+import { UserEffects } from './root-state/user/user.effects';
 
 const MaterialComponents = [
   MatCardModule,
@@ -63,7 +67,8 @@ const MaterialComponents = [
     UserComponent,
     SignUpComponent,
     SignInComponent,
-    HeaderComponent
+    HeaderComponent,
+    AllSittersComponent
   ],
   imports: [
     BrowserModule,
@@ -74,9 +79,10 @@ const MaterialComponents = [
     MaterialComponents,
     HttpClientModule,
     StoreModule.forRoot({ 
-      [SITTER_KEY]: sitterReducer
+      [SITTER_KEY]: sitterReducer,
+      [USER_KEY]: userReducer
     }),
-    EffectsModule.forRoot([SitterEffects]),
+    EffectsModule.forRoot([SitterEffects, UserEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
     })

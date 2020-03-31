@@ -6,6 +6,9 @@ export interface Sitter {
   photo: string,
   address: string,
   years: string,
-  information: string
+  information: string,
+  userId: string,
+  userName: string,
+  userEmail: string
 }
 

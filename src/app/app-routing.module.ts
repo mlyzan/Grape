@@ -7,6 +7,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
+import { AllSittersComponent } from './all-sitters/all-sitters.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
   },
   {
     path: 'create-sitter', component: SitterRegistrationComponent
+  },
+  {
+    path: 'all-sitters', component: AllSittersComponent
   }
 ];
 

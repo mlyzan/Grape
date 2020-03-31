@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sitter } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
-import { Store } from '@ngrx/store';
-import { loadSitters } from './../root-state/sitter/sitter.actions';
-import { Observable } from 'rxjs';
-import { getSitters } from '../root-state/sitter/sitter.selectors';
+import { Store, select } from '@ngrx/store';
+import { getActiveSitterById } from '../root-state/sitter/sitter.selectors';
+import { getActiveId } from '../root-state/user/user.selectors';
 
 @Component({
   selector: 'grape-sitter',
@@ -12,20 +11,19 @@ import { getSitters } from '../root-state/sitter/sitter.selectors';
   styleUrls: ['./sitter.component.scss']
 })
 export class SitterComponent implements OnInit {
-  sitters$: Observable<Sitter[]>;
-  constructor(private sitterService: SitterService, private store: Store) { }
+  sitter$: Sitter; activeId: string;
+  constructor(private sitterService: SitterService, private store: Store) { 
+    this.store.pipe(
+      select(getActiveId)
+    ).subscribe(id => this.activeId = id);
+
+    this.store.pipe(
+      select(getActiveSitterById(this.activeId))
+    ).subscribe(activeSitter => this.sitter$ = activeSitter);
+   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadSitters());
-    this.sitters$ = this.store.select(getSitters);
-    //this.refreshSittersList();
+    console.log(this.sitter$);
   }
-
-  // refreshSittersList() {
-  //   this.sitterService.getSitters().subscribe(res => {
-  //     this.sitters = res as Sitter[];
-  //   })
-
-  // }
   
 }

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 
-import { UserService } from '../user.service';
+import { UserService } from '../../root-state/user/user.service';
+import { loadSitters } from '../../root-state/sitter/sitter.actions';
+import { loginUser } from '../../root-state/user/user.actions';
+import { getActiveSitterById } from 'src/app/root-state/sitter/sitter.selectors';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +15,7 @@ import { UserService } from '../user.service';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private store: Store) { }
 
   showSuccessMessage: boolean;
   serverErrorMessage: string;
@@ -25,24 +29,23 @@ export class SignInComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(form: NgForm) {
-    this.userService.loginUser(form.value).subscribe(
-      res => {
+    this.store.dispatch(loadSitters());
+    this.store.dispatch(loginUser(form.value));
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.showSuccessMessage = false;
-          this.router.navigateByUrl('/sitter');
+          this.router.navigateByUrl('/create-sitter');
         }, 1500);
-      }, 
-      err => {
-        this.serverErrorMessage = err.error.message;
-        this.serverMessage = true;
-        setTimeout(() => {
-          this.serverMessage = false;
-        }, 1500)
-      })
   }
-
+      // err => {
+      //   this.serverErrorMessage = err.error.message;
+      //   this.serverMessage = true;
+      //   setTimeout(() => {
+      //     this.serverMessage = false;
+      //   }, 1500)
+      // })
 }

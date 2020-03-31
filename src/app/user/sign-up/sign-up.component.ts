@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
-import { UserService } from '../user.service';
+import { UserService } from '../../root-state/user/user.service';
+import { createUser } from '../../root-state/user/user.actions'; 
 
 @Component({
   selector: 'app-sign-up',
@@ -15,26 +17,17 @@ export class SignUpComponent implements OnInit {
   showSuccessMessage: boolean;
   serverErrorMessage: string;
 
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router, private store: Store) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
-    this.userService.registerUser(form.value).subscribe(
-      res => {
+    this.store.dispatch(createUser(form.value));
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.showSuccessMessage = false;
           this.router.navigateByUrl('/login');
         }, 2000);
-      }, 
-      err => {
-        if(err.status === 422) {
-          this.serverErrorMessage = err.error.join('<br/>');
-        } else {
-          this.serverErrorMessage = 'Something went wrong...'
-        }
-      });
   }
 }

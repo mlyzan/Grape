@@ -1,14 +1,16 @@
 import { createAction } from '@ngrx/store';
 import { Sitter } from './sitter.interfaces';
+import { User } from '../../user/user.model';
 
+//////////////////////////////////////////
 export const createSitter = createAction(
     '[Sitter] create sitter',
-    (sitter: Sitter) => ({sitter})
+    (activeSitter: Sitter) => ({activeSitter})
 )
 
 export const createSitterSuccess = createAction(
     '[Sitter] create sitter success',
-    (sitter: Sitter) => ({ sitter }),
+    (activeSitter: Sitter) => ({ activeSitter }),
 );
 
 export const createSitterFail = createAction(
@@ -16,13 +18,14 @@ export const createSitterFail = createAction(
     (error: Error) => ({ error }),
 ); 
 
+/////////////////////////////////////////
 export const loadSitters = createAction(
     '[Sitter] load sitters'
 )
 
 export const loadSittersSuccess = createAction(
     '[Sitter] load sitters success',
-    (sitter: Sitter[]) => ( {sitter} ),
+    (sitters: Sitter[]) => ( {sitters} ),
 );
 
 export const loadSittersFail = createAction(

@@ -10,9 +10,7 @@ import { Sitter } from './../root-state/sitter/sitter.interfaces';
 })
 
 export class SitterContainerComponent implements OnInit {
-    sitter$: Observable<Sitter>;
-  constructor(private store: Store<Sitter>){
-    // this.sitter$ = store.pipe(select('sitterReducer'))
+  constructor(){
   }
 
   ngOnInit(): void {

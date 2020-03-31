@@ -3,16 +3,18 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { createSitter } from './sitter.actions';
 import { SitterService } from './sitter.service';
+import { UserService } from '../../user/user.service';
 import { of } from 'rxjs';
 import * as sitterAction from './sitter.actions';
 
 @Injectable()
-export class SitterEffects {
+export class SitterEffects { 
+
   createSitter$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createSitter),
-      switchMap(( {sitter} ) =>
-          this.sitterService.saveSitter(sitter).pipe(
+      switchMap(( {activeSitter} ) =>
+          this.sitterService.saveSitter(activeSitter).pipe(
           map((res) => sitterAction.createSitterSuccess(res)),
           catchError(error => of(sitterAction.createSitterFail(error)))
           ),
@@ -34,6 +36,6 @@ export class SitterEffects {
 
   constructor(
     private actions$: Actions,
-    private sitterService: SitterService,
+    private sitterService: SitterService
   ) {}
 } 
