@@ -29,6 +29,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { UserService } from './user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -55,7 +56,8 @@ const MaterialComponents = [
   MatTabsModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
