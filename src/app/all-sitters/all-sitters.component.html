@@ -29,6 +29,9 @@
     </ng-container>
 </div>
 <ng-template #clearPage>
+    <ng-container *ngIf="loading$ | async"> 
+        <mat-spinner class="spinner"></mat-spinner>
+    </ng-container>
     <h1>Nothing to show :(</h1>
 </ng-template>
 
