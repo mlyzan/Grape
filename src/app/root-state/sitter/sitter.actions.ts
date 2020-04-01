@@ -31,3 +31,19 @@ export const loadSittersFail = createAction(
     '[Sitter] load sitter fail',
     (error: Error) => ({ error }),
 ); 
+
+/////////////////////////////////////////
+export const deleteSitter = createAction(
+    '[Sitter] delete sitter',
+    (id: string) => ( {id} ),
+)
+
+export const deleteSitterSuccess = createAction(
+    '[Sitter] delete sitter success',
+    (success: object) => ( {success} ),
+);
+
+export const deleteSitterFail = createAction(
+    '[Sitter] delete sitter fail',
+    (error: Error) => ({ error }),
+); 

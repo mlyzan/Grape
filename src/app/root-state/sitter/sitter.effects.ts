@@ -33,6 +33,18 @@ export class SitterEffects {
     )
   );
 
+  deleteSitter$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sitterAction.deleteSitter),
+      switchMap(({id}) =>
+          this.sitterService.deleteSitter(id).pipe(
+          map(res => sitterAction.deleteSitterSuccess(res)),
+          catchError(error => of(sitterAction.deleteSitterFail(error)))
+          ),
+      ),
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private sitterService: SitterService

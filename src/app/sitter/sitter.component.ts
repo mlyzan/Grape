@@ -1,18 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Sitter } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
-import { Store, select } from '@ngrx/store';
+import { Store, select, ActionsSubject } from '@ngrx/store';
 import { getActiveSitterById, getSitters } from '../root-state/sitter/sitter.selectors';
 import { getActiveId } from '../root-state/user/user.selectors';
+import { Router } from '@angular/router';
+import { deleteSitterSuccess, deleteSitter, loadSitters } from '../root-state/sitter/sitter.actions';
+import { Subscription } from 'rxjs';
+import { ofType } from '@ngrx/effects';
 
 @Component({
   selector: 'grape-sitter',
   templateUrl: './sitter.component.html',
   styleUrls: ['./sitter.component.scss']
 })
-export class SitterComponent implements OnInit {
-  sitter$: Sitter; activeId: string; isEmpty; isExist;
-  constructor(private sitterService: SitterService, private store: Store) { 
+export class SitterComponent implements OnInit, OnDestroy {
+  sitter$: Sitter; 
+  activeId: string; isEmpty; isExist;
+  subscSuccess = new Subscription();
+  showSuccessMessage: boolean;
+  successMessage: object;
+  constructor(
+    private sitterService: SitterService, 
+    private store: Store, 
+    private router: Router, 
+    private actionsSubj: ActionsSubject) { 
     
     this.store.pipe(
       select(getSitters)
@@ -35,9 +47,29 @@ export class SitterComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.sitter$);
-    console.log(this.isEmpty);
-    console.log(this.isExist);
+  }
+
+  ngOnDestroy() {
+    this.subscSuccess.unsubscribe();
+  }
+
+  onDelete(id: string) {
+    this.store.dispatch(deleteSitter(id));
+
+    this.subscSuccess = this.actionsSubj.pipe(
+      ofType(deleteSitterSuccess)
+    ).subscribe(
+      res => {
+        this.successMessage = res.success['success'];
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+          this.store.dispatch(loadSitters());
+          this.store.pipe(select(getSitters)).subscribe(sitters => this.isEmpty = sitters);
+        }, 2000);
+      },
+    )
+
   }
   
 }
