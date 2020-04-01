@@ -25,10 +25,12 @@ const routes: Routes = [
     children: [{path: '', component: SitterComponent}]
   },
   {
-    path: 'create-sitter', component: SitterRegistrationComponent
+    path: 'create-sitter', component: SitterRegistrationComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'all-sitters', component: AllSittersComponent
+    path: 'all-sitters', component: AllSittersComponent,
+    canActivate: [AuthGuard],
   }
 ];
 

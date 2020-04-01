@@ -42,6 +42,8 @@ import { SITTER_KEY } from './root-state/sitter/sitter.selectors';
 import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
+import { AuthGuard } from './app.service';
+import { AuthService } from './auth.service';
 
 const MaterialComponents = [
   MatCardModule,
@@ -89,7 +91,7 @@ const MaterialComponents = [
       maxAge: 25, 
     })
   ],
-  providers: [UserService, SitterService],
+  providers: [UserService, SitterService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

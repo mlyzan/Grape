@@ -1,13 +1,10 @@
-
-// export class AuthService{
-//   isLoggenIn: boolean = true;
-// }
-
 import { Injectable } from '@angular/core';
+
 @Injectable()
 export class AuthService {
   constructor() {}
   public isAuthenticated(): boolean {
-    return true;
+    const userId = localStorage.getItem('userId');
+    return !!userId;
   }
 }

@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store, ActionsSubject } from '@ngrx/store';
+import { Store, ActionsSubject, select } from '@ngrx/store';
 
 import { UserService } from '../../root-state/user/user.service';
 import { loadSitters } from '../../root-state/sitter/sitter.actions';
 import { loginUser, loginUserFail, loginUserSuccess } from '../../root-state/user/user.actions';
 import { ofType } from '@ngrx/effects';
 import { Subject, Subscription } from 'rxjs';
+import { getActiveId } from 'src/app/root-state/user/user.selectors';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,12 +16,11 @@ import { Subject, Subscription } from 'rxjs';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit, OnDestroy {
+  private myId: string;
   subscFail = new Subscription();
   subscSuccess = new Subscription();
 
-  constructor(private userService: UserService, private router: Router, private store: Store, private actionsSubj: ActionsSubject ) { 
-    
-  }
+  constructor(private userService: UserService, private router: Router, private store: Store, private actionsSubj: ActionsSubject) {}
 
   showSuccessMessage: boolean;
   serverErrorMessage: string;
@@ -46,6 +46,10 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.store.dispatch(loadSitters());
     this.store.dispatch(loginUser(form.value));
     
+    this.store.pipe(select(getActiveId)).subscribe(id => {
+      localStorage.setItem('userId', id);
+    });
+    
     this.subscFail = this.actionsSubj.pipe(
       ofType(loginUserFail)
     ).subscribe(
@@ -70,7 +74,5 @@ export class SignInComponent implements OnInit, OnDestroy {
         }, 1500);
       },
     )
-
-
   }
 }
