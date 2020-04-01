@@ -41,6 +41,7 @@ import { SITTER_KEY } from './root-state/sitter/sitter.selectors';
 import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
+import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
 
 const MaterialComponents = [
   MatCardModule,
@@ -68,7 +69,8 @@ const MaterialComponents = [
     SignUpComponent,
     SignInComponent,
     HeaderComponent,
-    AllSittersComponent
+    AllSittersComponent,
+    FilterSittersComponent
   ],
   imports: [
     BrowserModule,
