@@ -1,3 +1,4 @@
+import { filterSittersByAddress, filterSittersByAnimals, filterSittersByServices } from './../../root-state/sitter/sitter.actions';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store, State } from '@ngrx/store';
@@ -26,8 +27,21 @@ export class FilterSittersComponent implements OnInit {
   constructor(private store: Store) { }
 
   find() {
-    let a = State;
-    console.log(a);
+    if (this.filters.value.services) {
+      this.store.dispatch(filterSittersByServices({
+        services: this.filters.value.services
+      }))
+    }
+    if (this.filters.value.animals) {
+      this.store.dispatch(filterSittersByAnimals({
+        animals: this.filters.value.animals
+      }))
+    }
+    if (this.filters.value.address) {
+      this.store.dispatch(filterSittersByAddress({
+        address: this.filters.value.address
+      }))
+    }
   }
 
   ngOnInit(): void {
