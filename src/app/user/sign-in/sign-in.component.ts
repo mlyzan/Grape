@@ -16,7 +16,6 @@ import { getActiveId } from 'src/app/root-state/user/user.selectors';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit, OnDestroy {
-  private myId: string;
   subscFail = new Subscription();
   subscSuccess = new Subscription();
 
