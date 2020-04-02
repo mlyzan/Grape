@@ -1,0 +1,47 @@
+<mat-sidenav-container
+  class="example-container"
+  (backdropClick)="close()"
+  [style.width.%]="width"
+>
+  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose>
+    <form [formGroup]="filters">
+      <mat-form-field class="input-item" appearance="fill">
+        <mat-label>Services provided</mat-label>
+        <mat-select formControlName="services">
+          <mat-option value="Dog Walking">Dog Walking</mat-option>
+          <mat-option value="Pet Boarding">Pet Boarding</mat-option>
+          <mat-option value="House Sitting">House Sitting</mat-option>
+          <mat-option value="Pet Grooming">Pet Grooming</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="input-item" appearance="fill">
+        <mat-label>Your Animal</mat-label>
+        <mat-select formControlName="animals">
+          <mat-option value="Dog">Dog</mat-option>
+          <mat-option value="Cat">Cat</mat-option>
+          <mat-option value="Bird">Bird</mat-option>
+          <mat-option value="Rabbit">Rabbit</mat-option>
+          <mat-option value="Reptile">Reptile</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="input-item" appearance="fill">
+        <mat-label>Your city</mat-label>
+        <mat-select formControlName="address">
+          <mat-option value="Lviv">Lviv</mat-option>
+          <mat-option value="Kyiv">Kyiv</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <button mat-button (click)="close(); find()">Find</button>
+    </form>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button mat-button (click)="sidenav.toggle(); open()">Filters</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
