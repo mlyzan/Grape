@@ -14,8 +14,15 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class FilterSittersComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
+  width = 10;
+
+  open() {
+    this.width = 100;
+  }
+
   close() {
     this.sidenav.close();
+    this.width = 10;
   }
 
   filters = new FormGroup({

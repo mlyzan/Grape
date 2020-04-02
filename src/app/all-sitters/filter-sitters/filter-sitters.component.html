@@ -1,5 +1,9 @@
-<mat-sidenav-container class="example-container" (backdropClick)="close()">
-  <mat-sidenav #sidenav (keydown.escape)="close()" disableClose>
+<mat-sidenav-container
+  class="example-container"
+  (backdropClick)="close()"
+  [style.width.%]="width"
+>
+  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose>
     <form [formGroup]="filters">
       <mat-form-field class="input-item" appearance="fill">
         <mat-label>Services provided</mat-label>
@@ -38,6 +42,6 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle()">Filters</button>
+    <button mat-button (click)="sidenav.toggle(); open()">Filters</button>
   </mat-sidenav-content>
 </mat-sidenav-container>
