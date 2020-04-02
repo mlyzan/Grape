@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.header {
+  height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-image img {
+  height: calc(100vh - 64px);
+}
+
+.header-text {
+  padding: 130px;
+  text-align: center;
+  h1 {
+    font-size: 40px;
+  }
+  p {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  button {
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border-width: 0;
+    border-radius: 45px;
+    padding: 16px 26px;
+    margin: 34px auto;
+  }
+}
+
+.wrapper {
+  width: 65%;
+  margin: auto;
+  text-align: center;
+}
+
+.main {
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 60px;
+  }
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  &__item {
+    width: 20%;
+  }
+}
+
+.about {
+  ul {
+    list-style-image: url(../../assets/img/paw.png);      
+  }
+}
