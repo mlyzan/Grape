@@ -44,6 +44,7 @@ import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
+import { HomeComponent } from './home/home.component';
 
 const MaterialComponents = [
   MatCardModule,
@@ -72,7 +73,8 @@ const MaterialComponents = [
     SignUpComponent,
     SignInComponent,
     HeaderComponent,
-    AllSittersComponent
+    AllSittersComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

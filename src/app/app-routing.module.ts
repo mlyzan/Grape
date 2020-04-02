@@ -9,8 +9,12 @@ import { SitterComponent } from './sitter/sitter.component';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import { AllSittersComponent } from './all-sitters/all-sitters.component';
 import { AuthGuard } from './app.service';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  {
+    path: '', component: HomeComponent
+  },
   {
     path: 'signup', component: UserComponent,
     children: [{path: '', component: SignUpComponent}]
@@ -26,11 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'create-sitter', component: SitterRegistrationComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'all-sitters', component: AllSittersComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
   }
 ];
 
