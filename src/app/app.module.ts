@@ -42,9 +42,12 @@ import { SITTER_KEY } from './root-state/sitter/sitter.selectors';
 import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
+import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
+
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
+
 
 const MaterialComponents = [
   MatCardModule,
@@ -74,7 +77,8 @@ const MaterialComponents = [
     SignInComponent,
     HeaderComponent,
     AllSittersComponent,
-    HomeComponent
+    HomeComponent,
+    FilterSittersComponent
   ],
   imports: [
     BrowserModule,

@@ -51,6 +51,16 @@ export const sitterReducer = createReducer(
       error: error
     })),
     /////////////////////////////////////////////////
+    on(sitterAction.filterSittersByServices, (state, {services}) => ({
+      sitters: state.sitters.filter(el => el.services.indexOf(services) >= 0)
+    })),
+    on(sitterAction.filterSittersByAnimals, (state, {animals}) => ({
+      sitters: state.sitters.filter(el => el.animals.indexOf(animals) >= 0)
+    })),
+    on(sitterAction.filterSittersByAddress, (state, {address}) => ({
+      sitters: state.sitters.filter(el => el.address === address)
+    })),
+    /////////////////////////////////////////////////
     on(sitterAction.deleteSitter, (state) => ({
       ...state,
       loading:true
