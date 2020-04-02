@@ -1,8 +1,11 @@
-.nav_row {
-  display: flex;
-  justify-content: space-between;
-    
+.nav {
+  margin-bottom: 40px;
+  &_row {
+      display: flex;
+      justify-content: space-between;
+  }
 }
+
 .logo {
   font-size: 24px;
   padding: 0 10px;
