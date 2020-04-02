@@ -3,7 +3,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { createSitter } from './sitter.actions';
 import { SitterService } from './sitter.service';
-import { UserService } from '../../user/user.service';
 import { of } from 'rxjs';
 import * as sitterAction from './sitter.actions';
 
@@ -29,6 +28,18 @@ export class SitterEffects {
           this.sitterService.getSitters().pipe(
           map(res => sitterAction.loadSittersSuccess(res)),
           catchError(error => of(sitterAction.loadSittersFail(error)))
+          ),
+      ),
+    )
+  );
+
+  deleteSitter$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sitterAction.deleteSitter),
+      switchMap(({id}) =>
+          this.sitterService.deleteSitter(id).pipe(
+          map(res => sitterAction.deleteSitterSuccess(res)),
+          catchError(error => of(sitterAction.deleteSitterFail(error)))
           ),
       ),
     )

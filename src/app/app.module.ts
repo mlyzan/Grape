@@ -29,8 +29,9 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-import { UserService } from './user/user.service';
+import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
 
 import { StoreModule } from '@ngrx/store';
@@ -42,6 +43,10 @@ import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
 import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
+
+import { AuthGuard } from './app.service';
+import { AuthService } from './auth.service';
+
 
 const MaterialComponents = [
   MatCardModule,
@@ -56,7 +61,8 @@ const MaterialComponents = [
   MatTabsModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
@@ -89,7 +95,7 @@ const MaterialComponents = [
       maxAge: 25, 
     })
   ],
-  providers: [UserService, SitterService],
+  providers: [UserService, SitterService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

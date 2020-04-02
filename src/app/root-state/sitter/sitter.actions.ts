@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { Sitter } from './sitter.interfaces';
-import { User } from '../../user/user.model';
 
 //////////////////////////////////////////
 export const createSitter = createAction(
@@ -33,7 +32,7 @@ export const loadSittersFail = createAction(
     (error: Error) => ({ error }),
 ); 
 
-/////
+/////////////////////////////////////////
 export const filterSittersByServices = createAction(
     '[Sitter] load filtered sitters by services',
     props<{services: string}>() 
@@ -46,3 +45,19 @@ export const filterSittersByAddress = createAction(
     '[Sitter] load filtered sitters by address',
     props<{address:string}>() 
 );
+
+/////////////////////////////////////////
+export const deleteSitter = createAction(
+    '[Sitter] delete sitter',
+    (id: string) => ( {id} ),
+)
+
+export const deleteSitterSuccess = createAction(
+    '[Sitter] delete sitter success',
+    (success: object) => ( {success} ),
+);
+
+export const deleteSitterFail = createAction(
+    '[Sitter] delete sitter fail',
+    (error: Error) => ({ error }),
+); 

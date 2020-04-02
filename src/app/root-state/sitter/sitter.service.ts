@@ -15,4 +15,8 @@ export class SitterService {
     return this.http.get<Sitter[]>('http://localhost:3000/api/sitter');
   }
 
+  deleteSitter(id: string): Observable<object> {
+    return this.http.delete<object>(`http://localhost:3000/api/sitter/${id}`);
+  }
+
 }

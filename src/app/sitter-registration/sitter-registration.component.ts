@@ -60,7 +60,7 @@ export class SitterRegistrationComponent implements OnInit {
     }));
     setTimeout(() => {
       this.router.navigateByUrl('/all-sitters');
-    }, 5000);
+    }, 3000);
   }
   
 } 

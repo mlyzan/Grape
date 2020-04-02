@@ -8,6 +8,7 @@ import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import { AllSittersComponent } from './all-sitters/all-sitters.component';
+import { AuthGuard } from './app.service';
 
 const routes: Routes = [
   {
@@ -20,13 +21,16 @@ const routes: Routes = [
   },
   {
     path: 'sitter', component: SitterContainerComponent,
+    canActivate: [AuthGuard],
     children: [{path: '', component: SitterComponent}]
   },
   {
-    path: 'create-sitter', component: SitterRegistrationComponent
+    path: 'create-sitter', component: SitterRegistrationComponent,
+    canActivate: [AuthGuard],
   },
   {
-    path: 'all-sitters', component: AllSittersComponent
+    path: 'all-sitters', component: AllSittersComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
