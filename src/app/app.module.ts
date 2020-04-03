@@ -49,6 +49,7 @@ import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { DevelopersComponent } from './developers/developers.component';
+import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 
 
 const MaterialComponents = [
@@ -82,7 +83,8 @@ const MaterialComponents = [
     AllSittersComponent,
     HomeComponent,
     FilterSittersComponent,
-    DevelopersComponent
+    DevelopersComponent,
+    SitterEditComponent
   ],
   imports: [
     BrowserModule,

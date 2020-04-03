@@ -61,3 +61,18 @@ export const deleteSitterFail = createAction(
     '[Sitter] delete sitter fail',
     (error: Error) => ({ error }),
 ); 
+/////////////////////////////////////////
+export const updateSitter = createAction(
+    '[Sitter] update sitter',
+    (id: string, sitter: object) => ( {id, sitter} ),
+)
+
+export const updateSitterSuccess = createAction(
+    '[Sitter] update sitter success',
+    (success: object) => ( {success} )
+);
+
+export const updateSitterFail = createAction(
+    '[Sitter] update sitter fail',
+    (error: Error) => ({ error }),
+);

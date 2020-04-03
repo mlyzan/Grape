@@ -1,0 +1,71 @@
+<mat-card class="container">
+  <mat-card-title>Edit profile</mat-card-title>
+  <form [formGroup]="sitterEditInfo" class="form">
+    <div>
+      <div class="form-sitter">
+        <div class="flex-item">
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Services provided</mat-label>
+            <mat-select formControlName="services" multiple [ngModel]="sitter$.services">
+              <mat-option value="Dog Walking">Dog Walking</mat-option>
+              <mat-option value="Pet Boarding">Pet Boarding</mat-option>
+              <mat-option value="House Sitting">House Sitting</mat-option>
+              <mat-option value="Pet Grooming">Pet Grooming</mat-option>          
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Accepted Animals</mat-label>
+            <mat-select formControlName="animals" multiple [ngModel]="sitter$.animals">          
+              <mat-option value="Dog">Dog</mat-option>
+              <mat-option value="Cat">Cat</mat-option>
+              <mat-option value="Bird">Bird</mat-option>
+              <mat-option value="Rabbit">Rabbit</mat-option>
+              <mat-option value="Reptile">Reptile</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Specify your availability</mat-label>
+            <input matInput formControlName="availability" [ngModel]="sitter$.availability">
+            <mat-icon matSuffix> schedule</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Specify your desired payment</mat-label>
+            <input  type="number" matInput formControlName ="payment" [ngModel]="sitter$.payment">
+            <mat-icon matSuffix> monetization_on</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Your address</mat-label>
+            <input matInput formControlName="address" [ngModel]="sitter$.address">
+            <mat-icon matSuffix>location_on</mat-icon>
+          </mat-form-field><br>
+          <mat-form-field class="input-item"appearance="fill">
+            <mat-label>Your age</mat-label>
+            <input matInput formControlName="years" [ngModel]="sitter$.years">
+            <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+          </mat-form-field>        
+        </div>
+      </div>
+      <div>
+        <mat-form-field class="about"appearance="fill">
+          <mat-label>Tell about you</mat-label>
+          <textarea matInput formControlName="information" [ngModel]="sitter$.information"></textarea> 
+        </mat-form-field>
+      </div>      
+    </div>
+    <div *ngIf="showSuccessMessage" style="text-align: center;">
+      <mat-label>{{successMessage['success']}}</mat-label>
+    </div>
+    <div class="form-button">
+      <button mat-raised-button type="submit" color="primary" style="margin-right: 10px;"
+      [disabled]="!sitterEditInfo.valid" 
+      (click)="onUpdate()"
+      >Update</button>
+      <button mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+    </div>
+  </form>
+</mat-card>

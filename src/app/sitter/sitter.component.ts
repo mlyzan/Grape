@@ -71,5 +71,9 @@ export class SitterComponent implements OnInit, OnDestroy {
     )
 
   }
+
+  switchToEdit() {
+    this.router.navigateByUrl('sitter-edit');
+  }
   
 }
