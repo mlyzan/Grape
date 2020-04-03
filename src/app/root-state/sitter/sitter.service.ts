@@ -19,4 +19,8 @@ export class SitterService {
     return this.http.delete<object>(`http://localhost:3000/api/sitter/${id}`);
   }
 
+  updateSitter(id: string, sitter: object): Observable<object> {
+    return this.http.put<object>(`http://localhost:3000/api/sitter/${id}`, sitter);
+  }
+
 }
