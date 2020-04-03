@@ -5,7 +5,11 @@
         </div>
       <div>
         <a mat-button [href]="'#home'" class="navigation__link">How it works</a>
-        <a mat-button [href]="'#about'" class="navigation__link">About us</a>
+        <a mat-button  [matMenuTriggerFor]="about" class="navigation__link">About us<mat-icon>keyboard_arrow_down</mat-icon></a>
+        <mat-menu #about="matMenu">
+          <a  [href]="'#about'" mat-menu-item >About us</a>
+          <a  [routerLink]="'/developers'"mat-menu-item >Our Team</a>
+        </mat-menu>
         <a mat-button [href]="'#services'" class="navigation__link">Services & Price</a>
         <a mat-button [routerLink]="'/login'"> LogIn </a>
         <a mat-button [routerLink]="'/signup'"> SignUp </a>

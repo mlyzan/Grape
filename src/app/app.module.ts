@@ -30,6 +30,7 @@ import { MatListModule} from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -47,6 +48,7 @@ import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitt
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
+import { DevelopersComponent } from './developers/developers.component';
 
 
 const MaterialComponents = [
@@ -63,7 +65,8 @@ const MaterialComponents = [
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatMenuModule
 ];
 
 @NgModule({
@@ -78,7 +81,8 @@ const MaterialComponents = [
     HeaderComponent,
     AllSittersComponent,
     HomeComponent,
-    FilterSittersComponent
+    FilterSittersComponent,
+    DevelopersComponent
   ],
   imports: [
     BrowserModule,

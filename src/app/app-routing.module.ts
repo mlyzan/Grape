@@ -10,6 +10,7 @@ import { SitterRegistrationComponent } from './sitter-registration/sitter-regist
 import { AllSittersComponent } from './all-sitters/all-sitters.component';
 import { AuthGuard } from './app.service';
 import { HomeComponent } from './home/home.component';
+import { DevelopersComponent } from './developers/developers.component'
 
 const routes: Routes = [
   {
@@ -35,6 +36,9 @@ const routes: Routes = [
   {
     path: 'all-sitters', component: AllSittersComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'developers', component: DevelopersComponent
   }
 ];
 
