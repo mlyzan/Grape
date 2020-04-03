@@ -70,11 +70,26 @@ export const sitterReducer = createReducer(
       success,
       loading: false
     })),
-    on(sitterAction.loadSittersFail, (state, { error }) => ({
+    on(sitterAction.deleteSitterFail, (state, { error }) => ({
       ...state,
       loading: false,
       error: error
-    }))
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.updateSitter, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.updateSitterSuccess, (state, {success}) => ({
+      ...state,
+      success,
+      loading: false
+    })),
+    on(sitterAction.updateSitterFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
 );
 
  

@@ -1,0 +1,39 @@
+.form-sitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  font-size: large;
+  width: 830px;
+  margin: 10px auto 5px;
+}
+
+.input-item {
+  margin: 5px;
+  width: 400px;
+  border-radius: 10px;  
+  background: #ffffff;
+}
+.about {
+  margin: 5px;
+  width: 810px;
+  border-radius: 10px;  
+  background: #ffffff;  
+}
+.form-button {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
