@@ -66,11 +66,12 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.subscSuccess = this.actionsSubj.pipe(
       ofType(loginUserSuccess)
     ).subscribe(
-      res => {
+      (res: any) => {
+        const isSitter = !!res.userInfo.isSitter;
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.showSuccessMessage = false;
-          this.router.navigateByUrl('/create-sitter');
+          this.router.navigateByUrl(isSitter? '/sitter': '/all-sitters');
         }, 1500);
       },
     )

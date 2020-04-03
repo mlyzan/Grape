@@ -47,6 +47,7 @@ import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitt
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 const MaterialComponents = [
@@ -78,7 +79,8 @@ const MaterialComponents = [
     HeaderComponent,
     AllSittersComponent,
     HomeComponent,
-    FilterSittersComponent
+    FilterSittersComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
