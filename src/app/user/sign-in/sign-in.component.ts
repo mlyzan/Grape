@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store, ActionsSubject, select } from '@ngrx/store';
 
 import { UserService } from '../../root-state/user/user.service';
-import { loadSitters } from '../../root-state/sitter/sitter.actions';
+import { loadSitters, loadComments } from '../../root-state/sitter/sitter.actions';
 import { loginUser, loginUserFail, loginUserSuccess } from '../../root-state/user/user.actions';
 import { ofType } from '@ngrx/effects';
 
@@ -44,6 +44,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     this.store.dispatch(loadSitters());
+    this.store.dispatch(loadComments());
     this.store.dispatch(loginUser(form.value));
     
     this.store.pipe(select(getActiveId)).subscribe(id => {
