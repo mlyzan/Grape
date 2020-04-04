@@ -28,6 +28,13 @@
           <button mat-raised-button type="button" (click)="switchToEdit()" color="primary">Edit profile</button>
           <mat-label *ngIf="showSuccessMessage">{{successMessage}}</mat-label>
         </div>
+        <hr>
+        <h2>Comments from other users</h2>
+        <hr>
+        <div *ngFor="let comment of comments">
+          <span>{{comment.name}}</span>
+          <p>{{comment.comment}}</p>
+        </div>        
       </div>
   </div>
 </mat-card>
