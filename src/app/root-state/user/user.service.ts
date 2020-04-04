@@ -23,4 +23,8 @@ export class UserService {
   loginUser(authCredentials): Observable<object> {
     return this.http.post<object>('http://localhost:3000/api/authenticate', authCredentials);
   }
+  
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:3000/api/user/${id}`);
+  }
 }

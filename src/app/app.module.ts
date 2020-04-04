@@ -48,6 +48,7 @@ import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitt
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 
@@ -83,8 +84,9 @@ const MaterialComponents = [
     AllSittersComponent,
     HomeComponent,
     FilterSittersComponent,
+    NavigationComponent,
     DevelopersComponent,
-    SitterEditComponent
+    SitterEditComponent,
   ],
   imports: [
     BrowserModule,

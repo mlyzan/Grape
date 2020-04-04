@@ -2,13 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 import * as userAction from './user.actions';
 
 export interface UserState {
-  userInfo: {userId: string, userName: string, userEmail: string},
+  userInfo: {userId: string, userName: string, userEmail: string, isSitter?: boolean},
   loading: boolean;
   error: Error; 
 } 
 
 export const initialState = {
-  userInfo: {userId: null, userName: null, userEmail: null},
+  userInfo: {userId: null, userName: null, userEmail: null, isSitter: null},
   loading: true,
   error: null
 }
@@ -16,9 +16,8 @@ export const initialState = {
 
 export const userReducer = createReducer(
   initialState,
-  on(userAction.createUserSuccess, (state, { userInfo }) => ({
+  on(userAction.createUserSuccess, (state) => ({
     ...state,
-    userInfo,
     loading: false,
     error: null
   })),
@@ -39,5 +38,13 @@ export const userReducer = createReducer(
     ...state,
     loading: false,
     error
-  }))
-);
+  })),
+  on(userAction.userLoaded, (state, { userInfo }) => ({
+    ...state,
+    userInfo
+  })),
+  on(userAction.userBecomeSitter, (state, { isSitter }) => ({
+    ...state,
+    userInfo: {...state.userInfo, isSitter}
+  })),
+)
