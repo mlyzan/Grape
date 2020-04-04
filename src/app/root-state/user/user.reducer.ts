@@ -38,5 +38,13 @@ export const userReducer = createReducer(
     ...state,
     loading: false,
     error
-  }))
-);
+  })),
+  on(userAction.userLoaded, (state, { userInfo }) => ({
+    ...state,
+    userInfo
+  })),
+  on(userAction.userBecomeSitter, (state, { isSitter }) => ({
+    ...state,
+    userInfo: {...state.userInfo, isSitter}
+  })),
+)

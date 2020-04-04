@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { createSitter } from './../root-state/sitter/sitter.actions';
 import { Router } from '@angular/router';
 import { getUserInfo } from '../root-state/user/user.selectors';
+import { userBecomeSitter } from '../root-state/user/user.actions';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -58,6 +59,7 @@ export class SitterRegistrationComponent implements OnInit {
       userName: this.userInfo.userName,
       userEmail: this.userInfo.userEmail
     }));
+    this.store.dispatch(userBecomeSitter());
     setTimeout(() => {
       this.router.navigateByUrl('/all-sitters');
     }, 3000);
