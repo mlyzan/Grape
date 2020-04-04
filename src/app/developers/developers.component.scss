@@ -1,0 +1,25 @@
+.container {
+  width: 800px;
+  margin: 50px auto;
+  padding-bottom: 30px;
+}
+.container-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
+  align-items: center;
+  margin: 30px;
+}
+.heading{
+  text-align: center;
+}
+.container-item:nth-child(even) {
+  flex-direction: row-reverse;  
+}
+.item-photo {
+  width: 300px;
+  border-radius: 50px;
+}
+.item-description {
+  width: 250px;
+}
