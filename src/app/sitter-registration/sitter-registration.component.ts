@@ -64,5 +64,4 @@ export class SitterRegistrationComponent implements OnInit {
       this.router.navigateByUrl('/all-sitters');
     }, 3000);
   }
-  
 } 

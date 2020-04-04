@@ -31,8 +31,6 @@ export class NavigationComponent implements OnInit {
         return
       }
       this.links = info.isSitter ? sitterLinks : userLinks;
-
-      console.log(this.links, this.isSitter);
   }
 
   onLogOutClick() {
