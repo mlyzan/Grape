@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Sitter } from './sitter.interfaces';
+import { Sitter, Comment } from './sitter.interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -21,6 +21,14 @@ export class SitterService {
 
   updateSitter(id: string, sitter: object): Observable<object> {
     return this.http.put<object>(`http://localhost:3000/api/sitter/${id}`, sitter);
+  }
+
+  addComment(comment: object): Observable<object> {
+    return this.http.post<object>('http://localhost:3000/api/comment', comment);
+  }
+
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>('http://localhost:3000/api/comment');
   }
 
 }

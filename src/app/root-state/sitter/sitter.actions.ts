@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Sitter } from './sitter.interfaces';
+import { Sitter, Comment } from './sitter.interfaces';
 
 //////////////////////////////////////////
 export const createSitter = createAction(
@@ -78,4 +78,38 @@ export const updateSitterSuccess = createAction(
 export const updateSitterFail = createAction(
     '[Sitter] update sitter fail',
     (error: Error) => ({ error }),
+);
+/////////////////////////////////////////
+export const addComment = createAction(
+    '[Sitter] add comment',
+    (comment: object) => ( {comment} ),
+)
+
+export const addCommentSuccess = createAction(
+    '[Sitter] add comment success',
+    (success: object) => ( {success} )
+);
+
+export const addCommentFail = createAction(
+    '[Sitter] add comment fail',
+    (error: Error) => ({ error }),
+);
+/////////////////////////////////////////
+export const loadComments = createAction(
+    '[Sitter] load comments'
+)
+
+export const loadCommentsSuccess = createAction(
+    '[Sitter] load comments success',
+    (comments: Comment[]) => ( {comments} )
+);
+
+export const loadCommentsFail = createAction(
+    '[Sitter] load comments fail',
+    (error: Error) => ({ error }),
+);
+////////////////////////////////////////
+export const getSitterCommentsId = createAction(
+    '[Sitter] get sitter comments id',
+    (id: string) => ({id})
 );

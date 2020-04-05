@@ -1,6 +1,6 @@
 <grape-filter-sitters></grape-filter-sitters>
 
-<div
+<!-- <div
   *ngIf="!!sittersArray && sittersArray.length > 0; else clearPage"
   class="sitter-container"
 >
@@ -57,7 +57,62 @@
         </button>
       </div>
     </mat-card>
-  </ng-container>
+  </ng-container> -->
+
+<div *ngIf="!!sittersArray && sittersArray.length > 0; else clearPage">
+    <ng-container *ngIf="loading$ | async"> 
+        <mat-spinner class="spinner"></mat-spinner>
+    </ng-container>
+    <div class="error" *ngIf="error$ | async"> 
+        <div class="error_ops">Ooops!</div> Something wrong. Please try again later.
+    </div>
+    <ng-container *ngIf="sitters$ | async">
+        <mat-card class="sitter" *ngFor="let sitter of sitters$ | async">
+            <div class="img">
+                <ng-container *ngIf="sitter.photo; else defaultPhoto">
+                    <img mat-card-image [src]="sitter.photo" alt="photo">
+                </ng-container>
+                <ng-template #defaultPhoto>
+                    <img mat-card-image src="../../assets/img/default-user.png" alt="photo">
+                </ng-template>
+            </div>
+            <div class="description">
+                <div class="name">{{sitter.userName}}</div>
+                <div class="payment"><i class="material-icons">attach_money</i> {{sitter.payment | currency}} per hour </div>
+                <div class="location"><i class="material-icons">location_on</i> {{sitter.address}}</div>
+                <div class="about">
+                    <i class="material-icons"> create</i> 
+                    {{sitter.information}}
+                </div>
+                <button class="btn" 
+                    mat-raised-button color="primary" 
+                    (click)="onShow(sitter.userId);">
+                    <i class="material-icons">pets</i>See profile</button>
+                
+                <div *ngIf="isShowComments && sitter.userId === currentSitterCommentId">
+                    <h2>Comments</h2>      
+                    <mat-form-field class="comment">
+                        <mat-label>Leave a comment</mat-label>
+                        <input #newComment matInput maxlength="256" #message > 
+                        <mat-hint align="start">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                    <button 
+                        mat-raised-button (click)="onSubmit(newComment.value, sitter.userId); newComment.value = ''"
+                        [disabled]="sitter.userId === activeId">Add comment</button>
+                    <hr>
+                    <div *ngIf="isShowComments && comments.length > 0">
+                        <div *ngFor="let comment of comments">
+                            <div *ngIf="comment.userId === sitter.userId">
+                                <span>{{comment.name}}</span>
+                                <p>{{comment.comment}}</p>
+                            </div>
+                        </div>
+                    </div>          
+            </div>
+
+            </div>
+        </mat-card>
+    </ng-container>
 </div>
 <ng-template #clearPage>
   <ng-container *ngIf="loading$ | async">

@@ -12,3 +12,5 @@ export const getSuccess = createSelector(getState, state => state.success);
 export const getAllSitters = createSelector(getState, state => state.filtered);
 
 export const getActiveSitterById = (id: string) => createSelector(getState, state => state.sitters.find(sitter => sitter.userId === id)); 
+export const getCommentsById = (id: string) => createSelector(getState, state => state.comments.filter(comment => comment.userId === id));
+export const getCurrentSitterCommentsId = createSelector(getState, state => state.sitterCommentsId);

@@ -1,12 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import * as sitterAction from './sitter.actions';
-import { Sitter } from './sitter.interfaces';
+import { Sitter, Comment } from './sitter.interfaces';
 
 export interface SitterState {
     loading: boolean;
     success: object;
     activeSitter: Sitter;
     sitters: Sitter[];
+    comments: Comment[];
+    sitterCommentsId: string;
     error: Error;
     filtered: any;
   } 
@@ -14,6 +16,8 @@ export interface SitterState {
 export const initialState = {
     sitters: null,
     activeSitter: null,
+    comments: null,
+    sitterCommentsId: null,
     loading: true,
     success: null,
     error: null,
@@ -99,6 +103,42 @@ export const sitterReducer = createReducer(
       ...state,
       loading: false,
       error: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.addComment, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.addCommentSuccess, (state, {success}) => ({
+      ...state,
+      success,
+      loading: false
+    })),
+    on(sitterAction.addCommentFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.loadComments, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.loadCommentsSuccess, (state, {comments}) => ({
+      ...state,
+      comments,
+      loading: false
+    })),
+    on(sitterAction.loadCommentsFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.getSitterCommentsId, (state, {id}) => ({
+      ...state,
+      sitterCommentsId: id,
+      loading:false
     })),
 );
 

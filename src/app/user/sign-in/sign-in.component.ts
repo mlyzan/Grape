@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store, ActionsSubject, select } from '@ngrx/store';
 
 import { UserService } from '../../root-state/user/user.service';
-import { loadSitters } from '../../root-state/sitter/sitter.actions';
+import { loadSitters, loadComments } from '../../root-state/sitter/sitter.actions';
 import { loginUser, loginUserFail, loginUserSuccess } from '../../root-state/user/user.actions';
 import { ofType } from '@ngrx/effects';
 
@@ -44,6 +44,7 @@ export class SignInComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     this.store.dispatch(loadSitters());
+    this.store.dispatch(loadComments());
     this.store.dispatch(loginUser(form.value));
     
     this.store.pipe(select(getActiveId)).subscribe(id => {
@@ -66,11 +67,12 @@ export class SignInComponent implements OnInit, OnDestroy {
     this.subscSuccess = this.actionsSubj.pipe(
       ofType(loginUserSuccess)
     ).subscribe(
-      res => {
+      (res: any) => {
+        const isSitter = !!res.userInfo.isSitter;
         this.showSuccessMessage = true;
         setTimeout(() => {
           this.showSuccessMessage = false;
-          this.router.navigateByUrl('/create-sitter');
+          this.router.navigateByUrl(isSitter? '/sitter': '/all-sitters');
         }, 1500);
       },
     )

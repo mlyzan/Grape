@@ -29,3 +29,13 @@ export const loginUserFail = createAction(
   '[User] logins user fail',
   (error: Error) => ({error})
 );
+
+export const userLoaded = createAction(
+  '[User loaded success]',
+  (userInfo: Object) => ({userInfo})
+);
+
+export const userBecomeSitter = createAction(
+  '[User become sitter success]',
+  () => ({isSitter: true})
+)

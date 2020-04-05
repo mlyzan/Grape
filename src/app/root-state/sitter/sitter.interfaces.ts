@@ -12,3 +12,8 @@ export interface Sitter {
   userEmail: string
 }
 
+export interface Comment {
+  comment: string,
+  userId: string,
+  name: string
+}

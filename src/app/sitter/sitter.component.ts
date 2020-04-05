@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Sitter } from '../root-state/sitter/sitter.interfaces';
+import { Sitter, Comment} from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select, ActionsSubject } from '@ngrx/store';
-import { getActiveSitterById, getSitters } from '../root-state/sitter/sitter.selectors';
+import { getActiveSitterById, getSitters, getCommentsById } from '../root-state/sitter/sitter.selectors';
 import { getActiveId } from '../root-state/user/user.selectors';
 import { Router } from '@angular/router';
-import { deleteSitterSuccess, deleteSitter, loadSitters } from '../root-state/sitter/sitter.actions';
+import { deleteSitterSuccess, deleteSitter, loadSitters, loadComments } from '../root-state/sitter/sitter.actions';
 import { Subscription } from 'rxjs';
 import { ofType } from '@ngrx/effects';
 
@@ -20,6 +20,7 @@ export class SitterComponent implements OnInit, OnDestroy {
   subscSuccess = new Subscription();
   showSuccessMessage: boolean;
   successMessage: object;
+  comments: Comment[];
   constructor(
     private sitterService: SitterService, 
     private store: Store, 
@@ -43,10 +44,15 @@ export class SitterComponent implements OnInit, OnDestroy {
       ).subscribe(activeSitter => this.sitter$ = activeSitter);
     }
 
+    this.store.pipe(
+      select(getCommentsById(this.activeId))
+    ).subscribe(comments => this.comments = comments);
+
     
    }
 
   ngOnInit(): void {
+    this.store.dispatch(loadComments());
   }
 
   ngOnDestroy() {

@@ -57,6 +57,30 @@ export class SitterEffects {
     )
   );
 
+  addComment$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sitterAction.addComment),
+      switchMap(({comment}) =>
+          this.sitterService.addComment(comment).pipe(
+          map(res => sitterAction.addCommentSuccess(res)),
+          catchError(error => of(sitterAction.addCommentFail(error)))
+          ),
+      ),
+    )
+  );
+
+  loadComments$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(sitterAction.loadComments),
+      switchMap(() =>
+          this.sitterService.getComments().pipe(
+          map(res => sitterAction.loadCommentsSuccess(res)),
+          catchError(error => of(sitterAction.loadCommentsFail(error)))
+          ),
+      ),
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private sitterService: SitterService
