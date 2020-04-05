@@ -4,7 +4,7 @@ import { Sitter } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
 import { loadSitters } from '../root-state/sitter/sitter.actions';
-import { getSitters, getLoading, getError } from '../root-state/sitter/sitter.selectors';
+import { getAllSitters, getLoading, getError } from '../root-state/sitter/sitter.selectors';
 
 
 @Component({
@@ -19,13 +19,13 @@ export class AllSittersComponent implements OnInit {
   sittersArray: Sitter[];
   constructor(private sitterService: SitterService, private store: Store) { 
     this.store.pipe(
-      select(getSitters)
+      select(getAllSitters)
     ).subscribe(sitters => this.sittersArray = sitters );
   }
 
   ngOnInit(): void {
     this.store.dispatch(loadSitters());
-    this.sitters$ = this.store.select(getSitters);
+    this.sitters$ = this.store.select(getAllSitters);
     this.loading$ = this.store.select(getLoading);
     this.error$ = this.store.select(getError);
   }

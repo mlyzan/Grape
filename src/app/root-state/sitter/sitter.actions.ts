@@ -33,6 +33,9 @@ export const loadSittersFail = createAction(
 ); 
 
 /////////////////////////////////////////
+export const refreshFilteredSitters = createAction(
+    '[Sitter] is refreshed'
+)
 export const filterSittersByServices = createAction(
     '[Sitter] load filtered sitters by services',
     props<{services: string}>() 

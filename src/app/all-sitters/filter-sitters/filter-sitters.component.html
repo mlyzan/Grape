@@ -37,7 +37,14 @@
       </mat-form-field>
       <br />
 
-      <button mat-button (click)="close(); find()">Find</button>
+      <button mat-button (click)="close(); find()">
+        Find
+        <span class="material-icons">search</span>
+      </button>
+      <button mat-button (click)="close(); refresh()">
+        Refresh
+        <span class="material-icons">refresh</span>
+      </button>
     </form>
   </mat-sidenav>
 
