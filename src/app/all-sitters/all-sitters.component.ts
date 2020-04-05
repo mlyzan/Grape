@@ -68,6 +68,4 @@ export class AllSittersComponent implements OnInit {
     ).subscribe(comments => this.comments = comments);
 
   }
-
-
 }
