@@ -16,6 +16,11 @@
       <div class="img">
         <ng-container *ngIf="sitter.photo; else defaultPhoto">
           <img mat-card-image [src]="sitter.photo" alt="photo" />
+          <div class="rate">
+            <ngx-stars [readonly]="false" [maxStars]="5" [initialStars]="sitter.rate"
+            [color]="'#FFC92A'" [wholeStars]="false" (ratingOutput)="onRatingSet(sitter.userId, $event)"></ngx-stars>
+            <div class="rate_num">Rate: {{sitter.rate | number:'1.0-2'}}</div>
+          </div>
         </ng-container>
         <ng-template #defaultPhoto>
           <img

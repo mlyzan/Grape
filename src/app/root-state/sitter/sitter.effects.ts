@@ -81,6 +81,18 @@ export class SitterEffects {
     )
   );
 
+  updateSitterRate = createEffect(() => 
+    this.actions$.pipe(
+      ofType(sitterAction.updateSitterRate),
+      switchMap(({id, rate}) => 
+        this.sitterService.updateSitterRate(id, rate).pipe(
+          map(res => sitterAction.updateSitterRateSuccess(id, res.rate)),
+          catchError(err => of(sitterAction.updateSitterRateFail(err)))
+        )
+      )
+    )
+  )
+
   constructor(
     private actions$: Actions,
     private sitterService: SitterService

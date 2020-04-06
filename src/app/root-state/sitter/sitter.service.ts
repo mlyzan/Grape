@@ -31,4 +31,8 @@ export class SitterService {
     return this.http.get<Comment[]>('http://localhost:3000/api/comment');
   }
 
+  updateSitterRate(id: string, rate: number): Observable<any> {
+    return this.http.put<any>(`http://localhost:3000/api/sitter-rate/${id}`, {"rate": rate});
+  }
+
 }

@@ -9,7 +9,8 @@ export interface Sitter {
   information: string,
   userId: string,
   userName: string,
-  userEmail: string
+  userEmail: string,
+  rate: number
 }
 
 export interface Comment {

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Sitter, Comment } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
-import { loadSitters, addComment, loadComments, getSitterCommentsId } from '../root-state/sitter/sitter.actions';
+import { loadSitters, addComment, loadComments, getSitterCommentsId, updateSitterRate } from '../root-state/sitter/sitter.actions';
 import { getAllSitters, getLoading, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
 import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
 
@@ -16,7 +16,7 @@ export class AllSittersComponent implements OnInit {
   sitters$: Observable<Sitter[]>;
   loading$: Observable<boolean>;
   error$: Observable<Error>;
-  sittersArray: Sitter[];
+  sittersArray;
   isShowComments: boolean = false;
   activeName: string;
   comments: Comment[];
@@ -67,5 +67,9 @@ export class AllSittersComponent implements OnInit {
       select(getCommentsById(id))
     ).subscribe(comments => this.comments = comments);
 
+  }
+
+  onRatingSet(id: string, rate: number) {
+    this.store.dispatch(updateSitterRate(id, rate))
   }
 }
