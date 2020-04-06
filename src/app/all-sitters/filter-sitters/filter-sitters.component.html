@@ -2,6 +2,7 @@
   class="example-container"
   (backdropClick)="close()"
   [style.width.%]="width"
+  [style.height.%]="width"
 >
   <mat-sidenav #sidenav (keydown.escape)="close()" isableClose>
     <form [formGroup]="filters">
