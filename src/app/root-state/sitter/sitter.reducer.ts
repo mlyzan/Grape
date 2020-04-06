@@ -140,6 +140,20 @@ export const sitterReducer = createReducer(
       sitterCommentsId: id,
       loading:false
     })),
+    on(sitterAction.updateSitterRateSuccess, (state, {id, rate}) => {
+      let sitter: Sitter, sitters = [...state.sitters], index = state.sitters.findIndex(e => e.userId === id);
+        sitters.forEach(e => {
+          if(e.userId === id) {
+            sitter = {...e};
+          }
+        });
+        sitter.rate = rate;
+        sitters.splice(index, 1, sitter);
+      return {
+        ...state,
+        sitters
+      }
+    }),
 );
 
  

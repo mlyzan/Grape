@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import { NgxStarsModule } from 'ngx-stars';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -95,6 +96,7 @@ const MaterialComponents = [
     FormsModule,
     BrowserAnimationsModule,
     MaterialComponents,
+    NgxStarsModule,
     HttpClientModule,
     StoreModule.forRoot({ 
       [SITTER_KEY]: sitterReducer,

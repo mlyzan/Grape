@@ -113,3 +113,18 @@ export const getSitterCommentsId = createAction(
     '[Sitter] get sitter comments id',
     (id: string) => ({id})
 );
+
+export const updateSitterRate = createAction(
+    '[Sitter] update sitter rate',
+    (id: string, rate: number) => ({id, rate})
+);
+
+export const updateSitterRateSuccess = createAction(
+    '[Sitter] update sitter rate success',
+    (id: string, rate: number) => ({id, rate})
+);
+
+export const updateSitterRateFail = createAction(
+    '[Sitter] update sitter rate fail',
+    (err: Error) => ({err})
+);
