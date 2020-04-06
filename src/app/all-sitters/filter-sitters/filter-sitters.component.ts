@@ -1,7 +1,12 @@
-import { filterSittersByAddress, filterSittersByAnimals, filterSittersByServices } from './../../root-state/sitter/sitter.actions';
+import { 
+  filterSittersByAddress, 
+  filterSittersByAnimals, 
+  filterSittersByServices, 
+  refreshFilteredSitters 
+} from './../../root-state/sitter/sitter.actions';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store, State } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { MatSidenav } from '@angular/material/sidenav';
 
 
@@ -34,6 +39,7 @@ export class FilterSittersComponent implements OnInit {
   constructor(private store: Store) { }
 
   find() {
+    this.store.dispatch(refreshFilteredSitters());
     if (this.filters.value.services) {
       this.store.dispatch(filterSittersByServices({
         services: this.filters.value.services
@@ -50,6 +56,11 @@ export class FilterSittersComponent implements OnInit {
       }))
     }
   }
+
+ refresh() {
+  this.store.dispatch(refreshFilteredSitters());
+  this.filters.reset()
+ }
 
   ngOnInit(): void {
   }

@@ -10,6 +10,7 @@ export interface SitterState {
     comments: Comment[];
     sitterCommentsId: string;
     error: Error;
+    filtered: any;
   } 
  
 export const initialState = {
@@ -19,7 +20,8 @@ export const initialState = {
     sitterCommentsId: null,
     loading: true,
     success: null,
-    error: null
+    error: null,
+    filtered: null
 }
 
 export const sitterReducer = createReducer(
@@ -47,7 +49,8 @@ export const sitterReducer = createReducer(
     on(sitterAction.loadSittersSuccess, (state, {sitters}) => ({
       ...state,
       sitters,
-      loading: false
+      loading: false,
+      filtered: sitters
     })),
     on(sitterAction.loadSittersFail, (state, { error }) => ({
       ...state,
@@ -55,14 +58,21 @@ export const sitterReducer = createReducer(
       error: error
     })),
     /////////////////////////////////////////////////
+    on(sitterAction.refreshFilteredSitters, state => ({
+      ...state,
+      filtered: state.sitters
+    })),
     on(sitterAction.filterSittersByServices, (state, {services}) => ({
-      sitters: state.sitters.filter(el => el.services.indexOf(services) >= 0)
+      ...state,
+      filtered: state.filtered.filter(el => el.services.indexOf(services) >= 0)
     })),
     on(sitterAction.filterSittersByAnimals, (state, {animals}) => ({
-      sitters: state.sitters.filter(el => el.animals.indexOf(animals) >= 0)
+      ...state,
+      filtered: state.filtered.filter(el => el.animals.indexOf(animals) >= 0)
     })),
     on(sitterAction.filterSittersByAddress, (state, {address}) => ({
-      sitters: state.sitters.filter(el => el.address === address)
+      ...state,
+      filtered: state.filtered.filter(el => el.address.indexOf(address) >= 0)
     })),
     /////////////////////////////////////////////////
     on(sitterAction.deleteSitter, (state) => ({

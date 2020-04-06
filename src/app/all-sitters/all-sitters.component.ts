@@ -4,9 +4,8 @@ import { Sitter, Comment } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
 import { loadSitters, addComment, loadComments, getSitterCommentsId } from '../root-state/sitter/sitter.actions';
-import { getSitters, getLoading, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
+import { getAllSitters, getLoading, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
 import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
-
 
 @Component({
   selector: 'grape-all-sitters',
@@ -25,7 +24,7 @@ export class AllSittersComponent implements OnInit {
   activeId: string;
   constructor(private sitterService: SitterService, private store: Store) { 
     this.store.pipe(
-      select(getSitters)
+      select(getAllSitters)
     ).subscribe(sitters => this.sittersArray = sitters );
 
     this.store.pipe(
@@ -40,7 +39,8 @@ export class AllSittersComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadSitters());
     this.store.dispatch(loadComments());
-    this.sitters$ = this.store.select(getSitters);
+
+    this.sitters$ = this.store.select(getAllSitters);
     this.loading$ = this.store.select(getLoading);
     this.error$ = this.store.select(getError);
   }
@@ -68,6 +68,4 @@ export class AllSittersComponent implements OnInit {
     ).subscribe(comments => this.comments = comments);
 
   }
-
-
 }

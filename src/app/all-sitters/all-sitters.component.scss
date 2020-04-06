@@ -1,48 +1,66 @@
 .sitter {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  margin: 25px auto;
+  background-color: #6a8caf;
+  .img {
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 6px;
+      margin: 0 10px 0 0;
+    }
+  }
+  .name {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 0 10px 10px;
+  }
+  .btn {
+    margin: 10px 0;
+  }
+  i {
+    padding: 4px;
+  }
+  .name,
+  .payment,
+  .location,
+  .animals,
+  .services,
+  .about {
     display: flex;
-    justify-content: flex-start;
-    max-width: 90%;
-    margin: 25px auto;
-    .img {
-        img {
-            width: 120px;
-            height: 120px;
-            border-radius: 6px;
-            margin: 0 15px;
-        }
-    }
-    .name {
-        font-weight: bold;
-        font-size: 18px;
-        margin: 0 0 10px 10px;
-    }
-    .btn {
-        margin: 10px 0;
-    }
-    i {
-        padding: 4px;
-    }
-    .name, .payment, .location {
-        display: flex;
-        align-items: center;
-    }
+    align-items: center;
+  }
 }
 .spinner {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .error {
-    text-align: center;
-    font-size: 22px;
+  text-align: center;
+  font-size: 22px;
 
-    &_ops {
-        color: red;
-        margin-bottom: 15px;
-    }
+  &_ops {
+    color: red;
+    margin-bottom: 15px;
+  }
+}
+.sitter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 20px;
+}
+.information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.description {
+  width: 90%;
 }
 
 .comment {
-    margin: 5px;
-    width: 400px;
-    font-size: 1em;
-    border-radius: 10px;  
-  }
+  margin: 5px;
+  width: 400px;
+  font-size: 1em;
+  border-radius: 10px;
+}
