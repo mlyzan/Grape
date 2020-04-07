@@ -18,7 +18,7 @@ export const initialState = {
     activeSitter: null,
     comments: null,
     sitterCommentsId: null,
-    loading: true,
+    loading: false,
     success: null,
     error: null,
     filtered: null
@@ -29,7 +29,8 @@ export const sitterReducer = createReducer(
     
     on(sitterAction.createSitter, (state, activeSitter) => ({
       ...state,
-      activeSitter
+      activeSitter,
+      loading: true
     })),
     on(sitterAction.createSitterSuccess, (state, {activeSitter} ) => ({
       ...state,
@@ -60,7 +61,7 @@ export const sitterReducer = createReducer(
     /////////////////////////////////////////////////
     on(sitterAction.refreshFilteredSitters, state => ({
       ...state,
-      filtered: state.sitters
+      filtered: state.sitters,
     })),
     on(sitterAction.filterSittersByServices, (state, {services}) => ({
       ...state,
@@ -140,6 +141,10 @@ export const sitterReducer = createReducer(
       sitterCommentsId: id,
       loading:false
     })),
+    on(sitterAction.updateSitterRate, (state, payload) => ({
+      ...state,
+      loading: true
+    })),
     on(sitterAction.updateSitterRateSuccess, (state, {id, rate}) => {
       let sitter: Sitter, sitters = [...state.sitters], index = sitters.findIndex(e => e.userId === id);
         sitter = {...sitters.find(e => e.userId === id)};
@@ -151,6 +156,7 @@ export const sitterReducer = createReducer(
         filtered.splice(indexFiltered, 1, sitter);
       return {
         ...state,
+        loading: false,
         sitters,
         filtered
       }

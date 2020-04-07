@@ -4,7 +4,7 @@ import { Sitter, Comment } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
 import { loadSitters, addComment, loadComments, getSitterCommentsId, updateSitterRate } from '../root-state/sitter/sitter.actions';
-import { getAllSitters, getLoading, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
+import { getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
 import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
 
 @Component({
@@ -14,7 +14,6 @@ import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
 })
 export class AllSittersComponent implements OnInit {
   sitters$: Observable<Sitter[]>;
-  loading$: Observable<boolean>;
   error$: Observable<Error>;
   sittersArray;
   isShowComments: boolean = false;
@@ -41,7 +40,6 @@ export class AllSittersComponent implements OnInit {
     this.store.dispatch(loadComments());
 
     this.sitters$ = this.store.select(getAllSitters);
-    this.loading$ = this.store.select(getLoading);
     this.error$ = this.store.select(getError);
   }
 
