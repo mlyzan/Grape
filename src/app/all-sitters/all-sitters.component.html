@@ -1,12 +1,5 @@
 <grape-filter-sitters></grape-filter-sitters>
 
-<div
-  *ngIf="!!sittersArray && sittersArray.length > 0; else clearPage"
-  class="sitter-container"
->
-  <ng-container *ngIf="loading$ | async">
-    <mat-spinner class="spinner"></mat-spinner>
-  </ng-container>
   <div class="error" *ngIf="error$ | async">
     <div class="error_ops">Ooops!</div>
     Something wrong. Please try again later.
@@ -95,10 +88,3 @@
       </div>
     </mat-card>
   </ng-container>
-</div>
-<ng-template #clearPage>
-  <ng-container *ngIf="loading$ | async">
-    <mat-spinner class="spinner"></mat-spinner>
-  </ng-container>
-  <h1>Nothing to show :(</h1>
-</ng-template>

@@ -52,6 +52,7 @@ import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 const MaterialComponents = [
@@ -88,6 +89,7 @@ const MaterialComponents = [
     NavigationComponent,
     DevelopersComponent,
     SitterEditComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
