@@ -62,11 +62,13 @@ export class AllSittersComponent implements OnInit {
       userId: id,
       name: this.activeName
     }));
-    this.store.dispatch(loadComments());
-    this.store.pipe(
-      select(getCommentsById(id))
-    ).subscribe(comments => this.comments = comments);
-
+    setTimeout(() => {
+      this.store.dispatch(loadComments());
+      this.store.pipe(
+        select(getCommentsById(id))
+      ).subscribe(comments => this.comments = comments);
+    },1500)
+ 
   }
 
   onRatingSet(id: string, rate: number) {
