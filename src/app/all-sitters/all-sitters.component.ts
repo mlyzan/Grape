@@ -72,6 +72,8 @@ export class AllSittersComponent implements OnInit {
   }
 
   onRatingSet(id: string, rate: number) {
-    this.store.dispatch(updateSitterRate(id, rate))
+    if(this.activeId && this.activeId !== id) {
+      this.store.dispatch(updateSitterRate(id, rate))
+    }
   }
 }
