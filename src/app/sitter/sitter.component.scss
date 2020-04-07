@@ -57,3 +57,14 @@ button {
         }
     }
 }
+.rate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0 0 0;
+    &_num {
+      color: black;
+      font-size: 10px;
+    }
+  }

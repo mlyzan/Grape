@@ -1,6 +1,11 @@
 <div *ngIf="!!isEmpty && isEmpty.length > 0 && !!isExist; else clearPage">
   <mat-card class="card">
-    <img src="{{sitter$.photo}}" alt="photo" class="photo">
+    <div class="rate">
+      <img src="{{sitter$.photo}}" alt="photo" class="photo">
+      <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="sitter$.rate"
+      [color]="'#FFC92A'" [wholeStars]="false"></ngx-stars>
+      <div *ngIf="sitter$.rate > 0.4" class="rate_num">Rate: {{sitter$.rate | number:'1.0-2'}}</div>
+    </div>
   <div>
       <div class="card_header">
           <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
