@@ -53,6 +53,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { BoardComponent } from './board/board.component';
+import { CreateOrderComponent } from './board/create-order/create-order.component';
+import { OrderComponent } from './board/order/order.component';
 
 
 const MaterialComponents = [
@@ -90,6 +93,9 @@ const MaterialComponents = [
     DevelopersComponent,
     SitterEditComponent,
     SpinnerComponent,
+    BoardComponent,
+    CreateOrderComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
