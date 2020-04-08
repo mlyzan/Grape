@@ -46,6 +46,11 @@ import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
 import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
 
+import { ORDER_KEY } from './root-state/board/board.selectors';
+import { boardReducer } from './root-state/board/board.reducer';
+import { BoardEffects } from './root-state/board/board.effects';
+import { BoardService } from './root-state/board/board.service';
+
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
@@ -108,14 +113,15 @@ const MaterialComponents = [
     HttpClientModule,
     StoreModule.forRoot({ 
       [SITTER_KEY]: sitterReducer,
-      [USER_KEY]: userReducer
+      [USER_KEY]: userReducer,
+      [ORDER_KEY]: boardReducer
     }),
-    EffectsModule.forRoot([SitterEffects, UserEffects]),
+    EffectsModule.forRoot([SitterEffects, UserEffects, BoardEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
     })
   ],
-  providers: [UserService, SitterService, AuthGuard, AuthService],
+  providers: [UserService, SitterService, AuthGuard, AuthService, BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

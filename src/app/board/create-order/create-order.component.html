@@ -1,17 +1,17 @@
-<div class="form-container">
+<form [formGroup]="orderInfo" class="form-container">
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
-    <input matInput />
+    <input matInput formControlName="title"/>
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" >
     <mat-label>Additional information</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="info"></textarea>
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" >
     <mat-label>Select type of pet</mat-label>
-    <mat-select>
+    <mat-select formControlName="pet">
       <mat-option value="Dog">Dog</mat-option>
       <mat-option value="Cat">Cat</mat-option>
       <mat-option value="Bird">Bird</mat-option>
@@ -30,16 +30,13 @@
     </mat-select>
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" >
     <mat-label>Select city</mat-label>
-    <mat-select>
-      <mat-option value="Dog">Dog</mat-option>
-      <mat-option value="Cat">Cat</mat-option>
-      <mat-option value="Bird">Bird</mat-option>
-      <mat-option value="Rabbit">Rabbit</mat-option>
-      <mat-option value="Reptile">Reptile</mat-option>
+    <mat-select formControlName="city">
+      <mat-option value="Lviv">Lviv</mat-option>
+      <mat-option value="Kyiv">Kyiv</mat-option>
     </mat-select>
   </mat-form-field>
   <br />
-  <button mat-button class="btn">Create</button>
-</div>
+  <button mat-button class="btn" (click)="submit()">Create</button>
+</form>
