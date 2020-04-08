@@ -12,7 +12,10 @@ export class UserEffects {
       ofType(userAction.createUser),
       switchMap(({user}) => 
         this.userService.registerUser(user).pipe(
-          map((res) => userAction.createUserSuccess(res)),
+          map((res: any) => {
+            localStorage.setItem('userId', res.userId);
+            return userAction.createUserSuccess(res);
+          }),
           catchError(error => of(userAction.createUserFail(error)))
         ),
       ),
