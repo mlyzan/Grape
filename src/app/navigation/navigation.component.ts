@@ -23,7 +23,6 @@ export class NavigationComponent implements OnInit {
   }
 
   buildLinks(info) {
-    console.log(info)
     this.isUserLoggedIn = !!info.userName;
     this.isSitter = !!info.isSitter;
       if (!this.isUserLoggedIn) {
@@ -34,7 +33,7 @@ export class NavigationComponent implements OnInit {
   }
 
   onLogOutClick() {
-    localStorage.setItem('userId', null);
+    localStorage.removeItem('userId');
     this.router.navigate(["/"]);
     this.buildLinks({});
   }

@@ -19,9 +19,7 @@ export class AppComponent implements OnInit {
     const userId: string = localStorage.getItem('userId');
     if (userId) {
       this.userService.getUser(userId).subscribe((user) => {
-        console.log(user);
         this.store.dispatch(userLoaded(user));
-        console.log(this.store)
       })
     }
     this.spinner$ = this.store.select(getLoading)
