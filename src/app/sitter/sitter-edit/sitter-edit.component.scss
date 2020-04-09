@@ -26,6 +26,17 @@
   border-radius: 10px;  
   background: #ffffff;
 }
+.time {
+  display: flex;
+  justify-content: space-between;
+}
+.min-time-example, 
+.max-time-example {
+  width: 190px;
+  border-radius: 10px;  
+  background: #ffffff;
+}
+
 .about {
   margin: 5px;
   width: 810px;
