@@ -126,5 +126,5 @@ export const updateSitterRateSuccess = createAction(
 
 export const updateSitterRateFail = createAction(
     '[Sitter] update sitter rate fail',
-    (err: Error) => ({err})
+    (error: Error) => ({error})
 );

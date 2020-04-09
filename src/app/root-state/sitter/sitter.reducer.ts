@@ -11,6 +11,7 @@ export interface SitterState {
     sitterCommentsId: string;
     error: Error;
     filtered: any;
+    rateError: Error
   } 
  
 export const initialState = {
@@ -21,7 +22,8 @@ export const initialState = {
     loading: false,
     success: null,
     error: null,
-    filtered: null
+    filtered: null,
+    rateError: null
 }
 
 export const sitterReducer = createReducer(
@@ -161,6 +163,11 @@ export const sitterReducer = createReducer(
         filtered
       }
     }),
+    on(sitterAction.updateSitterRateFail, (state, {error}) => ({
+      ...state,
+      loading: false,
+      rateError: error
+    }))
 );
 
  

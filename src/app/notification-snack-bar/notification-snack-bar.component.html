@@ -1,0 +1,6 @@
+<p class="snack">{{msg}} 
+    <span *ngIf="success; else err" class="material-icons">done_outline</span>
+    <ng-template #err>
+        <span class="material-icons"> error_outline</span>
+    </ng-template>
+</p>
