@@ -3,6 +3,7 @@ import { getUserInfo } from '../root-state/user/user.selectors';
 import { Store, select } from '@ngrx/store';
 import { commonLinks, userLinks, sitterLinks } from './navigation.constants';
 import { Router } from '@angular/router';
+import { NotificationSnackBarMessage } from '../notification-snack-bar/notification-snack-bar-message';
 
 @Component({
   selector: 'app-navigation',
@@ -14,7 +15,7 @@ export class NavigationComponent implements OnInit {
   links: any = null;
   isSitter: boolean = false;
   isUserLoggedIn: boolean = false;
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router, private _NSBM: NotificationSnackBarMessage) { }
 
   ngOnInit(): void {
     this.store.pipe(select(getUserInfo)).subscribe((info) => {
@@ -33,6 +34,7 @@ export class NavigationComponent implements OnInit {
   }
 
   onLogOutClick() {
+    this._NSBM.showSuccess('Logout is successful');
     localStorage.removeItem('userId');
     this.router.navigate(["/"]);
     this.buildLinks({});

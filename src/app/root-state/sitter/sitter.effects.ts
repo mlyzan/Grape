@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, tap } from 'rxjs/operators';
 import { createSitter } from './sitter.actions';
 import { SitterService } from './sitter.service';
 import { of } from 'rxjs';
 import * as sitterAction from './sitter.actions';
+import { NotificationSnackBarMessage } from '../../notification-snack-bar/notification-snack-bar-message';
+
 
 @Injectable()
 export class SitterEffects { 
@@ -14,8 +16,12 @@ export class SitterEffects {
       ofType(createSitter),
       switchMap(( {activeSitter} ) =>
           this.sitterService.saveSitter(activeSitter).pipe(
-          map((res) => sitterAction.createSitterSuccess(res)),
-          catchError(error => of(sitterAction.createSitterFail(error)))
+            tap(() => this._NSBM.showSuccess('Profile successfully created')),
+          map((res) =>  sitterAction.createSitterSuccess(res)),
+          catchError(error => {
+            this._NSBM.showError('Something has gone wrong, try again')
+            return of(sitterAction.createSitterFail(error))
+          })
           ),
       ),
     )
@@ -38,8 +44,12 @@ export class SitterEffects {
       ofType(sitterAction.deleteSitter),
       switchMap(({id}) =>
           this.sitterService.deleteSitter(id).pipe(
+            tap(() => this._NSBM.showSuccess('Profile successfully deleted')),
           map(res => sitterAction.deleteSitterSuccess(res)),
-          catchError(error => of(sitterAction.deleteSitterFail(error)))
+          catchError(error => {
+            this._NSBM.showError('Profile was not deleted')
+            return of(sitterAction.deleteSitterFail(error))
+          })
           ),
       ),
     )
@@ -50,8 +60,14 @@ export class SitterEffects {
       ofType(sitterAction.updateSitter),
       switchMap(({id, sitter}) =>
           this.sitterService.updateSitter(id, sitter).pipe(
-          map(res => sitterAction.updateSitterSuccess(res)),
-          catchError(error => of(sitterAction.updateSitterFail(error)))
+            tap(() =>
+              this._NSBM.showSuccess('Profile successfully updated')
+            ),
+            map(res => sitterAction.updateSitterSuccess(res)),
+            catchError(error => {
+              this._NSBM.showError('Profile was not updated')
+              return of(sitterAction.updateSitterFail(error))
+            })
           ),
       ),
     )
@@ -62,8 +78,12 @@ export class SitterEffects {
       ofType(sitterAction.addComment),
       switchMap(({comment}) =>
           this.sitterService.addComment(comment).pipe(
-          map(res => sitterAction.addCommentSuccess(res)),
-          catchError(error => of(sitterAction.addCommentFail(error)))
+            tap(() => this._NSBM.showSuccess('Comment successfully sent')),
+            map(res => sitterAction.addCommentSuccess(res)),
+            catchError(error => {
+              this._NSBM.showError('Comment was not sent')
+              return of(sitterAction.addCommentFail(error))
+            })
           ),
       ),
     )
@@ -86,8 +106,14 @@ export class SitterEffects {
       ofType(sitterAction.updateSitterRate),
       switchMap(({id, rate}) => 
         this.sitterService.updateSitterRate(id, rate).pipe(
+          tap(() =>
+            this._NSBM.showSuccess('Rate successfully saved')
+          ),
           map(res => sitterAction.updateSitterRateSuccess(id, res.rate)),
-          catchError(err => of(sitterAction.updateSitterRateFail(err)))
+          catchError(err => {
+            this._NSBM.showError('Rate was not saved')
+            return of(sitterAction.updateSitterRateFail(err))
+          })
         )
       )
     )
@@ -95,6 +121,7 @@ export class SitterEffects {
 
   constructor(
     private actions$: Actions,
-    private sitterService: SitterService
+    private sitterService: SitterService,
+    private _NSBM: NotificationSnackBarMessage
   ) {}
 } 

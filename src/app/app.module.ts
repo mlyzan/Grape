@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxStarsModule } from 'ngx-stars';
 
 import { UserService } from './root-state/user/user.service';
@@ -45,7 +46,6 @@ import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
 import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
-
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
@@ -53,6 +53,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
 
 
 const MaterialComponents = [
@@ -70,7 +71,8 @@ const MaterialComponents = [
   MatSidenavModule,
   MatListModule,
   MatProgressSpinnerModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
@@ -90,6 +92,7 @@ const MaterialComponents = [
     DevelopersComponent,
     SitterEditComponent,
     SpinnerComponent,
+    NotificationSnackBarComponent
   ],
   imports: [
     BrowserModule,
