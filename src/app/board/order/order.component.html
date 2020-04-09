@@ -7,17 +7,13 @@
         alt="Photo of a Shiba Inu"
       />
     </div>
-    <mat-card-title>title</mat-card-title>
-    <mat-card-subtitle>type of service</mat-card-subtitle>
-    <mat-card-subtitle>type of pet</mat-card-subtitle>
+    <mat-card-title>{{ order.title }}</mat-card-title>
+    <mat-card-subtitle>{{ order.services }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ order.pet }}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
-      possimus culpa recusandae beatae accusantium impedit ex, aperiam aliquid
-      nulla repellat!
-    </p>
+    <p>{{ order.info }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>connect</button>

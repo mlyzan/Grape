@@ -6,8 +6,15 @@
 
   <mat-sidenav-content>
     <p><button mat-button (click)="sidenav.toggle()">Create</button></p>
-    <grape-order>
-      
-    </grape-order>
+    <div 
+    *ngIf="orders$ | async"
+    class="orders"
+    >
+      <grape-order 
+      *ngFor="let o of orders$ | async" 
+      [order]="o"
+      >
+      </grape-order>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,7 +1,7 @@
 import { getOrders } from './../root-state/board/board.selectors';
 import { Order } from './../root-state/board/board.interfaces';
 import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadOrders } from '../root-state/board/board.actions';
 
@@ -21,6 +21,5 @@ export class BoardComponent implements OnInit {
 
     this.orders$ = this.store.select(getOrders);
 
-    console.log(this.orders$);
   }
 }
