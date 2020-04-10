@@ -1,7 +1,8 @@
 export interface Sitter {
   services: string[],
   animals: string[],
-  availability: string,
+  availabilityFrom: string,
+  availabilityTo: string,
   payment: number,
   photo: string,
   address: string,

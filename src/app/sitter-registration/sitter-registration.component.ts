@@ -20,13 +20,15 @@ export class SitterRegistrationComponent implements OnInit {
   sitterPersonalInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
-    availability: new FormControl('', Validators.required),
+    availabilityFrom: new FormControl('', Validators.required),
+    availabilityTo: new FormControl('', Validators.required),
     payment: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     years: new FormControl('', Validators.required),
     information: new FormControl('', Validators.required),
   });
-
+  min:string;
+  max:string;
   selectedFile:ImageSnippet;
 
   processFile(imageInput: any) {    
@@ -52,8 +54,9 @@ export class SitterRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.sitterPersonalInfo.value);
     this.store.dispatch(createSitter({
-      ...this.sitterPersonalInfo.value, 
+      ...this.sitterPersonalInfo.value,        
       photo: this.selectedFile.src, 
       userId: this.userInfo.userId,
       userName: this.userInfo.userName,

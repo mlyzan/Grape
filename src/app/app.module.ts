@@ -33,6 +33,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxStarsModule } from 'ngx-stars';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -102,6 +103,7 @@ const MaterialComponents = [
     BrowserAnimationsModule,
     MaterialComponents,
     NgxStarsModule,
+    NgxMaterialTimepickerModule,
     HttpClientModule,
     StoreModule.forRoot({ 
       [SITTER_KEY]: sitterReducer,
