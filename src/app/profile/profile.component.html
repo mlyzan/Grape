@@ -1,0 +1,47 @@
+<mat-card class="card">
+    <img src="../../assets/img/default-user.png" alt="photo" class="photo">
+    <div class="card_header">
+        <div class="card_header_title">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+            <h2 class="title_name">{{user.userName}}</h2>
+        </div>
+        <mat-tab-group dynamicHeight>
+            <mat-tab>
+              <ng-template matTabLabel>
+                <span><i class="material-icons">account_circle</i> My profile </span>
+              </ng-template>
+              <div class="profile">
+                <div class="profile_title"><i class="material-icons">perm_identity</i>{{user.userName}}</div>
+                <div class="profile_title"><i class="material-icons">email</i>{{user.userEmail}}</div>    
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template matTabLabel >
+                <span><i class="material-icons">book</i> My responses</span>
+              </ng-template>
+              <ng-container *ngIf="responses.length > 0; else empty">
+                <mat-card class="response" *ngFor="let book of responses">
+                  <ng-container *ngIf="book.isBooked && !book.isComplete">
+                    <p class="response_text" >
+                      {{book.sitterName}} accepted your offer.
+                    </p>
+                  </ng-container>
+                  <ng-container *ngIf="!book.isBooked && !book.isComplete">
+                    <p class="response_text">
+                      {{book.sitterName}} not replied to your offer yet.
+                    </p>
+                  </ng-container>
+                  <ng-container *ngIf="book.isComplete">
+                    <p class="response_text">
+                      {{book.sitterName}} completed your order.
+                    </p>
+                  </ng-container>
+                </mat-card>
+              </ng-container>
+              <ng-template #empty>
+                <p class="empty">You have no active orders or users have not accepted your offers</p>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>  
+    </div>
+</mat-card>

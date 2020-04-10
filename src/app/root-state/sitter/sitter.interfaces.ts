@@ -25,5 +25,7 @@ export interface Book {
   userId: string,
   name: string,
   isBooked: boolean,
-  isComplete: boolean
+  isComplete: boolean,
+  whoBookedId: string,
+  sitterName: string
 }

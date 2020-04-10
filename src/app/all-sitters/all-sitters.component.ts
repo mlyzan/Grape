@@ -79,13 +79,15 @@ export class AllSittersComponent implements OnInit {
     }
   }
 
-  onBook(contactInfo: string, id: string) {
+  onBook(contactInfo: string, id: string, sitterName: string) {
     this.store.dispatch(addBook({
       contactInfo: contactInfo,
       userId: id,
       name: this.activeName,
       isBooked: false,
-      isComplete: false
+      isComplete: false,
+      whoBookedId: this.activeId,
+      sitterName
     }));
     setTimeout(() => {
       this.store.dispatch(loadBooks());

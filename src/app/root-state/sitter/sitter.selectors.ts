@@ -17,3 +17,4 @@ export const getCurrentSitterCommentsId = createSelector(getState, state => stat
 
 export const getBookById = (id: string) => createSelector(getState, state => state.books.find(book => book.userId === id && !book.isComplete));
 export const getCompleteBooksById = (id: string) => createSelector(getState, state => state.books.filter(book => book.userId === id && book.isComplete));
+export const getBooksByCustomerId = (id: string) => createSelector(getState, state => state.books.filter(book => book.whoBookedId === id));
