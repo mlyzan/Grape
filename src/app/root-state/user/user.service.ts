@@ -27,4 +27,5 @@ export class UserService {
   getUser(id: string): Observable<User> {
     return this.http.get<User>(`https://safe-sea-95431.herokuapp.com/api/user/${id}`);
   }
+  
 }

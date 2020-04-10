@@ -6,7 +6,7 @@ import { getActiveId } from 'src/app/root-state/user/user.selectors';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Sitter } from 'src/app/root-state/sitter/sitter.interfaces';
 import { getActiveSitterById, getSuccess } from 'src/app/root-state/sitter/sitter.selectors';
-import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
+//import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
 
 @Component({
   selector: 'app-sitter-edit',

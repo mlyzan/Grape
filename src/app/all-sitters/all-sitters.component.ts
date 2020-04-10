@@ -3,8 +3,10 @@ import { Observable } from 'rxjs';
 import { Sitter, Comment } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
-import { loadSitters, addComment, loadComments, getSitterCommentsId, updateSitterRate } from '../root-state/sitter/sitter.actions';
-import { getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId } from '../root-state/sitter/sitter.selectors';
+import { loadSitters, addComment, loadComments, getSitterCommentsId, 
+        updateSitterRate, addBook, loadBooks } from '../root-state/sitter/sitter.actions';
+import { getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId,
+        getBookById, getSuccess } from '../root-state/sitter/sitter.selectors';
 import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
 
 @Component({
@@ -21,6 +23,7 @@ export class AllSittersComponent implements OnInit {
   comments: Comment[];
   currentSitterCommentId: string;
   activeId: string;
+  isBooked: boolean; bookId: string;
   constructor(private sitterService: SitterService, private store: Store) { 
     this.store.pipe(
       select(getAllSitters)
@@ -38,6 +41,7 @@ export class AllSittersComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadSitters());
     this.store.dispatch(loadComments());
+    this.store.dispatch(loadBooks());
 
     this.sitters$ = this.store.select(getAllSitters);
     this.error$ = this.store.select(getError);
@@ -74,4 +78,32 @@ export class AllSittersComponent implements OnInit {
       this.store.dispatch(updateSitterRate(id, rate))
     }
   }
+
+  onBook(contactInfo: string, id: string) {
+    this.store.dispatch(addBook({
+      contactInfo: contactInfo,
+      userId: id,
+      name: this.activeName,
+      isBooked: false,
+      isComplete: false
+    }));
+    setTimeout(() => {
+      this.store.dispatch(loadBooks());
+    },1000)
+  }
+
+  getBookStatus(id: string) {
+    this.store.pipe(
+      select(getBookById(id))
+    ).subscribe(book => {
+      if(book === undefined) {
+        this.isBooked = false;
+      } else {
+        this.isBooked = book.isBooked;
+        this.bookId = book.userId;
+      }
+      
+    });
+  }
+
 }

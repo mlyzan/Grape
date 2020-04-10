@@ -14,9 +14,7 @@ import { createUser } from '../../root-state/user/user.actions';
 export class SignUpComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   hide = true;
-  showSuccessMessage: boolean;
-  serverErrorMessage: string;
-
+  
   constructor(public userService: UserService, private router: Router, private store: Store) { }
 
   ngOnInit(): void {
@@ -24,11 +22,9 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.store.dispatch(createUser(form.value));
-        this.showSuccessMessage = true;
-        setTimeout(() => {
-          this.showSuccessMessage = false;
-          form.resetForm();
-          this.router.navigateByUrl('/all-sitters');
-        }, 2000);
+    setTimeout(() => {
+      form.resetForm();
+      this.router.navigateByUrl('/all-sitters');
+    }, 2000);
   }
 }
