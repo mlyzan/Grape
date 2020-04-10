@@ -8,47 +8,47 @@ export class SitterService {
   constructor(private http: HttpClient) {}
 
   saveSitter(sitter: Sitter): Observable<Sitter> {
-    return this.http.post<Sitter>('http://localhost:3000/api/sitter', sitter);
+    return this.http.post<Sitter>('https://safe-sea-95431.herokuapp.com/api/sitter', sitter);
   }
 
   getSitters(): Observable<Sitter[]> {
-    return this.http.get<Sitter[]>('http://localhost:3000/api/sitter');
+    return this.http.get<Sitter[]>('https://safe-sea-95431.herokuapp.com/api/sitter');
   }
 
   deleteSitter(id: string): Observable<object> {
-    return this.http.delete<object>(`http://localhost:3000/api/sitter/${id}`);
+    return this.http.delete<object>(`https://safe-sea-95431.herokuapp.com/api/sitter/${id}`);
   }
 
   updateSitter(id: string, sitter: object): Observable<object> {
-    return this.http.put<object>(`http://localhost:3000/api/sitter/${id}`, sitter);
+    return this.http.put<object>(`https://safe-sea-95431.herokuapp.com/api/sitter/${id}`, sitter);
   }
 
   addComment(comment: object): Observable<object> {
-    return this.http.post<object>('http://localhost:3000/api/comment', comment);
+    return this.http.post<object>('https://safe-sea-95431.herokuapp.com/api/comment', comment);
   }
 
   getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>('http://localhost:3000/api/comment');
+    return this.http.get<Comment[]>('https://safe-sea-95431.herokuapp.com/api/comment');
   }
 
   updateSitterRate(id: string, rate: number): Observable<any> {
-    return this.http.put<any>(`http://localhost:3000api/sitter-rate/${id}`, {"rate": rate});
+    return this.http.put<any>(`https://safe-sea-95431.herokuapp.com/api/sitter-rate/${id}`, {"rate": rate});
   }
 
   addBook(book: Book): Observable<object> {
-    return this.http.post<object>('http://localhost:3000/api/book', book);
+    return this.http.post<object>('https://safe-sea-95431.herokuapp.com/api/book', book);
   }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:3000/api/book');
+    return this.http.get<Book[]>('https://safe-sea-95431.herokuapp.com/api/book');
   }
 
   updateBookStatus(id: string, status: object): Observable<object> {
-    return this.http.put<object>(`http://localhost:3000/api/book/${id}`, status);
+    return this.http.put<object>(`https://safe-sea-95431.herokuapp.com/api/book/${id}`, status);
   }
 
   declineBook(id: string): Observable<object> {
-    return this.http.delete<object>(`http://localhost:3000/api/book/${id}`);
+    return this.http.delete<object>(`https://safe-sea-95431.herokuapp.com/api/book/${id}`);
   }
   
 }

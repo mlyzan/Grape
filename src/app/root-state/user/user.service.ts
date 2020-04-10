@@ -17,15 +17,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<object> {
-    return this.http.post<object>('http://localhost:3000/api/register', user);
+    return this.http.post<object>('https://safe-sea-95431.herokuapp.com/api/register', user);
   }
 
   loginUser(authCredentials): Observable<object> {
-    return this.http.post<object>('http://localhost:3000/api/authenticate', authCredentials);
+    return this.http.post<object>('https://safe-sea-95431.herokuapp.com/api/authenticate', authCredentials);
   }
   
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(`http://localhost:3000.com/api/user/${id}`);
+    return this.http.get<User>(`https://safe-sea-95431.herokuapp.com/api/user/${id}`);
   }
   
 }
