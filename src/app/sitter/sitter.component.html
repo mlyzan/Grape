@@ -57,7 +57,7 @@
           </ng-template>
           <div *ngIf="!!book && !book['isComplete']">
             <div>
-              <span><i *ngIf="isInProcess" class="material-icons">hourglass_empty</i>{{book['name']}}</span>
+              <span><i *ngIf="isInProcess || book['isBooked']" class="material-icons">hourglass_empty</i>{{book['name']}}</span>
               <p>{{book['contactInfo']}}</p>
             </div>
             <div class="request-btns">
