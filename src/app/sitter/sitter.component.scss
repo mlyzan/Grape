@@ -67,4 +67,14 @@ button {
       color: black;
       font-size: 10px;
     }
-  }
+}
+
+.requests {
+    display: flex;
+    flex-direction: column;
+}
+
+.request-btns {
+    display: flex;
+    flex-direction: row;
+}

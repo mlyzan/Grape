@@ -6,43 +6,79 @@
       [color]="'#FFC92A'" [wholeStars]="false"></ngx-stars>
       <div *ngIf="sitter$.rate > 0.4" class="rate_num">Rate: {{sitter$.rate | number:'1.0-2'}}</div>
     </div>
-  <div>
+    <div>
       <div class="card_header">
           <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
           <h2 class="title_name">{{sitter$.userName}}</h2>
           <div>{{sitter$.payment | currency}}</div>
       </div>
-      <sub>My profile</sub>
-      <hr>
-      <div class="profile">
-        <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
-        <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
-        <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
-        <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
-        <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
-        <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals}}</div>
-        <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services}}</div>
-        <div class="profile_title"><i class="material-icons">schedule</i>From {{sitter$.availabilityFrom}} to {{sitter$.availabilityTo}}</div>
-        <div class="profile_about">
-          <div class="profile_about_header">
-            <i class="material-icons"> create</i>
-            About me
+      
+      <mat-tab-group dynamicHeight (focusChange)="loadBooks()">
+        <mat-tab>
+          <ng-template matTabLabel>
+            <span><i class="material-icons">account_circle</i> My profile </span>
+          </ng-template>
+          <div class="profile">
+            <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
+            <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
+            <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
+            <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
+            <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
+            <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals}}</div>
+            <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services}}</div>
+            <div class="profile_title"><i class="material-icons">schedule</i>From {{sitter$.availabilityFrom}} to {{sitter$.availabilityTo}}</div>
+            <div class="profile_about">
+              <div class="profile_about_header">
+                <i class="material-icons"> create</i>
+                About me
+              </div>
+              <div class='profile_about_descr'>{{sitter$.information}}</div>
+              <button mat-raised-button type="button" (click)="onDelete(activeId)" color="warn">Delete profile</button>
+              <button mat-raised-button type="button" (click)="switchToEdit()" color="primary">Edit profile</button>
+            </div>
+            <hr>
+            <h2>Comments from other users</h2>
+            <hr>
+            <div *ngFor="let comment of comments">
+              <span>{{comment.name}}</span>
+              <p>{{comment.comment}}</p>
+            </div>        
           </div>
-          <div class='profile_about_descr'>{{sitter$.information}}</div>
-          <button mat-raised-button type="button" (click)="onDelete(activeId)" color="warn">Delete profile</button>
-          <button mat-raised-button type="button" (click)="switchToEdit()" color="primary">Edit profile</button>
-          <mat-label *ngIf="showSuccessMessage">{{successMessage}}</mat-label>
-        </div>
-        <hr>
-        <h2>Comments from other users</h2>
-        <hr>
-        <div *ngFor="let comment of comments">
-          <span>{{comment.name}}</span>
-          <p>{{comment.comment}}</p>
-        </div>        
-      </div>
-  </div>
-</mat-card>
+        </mat-tab>
+        <mat-tab class="requests">
+          <ng-template matTabLabel >
+            <i matBadge="1" matBadgePosition="before"
+               *ngIf="!!book && !book['isComplete']; else noRequests" 
+               class="material-icons">work</i>
+            <ng-template #noRequests>
+              <i  class="material-icons">work</i>
+            </ng-template>
+            My requests
+          </ng-template>
+          <div *ngIf="!!book && !book['isComplete']">
+            <div>
+              <span><i *ngIf="isInProcess" class="material-icons">hourglass_empty</i>{{book['name']}}</span>
+              <p>{{book['contactInfo']}}</p>
+            </div>
+            <div class="request-btns">
+              <button mat-raised-button color="primary" (click)="onConfirm(book['_id'])">Confirm</button>
+              <button mat-raised-button color="accent" (click)="onComplete(book['_id'])">Complete</button>
+              <button mat-raised-button color="warn" (click)="onDecline(book['_id'])">Decline</button>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template matTabLabel>
+            <span><i class="material-icons">history</i> My history </span>
+          </ng-template>
+          <div *ngFor="let book of books">
+            <span><i class="material-icons"> done_outline</i>{{book.name}}</span>
+            <p> {{book.contactInfo}} </p>
+          </div>
+        </mat-tab>
+      </mat-tab-group>  
+    </div>
+  </mat-card>
 </div>
 <ng-template #clearPage>
   <h1>WELCOME :). Please, signup or login and create a profile, on simply create your profile, if you don`t have one, to see something here</h1>
