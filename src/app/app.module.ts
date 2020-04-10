@@ -55,6 +55,7 @@ import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const MaterialComponents = [
@@ -93,7 +94,8 @@ const MaterialComponents = [
     DevelopersComponent,
     SitterEditComponent,
     SpinnerComponent,
-    NotificationSnackBarComponent
+    NotificationSnackBarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

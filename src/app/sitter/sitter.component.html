@@ -1,4 +1,4 @@
-<div *ngIf="!!isEmpty && isEmpty.length > 0 && !!isExist; else clearPage">
+<div *ngIf="!!isEmpty && isEmpty.length > 0 && !!isExist; else profile">
   <mat-card class="card">
     <div class="rate">
       <img src="{{sitter$.photo}}" alt="photo" class="photo">
@@ -80,8 +80,8 @@
     </div>
   </mat-card>
 </div>
-<ng-template #clearPage>
-  <h1>WELCOME :). Please, signup or login and create a profile, on simply create your profile, if you don`t have one, to see something here</h1>
+<ng-template #profile>
+  <grape-profile></grape-profile>
 </ng-template>
 
 

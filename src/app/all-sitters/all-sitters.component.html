@@ -110,7 +110,7 @@
               </mat-form-field> 
             </div>
             <button
-                (click)="onBook(newBook.value, sitter.userId); newBook.value=''"
+                (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
                 mat-raised-button
                 [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
                 <i class="material-icons">pets</i>Book Sitter

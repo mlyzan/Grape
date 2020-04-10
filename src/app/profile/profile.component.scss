@@ -1,0 +1,58 @@
+.card {
+    display: flex;
+    align-items: flex-start;
+    width: 90%;
+    margin: 0 auto 25px;
+    &_header {
+        margin-bottom: 15px;
+        &_title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+    }
+}
+.photo {
+    width: 200px;
+    margin: 0 20px 20px 0;
+    border-radius: 10px;
+}
+.title_name {
+    display: inline-block;
+    margin: auto 40px auto 20px;
+}
+.profile {
+    margin-top: 8px;
+    i {
+        margin-right: 10px;
+    }
+    &_title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+        font-weight: bold;
+    }
+    &_about {
+        &_header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        &_descr {
+            margin-left: 34px;
+        }
+    }
+}
+.response {
+    border: 1px solid gray;
+    margin-top: 8px;
+    &_text {
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+.empty {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
