@@ -4,9 +4,12 @@
     width: 90%;
     margin: 0 auto 25px;
     &_header {
-        display: flex;
-        align-items: center;
         margin-bottom: 15px;
+        &_title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
     }
 }
 .photo {
@@ -18,25 +21,8 @@
     display: inline-block;
     margin: auto 40px auto 20px;
 }
-.input {
-    margin: 0 20px 10px 0;
-}
-sub {
-    color: gray;
-}
-hr {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid gray;
-}
-button {
-    display: flex;
-    align-items: center;
-    i {
-        padding: 0 6px;
-    }
-}
 .profile {
+    margin-top: 8px;
     i {
         margin-right: 10px;
     }
@@ -57,24 +43,16 @@ button {
         }
     }
 }
-.rate {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 8px 0 0 0;
-    &_num {
-      color: black;
-      font-size: 10px;
+.response {
+    border: 1px solid gray;
+    margin-top: 8px;
+    &_text {
+        font-size: 14px;
+        font-weight: 700;
     }
 }
-
-.requests {
-    display: flex;
-    flex-direction: column;
-}
-
-.request-btns {
-    display: flex;
-    flex-direction: row;
+.empty {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 700;
 }

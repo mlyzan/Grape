@@ -25,11 +25,20 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <mat-form-field class="input-item"appearance="fill">
-            <mat-label>Specify your availability</mat-label>
-            <input matInput formControlName="availability">
-            <mat-icon matSuffix> schedule</mat-icon>
+          <mat-form-field class="input-item"appearance="fill" class="min-time-example">
+            <input placeholder="From 00:00"
+              formControlName="availabilityFrom"
+              matInput
+              [ngxTimepicker]="min" [format]="24" [min]="'00:00'"  readonly>
+            <ngx-material-timepicker #min></ngx-material-timepicker>            
           </mat-form-field>
+          <mat-form-field class="input-item"appearance="fill" class="max-time-example">
+            <input placeholder="To 23:59 "
+              formControlName="availabilityTo"
+              matInput
+              [ngxTimepicker]="max" [format]="24" max="23:59"  readonly>
+            <ngx-material-timepicker #max></ngx-material-timepicker>
+        </mat-form-field>          
           <br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Specify your desired payment</mat-label>
@@ -86,7 +95,7 @@
       [disabled]="!sitterPersonalInfo.valid" 
       (click)="onSubmit()"
       >Create!</button>
-      <button mat-button>Go back</button>
+      <button mat-button routerLink="/all-sitters">Go back</button>
     </div>
   </form>
 

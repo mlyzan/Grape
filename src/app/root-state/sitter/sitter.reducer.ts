@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as sitterAction from './sitter.actions';
-import { Sitter, Comment } from './sitter.interfaces';
+import { Sitter, Comment, Book } from './sitter.interfaces';
 
 export interface SitterState {
     loading: boolean;
@@ -9,19 +9,23 @@ export interface SitterState {
     sitters: Sitter[];
     comments: Comment[];
     sitterCommentsId: string;
+    books: Book[];
     error: Error;
     filtered: any;
+    rateError: Error
   } 
  
 export const initialState = {
     sitters: null,
     activeSitter: null,
     comments: null,
+    books: null,
     sitterCommentsId: null,
     loading: false,
     success: null,
     error: null,
-    filtered: null
+    filtered: null,
+    rateError: null
 }
 
 export const sitterReducer = createReducer(
@@ -161,6 +165,56 @@ export const sitterReducer = createReducer(
         filtered
       }
     }),
+    on(sitterAction.updateSitterRateFail, (state, {error}) => ({
+      ...state,
+      loading: false,
+      rateError: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.addBook, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.addBookSuccess, (state, {success}) => ({
+      ...state,
+      success,
+      loading: false
+    })),
+    on(sitterAction.addBookFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.loadBooks, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.loadBooksSuccess, (state, {books}) => ({
+      ...state,
+      books,
+      loading: false
+    })),
+    on(sitterAction.loadBooksFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
+    /////////////////////////////////////////////////
+    on(sitterAction.declineBook, (state) => ({
+      ...state,
+      loading:true
+    })),
+    on(sitterAction.declineBookSuccess, (state, {success}) => ({
+      ...state,
+      success,
+      loading: false
+    })),
+    on(sitterAction.declineBookFail, (state, { error }) => ({
+      ...state,
+      loading: false,
+      error: error
+    })),
 );
 
  

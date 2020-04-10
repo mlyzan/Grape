@@ -14,3 +14,7 @@ export const getAllSitters = createSelector(getState, state => state.filtered);
 export const getActiveSitterById = (id: string) => createSelector(getState, state => state.sitters.find(sitter => sitter.userId === id)); 
 export const getCommentsById = (id: string) => createSelector(getState, state => state.comments.filter(comment => comment.userId === id));
 export const getCurrentSitterCommentsId = createSelector(getState, state => state.sitterCommentsId);
+
+export const getBookById = (id: string) => createSelector(getState, state => state.books.find(book => book.userId === id && !book.isComplete));
+export const getCompleteBooksById = (id: string) => createSelector(getState, state => state.books.filter(book => book.userId === id && book.isComplete));
+export const getBooksByCustomerId = (id: string) => createSelector(getState, state => state.books.filter(book => book.whoBookedId === id));

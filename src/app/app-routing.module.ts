@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { DevelopersComponent } from './developers/developers.component'
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { BoardComponent } from './board/board.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,9 @@ const routes: Routes = [
   {
     path: 'board', component: BoardComponent
   },
+    path: 'profile', component: ProfileComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

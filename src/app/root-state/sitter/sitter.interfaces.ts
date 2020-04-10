@@ -1,7 +1,8 @@
 export interface Sitter {
   services: string[],
   animals: string[],
-  availability: string,
+  availabilityFrom: string,
+  availabilityTo: string,
   payment: number,
   photo: string,
   address: string,
@@ -17,4 +18,14 @@ export interface Comment {
   comment: string,
   userId: string,
   name: string
+}
+
+export interface Book {
+  contactInfo: string,
+  userId: string,
+  name: string,
+  isBooked: boolean,
+  isComplete: boolean,
+  whoBookedId: string,
+  sitterName: string
 }

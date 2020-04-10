@@ -1,3 +1,6 @@
-<div class="overlay">
-    <mat-spinner class="spinner"></mat-spinner>
-</div>
+
+<ng-container *ngIf="spinner$ | async">
+    <div class="overlay">
+        <mat-spinner class="spinner"></mat-spinner>
+    </div>
+</ng-container>

@@ -31,7 +31,9 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxStarsModule } from 'ngx-stars';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -58,9 +60,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+
 import { BoardComponent } from './board/board.component';
 import { CreateOrderComponent } from './board/create-order/create-order.component';
 import { OrderComponent } from './board/order/order.component';
+
+import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 const MaterialComponents = [
@@ -78,7 +85,8 @@ const MaterialComponents = [
   MatSidenavModule,
   MatListModule,
   MatProgressSpinnerModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
@@ -101,6 +109,8 @@ const MaterialComponents = [
     BoardComponent,
     CreateOrderComponent,
     OrderComponent,
+    NotificationSnackBarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +120,7 @@ const MaterialComponents = [
     BrowserAnimationsModule,
     MaterialComponents,
     NgxStarsModule,
+    NgxMaterialTimepickerModule,
     HttpClientModule,
     StoreModule.forRoot({ 
       [SITTER_KEY]: sitterReducer,

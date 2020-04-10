@@ -6,6 +6,7 @@ import { getActiveId } from 'src/app/root-state/user/user.selectors';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Sitter } from 'src/app/root-state/sitter/sitter.interfaces';
 import { getActiveSitterById, getSuccess } from 'src/app/root-state/sitter/sitter.selectors';
+//import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
 
 @Component({
   selector: 'app-sitter-edit',
@@ -21,7 +22,8 @@ export class SitterEditComponent implements OnInit {
   sitterEditInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
-    availability: new FormControl('', Validators.required),
+    availabilityFrom: new FormControl('', Validators.required),
+    availabilityTo: new FormControl('', Validators.required),
     payment: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
     years: new FormControl('', Validators.required),
@@ -43,6 +45,7 @@ export class SitterEditComponent implements OnInit {
   }
 
   onUpdate() {
+    console.log(this.sitterEditInfo.value)
     this.store.dispatch(updateSitter(this.activeId,{...this.sitterEditInfo.value}));
     this.store.pipe(
       select(getSuccess)

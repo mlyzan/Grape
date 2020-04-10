@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Sitter, Comment } from './sitter.interfaces';
+import { Sitter, Comment, Book } from './sitter.interfaces';
 
 //////////////////////////////////////////
 export const createSitter = createAction(
@@ -126,5 +126,65 @@ export const updateSitterRateSuccess = createAction(
 
 export const updateSitterRateFail = createAction(
     '[Sitter] update sitter rate fail',
-    (err: Error) => ({err})
+    (error: Error) => ({error})
+);
+
+////////////////////////////////////////
+export const addBook = createAction(
+    '[Sitter] add book',
+    (book: Book) => ( {book} ),
+)
+
+export const addBookSuccess = createAction(
+    '[Sitter] add book success',
+    (success: object) => ( {success} )
+);
+
+export const addBookFail = createAction(
+    '[Sitter] add book fail',
+    (error: Error) => ({ error }),
+);
+/////////////////////////////////////////
+export const loadBooks = createAction(
+    '[Sitter] load books'
+)
+
+export const loadBooksSuccess = createAction(
+    '[Sitter] load books success',
+    (books: Book[]) => ( {books} )
+);
+
+export const loadBooksFail = createAction(
+    '[Sitter] load books fail',
+    (error: Error) => ({ error }),
+);
+/////////////////////////////////////////
+export const updateBookStatus = createAction(
+    '[Sitter] update book status',
+    (id: string, status: object) => ( {id, status} ),
+)
+
+export const updateBookStatusSuccess = createAction(
+    '[Sitter] update book status success',
+    (success: object) => ( {success} )
+);
+
+export const updateBookStatusFail = createAction(
+    '[Sitter] update book status fail',
+    (error: Error) => ({ error }),
+);
+/////////////////////////////////////////
+export const declineBook = createAction(
+    '[Sitter] decline book',
+    (id: string) => ( {id} ),
+)
+
+export const declineBookSuccess = createAction(
+    '[Sitter] decline book success',
+    (success: object) => ( {success} ),
+);
+
+export const declineBookFail = createAction(
+    '[Sitter] decline book fail',
+    (error: Error) => ({ error }),
 );

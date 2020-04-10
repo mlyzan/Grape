@@ -1,31 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Sitter, Comment} from '../root-state/sitter/sitter.interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Sitter, Comment, Book} from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
-import { Store, select, ActionsSubject } from '@ngrx/store';
-import { getActiveSitterById, getSitters, getCommentsById } from '../root-state/sitter/sitter.selectors';
+import { Store, select } from '@ngrx/store';
+import { getActiveSitterById, getSitters, getCommentsById, 
+        getBookById, getCompleteBooksById } from '../root-state/sitter/sitter.selectors';
 import { getActiveId } from '../root-state/user/user.selectors';
 import { Router } from '@angular/router';
-import { deleteSitterSuccess, deleteSitter, loadSitters, loadComments } from '../root-state/sitter/sitter.actions';
-import { Subscription } from 'rxjs';
-import { ofType } from '@ngrx/effects';
+import { deleteSitterSuccess, deleteSitter, loadSitters, loadComments, 
+        updateBookStatus, declineBook, loadBooks } from '../root-state/sitter/sitter.actions';
+import { UserService } from '../root-state/user/user.service';
+import { userLoaded } from '../root-state/user/user.actions';
 
 @Component({
   selector: 'grape-sitter',
   templateUrl: './sitter.component.html',
   styleUrls: ['./sitter.component.scss']
 })
-export class SitterComponent implements OnInit, OnDestroy {
+export class SitterComponent implements OnInit {
   sitter$: Sitter; 
   activeId: string; isEmpty; isExist;
-  subscSuccess = new Subscription();
-  showSuccessMessage: boolean;
-  successMessage: object;
   comments: Comment[];
+  book: object;
+  books: Book[];
+  isInProcess: boolean;
+
   constructor(
     private sitterService: SitterService, 
     private store: Store, 
-    private router: Router, 
-    private actionsSubj: ActionsSubject) { 
+    private router: Router,
+    private userService: UserService) { 
     
     this.store.pipe(
       select(getSitters)
@@ -48,38 +51,65 @@ export class SitterComponent implements OnInit, OnDestroy {
       select(getCommentsById(this.activeId))
     ).subscribe(comments => this.comments = comments);
 
-    
+    this.store.pipe(
+      select(getBookById(this.activeId))
+    ).subscribe(book => this.book = book);
+
+    this.store.pipe(
+      select(getCompleteBooksById(this.activeId))
+    ).subscribe(books => this.books = books);
+
    }
 
   ngOnInit(): void {
     this.store.dispatch(loadComments());
-  }
-
-  ngOnDestroy() {
-    this.subscSuccess.unsubscribe();
+    this.store.dispatch(loadBooks());
   }
 
   onDelete(id: string) {
     this.store.dispatch(deleteSitter(id));
-
-    this.subscSuccess = this.actionsSubj.pipe(
-      ofType(deleteSitterSuccess)
-    ).subscribe(
-      res => {
-        this.successMessage = res.success['success'];
-        this.showSuccessMessage = true;
-        setTimeout(() => {
-          this.showSuccessMessage = false;
-          this.store.dispatch(loadSitters());
-          this.store.pipe(select(getSitters)).subscribe(sitters => this.isEmpty = sitters);
-        }, 2000);
-      },
-    )
-
+    setTimeout(() => {
+      this.store.dispatch(loadSitters());
+      this.store.pipe(select(getSitters)).subscribe(sitters => this.isEmpty = sitters);
+      this.userService.getUser(id).subscribe((user) => {
+        this.store.dispatch(userLoaded(user));
+      })
+      this.router.navigateByUrl('all-sitters');
+    }, 1000);
   }
 
   switchToEdit() {
     this.router.navigateByUrl('sitter-edit');
+  }
+
+  onConfirm(id: string) {
+    this.store.dispatch(updateBookStatus(id, {isBooked: true, isComplete: false}));
+    this.isInProcess = true;
+  }
+
+  onComplete(id: string) {
+    this.store.dispatch(updateBookStatus(id, {isBooked: false, isComplete: true}));
+    this.isInProcess = false;
+    setTimeout(() => {
+      this.store.dispatch(loadBooks());
+      this.store.pipe(
+        select(getBookById(this.activeId))
+      ).subscribe(book => this.book = book);
+    }, 1000)
+  }
+
+  onDecline(id: string) {
+    this.store.dispatch(declineBook(id));
+    setTimeout(() => {
+      this.store.dispatch(loadBooks());
+      this.store.pipe(
+        select(getBookById(this.activeId))
+      ).subscribe(book => this.book = book);
+    }, 1000)
+  }
+
+  loadBooks() {
+    this.store.dispatch(loadBooks());
   }
   
 }
