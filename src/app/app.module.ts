@@ -47,6 +47,12 @@ import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
 import { FilterSittersComponent } from './all-sitters/filter-sitters/filter-sitters.component';
+
+import { ORDER_KEY } from './root-state/board/board.selectors';
+import { boardReducer } from './root-state/board/board.reducer';
+import { BoardEffects } from './root-state/board/board.effects';
+import { BoardService } from './root-state/board/board.service';
+
 import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
@@ -54,8 +60,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+
+import { BoardComponent } from './board/board.component';
+import { CreateOrderComponent } from './board/create-order/create-order.component';
+import { OrderComponent } from './board/order/order.component';
+
 import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
 import { ProfileComponent } from './profile/profile.component';
+
 
 
 const MaterialComponents = [
@@ -94,6 +106,9 @@ const MaterialComponents = [
     DevelopersComponent,
     SitterEditComponent,
     SpinnerComponent,
+    BoardComponent,
+    CreateOrderComponent,
+    OrderComponent,
     NotificationSnackBarComponent,
     ProfileComponent
   ],
@@ -109,14 +124,15 @@ const MaterialComponents = [
     HttpClientModule,
     StoreModule.forRoot({ 
       [SITTER_KEY]: sitterReducer,
-      [USER_KEY]: userReducer
+      [USER_KEY]: userReducer,
+      [ORDER_KEY]: boardReducer
     }),
-    EffectsModule.forRoot([SitterEffects, UserEffects]),
+    EffectsModule.forRoot([SitterEffects, UserEffects, BoardEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
     })
   ],
-  providers: [UserService, SitterService, AuthGuard, AuthService],
+  providers: [UserService, SitterService, AuthGuard, AuthService, BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
