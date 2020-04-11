@@ -24,17 +24,23 @@
                   <ng-container *ngIf="book.isBooked && !book.isComplete">
                     <p class="response_text" >
                       {{book.sitterName}} accepted your offer.
+                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
+                    <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
                   <ng-container *ngIf="!book.isBooked && !book.isComplete">
                     <p class="response_text">
                       {{book.sitterName}} not replied to your offer yet.
+                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
+                    <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
                   <ng-container *ngIf="book.isComplete">
                     <p class="response_text">
-                      {{book.sitterName}} completed your order.
+                      {{book.sitterName}} completed your order. 
+                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
+                    <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
                 </mat-card>
               </ng-container>

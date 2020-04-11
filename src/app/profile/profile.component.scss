@@ -47,8 +47,14 @@
     border: 1px solid gray;
     margin-top: 8px;
     &_text {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-size: 14px;
         font-weight: 700;
+        .material-icons:hover {
+            cursor: pointer;
+        }
     }
 }
 .empty {
