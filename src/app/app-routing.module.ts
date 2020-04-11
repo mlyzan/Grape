@@ -49,8 +49,9 @@ const routes: Routes = [
   {
     path: 'board', component: BoardComponent
   },
+  {
     path: 'profile', component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard]  
   }
 ];
 
