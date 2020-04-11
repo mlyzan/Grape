@@ -1,6 +1,6 @@
 <ng-container *ngFor= "let link of links"> 
   <a mat-button *ngIf="link.link" [ngClass]="link.class" [routerLink]="link.link"> {{ link.text }} </a>
-  <a mat-button *ngIf="link.href" [ngClass]="link.class" [href]="link.href"> {{ link.text }} </a>
+  <a mat-button *ngIf="link.href" [ngClass]="link.class" [href]="link.href" (click)="scrollToElement($event, link.href)"> {{ link.text }} </a>
 </ng-container>
 
 <ng-container *ngIf="isUserLoggedIn&&!isSitter" >

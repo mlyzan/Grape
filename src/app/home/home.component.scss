@@ -4,19 +4,18 @@
 }
 
 .header {
-  margin-top: -37px;
+  margin-top: -40px;
   height: calc(100vh - 64px);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-image img {
-  height: calc(100vh - 64px);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../assets/img/pets.jpg") no-repeat;
+  background-size: cover;
 }
 
 .header-text {
+  color: white;
   padding: 130px;
+  margin: auto;
   text-align: center;
   p {
     font-size: 19px;
