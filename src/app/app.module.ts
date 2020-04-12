@@ -67,6 +67,7 @@ import { OrderComponent } from './board/order/order.component';
 
 import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileUpdateComponent } from './profile/profile-update/profile-update.component';
 
 
 
@@ -110,7 +111,8 @@ const MaterialComponents = [
     CreateOrderComponent,
     OrderComponent,
     NotificationSnackBarComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileUpdateComponent
   ],
   imports: [
     BrowserModule,

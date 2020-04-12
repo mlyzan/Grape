@@ -36,7 +36,6 @@ export class UserEffects {
             tap(() => this._NSBM.showSuccess('Login is successful')),
             map((res) => userAction.loginUserSuccess(res)),
             catchError(error => {
-              console.log(error.error)
               this._NSBM.showError(error.error.message)
               return of(userAction.loginUserFail(error))
             })
@@ -44,6 +43,22 @@ export class UserEffects {
         ),
       )
   );
+
+  updateProfile$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(userAction.updateProfile),
+      switchMap(({obj, id}) => 
+        this.userService.updateProfile(obj, id).pipe(
+          tap(() => this._NSBM.showSuccess('Profile successfully updated')),
+          map(res => userAction.updateProfileSuccess(res)),
+          catchError(error => {
+            this._NSBM.showError('Something has gone wrong, try again')
+            return of(userAction.updateProfileFail(error))
+          })
+        )
+      )
+    )
+  )
 
   constructor(
     private actions$: Actions,

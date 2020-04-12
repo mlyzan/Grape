@@ -1,5 +1,13 @@
 <mat-card class="card">
-    <img src="../../assets/img/default-user.png" alt="photo" class="photo">
+    <div class="img">
+      <ng-container *ngIf="updateInfo.photo; else defaultPhoto">
+        <img src="{{updateInfo.photo}}" alt="photo" class="photo">
+      </ng-container>
+      <ng-template #defaultPhoto>
+        <img src="../../assets/img/default-user.png" alt="photo" class="photo">
+      </ng-template>
+      <button mat-button (click)="switchToUpdate()">Update</button>
+    </div>
     <div class="card_header">
         <div class="card_header_title">
             <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
@@ -13,6 +21,11 @@
               <div class="profile">
                 <div class="profile_title"><i class="material-icons">perm_identity</i>{{user.userName}}</div>
                 <div class="profile_title"><i class="material-icons">email</i>{{user.userEmail}}</div>    
+                <ng-container *ngIf="updateInfo.years && updateInfo.address && updateInfo.animals">
+                  <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{updateInfo.years}}</div>
+                  <div class="profile_title"><i class="material-icons">location_on </i>{{updateInfo.address}}</div>
+                  <div class="profile_title"><i class="material-icons">pets</i>{{updateInfo.animals}}</div>
+                </ng-container>
               </div>
             </mat-tab>
             <mat-tab>

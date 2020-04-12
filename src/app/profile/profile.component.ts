@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { getUserInfo } from '../root-state/user/user.selectors';
+import { getUserInfo, getUpdateInfo } from '../root-state/user/user.selectors';
 import { loadBooks, declineBook, loadSitters } from '../root-state/sitter/sitter.actions';
 import { getBooksByCustomerId } from '../root-state/sitter/sitter.selectors';
 import { getActiveId } from '../root-state/user/user.selectors';
 import { Book } from '../root-state/sitter/sitter.interfaces';
+import { Router } from '@angular/router';
+import { UpdateInfo } from '../root-state/user/user.interfaces';
 
 @Component({
   selector: 'grape-profile',
@@ -12,10 +14,16 @@ import { Book } from '../root-state/sitter/sitter.interfaces';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  updateInfo: UpdateInfo = {
+    animals: null,
+    photo: null,
+    years: null,
+    address: null
+  };
   user: any;
   responses: Book[] = [];
   activeId: string;
-  constructor(private _store: Store) { }
+  constructor(private _store: Store, private _router: Router) { }
 
   ngOnInit(): void {
     this._store.dispatch(loadSitters());
@@ -29,8 +37,15 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => {
       this._store.pipe(
         select(getBooksByCustomerId(this.activeId))
-      ).subscribe(res => this.responses = [...res]);
-    }, 1000)
+      ).subscribe(res => this.responses = res);
+    }, 1000);
+    this._store.pipe(
+      select(getUpdateInfo)
+    ).subscribe(res => {
+      if(res) {
+        this.updateInfo = res
+      }
+    })
   }
 
   onDecline(id: string): void {
@@ -39,7 +54,11 @@ export class ProfileComponent implements OnInit {
       this._store.dispatch(loadBooks());
       this._store.pipe(
         select(getBooksByCustomerId(this.activeId))
-      ).subscribe(res => this.responses = [...res]);
+      ).subscribe(res => this.responses = res);
     }, 1000)
+  }
+
+  switchToUpdate(): void {
+    this._router.navigateByUrl('profile-update')
   }
 }

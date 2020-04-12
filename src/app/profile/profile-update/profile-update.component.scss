@@ -1,0 +1,33 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+.form_inputs {
+    display: flex;
+    justify-content: space-around;
+}
+.input-item {
+    display: block;
+    width: 300px;
+}
+.sitter-photo {
+    display: flex;
+    align-items: center; 
+    justify-content: space-around; 
+    height: 202px;
+  
+    .img-preview-container {    
+      width: auto;
+      background-color: #fff;
+      position: relative;    
+  
+      .img-preview {      
+        background: center center no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+        height: 200px;
+        width: 200px;
+      }
+    }
+}
