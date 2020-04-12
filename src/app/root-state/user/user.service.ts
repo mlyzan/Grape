@@ -11,7 +11,8 @@ export class UserService {
   selectedUser: User = {
     fullName: '',
     email: '',
-    password: ''
+    password: '',
+    updateInfo: null
   }
 
   constructor(private http: HttpClient) { }
@@ -28,4 +29,7 @@ export class UserService {
     return this.http.get<User>(`https://safe-sea-95431.herokuapp.com/api/user/${id}`);
   }
   
+  updateProfile(obj: any, id: string): Observable<any> {
+    return this.http.post<any>(`https://safe-sea-95431.herokuapp.com/api/profile-update/${id}`, obj);
+  }
 }

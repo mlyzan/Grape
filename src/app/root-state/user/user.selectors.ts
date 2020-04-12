@@ -9,4 +9,4 @@ export const getUserInfo = createSelector(getUserState, state => state.userInfo)
 export const getActiveId = createSelector(getUserState, state => state.userInfo.userId);
 
 export const getActiveName = createSelector(getUserState, state => state.userInfo.userName);
-
+export const getUpdateInfo = createSelector(getUserState, state => state.userInfo.updateInfo);

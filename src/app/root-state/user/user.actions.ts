@@ -38,4 +38,19 @@ export const userLoaded = createAction(
 export const userBecomeSitter = createAction(
   '[User become sitter success]',
   () => ({isSitter: true})
-)
+);
+
+export const updateProfile = createAction(
+  '[User] update profile',
+  (obj: any, id: string) => ({obj, id})
+);
+
+export const updateProfileSuccess = createAction(
+  '[User] update profile success',
+  (response: any) => ({response})
+);
+
+export const updateProfileFail = createAction(
+  '[User] update profile fail',
+  (error: Error) => ({error})
+);

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { getUserInfo } from '../root-state/user/user.selectors';
 import { userBecomeSitter } from '../root-state/user/user.actions';
 
-class ImageSnippet {
+export class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
 @Component({
@@ -54,7 +54,6 @@ export class SitterRegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.sitterPersonalInfo.value);
     this.store.dispatch(createSitter({
       ...this.sitterPersonalInfo.value,        
       photo: this.selectedFile.src, 

@@ -1,0 +1,70 @@
+<mat-card class="container">
+  <mat-card-title><h2>Update profile</h2></mat-card-title>
+  <form [formGroup]="profileUpdate" class="form">
+    <div class="form_inputs">
+      <div>
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your Animals</mat-label>
+          <mat-select formControlName="animals" multiple>
+            <mat-option value="Dog">Dog</mat-option>
+            <mat-option value="Cat">Cat</mat-option>
+            <mat-option value="Bird">Bird</mat-option>
+            <mat-option value="Rabbit">Rabbit</mat-option>
+            <mat-option value="Reptile">Reptile</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your address</mat-label>
+          <input matInput formControlName="address" />
+          <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+        
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your age</mat-label>
+          <input matInput formControlName="years" />
+          <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+        </mat-form-field>
+        
+      </div>
+      <div class="sitter-photo">
+        <label>
+          <button mat-button type="button" (click)="imageInput.click()">
+            Select photo
+          </button>
+          <br />
+          <input
+            formControlName="photo"
+            #imageInput
+            style="display: none;"
+            type="file"
+            accept="image/*"
+            (change)="processFile(imageInput)"
+          />
+        </label>
+        <div *ngIf="selectedFile" class="img-preview-container">
+          <div
+            class="img-preview"
+            [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-button">
+      <button
+        [disabled]="!profileUpdate.valid" 
+        mat-raised-button
+        type="submit"
+        color="primary"
+        style="margin-right: 10px;"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+      <button mat-raised-button (click)="onCancel()" color="warn">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>
