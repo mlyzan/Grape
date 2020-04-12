@@ -41,7 +41,9 @@ export class NavigationComponent implements OnInit {
   }
 
   scrollToElement($event, e): void {
-    $event.preventDefault();
-    document.querySelector(e).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    if (this.router.routerState.snapshot.url === '/') {
+      $event.preventDefault();
+      document.querySelector(e).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
   }
 }

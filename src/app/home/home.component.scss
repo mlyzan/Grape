@@ -4,11 +4,11 @@
 }
 
 .header {
-  margin-top: -40px;
+  margin-top: -36px;
   height: calc(100vh - 64px);
   display: flex;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("../../assets/img/pets.jpg") no-repeat;
+    url('../../assets/img/pets.jpg') no-repeat;
   background-size: cover;
 }
 
@@ -64,7 +64,7 @@ p {
 .about {
   ul {
     list-style-image: url(../../assets/img/paw.png);
-    list-style-position: inside;  
+    list-style-position: inside;
   }
   img {
     width: 100%;
@@ -78,5 +78,220 @@ p {
     padding: 20px;
     width: 40%;
     margin: auto;
+  }
+}
+
+.icon__dog {
+  .svg {
+    padding: 20px;
+    height: 200px;
+  }
+
+  @keyframes ByfWD6gbpM_BJHtplZpM_Animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(30deg);
+    }
+
+    23.33% {
+      transform: rotate(0deg);
+    }
+
+    36.67% {
+      transform: rotate(30deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    63.33% {
+      transform: rotate(30deg);
+    }
+
+    76.67% {
+      transform: rotate(0deg);
+    }
+
+    88.89% {
+      transform: rotate(30deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes HJgWw6ebaf_rygTRxbpG_Animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    13.33% {
+      transform: rotate(-10deg);
+    }
+
+    27.78% {
+      transform: rotate(0deg);
+    }
+
+    40% {
+      transform: rotate(-10deg);
+    }
+
+    53.33% {
+      transform: rotate(0deg);
+    }
+
+    66.67% {
+      transform: rotate(-10deg);
+    }
+
+    80% {
+      transform: rotate(0deg);
+    }
+
+    93.33% {
+      transform: rotate(-10deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  #SJZPaebaf * {
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0, 0, 1, 1);
+  }
+
+  #HyWWwagWaz {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #rJmbD6l-pG {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #ryr-P6ebTz {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #ByIWwTgZpM {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+  }
+
+  #H1wWv6gW6z {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #B1uWD6gW6M {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #SJtZv6eW6M {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #B19bvax-pz {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #BJoWD6xZpf {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-linecap: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #Syn-D6x-6M {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #B1aWwag-pf {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #ry0bPagWaf {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #r11lZv6xZ6G {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #r1xxZwTebTz {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #SyWgZwpx-pM {
+    fill: #fff;
+    stroke: #50c1b3;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
+
+  #HJgWw6ebaf_rygTRxbpG {
+    animation-name: HJgWw6ebaf_rygTRxbpG_Animation;
+    animation-timing-function: cubic-bezier(0.42, 0, 1, 1);
+    transform-origin: 0% 100%;
+    transform-box: fill-box;
+    transform: rotate(0deg);
+  }
+
+  #ByfWD6gbpM_BJHtplZpM {
+    animation-name: ByfWD6gbpM_BJHtplZpM_Animation;
+    animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    transform-origin: 100% 100%;
+    transform-box: fill-box;
+    transform: rotate(0deg);
   }
 }
