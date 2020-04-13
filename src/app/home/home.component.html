@@ -1,10 +1,11 @@
-<div class="header">
+<div class="header" (scroll)="onWindowScroll($event)">
   <div class="header-text">
     <h1>Walking with your fluffy friends</h1>
     <p>Book your appointment today!</p>
-    <button mat-raised-button [routerLink]="'/login'">Book now</button>
   </div>
 </div>
+
+<div class="wiggly--vertical"></div>
 
 <div class="wrapper">
   <div class="main" id="home">
