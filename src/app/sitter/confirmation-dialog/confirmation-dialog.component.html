@@ -1,0 +1,12 @@
+<div class="dialog">
+  <h2>
+    Do you really want to delete your profile?
+  </h2>
+  <img class="dialog_img" src="../../../assets/img/sad_dog.png" alt="sad dog">
+  <div mat-dialog-actions>
+    <button class="dialog_btn-confirm" mat-button [mat-dialog-close]="true" cdkFocusInitial>
+      <i class="material-icons">delete</i>Yes, delete</button>
+    <button mat-button (click)="onNoClick()">
+      <i class="material-icons">cancel</i>No, cancel</button>
+  </div>
+</div>

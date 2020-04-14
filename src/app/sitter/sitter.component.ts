@@ -10,6 +10,8 @@ import { deleteSitterSuccess, deleteSitter, loadSitters, loadComments,
         updateBookStatus, declineBook, loadBooks } from '../root-state/sitter/sitter.actions';
 import { UserService } from '../root-state/user/user.service';
 import { userLoaded } from '../root-state/user/user.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'grape-sitter',
@@ -23,12 +25,15 @@ export class SitterComponent implements OnInit {
   book: object;
   books: Book[];
   isInProcess: boolean;
+  panelOpenState = false;
+  isCompleteClick = false;
 
   constructor(
     private sitterService: SitterService, 
     private store: Store, 
     private router: Router,
-    private userService: UserService) { 
+    private userService: UserService,
+    public dialog: MatDialog) { 
     
     this.store.pipe(
       select(getSitters)
@@ -66,6 +71,20 @@ export class SitterComponent implements OnInit {
     this.store.dispatch(loadBooks());
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '450px',
+      height: '350px',
+      data: "Do you really want to delete your profile?"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.onDelete(this.activeId);
+      }
+    });
+  }
+
   onDelete(id: string) {
     this.store.dispatch(deleteSitter(id));
     setTimeout(() => {
@@ -90,7 +109,9 @@ export class SitterComponent implements OnInit {
   onComplete(id: string) {
     this.store.dispatch(updateBookStatus(id, {isBooked: false, isComplete: true}));
     this.isInProcess = false;
+    this.isCompleteClick = true;
     setTimeout(() => {
+      this.isCompleteClick = false;
       this.store.dispatch(loadBooks());
       this.store.pipe(
         select(getBookById(this.activeId))

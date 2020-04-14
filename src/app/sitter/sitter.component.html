@@ -2,19 +2,23 @@
   <mat-card class="card">
     <div class="rate">
       <img src="{{sitter$.photo}}" alt="photo" class="photo">
-      <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="sitter$.rate"
+      <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="sitter$.rate" [size]=2
       [color]="'#FFC92A'" [wholeStars]="false"></ngx-stars>
-      <div *ngIf="sitter$.rate > 0.4" class="rate_num">Rate: {{sitter$.rate | number:'1.0-2'}}</div>
+      <div *ngIf="sitter$.rate > 0.4" class="rate_num">Rate: {{sitter$.rate | number:'1.0-2'}}/5</div>
+      <i (click)="switchToEdit()" class="material-icons profile-edit-btn"
+           matTooltip="Edit profile">edit</i>
+      <i (click)="openDialog()" class="material-icons profile-delete-btn"
+          matTooltip="Delete profile">delete_forever</i>
     </div>
-    <div>
+    <div class="profile-container">
       <div class="card_header">
           <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
           <h2 class="title_name">{{sitter$.userName}}</h2>
           <div>{{sitter$.payment | currency}}</div>
       </div>
       
-      <mat-tab-group dynamicHeight (focusChange)="loadBooks()">
-        <mat-tab>
+      <mat-tab-group dynamicHeight (focusChange)="loadBooks()" class="tab-group">
+        <mat-tab >
           <ng-template matTabLabel>
             <span><i class="material-icons">account_circle</i> My profile </span>
           </ng-template>
@@ -29,23 +33,40 @@
             <div class="profile_title"><i class="material-icons">schedule</i>From {{sitter$.availabilityFrom}} to {{sitter$.availabilityTo}}</div>
             <div class="profile_about">
               <div class="profile_about_header">
-                <i class="material-icons"> create</i>
+                <i class="material-icons"> info</i>
                 About me
               </div>
               <div class='profile_about_descr'>{{sitter$.information}}</div>
-              <button mat-raised-button type="button" (click)="onDelete(activeId)" color="warn">Delete profile</button>
-              <button mat-raised-button type="button" (click)="switchToEdit()" color="primary">Edit profile</button>
             </div>
-            <hr>
-            <h2>Comments from other users</h2>
-            <hr>
-            <div *ngFor="let comment of comments">
-              <span>{{comment.name}}</span>
-              <p>{{comment.comment}}</p>
-            </div>        
+
+            <mat-accordion class="comments">
+              <mat-expansion-panel 
+                  (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <i class="material-icons">comment</i>
+                    Reviews
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Read comments from other users
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-card *ngFor="let comment of comments" class="comments_block">
+                  <div>
+                    <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+                  </div>
+                  <div>
+                    <span>{{comment.name}}</span>
+                    <p>{{comment.comment}}</p>
+                  </div>
+                </mat-card>
+              </mat-expansion-panel>
+            </mat-accordion>
+            
           </div>
         </mat-tab>
-        <mat-tab class="requests">
+        <mat-tab class="request">
           <ng-template matTabLabel >
             <i matBadge="1" matBadgePosition="before"
                *ngIf="!!book && !book['isComplete']; else noRequests" 
@@ -55,26 +76,51 @@
             </ng-template>
             My requests
           </ng-template>
-          <div *ngIf="!!book && !book['isComplete']">
-            <div>
-              <span><i *ngIf="isInProcess || book['isBooked']" class="material-icons">hourglass_empty</i>{{book['name']}}</span>
-              <p>{{book['contactInfo']}}</p>
+          <mat-card *ngIf="!!book && !book['isComplete']" class="request_block">
+            <div style="display: flex; flex-direction: row;">
+              <div>
+                <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+              </div>
+              <div>
+                <span>{{book['name']}}</span>
+                <i *ngIf="isInProcess || book['isBooked']; else complete" 
+                    style="font-size: 2em; color: gold;"
+                    class="material-icons">hourglass_empty</i>
+                  <ng-template #complete>
+                    <i *ngIf="isCompleteClick" 
+                    style="font-size: 2em; color: lawngreen;"
+                    class="material-icons">done_outline</i>
+                  </ng-template>
+                <p>{{book['contactInfo']}}</p>
+              </div>
             </div>
-            <div class="request-btns">
-              <button mat-raised-button color="primary" (click)="onConfirm(book['_id'])">Confirm</button>
-              <button mat-raised-button color="accent" (click)="onComplete(book['_id'])">Complete</button>
-              <button mat-raised-button color="warn" (click)="onDecline(book['_id'])">Decline</button>
+            <div class="request_btns">
+              <i class="material-icons request_btns_confirm"
+                matTooltip="Confirm" 
+                (click)="onConfirm(book['_id'])">add_circle_outline</i>
+              <i class="material-icons request_btns_complete"
+                matTooltip="Complete" 
+                (click)="onComplete(book['_id'])">check_circle_outline</i>
+              <i class="material-icons request_btns_decline"
+                matTooltip="Decline"
+                (click)="onDecline(book['_id'])">highlight_off</i>
             </div>
-          </div>
+          </mat-card>
         </mat-tab>
-        <mat-tab>
+        <mat-tab class="history">
           <ng-template matTabLabel>
             <span><i class="material-icons">history</i> My history </span>
           </ng-template>
-          <div *ngFor="let book of books">
-            <span><i class="material-icons"> done_outline</i>{{book.name}}</span>
-            <p> {{book.contactInfo}} </p>
-          </div>
+          <mat-card *ngFor="let book of books" class="history_block">
+            <div>
+              <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+            </div>
+            <div>
+              <span><i class="material-icons"> done_outline</i>{{book.name}}</span>
+              <p>{{book.contactInfo}}</p>
+            </div>
+          </mat-card>
+
         </mat-tab>
       </mat-tab-group>  
     </div>

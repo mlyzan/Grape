@@ -34,6 +34,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgxStarsModule } from 'ngx-stars';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -68,6 +70,7 @@ import { OrderComponent } from './board/order/order.component';
 import { NotificationSnackBarComponent } from './notification-snack-bar/notification-snack-bar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile/profile-update/profile-update.component';
+import { ConfirmationDialogComponent } from './sitter/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -87,7 +90,9 @@ const MaterialComponents = [
   MatListModule,
   MatProgressSpinnerModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTooltipModule,
+  MatDialogModule
 ];
 
 @NgModule({
@@ -112,7 +117,8 @@ const MaterialComponents = [
     OrderComponent,
     NotificationSnackBarComponent,
     ProfileComponent,
-    ProfileUpdateComponent
+    ProfileUpdateComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -134,6 +140,7 @@ const MaterialComponents = [
       maxAge: 25, 
     })
   ],
+  entryComponents: [ConfirmationDialogComponent],
   providers: [UserService, SitterService, AuthGuard, AuthService, BoardService],
   bootstrap: [AppComponent]
 })

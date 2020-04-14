@@ -1,6 +1,29 @@
+@mixin block() {
+    display: flex;
+    flex-direction: row;
+
+    span {
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+
+    p {
+        font-style: italic;
+        font-size: 1.1em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    img {
+        margin: -5px 10px 10px -5px;
+        max-height: 50px; max-width: 50px;
+    }
+}
+
 .card {
     display: flex;
     align-items: flex-start;
+    min-height: 490px;
     width: 90%;
     margin: 0 auto 25px;
     &_header {
@@ -11,7 +34,7 @@
 }
 .photo {
     width: 200px;
-    margin: 0 20px 20px 0;
+    margin: 0 auto 20px;
     border-radius: 10px;
 }
 .title_name {
@@ -21,22 +44,13 @@
 .input {
     margin: 0 20px 10px 0;
 }
-sub {
-    color: gray;
-}
-hr {
+
+.profile-container {
     width: 100%;
-    border: none;
-    border-bottom: 1px solid gray;
 }
-button {
-    display: flex;
-    align-items: center;
-    i {
-        padding: 0 6px;
-    }
-}
+
 .profile {
+    margin-left: 10px;
     i {
         margin-right: 10px;
     }
@@ -62,19 +76,95 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 8px 0 0 0;
+    margin: 8px 20px 0 0;
     &_num {
       color: black;
-      font-size: 10px;
+      font-size: 1.2em;
+      font-size: 600;
+    }
+}
+ngx-stars {
+    margin: auto;
+}
+
+
+.profile-edit-btn {   
+    position: absolute;
+    right: 70px;
+    top: 10px;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.profile-delete-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 25px 15px;
+    &_block {
+        margin-bottom: 20px;
+        @include block();
     }
 }
 
-.requests {
-    display: flex;
-    flex-direction: column;
-}
-
-.request-btns {
+.history {
     display: flex;
     flex-direction: row;
+    margin: 20px 25px 15px;
+    &_block {
+        width: 70%;
+        margin: 10px auto 20px;
+        @include block();
+        i {
+            font-size: 2em; 
+            color: lawngreen;
+        }
+    }
+}
+
+.request {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    &_block {
+        width: 70%;
+        margin: 10px auto 20px;
+        @include block();
+        justify-content: center;
+        align-items: center;
+    }
+    &_btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        i {
+            font-size: 3em;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        &_confirm {
+            color: gold;
+        }
+        &_complete {
+            color: lawngreen;
+        }
+        &_decline {
+            color: red;
+        }
+    }
+}
+
+.tab-group {
+    width: 100%;
 }
