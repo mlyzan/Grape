@@ -69,6 +69,6 @@ export class SitterRegistrationComponent implements OnInit {
   }
 
   filterCities(event): void {
-    this.citiesCopy = CITIES.filter(e => e.indexOf(event.target.value) >= 0);
+    this.citiesCopy = CITIES.filter(e => e.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0);
   }
 }
