@@ -4,4 +4,5 @@ export const ORDER_KEY = 'order';
 
 export const getState = createFeatureSelector<BoardState>(ORDER_KEY);
 
-export const getOrders = createSelector(getState, state => state.orders);
+export const getOrders = createSelector(getState, (state) => state.orders);
+

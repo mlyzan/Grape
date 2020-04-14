@@ -31,5 +31,17 @@ export class BoardEffects {
     )
   );
 
+  addOffer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(boardAction.addOffer),
+      switchMap(({ orderId, activeSitter }) =>
+        this.boardService.addOffer(orderId, activeSitter).pipe(
+          map((res) => boardAction.addOfferSuccess(res)),
+          catchError((error) => of(boardAction.addOfferFail(error)))
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions, private boardService: BoardService) {}
 }

@@ -1,4 +1,4 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Order } from './board.interfaces';
 
 export const createOrder = createAction(
@@ -23,5 +23,18 @@ export const loadOrdersSuccess = createAction(
 );
 export const loadOrdersFail = createAction(
   '[Board] load orders fail',
+  (error: Error) => ({ error })
+);
+
+export const addOffer = createAction(
+  '[Board] add offer for order',
+  props<{ orderId: string, activeSitter: string }>() 
+);
+export const addOfferSuccess = createAction(
+  '[Board] add offer success',
+  (success: object) => ({ success })
+);
+export const addOfferFail = createAction(
+  '[Board] add offer fail',
   (error: Error) => ({ error })
 );
