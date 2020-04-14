@@ -24,7 +24,7 @@
                 <ng-container *ngIf="updateInfo.years && updateInfo.address && updateInfo.animals">
                   <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{updateInfo.years}}</div>
                   <div class="profile_title"><i class="material-icons">location_on </i>{{updateInfo.address}}</div>
-                  <div class="profile_title"><i class="material-icons">pets</i>{{updateInfo.animals}}</div>
+                  <div class="profile_title"><i class="material-icons">pets</i>{{updateInfo.animals.join(', ')}}</div>
                 </ng-container>
               </div>
             </mat-tab>

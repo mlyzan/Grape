@@ -97,11 +97,17 @@
       </div>
     </div>
     <div class="form-button">
-      <button mat-button type="submit"
+      <button mat-raised-button 
+      color="primary" 
+      type="submit"
       [disabled]="!sitterPersonalInfo.valid"
       (click)="onSubmit()"
+      class="btn"
       >Create!</button>
-      <button mat-button routerLink="/all-sitters">Go back</button>
+      <button 
+      mat-raised-button 
+      routerLink="/all-sitters"
+      class="btn">Go back</button>
     </div>
   </form>
 
