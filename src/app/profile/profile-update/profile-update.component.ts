@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { updateProfile } from 'src/app/root-state/user/user.actions';
-import { getActiveId } from 'src/app/root-state/user/user.selectors';
+import { getActiveId, getUserInfo } from 'src/app/root-state/user/user.selectors';
 import { ImageSnippet } from './../../sitter-registration/sitter-registration.component';
 import {CITIES} from '../../cities';
+import {UserInterfaces} from '../../root-state/user/user.interfaces';
 
 @Component({
   selector: 'app-profile-update',
@@ -16,6 +17,7 @@ export class ProfileUpdateComponent implements OnInit {
   citiesCopy: string[];
   selectedFile: ImageSnippet;
   userId: string;
+  user: UserInterfaces;
   profileUpdate = new FormGroup({
     animals: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
@@ -41,6 +43,9 @@ export class ProfileUpdateComponent implements OnInit {
       select(getActiveId)
     ).subscribe(res => this.userId = res);
     this.citiesCopy = CITIES;
+    this._store.pipe(
+      select(getUserInfo)
+    ).subscribe(res => this.user = res);
   }
 
   onCancel(): void {

@@ -5,7 +5,7 @@
       <div>
         <mat-form-field class="input-item" appearance="fill">
           <mat-label>Your Animals</mat-label>
-          <mat-select formControlName="animals" multiple>
+          <mat-select formControlName="animals" multiple [ngModel]="user.updateInfo.animals">
             <mat-option value="Dog">Dog</mat-option>
             <mat-option value="Cat">Cat</mat-option>
             <mat-option value="Bird">Bird</mat-option>
@@ -17,7 +17,7 @@
         <mat-form-field class="input-item"appearance="fill">
           <mat-label>Your address</mat-label>
           <input matInput formControlName="address" [matAutocomplete]="address"
-                 placeholder="City"  (input)="filterCities($event)">
+                 placeholder="City"  (input)="filterCities($event)" [ngModel]="user.updateInfo.address">
           <mat-icon matSuffix>location_on</mat-icon>
           <mat-autocomplete #address="matAutocomplete">
             <mat-option *ngFor="let city of citiesCopy" [value]="city">
@@ -28,7 +28,7 @@
 
         <mat-form-field class="input-item" appearance="fill">
           <mat-label>Your age</mat-label>
-          <input matInput formControlName="years" />
+          <input matInput formControlName="years" [ngModel]="user.updateInfo.years"/>
           <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
         </mat-form-field>
 
