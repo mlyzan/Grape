@@ -10,13 +10,13 @@
               <mat-option value="Dog Walking">Dog Walking</mat-option>
               <mat-option value="Pet Boarding">Pet Boarding</mat-option>
               <mat-option value="House Sitting">House Sitting</mat-option>
-              <mat-option value="Pet Grooming">Pet Grooming</mat-option>          
+              <mat-option value="Pet Grooming">Pet Grooming</mat-option>
             </mat-select>
           </mat-form-field>
           <br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Accepted Animals</mat-label>
-            <mat-select formControlName="animals" multiple>          
+            <mat-select formControlName="animals" multiple>
               <mat-option value="Dog">Dog</mat-option>
               <mat-option value="Cat">Cat</mat-option>
               <mat-option value="Bird">Bird</mat-option>
@@ -30,7 +30,7 @@
               formControlName="availabilityFrom"
               matInput
               [ngxTimepicker]="min" [format]="24" [min]="'00:00'"  readonly>
-            <ngx-material-timepicker #min></ngx-material-timepicker>            
+            <ngx-material-timepicker #min></ngx-material-timepicker>
           </mat-form-field>
           <mat-form-field class="input-item"appearance="fill" class="max-time-example">
             <input placeholder="To 23:59 "
@@ -38,18 +38,18 @@
               matInput
               [ngxTimepicker]="max" [format]="24" max="23:59"  readonly>
             <ngx-material-timepicker #max></ngx-material-timepicker>
-        </mat-form-field>          
+        </mat-form-field>
           <br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Specify your desired payment</mat-label>
             <input  type="number" matInput formControlName ="payment">
             <mat-icon matSuffix> monetization_on</mat-icon>
-          </mat-form-field>      
+          </mat-form-field>
         </div>
         <div>
           <div class="sitter-photo">
             <label class="image-upload-container btn btn-bwm">
-              <button 
+              <button
               mat-button
               type="button"
               (click)="imageInput.click()"
@@ -57,42 +57,48 @@
               <br>
               <input #imageInput
                 style="display: none;"
-                type="file" 
+                type="file"
                 accept="image/*"
-                (change)="processFile(imageInput)">              
+                (change)="processFile(imageInput)">
             </label>
             <div *ngIf="selectedFile" class="img-preview-container">
-    
+
               <div class="img-preview"
                 [ngStyle]="{'background-image': 'url('+ selectedFile.src +')'}">
-    
+
               </div>
-            </div> 
-          </div>     
+            </div>
+          </div>
           <br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your address</mat-label>
-            <input matInput formControlName="address">
+            <input matInput formControlName="address" [matAutocomplete]="address"
+                   placeholder="City"  (input)="filterCities($event)">
             <mat-icon matSuffix>location_on</mat-icon>
+            <mat-autocomplete #address="matAutocomplete">
+              <mat-option *ngFor="let city of citiesCopy" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field><br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your age</mat-label>
             <input matInput formControlName="years">
             <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
-          </mat-form-field>        
-          <br> 
+          </mat-form-field>
+          <br>
         </div>
       </div>
       <div>
         <mat-form-field class="about"appearance="fill">
           <mat-label>Tell about you</mat-label>
-          <textarea matInput formControlName="information"></textarea> 
+          <textarea matInput formControlName="information"></textarea>
         </mat-form-field>
-      </div>      
+      </div>
     </div>
     <div class="form-button">
-      <button mat-button type="submit" 
-      [disabled]="!sitterPersonalInfo.valid" 
+      <button mat-button type="submit"
+      [disabled]="!sitterPersonalInfo.valid"
       (click)="onSubmit()"
       >Create!</button>
       <button mat-button routerLink="/all-sitters">Go back</button>

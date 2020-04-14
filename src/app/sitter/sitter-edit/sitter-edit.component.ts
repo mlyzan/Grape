@@ -6,6 +6,7 @@ import { getActiveId } from 'src/app/root-state/user/user.selectors';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Sitter } from 'src/app/root-state/sitter/sitter.interfaces';
 import { getActiveSitterById, getSuccess } from 'src/app/root-state/sitter/sitter.selectors';
+import {CITIES} from '../../cities';
 //import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
 
 @Component({
@@ -14,6 +15,7 @@ import { getActiveSitterById, getSuccess } from 'src/app/root-state/sitter/sitte
   styleUrls: ['./sitter-edit.component.scss']
 })
 export class SitterEditComponent implements OnInit {
+  citiesCopy: string[];
   activeId: string;
   sitter$: Sitter;
   showSuccessMessage: boolean = false;
@@ -30,7 +32,7 @@ export class SitterEditComponent implements OnInit {
     information: new FormControl('', Validators.required),
   });
 
-  constructor(private store: Store, private router: Router) { 
+  constructor(private store: Store, private router: Router) {
     this.store.pipe(
       select(getActiveId)
     ).subscribe(id => this.activeId = id);
@@ -42,6 +44,7 @@ export class SitterEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.citiesCopy = CITIES;
   }
 
   onUpdate() {
@@ -63,4 +66,7 @@ export class SitterEditComponent implements OnInit {
     this.router.navigateByUrl('sitter');
   }
 
+  filterCities(event): void {
+    this.citiesCopy = CITIES.filter(e => e.indexOf(event.target.value) >= 0)
+  }
 }

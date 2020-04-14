@@ -6,6 +6,7 @@ import { createSitter } from './../root-state/sitter/sitter.actions';
 import { Router } from '@angular/router';
 import { getUserInfo } from '../root-state/user/user.selectors';
 import { userBecomeSitter } from '../root-state/user/user.actions';
+import { CITIES } from '../cities';
 
 export class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -16,7 +17,7 @@ export class ImageSnippet {
   styleUrls: ['./sitter-registration.component.scss']
 })
 export class SitterRegistrationComponent implements OnInit {
-  
+  citiesCopy: string[];
   sitterPersonalInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
@@ -31,7 +32,7 @@ export class SitterRegistrationComponent implements OnInit {
   max:string;
   selectedFile:ImageSnippet;
 
-  processFile(imageInput: any) {    
+  processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
@@ -39,7 +40,7 @@ export class SitterRegistrationComponent implements OnInit {
       this.selectedFile = new ImageSnippet(event.target.result, file)
     });
 
-    reader.readAsDataURL(file); 
+    reader.readAsDataURL(file);
   }
 
   userInfo;
@@ -50,13 +51,13 @@ export class SitterRegistrationComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    this.citiesCopy = CITIES;
   }
 
   onSubmit() {
     this.store.dispatch(createSitter({
-      ...this.sitterPersonalInfo.value,        
-      photo: this.selectedFile.src, 
+      ...this.sitterPersonalInfo.value,
+      photo: this.selectedFile.src,
       userId: this.userInfo.userId,
       userName: this.userInfo.userName,
       userEmail: this.userInfo.userEmail
@@ -66,4 +67,8 @@ export class SitterRegistrationComponent implements OnInit {
       this.router.navigateByUrl('/all-sitters');
     }, 3000);
   }
-} 
+
+  filterCities(event): void {
+    this.citiesCopy = CITIES.filter(e => e.indexOf(event.target.value) >= 0);
+  }
+}

@@ -10,13 +10,13 @@
               <mat-option value="Dog Walking">Dog Walking</mat-option>
               <mat-option value="Pet Boarding">Pet Boarding</mat-option>
               <mat-option value="House Sitting">House Sitting</mat-option>
-              <mat-option value="Pet Grooming">Pet Grooming</mat-option>          
+              <mat-option value="Pet Grooming">Pet Grooming</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Accepted Animals</mat-label>
-            <mat-select formControlName="animals" multiple [ngModel]="sitter$.animals">          
+            <mat-select formControlName="animals" multiple [ngModel]="sitter$.animals">
               <mat-option value="Dog">Dog</mat-option>
               <mat-option value="Cat">Cat</mat-option>
               <mat-option value="Bird">Bird</mat-option>
@@ -31,7 +31,7 @@
                   matInput
                   [ngModel]="sitter$.availabilityFrom"
                   [ngxTimepicker]="min" [format]="24" [min]="'00:00'"  readonly>
-                <ngx-material-timepicker #min></ngx-material-timepicker>            
+                <ngx-material-timepicker #min></ngx-material-timepicker>
               </mat-form-field>
             <mat-form-field class="max-time-example"appearance="fill" >
               <input placeholder=" "
@@ -41,7 +41,7 @@
                 [ngxTimepicker]="max"[format]="24" max="23:59"  readonly>
               <ngx-material-timepicker #max></ngx-material-timepicker>
             </mat-form-field>
-          </div>        
+          </div>
         </div>
 
         <div>
@@ -52,29 +52,35 @@
           </mat-form-field>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your address</mat-label>
-            <input matInput formControlName="address" [ngModel]="sitter$.address">
+            <input matInput formControlName="address" [matAutocomplete]="address"
+                   placeholder="City"  (input)="filterCities($event)">
             <mat-icon matSuffix>location_on</mat-icon>
-          </mat-form-field><br>
+            <mat-autocomplete #address="matAutocomplete">
+              <mat-option *ngFor="let city of citiesCopy" [value]="city">
+                {{city}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your age</mat-label>
             <input matInput formControlName="years" [ngModel]="sitter$.years">
             <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
-          </mat-form-field>        
+          </mat-form-field>
         </div>
       </div>
       <div>
         <mat-form-field class="about"appearance="fill">
           <mat-label>Tell about you</mat-label>
-          <textarea matInput formControlName="information" [ngModel]="sitter$.information"></textarea> 
+          <textarea matInput formControlName="information" [ngModel]="sitter$.information"></textarea>
         </mat-form-field>
-      </div>      
+      </div>
     </div>
     <div *ngIf="showSuccessMessage" style="text-align: center;">
       <mat-label>{{successMessage['success']}}</mat-label>
     </div>
     <div class="form-button">
       <button mat-raised-button type="submit" color="primary" style="margin-right: 10px;"
-      [disabled]="!sitterEditInfo.valid" 
+      [disabled]="!sitterEditInfo.valid"
       (click)="onUpdate()"
       >Update</button>
       <button mat-raised-button (click)="onCancel()" color="warn">Cancel</button>

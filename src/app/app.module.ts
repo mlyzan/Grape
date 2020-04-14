@@ -36,6 +36,7 @@ import { NgxStarsModule } from 'ngx-stars';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -44,7 +45,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { sitterReducer } from './root-state/sitter/sitter.reducer';
 import { SitterEffects } from './root-state/sitter/sitter.effects';
-import { SITTER_KEY } from './root-state/sitter/sitter.selectors';  
+import { SITTER_KEY } from './root-state/sitter/sitter.selectors';
 import { USER_KEY } from './root-state/user/user.selectors';
 import { userReducer } from './root-state/user/user.reducer';
 import { UserEffects } from './root-state/user/user.effects';
@@ -92,7 +93,8 @@ const MaterialComponents = [
   MatMenuModule,
   MatSnackBarModule,
   MatTooltipModule,
-  MatDialogModule
+  MatDialogModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({
@@ -130,14 +132,14 @@ const MaterialComponents = [
     NgxStarsModule,
     NgxMaterialTimepickerModule,
     HttpClientModule,
-    StoreModule.forRoot({ 
+    StoreModule.forRoot({
       [SITTER_KEY]: sitterReducer,
       [USER_KEY]: userReducer,
       [ORDER_KEY]: boardReducer
     }),
     EffectsModule.forRoot([SitterEffects, UserEffects, BoardEffects]),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, 
+      maxAge: 25,
     })
   ],
   entryComponents: [ConfirmationDialogComponent],

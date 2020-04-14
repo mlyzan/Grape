@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { updateProfile } from 'src/app/root-state/user/user.actions';
 import { getActiveId } from 'src/app/root-state/user/user.selectors';
 import { ImageSnippet } from './../../sitter-registration/sitter-registration.component';
+import {CITIES} from '../../cities';
 
 @Component({
   selector: 'app-profile-update',
@@ -12,6 +13,7 @@ import { ImageSnippet } from './../../sitter-registration/sitter-registration.co
   styleUrls: ['./profile-update.component.scss']
 })
 export class ProfileUpdateComponent implements OnInit {
+  citiesCopy: string[];
   selectedFile: ImageSnippet;
   userId: string;
   profileUpdate = new FormGroup({
@@ -23,7 +25,7 @@ export class ProfileUpdateComponent implements OnInit {
 
   constructor(private _router: Router, private _store: Store) { }
 
-  processFile(imageInput: any) {    
+  processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
@@ -31,13 +33,14 @@ export class ProfileUpdateComponent implements OnInit {
       this.selectedFile = new ImageSnippet(event.target.result, file)
     });
 
-    reader.readAsDataURL(file); 
+    reader.readAsDataURL(file);
   }
 
   ngOnInit(): void {
     this._store.pipe(
-      select(getActiveId) 
+      select(getActiveId)
     ).subscribe(res => this.userId = res);
+    this.citiesCopy = CITIES;
   }
 
   onCancel(): void {
@@ -54,4 +57,7 @@ export class ProfileUpdateComponent implements OnInit {
     }, 2000)
   }
 
+  filterCities(event): void {
+    this.citiesCopy = CITIES.filter(e => e.indexOf(event.target.value) >= 0);
+  }
 }

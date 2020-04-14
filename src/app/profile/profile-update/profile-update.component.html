@@ -13,19 +13,25 @@
             <mat-option value="Reptile">Reptile</mat-option>
           </mat-select>
         </mat-form-field>
-        
-        <mat-form-field class="input-item" appearance="fill">
+
+        <mat-form-field class="input-item"appearance="fill">
           <mat-label>Your address</mat-label>
-          <input matInput formControlName="address" />
+          <input matInput formControlName="address" [matAutocomplete]="address"
+                 placeholder="City"  (input)="filterCities($event)">
           <mat-icon matSuffix>location_on</mat-icon>
+          <mat-autocomplete #address="matAutocomplete">
+            <mat-option *ngFor="let city of citiesCopy" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
-        
+
         <mat-form-field class="input-item" appearance="fill">
           <mat-label>Your age</mat-label>
           <input matInput formControlName="years" />
           <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
         </mat-form-field>
-        
+
       </div>
       <div class="sitter-photo">
         <label>
@@ -53,7 +59,7 @@
 
     <div class="form-button">
       <button
-        [disabled]="!profileUpdate.valid" 
+        [disabled]="!profileUpdate.valid"
         mat-raised-button
         type="submit"
         color="primary"
