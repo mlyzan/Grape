@@ -24,7 +24,7 @@
         </ng-template>
       </div>
 
-      <mat-tab-group dynamicHeight (focusChange)="getBookStatus(sitter.userId)">
+      <mat-tab-group dynamicHeight (focusChange)="getBookStatus(sitter.userId)" class="tab-group">
         <mat-tab label="Sitter Info">
           <mat-card-content class="description">
             <mat-card-title class="name">
@@ -64,11 +64,12 @@
 
             <div *ngIf="isShowComments && sitter.userId === currentSitterCommentId">
               <h2>Comments</h2>
+              <mat-divider style="width: 87%;"></mat-divider>
               <mat-form-field class="comment">
                 <mat-label>Leave a comment</mat-label>
                 <input [disabled]="sitter.userId === activeId" 
-                      #newComment matInput maxlength="256" #message />
-                <mat-hint align="start">{{ message.value.length }} / 256</mat-hint>
+                      #newComment matInput maxlength="100" #message />
+                <mat-hint align="start">{{ message.value.length }} / 100</mat-hint>
               </mat-form-field>
               <button
                 mat-raised-button
@@ -76,45 +77,59 @@
                   onSubmit(newComment.value, sitter.userId); newComment.value = ''
                 "
                 [disabled]="sitter.userId === activeId"
-              >
+              ><i class="material-icons" style="margin-right: 5px;">comment</i>
                 Add comment
               </button>
-              <hr />
-              <div *ngIf="isShowComments && comments.length > 0">
-                <div *ngFor="let comment of comments">
+              <div *ngIf="isShowComments && comments.length > 0" class="comments">
+                <mat-card *ngFor="let comment of comments" class="comments_block">
+                  <div>
+                    <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+                  </div>
                   <div *ngIf="comment.userId === sitter.userId">
                     <span>{{ comment.name }}</span>
                     <p>{{ comment.comment }}</p>
                   </div>
-                </div>
+                </mat-card>
               </div>
             </div> 
           </mat-card-content>
         </mat-tab>
         <mat-tab  label="Book">
-          <span *ngIf="isBooked && sitter.userId === bookId; else notBooked"><i class="material-icons">work_off</i>
-            Sorry, this sitter is busy now. Please, find another one.
-          </span>
+          <div style="width: 80%; margin: 20px auto; text-align: center;">
+            <h1 *ngIf="isBooked && sitter.userId === bookId; else notBooked">
+              <i style="font-size: 2em;" class="material-icons">work_off</i>
+              Sorry, this sitter is busy now.
+            </h1>
+          </div>
           <ng-template #notBooked>
-            <span><i class="material-icons">work</i>
-              Sitter is free now. You can book him.
-            </span>
-            <h2>Leave your contact info below </h2>
-            <div>
-              <mat-form-field class="comment">
-                <mat-label></mat-label>
-                <textarea #newBook style="resize: none;" 
-                          rows="5" cols="50" matInput maxlength="250" #message
-                          [disabled]="sitter.userId === activeId || isBooked"></textarea>
-                <mat-hint align="end">{{ message.value.length }} / 250</mat-hint>
-              </mat-form-field> 
+            <div style="width: 80%; margin: 20px auto; text-align: center;"> 
+              <h1><i style="font-size: 2em;" class="material-icons">work</i>
+                Sitter is free now. You can book him.
+              </h1>
             </div>
-            <button
-                (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
-                mat-raised-button
-                [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
+            <mat-accordion >
+              <mat-expansion-panel style="width: 80%; margin: 20px auto;"
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Booking form</mat-panel-title>
+                  <mat-panel-description>Leave your contact info below</mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field class="book">
+                  <mat-label>You can write here</mat-label>
+                  <textarea #newBook style="resize: none;" 
+                            rows="4" cols="50" matInput maxlength="200" #message
+                            [disabled]="sitter.userId === activeId || isBooked"></textarea>
+                  <mat-hint align="end">{{ message.value.length }} / 200</mat-hint>
+                </mat-form-field>
+                <button
+                    (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
+                    mat-raised-button
+                    [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
                 <i class="material-icons">pets</i>Book Sitter
-            </button>
+                </button>                
+              </mat-expansion-panel>
+            </mat-accordion>
           </ng-template>
         </mat-tab>
       </mat-tab-group>

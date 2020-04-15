@@ -24,6 +24,7 @@ export class AllSittersComponent implements OnInit {
   currentSitterCommentId: string;
   activeId: string;
   isBooked: boolean; bookId: string;
+  panelOpenState = false;
   constructor(private sitterService: SitterService, private store: Store) { 
     this.store.pipe(
       select(getAllSitters)
@@ -89,6 +90,7 @@ export class AllSittersComponent implements OnInit {
       whoBookedId: this.activeId,
       sitterName
     }));
+    this.panelOpenState = false
     setTimeout(() => {
       this.store.dispatch(loadBooks());
     },1000)

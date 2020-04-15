@@ -8,14 +8,14 @@ export class BoardService {
   constructor(private http: HttpClient) {}
 
   createOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>('http://localhost:3000/api/order', order);
+    return this.http.post<Order>('https://safe-sea-95431.herokuapp.com/api/order', order);
   }
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>('http://localhost:3000/api/order');
+    return this.http.get<Order[]>('https://safe-sea-95431.herokuapp.com/api/order');
   }
 
   addOffer(id: string, activeSitter: string): Observable<Order> {
-    return this.http.put<Order>(`http://localhost:3000/api/order/${id}`, {sitter: activeSitter});
+    return this.http.put<Order>(`https://safe-sea-95431.herokuapp.com/api/order/${id}`, {sitter: activeSitter});
   }
 }
