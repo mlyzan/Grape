@@ -25,8 +25,6 @@ export const userLinks = [
 
 export const sitterLinks = [
   {
-    // link: '/create-sitter',
-    // text: 'Create profile',
     link: '/all-sitters',
     text: 'Find sitters',
   },

@@ -1,21 +1,17 @@
 <ng-container *ngFor= "let link of links"> 
-  <a mat-button *ngIf="link.link" [ngClass]="link.class" [routerLink]="link.link"> {{ link.text }} </a>
-  <a mat-button *ngIf="link.href" [ngClass]="link.class" [href]="link.href"> {{ link.text }} </a>
+  <a mat-button *ngIf="link.link" [ngClass]="link.class" [routerLink]="link.link" routerLinkActive="active"> {{ link.text }} </a>
+  <a mat-button *ngIf="link.href" [ngClass]="link.class" [href]="link.href" (click)="scrollToElement($event, link.href)"> {{ link.text }} </a>
 </ng-container>
 
 <ng-container *ngIf="isUserLoggedIn&&!isSitter" >
-  <a mat-button [routerLink]="'/all-sitters'"> Find sitters </a>
-  <a mat-button [routerLink]="'/create-sitter'"> Become Sitter </a>
-  <a mat-button [routerLink]="'/profile'">Profile</a>
+  <a mat-button [routerLink]="'/all-sitters'" routerLinkActive="active"> Find sitters </a>
+  <a mat-button [routerLink]="'/create-sitter'" routerLinkActive="active"> Become Sitter </a>
+  <a mat-button [routerLink]="'/profile'" routerLinkActive="active">Profile</a>
 </ng-container>
 
-<!-- <ng-container *ngIf="isUserLoggedIn&&isSitter" >
-  <a mat-button [routerLink]="'/all-sitters'"> Find sitters </a>
-</ng-container> -->
-
 <ng-container *ngIf="!isUserLoggedIn">
-  <a mat-button [routerLink]="'/login'"> LogIn </a>
-  <a mat-button [routerLink]="'/signup'"> SignUp </a>
+  <a mat-button [routerLink]="'/login'" routerLinkActive="active" class="navLink">LogIn</a>
+  <a mat-button [routerLink]="'/signup'" routerLinkActive="active" class="navLink"> SignUp </a>
 </ng-container>
 
 <a mat-button *ngIf="isUserLoggedIn" (click)="onLogOutClick()"> LogOut </a>

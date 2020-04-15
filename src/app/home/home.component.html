@@ -1,42 +1,99 @@
-<div class="header">
-  <div class="header-image">
-    <img src="../../assets/img/main.jpg" alt="">
-  </div>
+<div class="header" (scroll)="onWindowScroll($event)">
   <div class="header-text">
-    <h1>Walking with your furry friends</h1>
+    <h1>Walking with your fluffy friends</h1>
     <p>Book your appointment today!</p>
-    <button mat-raised-button [routerLink]="'/login'">Book now</button>
   </div>
 </div>
+
+<div class="wiggly--vertical"></div>
 
 <div class="wrapper">
   <div class="main" id="home">
     <h1>When nature calls, we are here to answer</h1>
-    <p>You can't always predict a crazy day at work, but you can anticipate your dog's needs. Instead of rushing home at lunch, book as to give your dog a 30-minute dog walk. We can stop by as many times as you need - on whatever days you need them.</p>
+    <p>You can't always predict a crazy day at work, but you can anticipate your pet's needs. Instead of rushing home at
+      lunch, book as to give your dog a 30-minute dog walk. We can stop by as many times as you need - on whatever days
+      you need them. Whether you need in-home dog boarding, pet sitting, dog walking, or day care, Petly connects pet
+      parents with dog people who’ll treat their pets like family.<b>We are there for your pet when you can’t be.</b></p>
     <h1>How it works</h1>
-    <div class="main-wrapper">
-      <div class="main-wrapper__item">
-        <img src="../../assets/img/contactus.PNG" alt="">
-        <h3>Contact us</h3>
-        <p>Tell about your dog, what it likes, what doesn't like, what types of walks you prefer</p>
-      </div>
-      <div class="main-wrapper__item">
-        <img src="../../assets/img/meetinperson.PNG" alt="">
-        <h3>Meet in person</h3>
-        <p>Connect with a dog walker who's a good fit for you, your dog</p>
-      </div>
-      <div class="main-wrapper__item">
-        <img src="../../assets/img/sheduleadate.PNG" alt="">
-        <h3>Shedule a date</h3>
-        <p>Book dog walker, create a schedule convenient for you and your dog</p>
-      </div>
+    <div class="features">
+
+        <div class="feature-info">
+          <div class="feature-info-icon">
+            <mat-icon>search</mat-icon>
+          </div>
+          <div class="feature-info-content">
+            <h2 class="feature-info-title">Search</h2>
+            <p>Read verified reviews of other users and pick the perfect sitter, who's a good fit for you and your pet.</p>
+          </div>
+        </div>
+
+        <div class="feature-info">
+          <div class="feature-info-icon">
+            <mat-icon>calendar_today</mat-icon>
+          </div>
+          <div class="feature-info-content">
+            <h2 class="feature-info-title">Shedule a date</h2>
+            <p>Book pet walker, create a schedule convenient for you and your pet.</p>
+          </div>
+        </div>
+
+        <div class="feature-info">
+          <div class="feature-info-icon">
+            <mat-icon>accessibility</mat-icon>
+          </div>
+          <div class="feature-info-content">
+            <h2 class="feature-info-title">Relax</h2>
+            <p>We'll take care of everything! and make sure that your furry friend is happy and safe.</p>
+          </div>
+        </div>
     </div>
-  </div>
-  
+
   <div class="about" id="about">
     <h1>About us</h1>
-    <p>We are dog valkers with 3+ uears of experience with various dog breeds. We'll be glad to take your furry friends on leng stress-relieving walks regardless of weather conditions.</p>
-    <img src="../../assets/img/pets.jpg" alt="">
+    <p>We'll be glad to take your furry friends on leng stress-relieving walks regardless of weather conditions.</p>
+
+    <div class="icon__dog">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 129" id="SJZPaebaf" class="svg replaced-svg">
+        <title>Dog-Icon</title>
+        <g id="HJgWw6ebaf_rygTRxbpG" data-animator-group="true" data-animator-type="1">
+          <g id="HJgWw6ebaf">
+            <path
+              d="M85.53,20.4s12.85-2.11,20.24,11.34,15.32-8.18,3.28-16-29.15-.81-28.4-.25a19.25,19.25,0,0,1,2.47,2.19A24.43,24.43,0,0,1,85.53,20.4Z"
+              id="HyWWwagWaz"></path>
+          </g>
+        </g>
+        <g id="ByfWD6gbpM_BJHtplZpM" data-animator-group="true" data-animator-type="1">
+          <g id="ByfWD6gbpM">
+            <path
+              d="M38.88,110.26c-8.21.87-26.79.67-35.92-16.79a.63.63,0,0,0-1.19.25C1.34,100.6,7.4,123.11,43,122.45a6.41,6.41,0,0,0,2.1-7.77C43.17,109.6,38.88,110.26,38.88,110.26Z"
+              id="rJmbD6l-pG"></path>
+          </g>
+        </g>
+        <g id="Sy4WwTxbpG">
+          <path d="M64.45,20a19,19,0,0,0-22.77-1.24C29,26.7,32.76,4,46.68,3.17s23.14,11.69,22.73,12S64.45,20,64.45,20Z"
+            id="ryr-P6ebTz"></path>
+          <path
+            d="M60.77,58.32S38.17,61,36.52,116.65a6.31,6.31,0,0,0,4.34,6.18c9,3,30.93,8,57.37-1.32h0S101,110,89.3,110.13c0,0-6.83-39.73-3.15-50.41Z"
+            id="ByIWwTgZpM"></path>
+          <path d="M46.06,102.08s19.61-4.55,12.26,16.46c0,0,14-4.2,13.65,8" id="H1wWv6gW6z"></path>
+          <path d="M77.42,126.27s-2.3-15.61-4-28" id="B1uWD6gW6M"></path>
+          <path d="M83.35,104.18l1.75,10s9.57-3.8,6.07,9.16" id="SJtZv6eW6M"></path>
+          <path d="M76.74,74S77.82,89.74,89,83.83s1-13,1-13" id="B19bvax-pz"></path>
+          <path d="M84.22,72.78s4.47,3.35,3.09,7.34" id="BJoWD6xZpf"></path>
+          <path
+            d="M74.8,10.13c-13.44-.32-26,28.34-26,45.69S73,74.07,74.72,74.07c0,0,0,0,.08,0s0,0,.08,0a44.35,44.35,0,0,0,8.81-1.17c7.52-1.76,17.09-6.16,17.09-17.08C100.78,38.47,88.23,9.81,74.8,10.13Z"
+            id="Syn-D6x-6M"></path>
+          <path
+            d="M75.44,45.09C66.9,45.09,60,49.26,60,54.4s6.93,9.3,15.47,9.3,15.48-4.17,15.48-9.3S84,45.09,75.44,45.09Z"
+            id="B1aWwag-pf"></path>
+          <ellipse cx="80.71" cy="29.32" rx="2.79" ry="4.1" id="ry0bPagWaf"></ellipse>
+          <ellipse cx="80.71" cy="27.46" rx="0.82" ry="1.21" id="r11lZv6xZ6G"></ellipse>
+          <ellipse cx="69.99" cy="29.05" rx="2.79" ry="4.1" id="r1xxZwTebTz"></ellipse>
+          <ellipse cx="69.99" cy="27.18" rx="0.82" ry="1.21" id="SyWgZwpx-pM"></ellipse>
+        </g>
+      </svg>
+    </div>
+
     <h3>We guarantee</h3>
     <ul>
       <li>Provide dogs' safety and made sure that they do not endanger any other animal or human in the vicinity.</li>
@@ -45,18 +102,66 @@
       <li>Ensure that any waste on the road or sidewalk was cleaned immediately.</li>
     </ul>
   </div>
-  
+
   <div class="services" id="services">
-    <h1>Services & Price</h1>
-    <div class="services-wrapper">
+    <h1>Services</h1>
+    <!-- <div class="services-wrapper">
       <div class="services-wrapper__item">
-        <h3>Personal walk</h3>
-        <p>Does your furry friend prefer walking alone? We can provide personal walk just for him in the best way.<br><br>Price<br>120UAH per hour</p>
+        <h3>Dog Walking</h3>
+        <p>Whenever your dog needs a walk.</p>
       </div>
       <div class="services-wrapper__item">
-        <h3>Walk in group</h3>
-        <p>Your dog can join group walk. Group consists with 5 dogs max, all dogs from good family and totally healthy.<br><br>Price<br>70UAH per hour</p>
+        <h3>Pet Boarding</h3>
+        <p>Perfect if you need overnight pet care.</p>
+      </div>
+      <div class="services-wrapper__item">
+        <h3>House Sitting</h3>
+        <p>Great if you need overnight pet or house-sitting services.</p>
+      </div>
+      <div class="services-wrapper__item">
+        <h3>Pet Grooming</h3>
+        <p>Your pet needs to be groomed? Book a place at your favotite salon and have your pet taken there and then home by our walkers.</p>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="front-page__parallax" id="parallax__wrapper">
+
+  <div class="parallax__item parallax__item--walking reveal">
+    <div class="parallax__text slide">
+      <div class="parallax__text--content">
+        <h2>Dog Walking</h2>
+        <p>Whenever your dog needs a walk.</p>
       </div>
     </div>
   </div>
+
+  <div class="parallax__item parallax__item--boadring reveal">
+    <div class="parallax__text slide">
+      <div class="parallax__text--content">
+        <h2>Pet Boarding</h2>
+        <p>Perfect if you need overnight pet care.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="parallax__item parallax__item--sitting reveal">
+    <div class="parallax__text slide">
+      <div class="parallax__text--content">
+        <h2>House Sitting</h2>
+        <p>Great if you need overnight pet or house-sitting services.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="parallax__item parallax__item--grooming reveal">
+    <div class="parallax__text slide">
+      <div class="parallax__text--content">
+        <h2>Pet Grooming</h2>
+        <p>Your pet needs to be groomed? Book a place at your favotite salon and have your pet taken there and then home by our walkers.</p>
+      </div>
+    </div>
+  </div>
+
 </div>
