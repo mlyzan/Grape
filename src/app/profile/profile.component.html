@@ -6,7 +6,8 @@
       <ng-template #defaultPhoto>
         <img src="../../assets/img/default-user.png" alt="photo" class="photo">
       </ng-template>
-      <button mat-button (click)="switchToUpdate()">Update</button>
+      <i (click)="switchToUpdate()" class="material-icons profile-edit-btn"
+         matTooltip="Edit profile">edit</i>
     </div>
     <div class="card_header">
         <div class="card_header_title">
@@ -20,7 +21,7 @@
               </ng-template>
               <div class="profile">
                 <div class="profile_title"><i class="material-icons">perm_identity</i>{{user.userName}}</div>
-                <div class="profile_title"><i class="material-icons">email</i>{{user.userEmail}}</div>    
+                <div class="profile_title"><i class="material-icons">email</i>{{user.userEmail}}</div>
                 <ng-container *ngIf="updateInfo.years && updateInfo.address && updateInfo.animals">
                   <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{updateInfo.years}}</div>
                   <div class="profile_title"><i class="material-icons">location_on </i>{{updateInfo.address}}</div>
@@ -37,21 +38,21 @@
                   <ng-container *ngIf="book.isBooked && !book.isComplete">
                     <p class="response_text" >
                       {{book.sitterName}} accepted your offer.
-                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
+                      <span matTooltip="Delete offer" class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
                     <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
                   <ng-container *ngIf="!book.isBooked && !book.isComplete">
                     <p class="response_text">
                       {{book.sitterName}} not replied to your offer yet.
-                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
+                      <span matTooltip="Delete offer" class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
                     <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
                   <ng-container *ngIf="book.isComplete">
                     <p class="response_text">
-                      {{book.sitterName}} completed your order. 
-                      <span class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
+                      {{book.sitterName}} completed your order.
+                      <span matTooltip="Delete offer" class="material-icons" (click)="onDecline(book['_id'])">delete_forever</span>
                     </p>
                     <p class="message">Your message: {{book.contactInfo}} </p>
                   </ng-container>
@@ -61,6 +62,37 @@
                 <p class="empty">You have no active orders or users have not accepted your offers</p>
               </ng-template>
             </mat-tab>
-          </mat-tab-group>  
+            <mat-tab>
+              <ng-template matTabLabel>
+                <span> <i class="material-icons">assignment</i> My advert </span>
+              </ng-template>
+              <ng-container *ngIf="myOrders.length > 0; else emptyOrders">
+                <ng-container *ngFor="let order of myOrders">
+                  <mat-card class="orders">
+                    <p class="orders_title">Title: <span class="orders_descr">{{order.title}}</span></p>
+                    <p class="orders_title">Information: <span class="orders_descr">{{order.info}}</span></p>
+                    <p class="orders_title">Animals: <span class="orders_descr">{{order.pet}}</span></p>
+                    <p class="orders_title">Services: <span class="orders_descr">{{order.services}}</span></p>
+                    <p class="orders_offres">Your offers </p>
+                    <ng-container *ngIf="order.offers.length > 0; else emptyOffers">
+                      <mat-card class="book" *ngFor="let offer of order.offers">
+                        <div class="book_descr">{{getUser(offer).name}}</div>
+                        <div class="book_descr">{{getUser(offer).email}}</div>
+                        <button mat-raised-button color="primary"
+                          (click)="bookSitter(offer, order.info)"
+                        >Book</button>
+                      </mat-card>
+                    </ng-container>
+                    <ng-template #emptyOffers>
+                      <p class="empty_offers">You do not have any offers yet.</p>
+                    </ng-template>
+                  </mat-card>
+                </ng-container>
+              </ng-container>
+              <ng-template #emptyOrders>
+                <p class="empty_orders">You do not have any orders yet. You can create your order <a [routerLink]="'/board'">here</a></p>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
     </div>
 </mat-card>
