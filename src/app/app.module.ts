@@ -72,6 +72,7 @@ import { NotificationSnackBarComponent } from './notification-snack-bar/notifica
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile/profile-update/profile-update.component';
 import { ConfirmationDialogComponent } from './sitter/confirmation-dialog/confirmation-dialog.component';
+import { BookSitterComponent } from './board/book-sitter/book-sitter.component';
 
 
 
@@ -120,7 +121,8 @@ const MaterialComponents = [
     NotificationSnackBarComponent,
     ProfileComponent,
     ProfileUpdateComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    BookSitterComponent
   ],
   imports: [
     BrowserModule,

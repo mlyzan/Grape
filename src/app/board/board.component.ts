@@ -1,3 +1,4 @@
+import { loadSitters } from 'src/app/root-state/sitter/sitter.actions';
 import { getOrders } from './../root-state/board/board.selectors';
 import { Order } from './../root-state/board/board.interfaces';
 import { Observable } from 'rxjs';
@@ -16,10 +17,12 @@ export class BoardComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(loadOrders());
+  ngOnInit() {
+    this.store.dispatch(loadSitters());
+    setTimeout(() => {
+      this.store.dispatch(loadOrders());
+    }, 1500);
 
     this.orders$ = this.store.select(getOrders);
-
   }
 }

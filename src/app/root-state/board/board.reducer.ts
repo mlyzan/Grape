@@ -43,5 +43,19 @@ export const boardReducer = createReducer(
     ...state,
     loading: false,
     error: error,
-  }))
+  })),
+
+  on(boardAction.addOffer, (state, { activeSitter, orderId }) => ({
+    ...state
+  })),
+  on(boardAction.addOfferSuccess, (state, { success }) => ({
+    ...state,
+    success,
+    loading: false,
+  })),
+  on(boardAction.addOfferFail, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
 );

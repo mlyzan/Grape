@@ -14,4 +14,8 @@ export class BoardService {
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>('http://localhost:3000/api/order');
   }
+
+  addOffer(id: string, activeSitter: string): Observable<Order> {
+    return this.http.put<Order>(`http://localhost:3000/api/order/${id}`, {sitter: activeSitter});
+  }
 }
