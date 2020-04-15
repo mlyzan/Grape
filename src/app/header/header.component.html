@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="nav">
+<mat-toolbar color="primary" class="nav" (scroll)="onWindowScroll($event)">
     <mat-toolbar-row class="nav_row">
         <div>
             <a mat-button [routerLink]="'/'"><span class="material-icons">pets</span><span class="logo">Petly</span></a>

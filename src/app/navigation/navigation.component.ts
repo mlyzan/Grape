@@ -39,4 +39,11 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(["/"]);
     this.buildLinks({});
   }
+
+  scrollToElement($event, e): void {
+    if (this.router.routerState.snapshot.url === '/') {
+      $event.preventDefault();
+      document.querySelector(e).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    }
+  }
 }
