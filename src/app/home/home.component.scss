@@ -32,7 +32,7 @@
 }
 
 .wrapper {
-  width: 60%;
+  width: 50%;
   margin: auto;
   text-align: center;
 }
@@ -40,7 +40,7 @@
 h1 {
   font-size: 40px;
   font-weight: bold;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 h3 {
@@ -51,11 +51,53 @@ p {
   font-size: 19px;
 }
 
-.main-wrapper {
+.features {
   display: flex;
   justify-content: space-between;
-  &__item {
-    width: 20%;
+}
+
+.feature-info {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  padding: 0 10px;
+  text-align: center;
+  &:hover .feature-info-icon:before {
+    background-color: #9DAFBC;
+  }
+  &-icon {
+    position: relative;
+    height: 100px;
+    width: 105px;
+    font-size: 40px;
+    display: inline-block;
+    &:before {
+      position: absolute;
+      content: "";
+      height: 60%;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      z-index: -1;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0px 8px 27px 0px rgba(27, 27, 41, 0.15);
+      transition: all 0.5s ease-in-out;
+    }
+    & .mat-icon {
+      font-size: 60px;
+      color: #214d63;
+      position: absolute;
+      top: 35%;
+      left: 35%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &-title {
+    margin-bottom: 20px;
+  }
+  &-content p{
+    margin-bottom: 0;
   }
 }
 
@@ -64,20 +106,20 @@ p {
     list-style-image: url(../../assets/img/paw.png);
     list-style-position: inside;
   }
-  img {
-    width: 100%;
-    padding: 15px;
-  }
+  // img {
+  //   width: 100%;
+  //   padding: 15px;
+  // }
 }
 
-.services-wrapper {
-  display: flex;
-  &__item {
-    padding: 20px;
-    width: 40%;
-    margin: auto;
-  }
-}
+// .services-wrapper {
+//   display: flex;
+//   &__item {
+//     padding: 20px;
+//     width: 40%;
+//     margin: auto;
+//   }
+// }
 
 .icon__dog {
   .svg {
@@ -305,4 +347,63 @@ p {
     z-index: 2;
     position: relative;
     transform: rotate(90deg);
+}
+
+.front-page__parallax {
+  margin: 100px 0 0;
+}
+
+.parallax__item {
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 640px;
+  &--walking{
+    background-image: url('../../assets/img/dog_walking.png'); 
+  }
+  &--boadring{
+    background-image: url('../../assets/img/pet_boarding.jpg'); 
+  }
+  &--sitting{
+    background-image: url('../../assets/img/house_sitting.png'); 
+  }
+  &--grooming{
+    background-image: url('../../assets/img/pet_grooming.png'); 
+  }
+  &:nth-child(odd){
+    background-position: top left;
+    & .parallax__text {
+      right: 0;
+    }
+  }
+  &:nth-child(even){
+    background-position: top right;
+    & .parallax__text {
+      left: 0;
+    }
+  }
+  &:not(:last-of-type){
+    margin: 0 0 80px;
+  }
+}
+
+
+.parallax__text {
+  font-weight: 500;
+  height: 335px;
+  width: 335px;
+  padding: 0 55px 0;
+  display: block;
+  background-color: #9DAFBC;
+  position: absolute;
+  z-index: 10;
+  margin-top: -5%;
+  transition: all 2s ease;
+  &--content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &.slide {
+    transform: translateY(110%);
+  }
 }

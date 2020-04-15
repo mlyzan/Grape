@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; position: relative; }
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    position: relative; 
+    transition: all .2s .2s;
+    transition-timing-function: ease-out; 
+}
 
 .snack-success {
     background-color: #3f51b5;

@@ -13,13 +13,26 @@ export class HomeComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
-    let element = document.querySelector('.header');
-    let element2 = document.querySelector('.nav');
-    if (window.pageYOffset > element2.clientHeight + 250) {
-      element.classList.add('faded');
+    let header = document.querySelector('.header');
+    let nav = document.querySelector('.nav');
+    let body = document.querySelector('body');
+    if (window.pageYOffset > nav.clientHeight + 250) {
+      header.classList.add('faded');
+      body.classList.add('teal');
     } else {
-      element.classList.remove('faded');
+      header.classList.remove('faded');
+      body.classList.remove('teal');
     }
-  }
 
+    let text = document.querySelectorAll('.parallax__text');
+    let main = document.querySelector('.main').clientHeight + 200;
+    let item = document.querySelectorAll('.parallax__item');
+      for (let i=0; i<item.length; i++) {
+        if (window.pageYOffset > main + item[i].clientHeight) {
+          text[i].classList.remove('slide');
+        } else {
+          text[i].classList.add('slide');
+        }
+      }    
+  }
 }
