@@ -14,13 +14,16 @@ export const commonLinks = [
     href: '#services',
     text: 'Services & Prices',
   },
-  ]
-  
-  export const userLinks = [
-  ...commonLinks, 
-  ]
-  
-  export const sitterLinks = [
+];
+
+export const userLinks = [
+  {
+    link: '/board',
+    text: 'Board',
+  },
+];
+
+export const sitterLinks = [
   {
     // link: '/create-sitter',
     // text: 'Create profile',
@@ -31,4 +34,8 @@ export const commonLinks = [
     link: '/sitter',
     text: 'Your profile',
   },
-  ]
+  {
+    link: '/board',
+    text: 'Board',
+  },
+];
