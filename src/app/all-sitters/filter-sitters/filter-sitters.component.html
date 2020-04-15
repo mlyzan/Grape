@@ -4,7 +4,8 @@
   [style.width.%]="width"
   [style.height.%]="width"
 >
-  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose>
+  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose style="text-align: center;">
+    <h2 style="margin-top: 10px;">Choose filters</h2>
     <form [formGroup]="filters">
       <mat-form-field class="input-item" appearance="fill">
         <mat-label>Services provided</mat-label>
@@ -39,17 +40,17 @@
       <br />
 
       <button mat-button (click)="close(); find()">
-        Find
+        Search
         <span class="material-icons">search</span>
       </button>
       <button mat-button (click)="close(); refresh()">
-        Refresh
+        Reset
         <span class="material-icons">refresh</span>
       </button>
     </form>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle(); open()">Filters</button>
+    <button mat-button (click)="sidenav.toggle(); open()">Filters <i class="material-icons">search</i> </button>
   </mat-sidenav-content>
 </mat-sidenav-container>

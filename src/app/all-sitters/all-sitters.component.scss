@@ -1,9 +1,10 @@
 .sitter {
   display: flex;
   justify-content: flex-start;
-  width: 90%;
+  width: 65%;
+  min-height: 200px;
   margin: 25px auto;
-  background-color: #6a8caf;
+  background-color: rgb(200, 200, 200);
   .img {
     img {
       width: 120px;
@@ -57,10 +58,17 @@
 }
 
 .comment {
-  margin: 5px;
-  width: 400px;
+  margin: 30px 15px 5px 5px;
+  width: 70%;
   font-size: 1em;
-  border-radius: 10px;
+  font-weight: 600;
+}
+
+.book {
+  margin: 30px 15px 5px 5px;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .rate {
@@ -70,7 +78,40 @@
   align-items: center;
   margin: 8px 0 0 0;
   &_num {
-    color: #fff;
     font-size: 10px;
   }
+}
+
+.comments {
+  width: 97%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  &_block {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    
+    span {
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+
+    p {
+        font-style: italic;
+        font-size: 1.1em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    img {
+        margin: -5px 10px 10px -5px;
+        max-height: 50px; max-width: 50px;
+    }
+  }
+}
+
+.tab-group {
+  width: 100%;
 }
