@@ -1,5 +1,6 @@
 .card {
     display: flex;
+    position: relative;
     align-items: flex-start;
     width: 90%;
     margin: 0 auto 25px;
@@ -47,7 +48,7 @@
         }
     }
 }
-.response {
+.response, .orders {
     border: 1px solid gray;
     margin-top: 8px;
     &_text {
@@ -65,4 +66,40 @@
     margin-top: 8px;
     font-size: 14px;
     font-weight: 700;
+}
+.orders_title, .empty_orders {
+  font-weight: bold;
+}
+.orders_descr {
+  font-weight: normal;
+}
+.empty_orders {
+  margin-top: 10px;
+}
+.profile-edit-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 2.5em;
+}
+.profile-edit-btn:hover {
+  cursor: pointer;
+}
+.orders_offres {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+ }
+.book {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &_descr {
+    font-weight: bold;
+  }
+}
+.empty_offers {
+  text-align: center;
+  font-style: italic;
 }
