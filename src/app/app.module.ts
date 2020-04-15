@@ -37,6 +37,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -73,6 +74,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileUpdateComponent } from './profile/profile-update/profile-update.component';
 import { ConfirmationDialogComponent } from './sitter/confirmation-dialog/confirmation-dialog.component';
 import { BookSitterComponent } from './board/book-sitter/book-sitter.component';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -95,7 +97,9 @@ const MaterialComponents = [
   MatSnackBarModule,
   MatTooltipModule,
   MatDialogModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatNativeDateModule,
+  MatDatepickerModule
 ];
 
 @NgModule({
@@ -145,7 +149,7 @@ const MaterialComponents = [
     })
   ],
   entryComponents: [ConfirmationDialogComponent],
-  providers: [UserService, SitterService, AuthGuard, AuthService, BoardService],
+  providers: [UserService, SitterService, AuthGuard, AuthService, BoardService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

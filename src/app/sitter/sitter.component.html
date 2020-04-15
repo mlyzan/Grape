@@ -16,7 +16,7 @@
           <h2 class="title_name">{{sitter$.userName}}</h2>
           <div>{{sitter$.payment | currency}}</div>
       </div>
-      
+
       <mat-tab-group dynamicHeight (focusChange)="loadBooks()" class="tab-group">
         <mat-tab >
           <ng-template matTabLabel>
@@ -25,7 +25,7 @@
           <div class="profile">
             <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
             <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
-            <div class="profile_title"><i class="material-icons">sentiment_satisfied_alt</i>{{sitter$.years}}</div>
+            <div class="profile_title"><i class="material-icons">cake</i>{{sitter$.years | date}}</div>
             <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
             <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
             <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals.join(', ')}}</div>
@@ -40,7 +40,7 @@
             </div>
 
             <mat-accordion class="comments">
-              <mat-expansion-panel 
+              <mat-expansion-panel
                   (opened)="panelOpenState = true"
                   (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
@@ -63,13 +63,13 @@
                 </mat-card>
               </mat-expansion-panel>
             </mat-accordion>
-            
+
           </div>
         </mat-tab>
         <mat-tab class="request">
           <ng-template matTabLabel >
             <i matBadge="1" matBadgePosition="before"
-               *ngIf="!!book && !book['isComplete']; else noRequests" 
+               *ngIf="!!book && !book['isComplete']; else noRequests"
                class="material-icons">work</i>
             <ng-template #noRequests>
               <i  class="material-icons">work</i>
@@ -83,11 +83,11 @@
               </div>
               <div>
                 <span>{{book['name']}}</span>
-                <i *ngIf="isInProcess || book['isBooked']; else complete" 
+                <i *ngIf="isInProcess || book['isBooked']; else complete"
                     style="font-size: 2em; color: gold;"
                     class="material-icons">hourglass_empty</i>
                   <ng-template #complete>
-                    <i *ngIf="isCompleteClick" 
+                    <i *ngIf="isCompleteClick"
                     style="font-size: 2em; color: lawngreen;"
                     class="material-icons">done_outline</i>
                   </ng-template>
@@ -96,10 +96,10 @@
             </div>
             <div class="request_btns">
               <i class="material-icons request_btns_confirm"
-                matTooltip="Confirm" 
+                matTooltip="Confirm"
                 (click)="onConfirm(book['_id'])">add_circle_outline</i>
               <i class="material-icons request_btns_complete"
-                matTooltip="Complete" 
+                matTooltip="Complete"
                 (click)="onComplete(book['_id'])">check_circle_outline</i>
               <i class="material-icons request_btns_decline"
                 matTooltip="Decline"
@@ -122,7 +122,7 @@
           </mat-card>
 
         </mat-tab>
-      </mat-tab-group>  
+      </mat-tab-group>
     </div>
   </mat-card>
 </div>

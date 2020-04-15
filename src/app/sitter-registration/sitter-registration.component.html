@@ -83,8 +83,9 @@
           </mat-form-field><br>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your age</mat-label>
-            <input matInput formControlName="years">
-            <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+            <input matInput [matDatepicker]="years" formControlName="years">
+            <mat-datepicker-toggle matSuffix [for]="years"></mat-datepicker-toggle>
+            <mat-datepicker #years startView="year"></mat-datepicker>
           </mat-form-field>
           <br>
         </div>
@@ -97,15 +98,15 @@
       </div>
     </div>
     <div class="form-button">
-      <button mat-raised-button 
-      color="primary" 
+      <button mat-raised-button
+      color="primary"
       type="submit"
       [disabled]="!sitterPersonalInfo.valid"
       (click)="onSubmit()"
       class="btn"
       >Create!</button>
-      <button 
-      mat-raised-button 
+      <button
+      mat-raised-button
       routerLink="/all-sitters"
       class="btn">Go back</button>
     </div>

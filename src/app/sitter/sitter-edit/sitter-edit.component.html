@@ -63,8 +63,9 @@
           </mat-form-field>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your age</mat-label>
-            <input matInput formControlName="years" [ngModel]="sitter$.years">
-            <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
+            <input matInput [matDatepicker]="years" formControlName="years" [ngModel]="sitter$.years">
+            <mat-datepicker-toggle matSuffix [for]="years"></mat-datepicker-toggle>
+            <mat-datepicker #years startView="year"></mat-datepicker>
           </mat-form-field>
         </div>
       </div>
