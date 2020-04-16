@@ -95,15 +95,12 @@
               </div>
             </div>
             <div class="request_btns">
-              <i class="material-icons request_btns_confirm"
-                matTooltip="Confirm"
-                (click)="onConfirm(book['_id'])">add_circle_outline</i>
-              <i class="material-icons request_btns_complete"
-                matTooltip="Complete"
-                (click)="onComplete(book['_id'])">check_circle_outline</i>
-              <i class="material-icons request_btns_decline"
-                matTooltip="Decline"
-                (click)="onDecline(book['_id'])">highlight_off</i>
+              <button mat-raised-button 
+                  (click)="onConfirm(book['_id'])"> <mat-icon class="request_btns_confirm">add</mat-icon> Confirm</button>
+              <button mat-raised-button [disabled]="!isConfirmClick && !book['isBooked']"
+                  (click)="onComplete(book['_id'])"> <mat-icon class="request_btns_complete">done</mat-icon> Complete</button>
+              <button mat-raised-button 
+                  (click)="onDecline(book['_id'])"> <mat-icon class="request_btns_decline">clear</mat-icon> Decline</button>
             </div>
           </mat-card>
         </mat-tab>

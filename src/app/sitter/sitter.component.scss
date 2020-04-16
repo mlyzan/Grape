@@ -136,10 +136,10 @@ ngx-stars {
     align-items: center;
     padding: 10px 20px;
     &_block {
-        width: 70%;
+        width: 80%;
         margin: 10px auto 20px;
         @include block();
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
     }
     &_btns {
@@ -147,12 +147,15 @@ ngx-stars {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
-        i {
-            font-size: 3em;
-            cursor: pointer;
-            margin-right: 10px;
+        
+	button {
+            margin-right: 15px;
         }
+
+        mat-icon {
+            font-weight: 600;
+        }
+
         &_confirm {
             color: gold;
         }

@@ -27,6 +27,7 @@ export class SitterComponent implements OnInit {
   isInProcess: boolean;
   panelOpenState = false;
   isCompleteClick = false;
+  isConfirmClick = false;
 
   constructor(
     private sitterService: SitterService, 
@@ -104,6 +105,7 @@ export class SitterComponent implements OnInit {
   onConfirm(id: string) {
     this.store.dispatch(updateBookStatus(id, {isBooked: true, isComplete: false}));
     this.isInProcess = true;
+    this.isConfirmClick = true;
   }
 
   onComplete(id: string) {
