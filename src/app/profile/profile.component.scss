@@ -103,3 +103,28 @@
   text-align: center;
   font-style: italic;
 }
+
+.status-badge {
+  border: 1px solid;
+  font-size: 1em;
+  font-weight: 300;
+  padding: 1px 2px;
+  border-radius: 2px;
+  width: 55px;
+  text-align: center;
+}
+
+.active {
+  border-color: lawngreen;
+  color: lawngreen;
+}
+
+.inactive {
+  border-color: #000;
+  color: #000;
+}
+
+.pending {
+  border-color: gold;
+  color: gold;
+}
