@@ -14,7 +14,8 @@ import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces'
   styleUrls: ['./profile-update.component.scss']
 })
 export class ProfileUpdateComponent implements OnInit {
-  citiesCopy: string[];
+  cities: string[];
+  search = '';
   selectedFile: ImageSnippet;
   userId: string;
   user: UserInterfaces = {
@@ -52,7 +53,7 @@ export class ProfileUpdateComponent implements OnInit {
     this._store.pipe(
       select(getActiveId)
     ).subscribe(res => this.userId = res);
-    this.citiesCopy = CITIES;
+    this.cities = CITIES;
     this._store.pipe(
       select(getUserInfo)
     ).subscribe(res => this.user = res);
@@ -70,9 +71,5 @@ export class ProfileUpdateComponent implements OnInit {
     setTimeout(() => {
       this._router.navigateByUrl('profile')
     }, 2000)
-  }
-
-  filterCities(event): void {
-    this.citiesCopy = CITIES.filter(e => e.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0);
   }
 }

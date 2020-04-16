@@ -32,10 +32,13 @@
 
       <mat-form-field class="input-item" appearance="fill">
         <mat-label>Your city</mat-label>
-        <mat-select formControlName="address">
-          <mat-option value="Lviv">Lviv</mat-option>
-          <mat-option value="Kyiv">Kyiv</mat-option>
-        </mat-select>
+        <input matInput formControlName="address" [matAutocomplete]="address"
+               placeholder="City" [(ngModel)]="search">
+        <mat-autocomplete #address="matAutocomplete">
+          <mat-option *ngFor="let city of cities | filter:search" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
       <br />
 

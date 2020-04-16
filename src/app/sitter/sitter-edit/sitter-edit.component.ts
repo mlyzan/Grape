@@ -15,7 +15,8 @@ import {CITIES} from '../../cities';
   styleUrls: ['./sitter-edit.component.scss']
 })
 export class SitterEditComponent implements OnInit {
-  citiesCopy: string[];
+  cities: string[];
+  search = '';
   activeId: string;
   sitter$: Sitter;
   showSuccessMessage: boolean = false;
@@ -44,7 +45,7 @@ export class SitterEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.citiesCopy = CITIES;
+    this.cities = CITIES;
   }
 
   onUpdate() {
@@ -64,9 +65,5 @@ export class SitterEditComponent implements OnInit {
 
   onCancel() {
     this.router.navigateByUrl('sitter');
-  }
-
-  filterCities(event): void {
-    this.citiesCopy = CITIES.filter(e => e.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0)
   }
 }

@@ -53,10 +53,10 @@
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your address</mat-label>
             <input matInput formControlName="address" [matAutocomplete]="address"
-                   placeholder="City"  (input)="filterCities($event)" [ngModel]="sitter$.address" >
+                   placeholder="City"  [(ngModel)]="search" [ngModel]="sitter$.address" >
             <mat-icon matSuffix>location_on</mat-icon>
             <mat-autocomplete #address="matAutocomplete">
-              <mat-option *ngFor="let city of citiesCopy" [value]="city">
+              <mat-option *ngFor="let city of cities | filter:search" [value]="city">
                 {{city}}
               </mat-option>
             </mat-autocomplete>

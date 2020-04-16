@@ -75,6 +75,7 @@ import { ProfileUpdateComponent } from './profile/profile-update/profile-update.
 import { ConfirmationDialogComponent } from './sitter/confirmation-dialog/confirmation-dialog.component';
 import { BookSitterComponent } from './board/book-sitter/book-sitter.component';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -126,7 +127,8 @@ const MaterialComponents = [
     ProfileComponent,
     ProfileUpdateComponent,
     ConfirmationDialogComponent,
-    BookSitterComponent
+    BookSitterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

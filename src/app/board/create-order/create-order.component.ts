@@ -8,6 +8,7 @@ import {
   loadOrders,
 } from 'src/app/root-state/board/board.actions';
 import { BoardService } from './../../root-state/board/board.service';
+import {CITIES} from '../../cities';
 
 @Component({
   selector: 'grape-create-order',
@@ -22,8 +23,9 @@ export class CreateOrderComponent implements OnInit {
     services: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
   });
-
-  userId: any
+  cities: string[];
+  userId: any;
+  search = '';
 
   constructor(
     public orderService: BoardService,
@@ -45,5 +47,6 @@ export class CreateOrderComponent implements OnInit {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
+    this.cities = CITIES;
   }
 }

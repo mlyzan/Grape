@@ -17,7 +17,8 @@ export class ImageSnippet {
   styleUrls: ['./sitter-registration.component.scss']
 })
 export class SitterRegistrationComponent implements OnInit {
-  citiesCopy: string[];
+  cities: string[];
+  search = '';
   sitterPersonalInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
@@ -51,7 +52,7 @@ export class SitterRegistrationComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.citiesCopy = CITIES;
+    this.cities = CITIES;
   }
 
   onSubmit() {
@@ -66,9 +67,5 @@ export class SitterRegistrationComponent implements OnInit {
     setTimeout(() => {
       this.router.navigateByUrl('/all-sitters');
     }, 3000);
-  }
-
-  filterCities(event): void {
-    this.citiesCopy = CITIES.filter(e => e.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0);
   }
 }

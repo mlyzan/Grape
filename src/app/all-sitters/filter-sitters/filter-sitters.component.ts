@@ -1,13 +1,14 @@
-import { 
-  filterSittersByAddress, 
-  filterSittersByAnimals, 
-  filterSittersByServices, 
-  refreshFilteredSitters 
+import {
+  filterSittersByAddress,
+  filterSittersByAnimals,
+  filterSittersByServices,
+  refreshFilteredSitters
 } from './../../root-state/sitter/sitter.actions';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { MatSidenav } from '@angular/material/sidenav';
+import {CITIES} from '../../cities';
 
 
 
@@ -20,7 +21,8 @@ export class FilterSittersComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   width = 10;
-
+  cities: string[];
+  search = '';
   open() {
     this.width = 100;
   }
@@ -63,6 +65,6 @@ export class FilterSittersComponent implements OnInit {
  }
 
   ngOnInit(): void {
+    this.cities = CITIES;
   }
-
 }
