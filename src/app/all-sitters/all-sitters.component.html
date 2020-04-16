@@ -12,7 +12,7 @@
           <div class="rate">
             <ngx-stars [readonly]="activeId && sitter.userId !== activeId ? false : true" [maxStars]="5" [initialStars]="sitter.rate"
             [color]="'#FFC92A'" [wholeStars]="false" (ratingOutput)="onRatingSet(sitter.userId, $event)"></ngx-stars>
-            <div *ngIf="sitter.rate > 0.4" class="rate_num">Rate: {{sitter.rate | number:'1.0-2'}}</div>
+            <div *ngIf="sitter.rate > 0.4" class="rate_num">Rate: {{sitter.rate | number:'1.0-1'}}</div>
           </div>
         </ng-container>
         <ng-template #defaultPhoto>
@@ -67,7 +67,7 @@
               <mat-divider style="width: 87%;"></mat-divider>
               <mat-form-field class="comment">
                 <mat-label>Leave a comment</mat-label>
-                <input [disabled]="sitter.userId === activeId" 
+                <input [disabled]="sitter.userId === activeId"
                       #newComment matInput maxlength="100" #message />
                 <mat-hint align="start">{{ message.value.length }} / 100</mat-hint>
               </mat-form-field>
@@ -91,7 +91,7 @@
                   </div>
                 </mat-card>
               </div>
-            </div> 
+            </div>
           </mat-card-content>
         </mat-tab>
         <mat-tab  label="Book">
@@ -102,7 +102,7 @@
             </h1>
           </div>
           <ng-template #notBooked>
-            <div style="width: 80%; margin: 20px auto; text-align: center;"> 
+            <div style="width: 80%; margin: 20px auto; text-align: center;">
               <h1><i style="font-size: 2em;" class="material-icons">work</i>
                 Sitter is free now. You can book him.
               </h1>
@@ -117,7 +117,7 @@
                 </mat-expansion-panel-header>
                 <mat-form-field class="book">
                   <mat-label>You can write here</mat-label>
-                  <textarea #newBook style="resize: none;" 
+                  <textarea #newBook style="resize: none;"
                             rows="4" cols="50" matInput maxlength="200" #message
                             [disabled]="sitter.userId === activeId || isBooked"></textarea>
                   <mat-hint align="end">{{ message.value.length }} / 200</mat-hint>
@@ -127,7 +127,7 @@
                     mat-raised-button
                     [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
                 <i class="material-icons">pets</i>Book Sitter
-                </button>                
+                </button>
               </mat-expansion-panel>
             </mat-accordion>
           </ng-template>

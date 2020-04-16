@@ -6,7 +6,7 @@ import { updateProfile } from 'src/app/root-state/user/user.actions';
 import { getActiveId, getUserInfo } from 'src/app/root-state/user/user.selectors';
 import { ImageSnippet } from './../../sitter-registration/sitter-registration.component';
 import {CITIES} from '../../cities';
-import {UserInterfaces} from '../../root-state/user/user.interfaces';
+import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces';
 
 @Component({
   selector: 'app-profile-update',
@@ -17,12 +17,22 @@ export class ProfileUpdateComponent implements OnInit {
   citiesCopy: string[];
   selectedFile: ImageSnippet;
   userId: string;
-  user: UserInterfaces;
+  user: UserInterfaces = {
+    userId: null,
+    userName: null,
+    userEmail: null,
+    updateInfo: {
+      animals: null,
+      years: null,
+      address: null,
+      photo: null
+    }
+  };
   profileUpdate = new FormGroup({
-    animals: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    years: new FormControl('', Validators.required),
-    photo: new FormControl('', Validators.required)
+    animals: new FormControl(this.user.updateInfo.animals, Validators.required),
+    address: new FormControl(this.user.updateInfo.years, Validators.required),
+    years: new FormControl(this.user.updateInfo.years, Validators.required),
+    photo: new FormControl(this.user.updateInfo.photo, Validators.required)
   });
 
   constructor(private _router: Router, private _store: Store) { }
@@ -55,7 +65,7 @@ export class ProfileUpdateComponent implements OnInit {
   onUpdate(): void {
     this._store.dispatch(updateProfile({
       ...this.profileUpdate.value,
-      photo: this.selectedFile.src
+      photo: this.selectedFile ? this.selectedFile.src : this.user.updateInfo.photo
     }, this.userId));
     setTimeout(() => {
       this._router.navigateByUrl('profile')
