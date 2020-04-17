@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { UserInterfaces} from '../root-state/user/user.interfaces';
 import {getUserOrders} from '../root-state/board/board.selectors';
 import {Order} from '../root-state/board/board.interfaces';
-import {loadOrders} from '../root-state/board/board.actions';
+import {loadOrders, deleteOrder, removeOffer} from '../root-state/board/board.actions';
 
 @Component({
   selector: 'grape-profile',
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  bookSitter(id: string, info: string ) {
+  bookSitter(id: string, info: string, orderId: string ) {
     this._store.dispatch(addBook({
       contactInfo: info,
       userId: id,
@@ -93,6 +93,45 @@ export class ProfileComponent implements OnInit {
       whoBookedId: this.activeId,
       sitterName: this.getUser(id).name
     }));
+    setTimeout(() => {
+      this._store.dispatch(removeOffer(orderId, id));
+    }, 500);
+    setTimeout(() => {
+      this._store.dispatch(loadOrders());
+      this._store.pipe(
+        select(getUserOrders(this.activeId))
+      ).subscribe(res => this.myOrders = res);
+    }, 1000);
+  }
+
+  onDeleteOffer(id: string) {
+    console.log(id);
+    this._store.dispatch(deleteOrder(id));
+    setTimeout(() => {
+      this._store.dispatch(loadOrders());
+      this._store.pipe(
+        select(getUserOrders(this.activeId))
+      ).subscribe(res => this.myOrders = res);
+    }, 1000);
+  }
+
+  onRemoveOffer(id: string, sitterId: string) {
+    this._store.dispatch(removeOffer(id, sitterId));
+    setTimeout(() => {
+      this._store.dispatch(loadOrders());
+      this._store.pipe(
+        select(getUserOrders(this.activeId))
+      ).subscribe(res => this.myOrders = res);
+    }, 1000)
+  }
+
+  loadOrders() {
+    this._store.dispatch(loadOrders());
+    this._store.dispatch(loadSitters());
+    this._store.dispatch(loadBooks());
+    this._store.pipe(
+      select(getUserOrders(this.activeId))
+    ).subscribe(res => this.myOrders = res);
   }
 
 }

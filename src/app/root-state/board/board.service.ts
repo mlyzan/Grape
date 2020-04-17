@@ -18,4 +18,12 @@ export class BoardService {
   addOffer(id: string, activeSitter: string): Observable<Order> {
     return this.http.put<Order>(`https://safe-sea-95431.herokuapp.com/api/order/${id}`, {sitter: activeSitter});
   }
+
+  deleteOrder(id: string): Observable<object> {
+    return this.http.delete(`https://safe-sea-95431.herokuapp.com/api/order/${id}`);
+  }
+
+  removeOffer(id: string, sitterId: string): Observable<object> {
+    return this.http.put(`https://safe-sea-95431.herokuapp.com/api/order/offer/${id}`, {sitterId: sitterId});
+  }
 }

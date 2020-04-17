@@ -58,4 +58,34 @@ export const boardReducer = createReducer(
     loading: false,
     error,
   })),
+
+  on(boardAction.deleteOrder, (state) => ({
+    ...state,
+    loading:true
+  })),
+  on(boardAction.deleteOrderSuccess, (state, {success}) => ({
+    ...state,
+    success,
+    loading: false
+  })),
+  on(boardAction.deleteOrderFail, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error: error
+  })),
+
+  on(boardAction.removeOffer, (state) => ({
+    ...state,
+    loading:true
+  })),
+  on(boardAction.removeOfferSuccess, (state, {success}) => ({
+    ...state,
+    success,
+    loading: false
+  })),
+  on(boardAction.removeOfferFail, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error: error
+  })),
 );

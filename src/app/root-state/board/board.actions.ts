@@ -38,3 +38,29 @@ export const addOfferFail = createAction(
   '[Board] add offer fail',
   (error: Error) => ({ error })
 );
+/////////////////////////////////////////
+export const deleteOrder = createAction(
+  '[Board] add offer for order',
+  (id: string) => ({id}) 
+);
+export const deleteOrderSuccess = createAction(
+  '[Board] add offer success',
+  (success: object) => ({ success })
+);
+export const deleteOrderFail = createAction(
+  '[Board] add offer fail',
+  (error: Error) => ({ error })
+);
+/////////////////////////////////////////
+export const removeOffer = createAction(
+  '[Board] remove offer',
+  (id: string, sitterId: string) => ({id, sitterId}) 
+);
+export const removeOfferSuccess = createAction(
+  '[Board] remove offer success',
+  (success: object) => ({ success })
+);
+export const removeOfferFail = createAction(
+  '[Board] remove offer fail',
+  (error: Error) => ({ error })
+);
