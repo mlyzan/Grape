@@ -18,7 +18,7 @@
           <mat-label>Your address</mat-label>
           <input matInput formControlName="address" [matAutocomplete]="address"
                  placeholder="City"  [(ngModel)]="search">
-          <mat-icon matSuffix>location_on</mat-icon>
+          <mat-icon color="primary" matSuffix>location_on</mat-icon>
           <mat-autocomplete #address="matAutocomplete">
             <mat-option *ngFor="let city of cities | filter:search" [value]="city">
               {{city}}
@@ -29,15 +29,15 @@
         <mat-form-field class="input-item" appearance="fill">
           <mat-label>Your birthday</mat-label>
           <input matInput [matDatepicker]="years" formControlName="years" [ngModel]="user.updateInfo.years"/>
-          <mat-datepicker-toggle matSuffix [for]="years"></mat-datepicker-toggle>
-          <mat-datepicker #years startView="year"></mat-datepicker>
+          <mat-datepicker-toggle color="primary" matSuffix [for]="years"></mat-datepicker-toggle>
+          <mat-datepicker color="primary" #years startView="year"></mat-datepicker>
         </mat-form-field>
 
       </div>
       <div class="sitter-photo">
         <label>
           <button mat-button type="button" (click)="imageInput.click()">
-            Update photo<i class="material-icons">get_app</i>
+            Update photo<mat-icon class="material-icons" color="primary">get_app</mat-icon>
           </button>
           <br />
           <input
@@ -82,7 +82,7 @@
       >
         Update
       </button>
-      <button mat-raised-button (click)="onCancel()" color="warn">
+      <button mat-raised-button (click)="onCancel()" color="accent">
         Cancel
       </button>
     </div>

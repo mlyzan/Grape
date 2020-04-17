@@ -9,11 +9,11 @@ $teal-app-theme: mat-light-theme($teal-app-primary, $teal-app-accent, $teal-app-
 @include angular-material-theme($teal-app-theme);
 
 
-body { 
-    height: calc(100vh - 100px); 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    position: relative; 
+body {
+    height: calc(100vh - 100px);
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    position: relative;
 }
 
 .login-bg {
@@ -26,8 +26,11 @@ body {
 }
 
 .snack-success {
-    background-color: #3f51b5;
+    background-color: #00695c;
 }
 .snack-error {
-    background-color: tomato;
+    background-color: #bf360c;
+}
+svg {
+  color: #00695c;
 }
