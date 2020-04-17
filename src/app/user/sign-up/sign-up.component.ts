@@ -18,6 +18,11 @@ export class SignUpComponent implements OnInit {
   constructor(public userService: UserService, private router: Router, private store: Store) { }
 
   ngOnInit(): void {
+    document.body.classList.add('signup-bg');
+  }
+
+  ngOnDestroy() {
+    document.body.classList.remove('signup-bg');
   }
 
   onSubmit(form: NgForm) {
