@@ -5,11 +5,18 @@ import { UpdateInfo } from './user.interfaces';
 export interface UserState {
   userInfo: {userId: string, userName: string, userEmail: string, isSitter?: boolean, updateInfo: UpdateInfo},
   loading: boolean;
-  error: Error; 
-} 
+  error: Error;
+}
 
 export const initialState = {
-  userInfo: {userId: null, userName: null, userEmail: null, isSitter: null, updateInfo: null},
+  userInfo: {userId: '', userName: '', userEmail: '', isSitter: null,
+    updateInfo: {
+      animals: [],
+      years: '',
+      address: '',
+      photo: ''
+    }
+    },
   loading: true,
   error: null
 }

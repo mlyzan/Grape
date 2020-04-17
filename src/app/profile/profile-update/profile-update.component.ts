@@ -15,23 +15,23 @@ import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces'
 })
 export class ProfileUpdateComponent implements OnInit {
   cities: string[];
-  search = '';
   selectedFile: ImageSnippet;
   userId: string;
   user: UserInterfaces = {
-    userId: null,
-    userName: null,
-    userEmail: null,
+    userId: '',
+    userName: '',
+    userEmail: '',
     updateInfo: {
-      animals: null,
-      years: null,
-      address: null,
-      photo: null
+      animals: [],
+      years: '',
+      address: '',
+      photo: ''
     }
   };
+  search = this.user.updateInfo.address;
   profileUpdate = new FormGroup({
     animals: new FormControl(this.user.updateInfo.animals, Validators.required),
-    address: new FormControl(this.user.updateInfo.years, Validators.required),
+    address: new FormControl(this.user.updateInfo.address, Validators.required),
     years: new FormControl(this.user.updateInfo.years, Validators.required),
     photo: new FormControl(this.user.updateInfo.photo, Validators.required)
   });
@@ -56,7 +56,10 @@ export class ProfileUpdateComponent implements OnInit {
     this.cities = CITIES;
     this._store.pipe(
       select(getUserInfo)
-    ).subscribe(res => this.user = res);
+    ).subscribe(res => {
+      this.user = res
+      this.search = res.updateInfo.address
+    });
   }
 
   onCancel(): void {

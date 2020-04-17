@@ -6,8 +6,7 @@ import {getActiveSitterById, getBooksByCustomerId} from '../root-state/sitter/si
 import { getActiveId } from '../root-state/user/user.selectors';
 import { Book } from '../root-state/sitter/sitter.interfaces';
 import { Router } from '@angular/router';
-import { UpdateInfo } from '../root-state/user/user.interfaces';
-import {Observable} from 'rxjs';
+import { UserInterfaces} from '../root-state/user/user.interfaces';
 import {getUserOrders} from '../root-state/board/board.selectors';
 import {Order} from '../root-state/board/board.interfaces';
 import {loadOrders} from '../root-state/board/board.actions';
@@ -18,13 +17,17 @@ import {loadOrders} from '../root-state/board/board.actions';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  updateInfo: UpdateInfo = {
-    animals: null,
-    photo: null,
-    years: null,
-    address: null
+  user: UserInterfaces = {
+    userId: '',
+    userName: '',
+    userEmail: '',
+    updateInfo: {
+      animals: [],
+      photo: '',
+      years: '',
+      address: ''
+    }
   };
-  user: any;
   responses: Book[] = [];
   activeId: string;
   myOrders: Order[] = [];
@@ -45,13 +48,6 @@ export class ProfileComponent implements OnInit {
         select(getBooksByCustomerId(this.activeId))
       ).subscribe(res => this.responses = res);
     }, 1000);
-    this._store.pipe(
-      select(getUpdateInfo)
-    ).subscribe(res => {
-      if(res) {
-        this.updateInfo = res;
-      }
-    });
     setTimeout(() => {
       this._store.pipe(
         select(getUserOrders(this.activeId))

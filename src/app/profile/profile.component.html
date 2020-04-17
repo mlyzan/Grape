@@ -1,7 +1,7 @@
 <mat-card class="card">
     <div class="img">
-      <ng-container *ngIf="updateInfo.photo; else defaultPhoto">
-        <img src="{{updateInfo.photo}}" alt="photo" class="photo">
+      <ng-container *ngIf="user.updateInfo.photo; else defaultPhoto">
+        <img src="{{user.updateInfo.photo}}" alt="photo" class="photo">
       </ng-container>
       <ng-template #defaultPhoto>
         <img src="../../assets/img/default-user.png" alt="photo" class="photo">
@@ -22,10 +22,10 @@
               <div class="profile">
                 <div class="profile_title"><i class="material-icons">perm_identity</i>{{user.userName}}</div>
                 <div class="profile_title"><i class="material-icons">email</i>{{user.userEmail}}</div>
-                <ng-container *ngIf="updateInfo.years && updateInfo.address && updateInfo.animals">
-                  <div class="profile_title"><i class="material-icons">cake</i>{{updateInfo.years | date}}</div>
-                  <div class="profile_title"><i class="material-icons">location_on </i>{{updateInfo.address}}</div>
-                  <div class="profile_title"><i class="material-icons">pets</i>{{updateInfo.animals.join(', ')}}</div>
+                <ng-container *ngIf="user.updateInfo.years">
+                  <div class="profile_title"><i class="material-icons">cake</i>{{user.updateInfo.years | date}}</div>
+                  <div class="profile_title"><i class="material-icons">location_on </i>{{user.updateInfo.address}}</div>
+                  <div class="profile_title"><i class="material-icons">pets</i>{{user.updateInfo.animals.join(', ')}}</div>
                 </ng-container>
               </div>
             </mat-tab>
