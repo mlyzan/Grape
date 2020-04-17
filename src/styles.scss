@@ -1,14 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
-    height: 100%; 
-}
+@import '~@angular/material/theming';
+@include mat-core();
+$teal-app-primary: mat-palette($mat-teal, 800);
+$teal-app-accent:  mat-palette($mat-yellow, 700);
+$teal-app-warn:    mat-palette($mat-deep-orange, 900);
+$teal-app-theme: mat-light-theme($teal-app-primary, $teal-app-accent, $teal-app-warn);
+@include angular-material-theme($teal-app-theme);
+
+
 body { 
+    height: calc(100vh - 100px); 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     position: relative; 
-    transition: all .2s .2s;
-    transition-timing-function: ease-out; 
+}
+
+.login-bg {
+    background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
+}
+
+.signup-bg {
+    background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
+    background-size: 35%;
 }
 
 .snack-success {

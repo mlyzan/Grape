@@ -18,17 +18,14 @@ export class HomeComponent implements OnInit {
     let body = document.querySelector('body');
     if (window.pageYOffset > nav.clientHeight + 250) {
       header.classList.add('faded');
-      body.classList.add('teal');
     } else {
       header.classList.remove('faded');
-      body.classList.remove('teal');
     }
 
     let text = document.querySelectorAll('.parallax__text');
-    let main = document.querySelector('.main').clientHeight + 200;
     let item = document.querySelectorAll('.parallax__item');
       for (let i=0; i<item.length; i++) {
-        if (window.pageYOffset > main + item[i].clientHeight) {
+        if (window.pageYOffset > ((item[i] as HTMLElement).offsetTop - window.innerHeight*0.55)) {
           text[i].classList.remove('slide');
         } else {
           text[i].classList.add('slide');

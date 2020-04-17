@@ -32,11 +32,12 @@ export class SignInComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    
+    document.body.classList.add('login-bg');
   }
 
   ngOnDestroy() {
     this.subscSuccess.unsubscribe();
+    document.body.classList.remove('login-bg');
   }
 
   onSubmit(form: NgForm) {
