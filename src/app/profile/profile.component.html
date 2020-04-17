@@ -14,7 +14,7 @@
             <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
             <h2 class="title_name">{{user.userName}}</h2>
         </div>
-        <mat-tab-group dynamicHeight>
+        <mat-tab-group dynamicHeight (focusChange)="loadOrders()">
             <mat-tab>
               <ng-template matTabLabel>
                 <span><i class="material-icons">account_circle</i> My profile </span>
@@ -74,13 +74,15 @@
                     <p class="orders_title">Animals: <span class="orders_descr">{{order.pet}}</span></p>
                     <p class="orders_title">Services: <span class="orders_descr">{{order.services}}</span></p>
                     <p class="orders_offres">Your offers </p>
+                    <i class="material-icons clear_icon-block" (click)="onDeleteOffer(order._id)">clear</i>
                     <ng-container *ngIf="order.offers.length > 0; else emptyOffers">
                       <mat-card class="book" *ngFor="let offer of order.offers">
                         <div class="book_descr">{{getUser(offer).name}}</div>
                         <div class="book_descr">{{getUser(offer).email}}</div>
                         <button mat-raised-button color="primary"
-                          (click)="bookSitter(offer, order.info)"
+                          (click)="bookSitter(offer, order.info, order._id)"
                         >Book</button>
+                        <i class="material-icons clear_icon-elem" (click)="onRemoveOffer(order._id, offer)">clear</i>
                       </mat-card>
                     </ng-container>
                     <ng-template #emptyOffers>
