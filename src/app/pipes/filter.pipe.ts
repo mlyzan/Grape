@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
   transform(cities = [], value = ''): Array<string> {
     if (!cities || cities.length === 0 || !value) {
-      return [];
+      return cities;
     } else {
       return cities.filter(e => e.toLowerCase().indexOf(value.toLowerCase()) >= 0);
     }
