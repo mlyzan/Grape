@@ -1,16 +1,13 @@
 export const commonLinks = [
   {
-    className: 'navigation__link',
     href: '#home',
     text: 'How it works',
   },
   {
-    className: 'navigation__link',
     href: '#about',
     text: 'About us',
   },
   {
-    className: 'navigation__link',
     href: '#services',
     text: 'Services & Prices',
   },
@@ -18,9 +15,18 @@ export const commonLinks = [
 
 export const userLinks = [
   {
+    link: '/all-sitters',
+    text: 'Find sitters',
+  }, {
     link: '/board',
     text: 'Board',
-  },
+  }, {
+    link: '/profile',
+    text: 'Profile',
+  }, {
+    link: '/create-sitter',
+    text: 'Become Sitter',
+  }
 ];
 
 export const sitterLinks = [
@@ -29,11 +35,11 @@ export const sitterLinks = [
     text: 'Find sitters',
   },
   {
-    link: '/sitter',
-    text: 'Your profile',
-  },
-  {
     link: '/board',
     text: 'Board',
+  },
+  {
+    link: '/sitter',
+    text: 'Your profile',    
   },
 ];
