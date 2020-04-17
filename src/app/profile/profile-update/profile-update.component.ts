@@ -14,7 +14,7 @@ import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces'
   styleUrls: ['./profile-update.component.scss']
 })
 export class ProfileUpdateComponent implements OnInit {
-  cities: string[];
+  cities: string[] = [];
   selectedFile: ImageSnippet;
   userId: string;
   user: UserInterfaces = {
@@ -43,7 +43,7 @@ export class ProfileUpdateComponent implements OnInit {
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
-      this.selectedFile = new ImageSnippet(event.target.result, file)
+      this.selectedFile = new ImageSnippet(event.target.result, file);
     });
 
     reader.readAsDataURL(file);
@@ -57,8 +57,8 @@ export class ProfileUpdateComponent implements OnInit {
     this._store.pipe(
       select(getUserInfo)
     ).subscribe(res => {
-      this.user = res
-      this.search = res.updateInfo.address
+      this.user = res;
+      this.search = res.updateInfo.address;
     });
   }
 
