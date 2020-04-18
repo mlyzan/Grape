@@ -83,12 +83,12 @@
               </div>
               <div>
                 <span>{{book['name']}}</span>
-                <mat-icon color="primary" *ngIf="isInProcess || book['isBooked']; else complete"
-                    style="font-size: 2em; color: gold;"
+                <mat-icon color="accent" *ngIf="isInProcess || book['isBooked']; else complete"
+                    style="font-size: 2em;"
                     class="material-icons">hourglass_empty</mat-icon>
                   <ng-template #complete>
                     <mat-icon color="primary" *ngIf="isCompleteClick"
-                    style="font-size: 2em; color: lawngreen;"
+                    style="font-size: 2em;"
                     class="material-icons">done_outline</mat-icon>
                   </ng-template>
                 <p>{{book['contactInfo']}}</p>
@@ -96,11 +96,11 @@
             </div>
             <div class="request_btns">
               <button mat-raised-button
-                  (click)="onConfirm(book['_id'])"> <mat-icon color="accent" class="request_btns_confirm">add</mat-icon> Confirm</button>
+                  (click)="onConfirm(book['_id'])"> <mat-icon color="accent">add</mat-icon> Confirm</button>
               <button mat-raised-button [disabled]="!isConfirmClick && !book['isBooked']"
-                  (click)="onComplete(book['_id'])"> <mat-icon color="primary" class="request_btns_complete">done</mat-icon> Complete</button>
+                  (click)="onComplete(book['_id'])"> <mat-icon color="primary">done</mat-icon> Complete</button>
               <button mat-raised-button
-                  (click)="onDecline(book['_id'])"> <mat-icon color="warn" class="request_btns_decline">clear</mat-icon> Decline</button>
+                  (click)="onDecline(book['_id'])"> <mat-icon color="warn">clear</mat-icon> Decline</button>
             </div>
           </mat-card>
         </mat-tab>
