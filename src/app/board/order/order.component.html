@@ -5,31 +5,31 @@
         mat-card-image
         src="https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png"
         alt="Photo"
+        class="user-photo"
       />
     </div>
     <mat-card-title>{{ order.title }}</mat-card-title>
     <mat-card-subtitle>{{ order.services }}</mat-card-subtitle>
-    <mat-card-subtitle>{{ order.pet }}</mat-card-subtitle>
-    <mat-card-subtitle>{{ order.city }}</mat-card-subtitle>
+    <mat-card-actions
+      class="action-card"
+      *ngIf="userId !== order.userId && userInfo.isSitter"
+    >
+      <button mat-button (click)="onOffer(order._id)" class="btn-offer">
+        make offer
+      </button>
+    </mat-card-actions>
   </mat-card-header>
 
-  <mat-tab-group>
-    <mat-tab label="Additional info">
-      <mat-card-content>
-        <p>{{ order.info }}</p>
-      </mat-card-content>
-    </mat-tab>
-    <mat-tab label="Offer services" *ngIf="userId !== order.userId">
-      <mat-card-actions class="action-card">
-        <button mat-button (click)="onOffer(order._id)">
-          make offer
-        </button>
-      </mat-card-actions>
-    </mat-tab>
-    <mat-tab label="Sitters" *ngIf="userId === order.userId">
-      <div *ngFor="let sitterId of order.offers">
-        <app-book-sitter [sitter]="sitterId"></app-book-sitter>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+  <br />
+
+  <div class="add-info">
+    <mat-card-content>City: {{ order.city }}</mat-card-content>
+    <mat-card-content>Pet: {{ order.pet }}</mat-card-content>
+  </div>
+
+  <hr />
+
+  <mat-card-content>
+    <p>{{ order.info }}</p>
+  </mat-card-content>
 </mat-card>

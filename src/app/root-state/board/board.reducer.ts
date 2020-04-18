@@ -19,6 +19,10 @@ export const initialState = {
 export const boardReducer = createReducer(
   initialState,
 
+  on(boardAction.createOrder, (state) => ({
+    ...state,
+    loading: true,
+  })),
   on(boardAction.createOrderSuccess, (state, { success }) => ({
     ...state,
     success,
@@ -46,7 +50,7 @@ export const boardReducer = createReducer(
   })),
 
   on(boardAction.addOffer, (state, { activeSitter, orderId }) => ({
-    ...state
+    ...state,
   })),
   on(boardAction.addOfferSuccess, (state, { success }) => ({
     ...state,
@@ -61,31 +65,31 @@ export const boardReducer = createReducer(
 
   on(boardAction.deleteOrder, (state) => ({
     ...state,
-    loading:true
+    loading: true,
   })),
-  on(boardAction.deleteOrderSuccess, (state, {success}) => ({
+  on(boardAction.deleteOrderSuccess, (state, { success }) => ({
     ...state,
     success,
-    loading: false
+    loading: false,
   })),
   on(boardAction.deleteOrderFail, (state, { error }) => ({
     ...state,
     loading: false,
-    error: error
+    error: error,
   })),
 
   on(boardAction.removeOffer, (state) => ({
     ...state,
-    loading:true
+    loading: true,
   })),
-  on(boardAction.removeOfferSuccess, (state, {success}) => ({
+  on(boardAction.removeOfferSuccess, (state, { success }) => ({
     ...state,
     success,
-    loading: false
+    loading: false,
   })),
   on(boardAction.removeOfferFail, (state, { error }) => ({
     ...state,
     loading: false,
-    error: error
-  })),
+    error: error,
+  }))
 );
