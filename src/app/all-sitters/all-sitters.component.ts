@@ -7,7 +7,7 @@ import { loadSitters, addComment, loadComments, getSitterCommentsId,
         updateSitterRate, addBook, loadBooks } from '../root-state/sitter/sitter.actions';
 import { getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId,
         getBookById, getSuccess } from '../root-state/sitter/sitter.selectors';
-import { getActiveName, getActiveId } from '../root-state/user/user.selectors';
+import { getActiveName, getActiveId, getUserInfo } from '../root-state/user/user.selectors';
 
 @Component({
   selector: 'grape-all-sitters',
@@ -25,6 +25,7 @@ export class AllSittersComponent implements OnInit {
   activeId: string;
   isBooked: boolean; bookId: string;
   panelOpenState = false;
+  isSitter: boolean;
   constructor(private sitterService: SitterService, private store: Store) { 
     this.store.pipe(
       select(getAllSitters)
@@ -46,6 +47,10 @@ export class AllSittersComponent implements OnInit {
 
     this.sitters$ = this.store.select(getAllSitters);
     this.error$ = this.store.select(getError);
+
+    this.store.pipe(
+      select(getUserInfo)
+    ).subscribe(userInfo => this.isSitter = userInfo.isSitter);
   }
 
   onShow(userId: string) {
