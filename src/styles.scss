@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import '~@angular/material/theming';
 @include mat-core();
 $teal-app-primary: mat-palette($mat-teal, 800);
@@ -8,21 +6,40 @@ $teal-app-warn:    mat-palette($mat-deep-orange, 900);
 $teal-app-theme: mat-light-theme($teal-app-primary, $teal-app-accent, $teal-app-warn);
 @include angular-material-theme($teal-app-theme);
 
-
-body {
-    height: calc(100vh - 100px);
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+body { 
+    height: calc(100vh - 100px); 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
     position: relative;
 }
 
-.login-bg {
-    background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
+@media screen and (min-width: 1400px) {
+    .login-bg {
+        background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
+    }
+    
+    .signup-bg {
+        background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
+        background-size: 35%;
+    }
 }
 
-.signup-bg {
-    background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
-    background-size: 35%;
+@media screen and (max-width: 1399px) {
+    .login-bg {
+        background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
+        background-size: 55%;
+    }
+    
+    .signup-bg {
+        background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
+        background-size: 30%;
+    }
+}
+
+.sitter-registration-bg {
+    background: url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
+    url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
+    url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
 }
 .sitter-registration-bg {
     background: url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
