@@ -25,6 +25,10 @@ body {
     background-size: 35%;
 }
 
+.overlay {
+    background: url('./assets/img/spinner.gif') no-repeat center;
+}
+
 .snack-success {
     background-color: #00695c;
 }
