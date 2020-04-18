@@ -2,9 +2,9 @@
   class="example-container"
   (backdropClick)="close()"
   [style.width.%]="width"
-  [style.height.%]="width"
+  [style.height.vh]="height"
 >
-  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose style="text-align: center;">
+  <mat-sidenav #sidenav (keydown.escape)="close()" isableClose style="text-align: center;" class="sidenav">
     <h2 style="margin-top: 10px;">Choose filters</h2>
     <form [formGroup]="filters">
       <mat-form-field class="input-item" appearance="fill">

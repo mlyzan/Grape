@@ -1,15 +1,15 @@
 <form [formGroup]="orderInfo" class="form-container">
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
-    <input matInput formControlName="title"/>
+    <input matInput formControlName="title" />
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill" >
+  <mat-form-field appearance="fill">
     <mat-label>Additional information</mat-label>
     <textarea matInput formControlName="info"></textarea>
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill" >
+  <mat-form-field appearance="fill">
     <mat-label>Select type of pet</mat-label>
     <mat-select formControlName="pet">
       <mat-option value="Dog">Dog</mat-option>
@@ -30,13 +30,18 @@
     </mat-select>
   </mat-form-field>
   <br />
-  <mat-form-field appearance="fill" >
+  <mat-form-field appearance="fill">
     <mat-label>Your city</mat-label>
-    <input matInput formControlName="city" [matAutocomplete]="address"
-           placeholder="City" [(ngModel)]="search" >
+    <input
+      matInput
+      formControlName="city"
+      [matAutocomplete]="address"
+      placeholder="City"
+      [(ngModel)]="search"
+    />
     <mat-autocomplete #address="matAutocomplete">
-      <mat-option *ngFor="let city of cities | filter:search" [value]="city">
-        {{city}}
+      <mat-option *ngFor="let city of cities | filter: search" [value]="city">
+        {{ city }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

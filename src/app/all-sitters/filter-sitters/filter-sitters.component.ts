@@ -21,10 +21,13 @@ export class FilterSittersComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   width = 10;
+  height = 10;
   cities: string[];
   search = '';
+
   open() {
     this.width = 100;
+    this.height = 500;
   }
 
   close() {
