@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
@@ -16,7 +16,7 @@ export class ImageSnippet {
   templateUrl: './sitter-registration.component.html',
   styleUrls: ['./sitter-registration.component.scss']
 })
-export class SitterRegistrationComponent implements OnInit {
+export class SitterRegistrationComponent implements OnInit, OnDestroy {
   cities: string[];
   search = '';
   sitterPersonalInfo = new FormGroup({
@@ -53,8 +53,11 @@ export class SitterRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.cities = CITIES;
+    document.body.classList.add('sitter-registration-bg');    
   }
-
+  ngOnDestroy() {
+    document.body.classList.remove('sitter-registration-bg');    
+  }
   onSubmit() {
     this.store.dispatch(createSitter({
       ...this.sitterPersonalInfo.value,

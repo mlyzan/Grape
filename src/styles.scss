@@ -24,6 +24,11 @@ body {
     background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
     background-size: 35%;
 }
+.sitter-registration-bg {
+    background: url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
+    url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
+    url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
+}
 
 .overlay {
     background: url('./assets/img/spinner.gif') no-repeat center;
@@ -35,6 +40,36 @@ body {
 .snack-error {
     background-color: #bf360c;
 }
+
+.timepicker {
+
+    .timepicker__header {
+        background-color: rgb(0, 105, 92) !important;
+    }
+    
+    .clock-face__clock-hand {
+        background-color: rgb(0, 105, 92) !important;
+    
+        &::after {
+            background-color: rgb(0, 105, 92) !important;
+        }
+    
+        &::before {
+            border-color: rgb(0, 105, 92) !important;
+        }
+    }
+    
+    .clock-face__number {
+        > span.active {
+            background-color: rgb(0, 105, 92) !important;
+        }
+    }
+    
+    button:not(.timepicker-dial__item) {
+        color: rgb(0, 105, 92) !important;
+    }
+}
+
 svg {
   color: #00695c;
 }
