@@ -28,7 +28,7 @@
 }
 .profile {
     margin-top: 8px;
-    i {
+    .material-icons {
         margin-right: 10px;
     }
     &_title {
@@ -126,7 +126,7 @@
 
 .pending {
   border-color: gold;
-  color: gold; 
+  color: gold;
 }
 
 .clear_icon-block {

@@ -44,16 +44,16 @@
 
       <button mat-button (click)="close(); find()">
         Search
-        <span class="material-icons">search</span>
+        <mat-icon color="primary" class="material-icons">search</mat-icon>
       </button>
       <button mat-button (click)="close(); refresh()">
         Reset
-        <span class="material-icons">refresh</span>
+        <mat-icon color="primary" class="material-icons">refresh</mat-icon>
       </button>
     </form>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle(); open()">Filters <i class="material-icons">search</i> </button>
+    <button mat-button (click)="sidenav.toggle(); open()">Filters <mat-icon color="primary" class="material-icons">search</mat-icon> </button>
   </mat-sidenav-content>
 </mat-sidenav-container>

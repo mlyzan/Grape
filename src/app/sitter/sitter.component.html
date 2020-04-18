@@ -5,14 +5,14 @@
       <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="sitter$.rate" [size]=2
       [color]="'#FFC92A'" [wholeStars]="false"></ngx-stars>
       <div *ngIf="sitter$.rate > 0.4" class="rate_num">Rate: {{sitter$.rate | number:'1.0-2'}}/5</div>
-      <i (click)="switchToEdit()" class="material-icons profile-edit-btn"
-           matTooltip="Edit profile">edit</i>
-      <i (click)="openDialog()" class="material-icons profile-delete-btn"
-          matTooltip="Delete profile">delete_forever</i>
+      <mat-icon color="primary" (click)="switchToEdit()" class="material-icons profile-edit-btn"
+           matTooltip="Edit profile">edit</mat-icon>
+      <mat-icon color="primary" (click)="openDialog()" class="material-icons profile-delete-btn"
+          matTooltip="Delete profile">delete_forever</mat-icon>
     </div>
     <div class="profile-container">
       <div class="card_header">
-          <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+          <mat-icon color="primary" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
           <h2 class="title_name">{{sitter$.userName}}</h2>
           <div>{{sitter$.payment | currency}}</div>
       </div>
@@ -20,20 +20,20 @@
       <mat-tab-group dynamicHeight (focusChange)="loadBooks()" class="tab-group">
         <mat-tab >
           <ng-template matTabLabel>
-            <span><i class="material-icons">account_circle</i> My profile </span>
+            <span><mat-icon color="primary" class="material-icons">account_circle</mat-icon> My profile </span>
           </ng-template>
           <div class="profile">
-            <div class="profile_title"><i class="material-icons">perm_identity</i>{{sitter$.userName}}</div>
-            <div class="profile_title"><i class="material-icons">email</i>{{sitter$.userEmail}}</div>
-            <div class="profile_title"><i class="material-icons">cake</i>{{sitter$.years | date}}</div>
-            <div class="profile_title"><i class="material-icons">location_on </i>{{sitter$.address}}</div>
-            <div class="profile_title"><i class="material-icons">attach_money</i>{{sitter$.payment | currency}}</div>
-            <div class="profile_title"><i class="material-icons">pets</i>{{sitter$.animals.join(', ')}}</div>
-            <div class="profile_title"><i class="material-icons">settings</i>{{sitter$.services.join(', ')}}</div>
-            <div class="profile_title"><i class="material-icons">schedule</i>From {{sitter$.availabilityFrom}} to {{sitter$.availabilityTo}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">perm_identity</mat-icon>{{sitter$.userName}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">email</mat-icon>{{sitter$.userEmail}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">cake</mat-icon>{{sitter$.years | date}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">location_on </mat-icon>{{sitter$.address}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">attach_money</mat-icon>{{sitter$.payment | currency}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">pets</mat-icon>{{sitter$.animals.join(', ')}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">settings</mat-icon>{{sitter$.services.join(', ')}}</div>
+            <div class="profile_title"><mat-icon color="primary" class="material-icons">schedule</mat-icon>From {{sitter$.availabilityFrom}} to {{sitter$.availabilityTo}}</div>
             <div class="profile_about">
               <div class="profile_about_header">
-                <i class="material-icons"> info</i>
+                <mat-icon color="primary" class="material-icons"> info</mat-icon>
                 About me
               </div>
               <div class='profile_about_descr'>{{sitter$.information}}</div>
@@ -45,7 +45,7 @@
                   (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <i class="material-icons">comment</i>
+                    <mat-icon color="primary" class="material-icons">comment</mat-icon>
                     Reviews
                   </mat-panel-title>
                   <mat-panel-description>
@@ -68,11 +68,11 @@
         </mat-tab>
         <mat-tab class="request">
           <ng-template matTabLabel >
-            <i matBadge="1" matBadgePosition="before"
+            <mat-icon color="primary" matBadge="1" matBadgePosition="before"
                *ngIf="!!book && !book['isComplete']; else noRequests"
-               class="material-icons">work</i>
+               class="material-icons">work</mat-icon>
             <ng-template #noRequests>
-              <i  class="material-icons">work</i>
+              <mat-icon color="primary"  class="material-icons">work</mat-icon>
             </ng-template>
             My requests
           </ng-template>
@@ -83,37 +83,37 @@
               </div>
               <div>
                 <span>{{book['name']}}</span>
-                <i *ngIf="isInProcess || book['isBooked']; else complete"
-                    style="font-size: 2em; color: gold;"
-                    class="material-icons">hourglass_empty</i>
+                <mat-icon color="accent" *ngIf="isInProcess || book['isBooked']; else complete"
+                    style="font-size: 2em;"
+                    class="material-icons">hourglass_empty</mat-icon>
                   <ng-template #complete>
-                    <i *ngIf="isCompleteClick"
-                    style="font-size: 2em; color: lawngreen;"
-                    class="material-icons">done_outline</i>
+                    <mat-icon color="primary" *ngIf="isCompleteClick"
+                    style="font-size: 2em;"
+                    class="material-icons">done_outline</mat-icon>
                   </ng-template>
                 <p>{{book['contactInfo']}}</p>
               </div>
             </div>
             <div class="request_btns">
-              <button mat-raised-button 
-                  (click)="onConfirm(book['_id'])"> <mat-icon class="request_btns_confirm">add</mat-icon> Confirm</button>
+              <button mat-raised-button
+                  (click)="onConfirm(book['_id'])"> <mat-icon color="accent">add</mat-icon> Confirm</button>
               <button mat-raised-button [disabled]="!isConfirmClick && !book['isBooked']"
-                  (click)="onComplete(book['_id'])"> <mat-icon class="request_btns_complete">done</mat-icon> Complete</button>
-              <button mat-raised-button 
-                  (click)="onDecline(book['_id'])"> <mat-icon class="request_btns_decline">clear</mat-icon> Decline</button>
+                  (click)="onComplete(book['_id'])"> <mat-icon color="primary">done</mat-icon> Complete</button>
+              <button mat-raised-button
+                  (click)="onDecline(book['_id'])"> <mat-icon color="warn">clear</mat-icon> Decline</button>
             </div>
           </mat-card>
         </mat-tab>
         <mat-tab class="history">
           <ng-template matTabLabel>
-            <span><i class="material-icons">history</i> My history </span>
+            <span><mat-icon color="primary" class="material-icons">history</mat-icon> My history </span>
           </ng-template>
           <mat-card *ngFor="let book of books" class="history_block">
             <div>
               <img mat-card-image src="../../assets/img/default-user.png" alt="user">
             </div>
             <div>
-              <span><i class="material-icons"> done_outline</i>{{book.name}}</span>
+              <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>{{book.name}}</span>
               <p>{{book.contactInfo}}</p>
             </div>
           </mat-card>

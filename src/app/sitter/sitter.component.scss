@@ -13,7 +13,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    
+
     img {
         margin: -5px 10px 10px -5px;
         max-height: 50px; max-width: 50px;
@@ -51,7 +51,7 @@
 
 .profile {
     margin-left: 10px;
-    i {
+    .mat-icon {
         margin-right: 10px;
     }
     &_title {
@@ -88,7 +88,7 @@ ngx-stars {
 }
 
 
-.profile-edit-btn {   
+.profile-edit-btn {
     position: absolute;
     right: 70px;
     top: 10px;
@@ -123,7 +123,7 @@ ngx-stars {
         margin: 10px auto 20px;
         @include block();
         i {
-            font-size: 2em; 
+            font-size: 2em;
             color: lawngreen;
         }
     }
@@ -147,23 +147,13 @@ ngx-stars {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        
+
 	button {
             margin-right: 15px;
         }
 
         mat-icon {
             font-weight: 600;
-        }
-
-        &_confirm {
-            color: gold;
-        }
-        &_complete {
-            color: lawngreen;
-        }
-        &_decline {
-            color: red;
         }
     }
 }
