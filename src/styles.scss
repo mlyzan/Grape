@@ -9,11 +9,11 @@ $teal-app-theme: mat-light-theme($teal-app-primary, $teal-app-accent, $teal-app-
 @include angular-material-theme($teal-app-theme);
 
 
-body { 
-    height: calc(100vh - 100px); 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    position: relative; 
+body {
+    height: calc(100vh - 100px);
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    position: relative;
 }
 
 .login-bg {
@@ -29,11 +29,16 @@ body {
     url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
     url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
 }
+
+.overlay {
+    background: url('./assets/img/spinner.gif') no-repeat center;
+}
+
 .snack-success {
-    background-color: #3f51b5;
+    background-color: #00695c;
 }
 .snack-error {
-    background-color: tomato;
+    background-color: #bf360c;
 }
 
 .timepicker {
@@ -63,4 +68,18 @@ body {
     button:not(.timepicker-dial__item) {
         color: rgb(0, 105, 92) !important;
     }
+}
+
+svg {
+  color: #00695c;
+}
+html::-webkit-scrollbar {
+  width: 20px;
+  height: 20px;
+}
+html::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear,left top,left bottom,from(#00695c),to(#fbc02d));
+  background: linear-gradient(180deg,#00695c,#fbc02d);
+  border-radius: 30px;
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
 }

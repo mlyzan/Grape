@@ -28,28 +28,28 @@
         <mat-tab label="Sitter Info">
           <mat-card-content class="description">
             <mat-card-title class="name">
-              <i class="material-icons">person_pin</i>
+              <mat-icon color="primary" class="material-icons">person_pin</mat-icon>
               {{ sitter.userName }}
             </mat-card-title>
             <mat-card-content class="information">
               <div class="payment">
-                <i class="material-icons">attach_money</i>
+                <mat-icon color="primary" class="material-icons">attach_money</mat-icon>
                 {{ sitter.payment | currency }} per hour
               </div>
               <div class="location">
-                <i class="material-icons">location_on</i>
+                <mat-icon color="primary" class="material-icons">location_on</mat-icon>
                 {{ sitter.address }}
               </div>
               <div class="animals">
-                <i class="material-icons">pets</i>
+                <mat-icon color="primary" class="material-icons">pets</mat-icon>
                 {{ sitter.animals.join(', ') }}
               </div>
               <div class="services">
-                <i class="material-icons">room_service</i>
+                <mat-icon color="primary" class="material-icons">room_service</mat-icon>
                 {{ sitter.services.join(', ') }}
               </div>
               <div class="about">
-                <i class="material-icons"> create</i>
+                <mat-icon color="primary" class="material-icons"> info</mat-icon>
                 {{ sitter.information }}
               </div>
             </mat-card-content>
@@ -59,7 +59,7 @@
               color="primary"
               (click)="onShow(sitter.userId)"
             >
-              <i class="material-icons">pets</i>Show comments
+              <mat-icon class="material-icons">pets</mat-icon>Show comments
             </button>
 
             <div *ngIf="isShowComments && sitter.userId === currentSitterCommentId">
@@ -77,7 +77,7 @@
                   onSubmit(newComment.value, sitter.userId); newComment.value = ''
                 "
                 [disabled]="sitter.userId === activeId"
-              ><i class="material-icons" style="margin-right: 5px;">comment</i>
+              ><mat-icon color="primary" class="material-icons" style="margin-right: 5px;">comment</mat-icon>
                 Add comment
               </button>
               <div *ngIf="isShowComments && comments.length > 0" class="comments">
@@ -96,16 +96,16 @@
         </mat-tab>
         <mat-tab  label="Book">
           <div style="width: 80%; margin: 20px auto; text-align: center;">
-            <h1 *ngIf="isBooked && sitter.userId === bookId; else notBooked">
-              <i style="font-size: 2em;" class="material-icons">work_off</i>
+            <h2 *ngIf="isBooked && sitter.userId === bookId; else notBooked">
+              <mat-icon color="primary" style="font-size: 2em;" class="material-icons">work_off</mat-icon>
               Sorry, this sitter is busy now.
-            </h1>
+            </h2>
           </div>
           <ng-template #notBooked>
-            <div style="width: 80%; margin: 20px auto; text-align: center;">
-              <h1><i style="font-size: 2em;" class="material-icons">work</i>
+            <div class="book-block" style="width: 80%; margin: 20px auto; text-align: center;">
+              <h2><mat-icon color="primary" style="font-size: 2em;" class="material-icons work-icon">work</mat-icon>
                 Sitter is free now. You can book him.
-              </h1>
+              </h2>
             </div>
             <mat-accordion >
               <mat-expansion-panel style="width: 80%; margin: 20px auto;"
@@ -126,7 +126,7 @@
                     (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
                     mat-raised-button
                     [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
-                <i class="material-icons">pets</i>Book Sitter
+                <mat-icon color="primary" class="material-icons">pets</mat-icon>Book Sitter
                 </button>
               </mat-expansion-panel>
             </mat-accordion>

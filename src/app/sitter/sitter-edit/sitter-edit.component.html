@@ -25,7 +25,7 @@
             </mat-select>
           </mat-form-field>
           <div class="input-item time">
-              <mat-form-field class="min-time-example"appearance="fill" >
+              <mat-form-field class="min-time-example" appearance="fill" >
                 <input placeholder=""
                   formControlName="availabilityFrom"
                   matInput
@@ -33,7 +33,7 @@
                   [ngxTimepicker]="min" [format]="24" [min]="'00:00'"  readonly>
                 <ngx-material-timepicker #min></ngx-material-timepicker>
               </mat-form-field>
-            <mat-form-field class="max-time-example"appearance="fill" >
+            <mat-form-field class="max-time-example" appearance="fill" >
               <input placeholder=" "
                 formControlName="availabilityTo"
                 matInput
@@ -48,13 +48,13 @@
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Specify your desired payment</mat-label>
             <input  type="number" matInput formControlName ="payment" [ngModel]="sitter$.payment">
-            <mat-icon matSuffix> monetization_on</mat-icon>
+            <mat-icon color="primary" matSuffix> monetization_on</mat-icon>
           </mat-form-field>
           <mat-form-field class="input-item"appearance="fill">
             <mat-label>Your address</mat-label>
             <input matInput formControlName="address" [matAutocomplete]="address"
                    placeholder="City"  [(ngModel)]="search" [ngModel]="sitter$.address" >
-            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-icon color="primary" matSuffix>location_on</mat-icon>
             <mat-autocomplete #address="matAutocomplete">
               <mat-option *ngFor="let city of cities | filter:search" [value]="city">
                 {{city}}
