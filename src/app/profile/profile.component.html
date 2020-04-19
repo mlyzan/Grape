@@ -37,6 +37,12 @@
                 <mat-card class="response" *ngFor="let book of responses">
                   <ng-container *ngIf="book.isBooked && !book.isComplete">
                     <p class="response_text" >
+                      <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                        <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                      </ng-container>
+                      <ng-template #emptyOfferPhoto>
+                        <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                      </ng-template>
                       {{book.sitterName}} accepted your offer. <span class="status-badge active">Active</span>
                       <mat-icon matTooltip="Delete offer" class="material-icons" color="primary" (click)="onDecline(book['_id'])">delete_forever</mat-icon>
                     </p>
@@ -44,6 +50,12 @@
                   </ng-container>
                   <ng-container *ngIf="!book.isBooked && !book.isComplete">
                     <p class="response_text">
+                      <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                        <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                      </ng-container>
+                      <ng-template #emptyOfferPhoto>
+                        <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                      </ng-template>
                       {{book.sitterName}} not replied to your offer yet. <span class="status-badge pending">Pending</span>
                       <mat-icon color="accent" matTooltip="Delete offer" class="material-icons" (click)="onDecline(book['_id'])">delete_forever</mat-icon>
                     </p>
@@ -51,6 +63,12 @@
                   </ng-container>
                   <ng-container *ngIf="book.isComplete">
                     <p class="response_text">
+                      <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                        <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                      </ng-container>
+                      <ng-template #emptyOfferPhoto>
+                        <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                      </ng-template>
                       {{book.sitterName}} completed your order. <span class="status-badge inactive">Inactive</span>
                       <mat-icon matTooltip="Delete offer" class="material-icons" color="primary" (click)="onDecline(book['_id'])">delete_forever</mat-icon>
                     </p>
@@ -59,7 +77,7 @@
                 </mat-card>
               </ng-container>
               <ng-template #empty>
-                <p class="empty">You have no active orders or users have not accepted your offers</p>
+                <p class="empty">You don't have active orders or users have not accepted your offers</p>
               </ng-template>
             </mat-tab>
             <mat-tab>
@@ -73,10 +91,16 @@
                     <p class="orders_title">Information: <span class="orders_descr">{{order.info}}</span></p>
                     <p class="orders_title">Animals: <span class="orders_descr">{{order.pet}}</span></p>
                     <p class="orders_title">Services: <span class="orders_descr">{{order.services}}</span></p>
-                    <p class="orders_offres">Your offers </p>
+                    <p class="orders_offers">Your offers </p>
                     <mat-icon class="material-icons clear_icon-block" color="accent" matTooltip="Delete advert" (click)="onDeleteOffer(order._id)">clear</mat-icon>
                     <ng-container *ngIf="order.offers.length > 0; else emptyOffers">
                       <mat-card class="book" *ngFor="let offer of order.offers">
+                        <ng-container *ngIf="getUser(offer).photo; else emptyOfferPhoto">
+                          <img class="offer-photo" src="{{getUser(offer).photo}}" alt="photo">
+                        </ng-container>
+                        <ng-template #emptyOfferPhoto>
+                          <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                        </ng-template>
                         <div class="book_descr">{{getUser(offer).name}}</div>
                         <div class="book_descr">{{getUser(offer).email}}</div>
                         <button mat-raised-button color="primary"

@@ -70,16 +70,18 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser(id: string) {
-    let name: string, email: string;
+    let name: string, email: string, photo: string;
     this._store.pipe(
       select(getActiveSitterById(id))
     ).subscribe(res => {
       name = res.userName;
       email = res.userEmail;
+      photo = res.photo;
     });
     return {
       name,
-      email
+      email,
+      photo
     }
   }
 
