@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Sitter, Comment } from '../root-state/sitter/sitter.interfaces';
 import { SitterService } from '../root-state/sitter/sitter.service';
 import { Store, select } from '@ngrx/store';
-import { loadSitters, addComment, loadComments, getSitterCommentsId, 
+import { loadSitters, addComment, loadComments, getSitterCommentsId,
         updateSitterRate, addBook, loadBooks } from '../root-state/sitter/sitter.actions';
 import { getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId,
         getBookById, getSuccess } from '../root-state/sitter/sitter.selectors';
@@ -27,7 +27,7 @@ export class AllSittersComponent implements OnInit {
   isBooked: boolean; bookId: string;
   panelOpenState = false;
   isSitter: boolean;
-  constructor(private sitterService: SitterService, private store: Store, private router: Router) { 
+  constructor(private sitterService: SitterService, private store: Store, private router: Router) {
     this.store.pipe(
       select(getAllSitters)
     ).subscribe(sitters => this.sittersArray = sitters );
@@ -61,7 +61,7 @@ export class AllSittersComponent implements OnInit {
     ).subscribe(comments => this.comments = comments);
     this.store.pipe(
       select(getCurrentSitterCommentsId)
-    ).subscribe(id => this.currentSitterCommentId = id); 
+    ).subscribe(id => this.currentSitterCommentId = id);
       this.isShowComments = !this.isShowComments;
   }
 
@@ -77,7 +77,7 @@ export class AllSittersComponent implements OnInit {
         select(getCommentsById(id))
       ).subscribe(comments => this.comments = comments);
     },1500)
- 
+
   }
 
   onRatingSet(id: string, rate: number) {
@@ -113,8 +113,19 @@ export class AllSittersComponent implements OnInit {
         this.isBooked = book.isBooked;
         this.bookId = book.userId;
       }
-      
+
     });
   }
 
+  isSitterBooked(id: string): boolean {
+    let isBook: boolean;
+    this.store.pipe(
+      select(getBookById(id))
+    ).subscribe(res => {
+      if (res) {
+        isBook = res.isBooked;
+      }
+    });
+    return isBook;
+  }
 }
