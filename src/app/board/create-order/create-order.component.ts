@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { NotificationSnackBarMessage } from './../../notification-snack-bar/notification-snack-bar-message';
-
-import {
-  createOrder,
-  loadOrders,
-} from 'src/app/root-state/board/board.actions';
+import { createOrder, loadOrders} from 'src/app/root-state/board/board.actions';
 import { BoardService } from './../../root-state/board/board.service';
 import { CITIES } from '../../cities';
+import { getUserInfo } from 'src/app/root-state/user/user.selectors';
 
 @Component({
   selector: 'grape-create-order',
@@ -27,6 +24,8 @@ export class CreateOrderComponent implements OnInit {
   cities: string[];
   userId: any;
   search = '';
+  name: string;
+  photo: string;
 
   constructor(
     public orderService: BoardService,
@@ -49,6 +48,8 @@ export class CreateOrderComponent implements OnInit {
         createOrder({
           ...this.orderInfo.value,
           userId: this.userId,
+          userName: this.name,
+          userPhoto: this.photo
         })
       );
       this._NSBM.showSuccess('Order has been created');
@@ -61,5 +62,13 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.cities = CITIES;
+    this.store.pipe(
+      select(getUserInfo)
+    ).subscribe(userInfo => {
+      if(!userInfo.isSitter) {
+        this.name = userInfo.userName;
+        this.photo = userInfo.updateInfo.photo;
+      }
+    });
   }
 }

@@ -10,14 +10,21 @@
 
 .user-photo {
   border-radius: 50%;
+  width: 70px;
+  height: 70px;
 }
 
 .add-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .btn-offer {
   background-color: rgb(0, 105, 92);
   color: #fff;
+}
+
+.example-header-image {
+  display: flex;
+  flex-direction: column;
 }
