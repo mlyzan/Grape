@@ -64,7 +64,6 @@ export class BoardEffects {
       ofType(boardAction.removeOffer),
       switchMap(({id, sitterId}) =>
           this.boardService.removeOffer(id, sitterId).pipe(
-            tap(() => this._NSBM.showSuccess('Offer successfully removed')),
             map(res => boardAction.removeOfferSuccess(res)),
             catchError(error => { 
               this._NSBM.showError('Error! Can`t remove an offer');
