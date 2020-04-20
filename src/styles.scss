@@ -27,11 +27,11 @@ body {
 @media screen and (max-width: 1399px) {
     .login-bg {
         background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
-        background-size: 55%;
+        background-size: 50%;
     }
     
     .signup-bg {
-        background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
+        background: url('./assets/img/signup_bg.jpg') no-repeat 15% 100%;
         background-size: 30%;
     }
 }

@@ -13,6 +13,15 @@ mat-form-field {
   min-width: 220px ;
 }
 
+.filters {
+  position: fixed;
+  top: 50%;
+  transform: rotate(-90deg);
+  border: 1px solid #00695c;
+  font-size: 20px;
+  padding: 5px 20px;
+}
+
 .sidenav {
   position: fixed;
 }
