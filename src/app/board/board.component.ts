@@ -1,9 +1,10 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { getUserInfo } from './../root-state/user/user.selectors';
 import { loadSitters } from 'src/app/root-state/sitter/sitter.actions';
 import { getOrders } from './../root-state/board/board.selectors';
 import { Order } from './../root-state/board/board.interfaces';
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { loadOrders } from '../root-state/board/board.actions';
 
 @Component({
@@ -14,6 +15,7 @@ import { loadOrders } from '../root-state/board/board.actions';
 export class BoardComponent implements OnInit {
   orders$: Observable<Order[]>;
   showFiller = false;
+  userInfo: any;
 
   constructor(private store: Store) {}
 
@@ -24,5 +26,9 @@ export class BoardComponent implements OnInit {
     }, 1500);
 
     this.orders$ = this.store.select(getOrders);
+
+    this.store
+      .pipe(select(getUserInfo))
+      .subscribe((userInfo) => (this.userInfo = userInfo));
   }
 }

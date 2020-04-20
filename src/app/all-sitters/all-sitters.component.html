@@ -100,8 +100,8 @@
           </div>
           <ng-template #notSitter>
             <div style="width: 80%; margin: 20px auto; text-align: center;">
-              <h2 *ngIf="isBooked && sitter.userId === bookId; else notBooked">
-                <mat-icon color="primary" style="font-size: 2em;" class="material-icons">work_off</mat-icon>
+              <h2 *ngIf="isSitterBooked(sitter.userId); else notBooked">
+                <mat-icon color="primary" style="font-size: 2em; margin-right: 15px;" class="material-icons">work_off</mat-icon>
                 Sorry, this sitter is busy now.
               </h2>
             </div>

@@ -8,4 +8,6 @@ export interface Order {
   sitters: string;
   _id: string;
   offers: string[];
+  userName: string; 
+  userPhoto: string;
 }

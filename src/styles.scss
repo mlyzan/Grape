@@ -41,11 +41,6 @@ body {
     url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
     url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
 }
-.sitter-registration-bg {
-    background: url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
-    url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
-    url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
-}
 
 .overlay {
     background: url('./assets/img/spinner.gif') no-repeat center;
@@ -90,11 +85,11 @@ body {
 svg {
   color: #00695c;
 }
-html::-webkit-scrollbar {
+html::-webkit-scrollbar, div::-webkit-scrollbar {
   width: 20px;
   height: 20px;
 }
-html::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb, div::-webkit-scrollbar {
   background: -webkit-gradient(linear,left top,left bottom,from(#00695c),to(#fbc02d));
   background: linear-gradient(180deg,#00695c,#fbc02d);
   border-radius: 30px;
