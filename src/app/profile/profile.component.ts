@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { getUserInfo, getUpdateInfo } from '../root-state/user/user.selectors';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Store, select} from '@ngrx/store';
+import {getUserInfo, getUpdateInfo} from '../root-state/user/user.selectors';
 import {loadBooks, declineBook, loadSitters, addBook} from '../root-state/sitter/sitter.actions';
 import {getActiveSitterById, getBooksByCustomerId} from '../root-state/sitter/sitter.selectors';
-import { getActiveId } from '../root-state/user/user.selectors';
-import { Book } from '../root-state/sitter/sitter.interfaces';
-import { Router } from '@angular/router';
-import { UserInterfaces} from '../root-state/user/user.interfaces';
+import {getActiveId} from '../root-state/user/user.selectors';
+import {Book} from '../root-state/sitter/sitter.interfaces';
+import {Router} from '@angular/router';
+import {UserInterfaces} from '../root-state/user/user.interfaces';
 import {getUserOrders} from '../root-state/board/board.selectors';
 import {Order} from '../root-state/board/board.interfaces';
 import {loadOrders, deleteOrder, removeOffer} from '../root-state/board/board.actions';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'grape-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
   user: UserInterfaces = {
     userId: '',
     userName: '',
@@ -31,61 +33,70 @@ export class ProfileComponent implements OnInit {
   responses: Book[] = [];
   activeId: string;
   myOrders: Order[] = [];
-  constructor(private _store: Store, private _router: Router) { }
+
+  constructor(private _store: Store, private _router: Router) {
+  }
 
   ngOnInit(): void {
     this._store.dispatch(loadSitters());
     this._store.dispatch(loadBooks());
     this._store.dispatch(loadOrders());
-    this._store.pipe(
+
+    this.subscriptions.push(this._store.pipe(
       select(getActiveId)
-    ).subscribe(res => this.activeId = res);
-    this._store.pipe(
+    ).subscribe(res => this.activeId = res));
+
+    this.subscriptions.push(this._store.pipe(
       select(getUserInfo)
-    ).subscribe(res => this.user = res);
+    ).subscribe(res => this.user = res));
+
     setTimeout(() => {
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getBooksByCustomerId(this.activeId))
-      ).subscribe(res => this.responses = res);
+      ).subscribe(res => this.responses = res));
     }, 1000);
     setTimeout(() => {
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getUserOrders(this.activeId))
-      ).subscribe(res => this.myOrders = res);
+      ).subscribe(res => this.myOrders = res));
     }, 1500);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onDecline(id: string): void {
     this._store.dispatch(declineBook(id));
     setTimeout(() => {
       this._store.dispatch(loadBooks());
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getBooksByCustomerId(this.activeId))
-      ).subscribe(res => this.responses = res);
-    }, 1000)
+      ).subscribe(res => this.responses = res));
+    }, 1000);
   }
 
   switchToUpdate(): void {
-    this._router.navigateByUrl('profile-update')
+    this._router.navigateByUrl('profile-update');
   }
 
   getUser(id: string) {
     let name: string, email: string, photo: string;
-    this._store.pipe(
+    this.subscriptions.push(this._store.pipe(
       select(getActiveSitterById(id))
     ).subscribe(res => {
       name = res.userName;
       email = res.userEmail;
       photo = res.photo;
-    });
+    }));
     return {
       name,
       email,
       photo
-    }
+    };
   }
 
-  bookSitter(id: string, info: string, orderId: string ) {
+  bookSitter(id: string, info: string, orderId: string) {
     this._store.dispatch(addBook({
       contactInfo: info,
       userId: id,
@@ -100,20 +111,19 @@ export class ProfileComponent implements OnInit {
     }, 500);
     setTimeout(() => {
       this._store.dispatch(loadOrders());
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getUserOrders(this.activeId))
-      ).subscribe(res => this.myOrders = res);
+      ).subscribe(res => this.myOrders = res));
     }, 1000);
   }
 
   onDeleteOffer(id: string) {
-    console.log(id);
     this._store.dispatch(deleteOrder(id));
     setTimeout(() => {
       this._store.dispatch(loadOrders());
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getUserOrders(this.activeId))
-      ).subscribe(res => this.myOrders = res);
+      ).subscribe(res => this.myOrders = res));
     }, 1000);
   }
 
@@ -121,19 +131,20 @@ export class ProfileComponent implements OnInit {
     this._store.dispatch(removeOffer(id, sitterId));
     setTimeout(() => {
       this._store.dispatch(loadOrders());
-      this._store.pipe(
+      this.subscriptions.push(this._store.pipe(
         select(getUserOrders(this.activeId))
-      ).subscribe(res => this.myOrders = res);
-    }, 1000)
+      ).subscribe(res => this.myOrders = res));
+    }, 1000);
   }
 
   loadOrders() {
     this._store.dispatch(loadOrders());
     this._store.dispatch(loadSitters());
     this._store.dispatch(loadBooks());
-    this._store.pipe(
+
+    this.subscriptions.push(this._store.pipe(
       select(getUserOrders(this.activeId))
-    ).subscribe(res => this.myOrders = res);
+    ).subscribe(res => this.myOrders = res));
   }
 
 }

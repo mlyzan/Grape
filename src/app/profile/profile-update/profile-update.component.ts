@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store, select } from '@ngrx/store';
-import { updateProfile } from 'src/app/root-state/user/user.actions';
-import { getActiveId, getUserInfo } from 'src/app/root-state/user/user.selectors';
-import { ImageSnippet } from './../../sitter-registration/sitter-registration.component';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Store, select} from '@ngrx/store';
+import {updateProfile} from 'src/app/root-state/user/user.actions';
+import {getActiveId, getUserInfo} from 'src/app/root-state/user/user.selectors';
+import {ImageSnippet} from './../../sitter-registration/sitter-registration.component';
 import {CITIES} from '../../cities';
 import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.component.html',
   styleUrls: ['./profile-update.component.scss']
 })
-export class ProfileUpdateComponent implements OnInit {
+export class ProfileUpdateComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
   cities: string[] = [];
   selectedFile: ImageSnippet;
   userId: string;
@@ -36,7 +38,8 @@ export class ProfileUpdateComponent implements OnInit {
     photo: new FormControl(this.user.updateInfo.photo, Validators.required)
   });
 
-  constructor(private _router: Router, private _store: Store) { }
+  constructor(private _router: Router, private _store: Store) {
+  }
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -50,20 +53,24 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._store.pipe(
+    this.subscriptions.push(this._store.pipe(
       select(getActiveId)
-    ).subscribe(res => this.userId = res);
+    ).subscribe(res => this.userId = res));
     this.cities = CITIES;
-    this._store.pipe(
+    this.subscriptions.push(this._store.pipe(
       select(getUserInfo)
     ).subscribe(res => {
       this.user = res;
       this.search = res.updateInfo.address;
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onCancel(): void {
-    this._router.navigateByUrl('profile')
+    this._router.navigateByUrl('profile');
   }
 
   onUpdate(): void {
@@ -72,7 +79,7 @@ export class ProfileUpdateComponent implements OnInit {
       photo: this.selectedFile ? this.selectedFile.src : this.user.updateInfo.photo
     }, this.userId));
     setTimeout(() => {
-      this._router.navigateByUrl('profile')
-    }, 2000)
+      this._router.navigateByUrl('profile');
+    }, 2000);
   }
 }

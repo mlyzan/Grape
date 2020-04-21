@@ -14,10 +14,10 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="input-item"appearance="fill">
+        <mat-form-field class="input-item" appearance="fill">
           <mat-label>Your address</mat-label>
           <input matInput formControlName="address" [matAutocomplete]="address"
-                 placeholder="City"  [(ngModel)]="search">
+                 placeholder="City" [(ngModel)]="search">
           <mat-icon color="primary" matSuffix>location_on</mat-icon>
           <mat-autocomplete #address="matAutocomplete">
             <mat-option *ngFor="let city of cities | filter:search" [value]="city">
@@ -37,9 +37,10 @@
       <div class="sitter-photo">
         <label>
           <button mat-button type="button" (click)="imageInput.click()">
-            Update photo<mat-icon class="material-icons" color="primary">get_app</mat-icon>
+            Update photo
+            <mat-icon class="material-icons" color="primary">get_app</mat-icon>
           </button>
-          <br />
+          <br/>
           <input
             formControlName="photo"
             #imageInput
@@ -59,12 +60,12 @@
         <ng-template #userPhoto>
           <ng-container *ngIf="!user.updateInfo.photo; else emptyOldPhoto">
             <div>
-              <img src="../../../assets/img/default-user.png" alt="photo" class="old-photo" >
+              <img src="../../../assets/img/default-user.png" alt="photo" class="old-photo">
             </div>
           </ng-container>
           <ng-template #emptyOldPhoto>
             <div>
-              <img src="{{user.updateInfo.photo}}" alt="photo" class="old-photo" >
+              <img src="{{user.updateInfo.photo}}" alt="photo" class="old-photo">
             </div>
           </ng-template>
         </ng-template>
