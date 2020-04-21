@@ -1,0 +1,40 @@
+<ng-container *ngIf="!isUserLoggedIn" class="container">
+  <mat-card class="card">
+    Press <button mat-button>SingUp</button> to create your own account
+  </mat-card>
+  <mat-card class="card">
+    Press <button mat-button>LogIn</button> if you already have an account
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="isUserLoggedIn" class="container">
+  <ng-container *ngIf="!isSitter" class="container">
+    <mat-card class="card">
+      Press <button mat-button>Find Sitters</button> to see all sitters and book
+      them
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Board</button> to create new order
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Profile</button> to see the profile, answers from
+      sitters, your orders
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Become Sitter</button> if you want to become a
+      sitter
+    </mat-card>
+  </ng-container>
+  <ng-container *ngIf="isSitter" class="container">
+    <mat-card class="card">
+      Press <button mat-button>Find Sitters</button> to see all sitters
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Board</button> offer your services
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Profile</button> to see the profile, requests and
+      history
+    </mat-card>
+  </ng-container>
+</ng-container>
