@@ -7,11 +7,11 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput 
-              placeholder="E-mail" required
-              name="email" #email="ngModel"
-              [pattern]="emailRegex"
-              [(ngModel)]="model.email">
+        <input matInput
+               placeholder="E-mail" required
+               name="email" #email="ngModel"
+               [pattern]="emailRegex"
+               [(ngModel)]="model.email">
         <mat-icon matSuffix>email</mat-icon>
         <mat-error *ngIf="signInForm.submitted && email.errors">
           <mat-error *ngIf="email.errors.required">This field is required</mat-error>
@@ -22,10 +22,10 @@
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput required
-              type="password" minlength="4" 
-              name="password" #password="ngModel"
-              [type]="hide ? 'password' : 'text'"
-              [(ngModel)]="model.password">
+               type="password" minlength="4"
+               name="password" #password="ngModel"
+               [type]="hide ? 'password' : 'text'"
+               [(ngModel)]="model.password">
         <button mat-icon-button matSuffix (click)="hide = !hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
