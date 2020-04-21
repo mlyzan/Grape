@@ -76,7 +76,7 @@
                 (click)="
                   onSubmit(newComment.value, sitter.userId); newComment.value = ''
                 "
-                [disabled]="sitter.userId === activeId"
+                [disabled]="sitter.userId === activeId || newComment.value === ''"
               ><mat-icon color="primary" class="material-icons" style="margin-right: 5px;">comment</mat-icon>
                 Add comment
               </button>

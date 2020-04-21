@@ -76,7 +76,7 @@
             </ng-template>
             My requests
           </ng-template>
-          <mat-card *ngIf="!!book && !book['isComplete']" class="request_block">
+          <mat-card *ngIf="!!book && !book['isComplete']; else noRequests" class="request_block">
             <div style="display: flex; flex-direction: row;">
               <div>
                 <img mat-card-image src="../../assets/img/default-user.png" alt="user">
@@ -95,14 +95,20 @@
               </div>
             </div>
             <div class="request_btns">
-              <button mat-raised-button
+              <button mat-raised-button [disabled]="isConfirmClick || book['isBooked']"
                   (click)="onConfirm(book['_id'])"> <mat-icon color="accent">add</mat-icon> Confirm</button>
               <button mat-raised-button [disabled]="!isConfirmClick && !book['isBooked']"
                   (click)="onComplete(book['_id'])"> <mat-icon color="primary">done</mat-icon> Complete</button>
-              <button mat-raised-button
+              <button mat-raised-button [disabled]="isConfirmClick || book['isBooked']"
                   (click)="onDecline(book['_id'])"> <mat-icon color="warn">clear</mat-icon> Decline</button>
             </div>
           </mat-card>
+          <ng-template #noRequests>
+            <div style="text-align: center">
+              <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+              <h2>You don't have any requests now</h2>
+            </div>
+          </ng-template>
         </mat-tab>
         <mat-tab class="history">
           <ng-template matTabLabel>

@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class AllSittersComponent implements OnInit {
   sitters$: Observable<Sitter[]>;
   error$: Observable<Error>;
-  sittersArray;
+  //sittersArray;
   isShowComments: boolean = false;
   activeName: string;
   comments: Comment[];
@@ -28,9 +28,9 @@ export class AllSittersComponent implements OnInit {
   panelOpenState = false;
   isSitter: boolean;
   constructor(private sitterService: SitterService, private store: Store, private router: Router) {
-    this.store.pipe(
-      select(getAllSitters)
-    ).subscribe(sitters => this.sittersArray = sitters );
+    // this.store.pipe(
+    //   select(getAllSitters)
+    // ).subscribe(sitters => this.sittersArray = sitters );
 
     this.store.pipe(
       select(getActiveName)
@@ -58,7 +58,7 @@ export class AllSittersComponent implements OnInit {
     this.store.dispatch(getSitterCommentsId(userId));
     this.store.pipe(
       select(getCommentsById(userId))
-    ).subscribe(comments => this.comments = comments);
+    ).subscribe(comments => this.comments = [...comments].reverse());
     this.store.pipe(
       select(getCurrentSitterCommentsId)
     ).subscribe(id => this.currentSitterCommentId = id);
@@ -75,7 +75,7 @@ export class AllSittersComponent implements OnInit {
       this.store.dispatch(loadComments());
       this.store.pipe(
         select(getCommentsById(id))
-      ).subscribe(comments => this.comments = comments);
+      ).subscribe(comments => this.comments = [...comments].reverse());
     },1500)
 
   }
