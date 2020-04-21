@@ -23,26 +23,29 @@
 .input-item {
   margin: 20px 5px 20px;
   width: 400px;
-  border-radius: 10px;  
+  border-radius: 10px;
   background: #ffffff;
 }
+
 .time {
   display: flex;
   justify-content: space-between;
 }
-.min-time-example, 
+
+.min-time-example,
 .max-time-example {
   width: 190px;
-  border-radius: 10px;  
+  border-radius: 10px;
   background: #ffffff;
 }
 
 .about {
   margin: 5px;
   width: 810px;
-  border-radius: 10px;  
-  background: #ffffff;  
+  border-radius: 10px;
+  background: #ffffff;
 }
+
 .form-button {
   margin: 5px;
   display: flex;

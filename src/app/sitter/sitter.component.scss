@@ -1,163 +1,180 @@
 @mixin block() {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    span {
-        font-weight: 600;
-        font-size: 1.2em;
-    }
+  span {
+    font-weight: 600;
+    font-size: 1.2em;
+  }
 
-    p {
-        font-style: italic;
-        font-size: 1.1em;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+  p {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
-    img {
-        margin: -5px 10px 10px -5px;
-        max-height: 50px; max-width: 50px;
-    }
+  img {
+    margin: -5px 10px 10px -5px;
+    max-height: 50px;
+    max-width: 50px;
+  }
 }
 
 .card {
+  display: flex;
+  align-items: flex-start;
+  min-height: 490px;
+  width: 90%;
+  margin: 0 auto 25px;
+
+  &_header {
     display: flex;
-    align-items: flex-start;
-    min-height: 490px;
-    width: 90%;
-    margin: 0 auto 25px;
-    &_header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-    }
+    align-items: center;
+    margin-bottom: 15px;
+  }
 }
+
 .photo {
-    width: 200px;
-    margin: 0 auto 20px;
-    border-radius: 10px;
+  width: 200px;
+  margin: 0 auto 20px;
+  border-radius: 10px;
 }
+
 .title_name {
-    display: inline-block;
-    margin: auto 40px auto 20px;
+  display: inline-block;
+  margin: auto 40px auto 20px;
 }
+
 .input {
-    margin: 0 20px 10px 0;
+  margin: 0 20px 10px 0;
 }
 
 .profile-container {
-    width: 100%;
+  width: 100%;
 }
 
 .profile {
-    margin-left: 10px;
-    .mat-icon {
-        margin-right: 10px;
-    }
-    &_title {
-        display: flex;
-        align-items: center;
-        margin-bottom: 6px;
-        font-weight: bold;
-    }
-    &_about {
-        &_header {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-        }
-        &_descr {
-            margin-left: 34px;
-        }
-    }
-}
-.rate {
+  margin-left: 10px;
+
+  .mat-icon {
+    margin-right: 10px;
+  }
+
+  &_title {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 8px 20px 0 0;
-    &_num {
-      color: black;
-      font-size: 1.2em;
-      font-size: 600;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  &_about {
+    &_header {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
     }
+
+    &_descr {
+      margin-left: 34px;
+    }
+  }
 }
+
+.rate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8px 20px 0 0;
+
+  &_num {
+    color: black;
+    font-size: 1.2em;
+    font-size: 600;
+  }
+}
+
 ngx-stars {
-    margin: auto;
+  margin: auto;
 }
 
 
 .profile-edit-btn {
-    position: absolute;
-    right: 70px;
-    top: 10px;
-    font-size: 2.5em;
-    cursor: pointer;
+  position: absolute;
+  right: 70px;
+  top: 10px;
+  font-size: 2.5em;
+  cursor: pointer;
 }
 
 .profile-delete-btn {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 2.5em;
-    cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 2.5em;
+  cursor: pointer;
 }
 
 .comments {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 25px 15px;
-    &_block {
-        margin-bottom: 20px;
-        @include block();
-    }
+  display: flex;
+  flex-direction: column;
+  margin: 20px 25px 15px;
+
+  &_block {
+    margin-bottom: 20px;
+    @include block();
+  }
 }
 
 .history {
-    display: flex;
-    flex-direction: row;
-    margin: 20px 25px 15px;
-    &_block {
-        width: 70%;
-        margin: 10px auto 20px;
-        @include block();
-        i {
-            font-size: 2em;
-            color: lawngreen;
-        }
+  display: flex;
+  flex-direction: row;
+  margin: 20px 25px 15px;
+
+  &_block {
+    width: 70%;
+    margin: 10px auto 20px;
+    @include block();
+
+    i {
+      font-size: 2em;
+      color: lawngreen;
     }
+  }
 }
 
 .request {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+
+  &_block {
+    width: 80%;
+    margin: 10px auto 20px;
+    @include block();
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_btns {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    &_block {
-        width: 80%;
-        margin: 10px auto 20px;
-        @include block();
-        justify-content: space-between;
-        align-items: center;
-    }
-    &_btns {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
 
-	button {
-            margin-right: 15px;
-        }
-
-        mat-icon {
-            font-weight: 600;
-        }
+    button {
+      margin-right: 15px;
     }
+
+    mat-icon {
+      font-weight: 600;
+    }
+  }
 }
 
 .tab-group {
-    width: 100%;
+  width: 100%;
 }

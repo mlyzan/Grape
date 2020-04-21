@@ -1,9 +1,10 @@
 @mixin item($width) {
   margin: 20px;
   width: $width;
-  border-radius: 10px;  
+  border-radius: 10px;
   background: #ffffff;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -13,30 +14,34 @@
   width: 900px;
   margin: auto;
 }
+
 .form-sitter {
   display: flex;
 }
+
 .input-item {
   @include item($width: 400px);
 }
-.min-time-example, 
+
+.min-time-example,
 .max-time-example {
   margin: 20px;
   width: 180px;
 }
+
 .sitter-photo {
   @include item($width: 400px);
   display: flex;
-  align-items: center; 
-  justify-content: space-around; 
+  align-items: center;
+  justify-content: space-around;
   height: 202px;
 
-  .img-preview-container {    
+  .img-preview-container {
     width: auto;
     background-color: #fff;
-    position: relative;    
+    position: relative;
 
-    .img-preview {      
+    .img-preview {
       background: center center no-repeat;
       background-size: cover;
       border-radius: 10px;
@@ -45,14 +50,17 @@
     }
   }
 }
+
 .about {
-  @include item($width: 844px);  
+  @include item($width: 844px);
 }
+
 .form-button {
   margin: 30px 20px;
   display: flex;
   justify-content: center;
 }
+
 .btn {
   margin: 0 20px;
 }

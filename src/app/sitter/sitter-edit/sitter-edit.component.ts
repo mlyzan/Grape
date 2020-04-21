@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Router } from '@angular/router';
-import { updateSitter, loadSitters } from 'src/app/root-state/sitter/sitter.actions';
-import { getActiveId } from 'src/app/root-state/user/user.selectors';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Sitter } from 'src/app/root-state/sitter/sitter.interfaces';
-import { getActiveSitterById, getSuccess } from 'src/app/root-state/sitter/sitter.selectors';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Store, select} from '@ngrx/store';
+import {Router} from '@angular/router';
+import {updateSitter, loadSitters} from 'src/app/root-state/sitter/sitter.actions';
+import {getActiveId} from 'src/app/root-state/user/user.selectors';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Sitter} from 'src/app/root-state/sitter/sitter.interfaces';
+import {getActiveSitterById, getSuccess} from 'src/app/root-state/sitter/sitter.selectors';
 import {CITIES} from '../../cities';
+import {Subscription} from 'rxjs';
+
 //import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
 
 @Component({
@@ -14,7 +16,8 @@ import {CITIES} from '../../cities';
   templateUrl: './sitter-edit.component.html',
   styleUrls: ['./sitter-edit.component.scss']
 })
-export class SitterEditComponent implements OnInit {
+export class SitterEditComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
   cities: string[];
   search = '';
   activeId: string;
@@ -34,26 +37,28 @@ export class SitterEditComponent implements OnInit {
   });
 
   constructor(private store: Store, private router: Router) {
-    this.store.pipe(
-      select(getActiveId)
-    ).subscribe(id => this.activeId = id);
-
-    this.store.pipe(
-      select(getActiveSitterById(this.activeId))
-    ).subscribe(activeSitter => this.sitter$ = activeSitter);
-
   }
 
   ngOnInit(): void {
     this.cities = CITIES;
+    this.subscriptions.push(this.store.pipe(
+      select(getActiveId)
+    ).subscribe(id => this.activeId = id));
+    this.subscriptions.push(this.store.pipe(
+      select(getActiveSitterById(this.activeId))
+    ).subscribe(activeSitter => this.sitter$ = activeSitter));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   onUpdate() {
-    console.log(this.sitterEditInfo.value)
-    this.store.dispatch(updateSitter(this.activeId,{...this.sitterEditInfo.value}));
-    this.store.pipe(
+    console.log(this.sitterEditInfo.value);
+    this.store.dispatch(updateSitter(this.activeId, {...this.sitterEditInfo.value}));
+    this.subscriptions.push(this.store.pipe(
       select(getSuccess)
-    ).subscribe(success => this.successMessage = success);
+    ).subscribe(success => this.successMessage = success));
     this.showSuccessMessage = true;
 
     setTimeout(() => {

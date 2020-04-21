@@ -1,10 +1,10 @@
 <mat-card class="container">
   <mat-card-title>Create your own service</mat-card-title>
   <form [formGroup]="sitterPersonalInfo" class="form">
-    <div >
+    <div>
       <div class="form-sitter">
         <div>
-          <mat-form-field class="input-item"appearance="fill">
+          <mat-form-field class="input-item" appearance="fill">
             <mat-label>Services provided</mat-label>
             <mat-select formControlName="services" multiple>
               <mat-option value="Dog Walking">Dog Walking</mat-option>
@@ -14,7 +14,7 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <mat-form-field class="input-item"appearance="fill">
+          <mat-form-field class="input-item" appearance="fill">
             <mat-label>Accepted Animals</mat-label>
             <mat-select formControlName="animals" multiple>
               <mat-option value="Dog">Dog</mat-option>
@@ -25,24 +25,24 @@
             </mat-select>
           </mat-form-field>
           <br>
-          <mat-form-field class="input-item"appearance="fill" class="min-time-example">
+          <mat-form-field class="input-item" appearance="fill" class="min-time-example">
             <input placeholder="From 00:00"
-              formControlName="availabilityFrom"
-              matInput
-              [ngxTimepicker]="min" [format]="24" [min]="'00:00'"  readonly>
+                   formControlName="availabilityFrom"
+                   matInput
+                   [ngxTimepicker]="min" [format]="24" [min]="'00:00'" readonly>
             <ngx-material-timepicker #min></ngx-material-timepicker>
           </mat-form-field>
-          <mat-form-field class="input-item"appearance="fill" class="max-time-example">
+          <mat-form-field class="input-item" appearance="fill" class="max-time-example">
             <input placeholder="To 23:59 "
-              formControlName="availabilityTo"
-              matInput
-              [ngxTimepicker]="max" [format]="24" max="23:59"  readonly>
+                   formControlName="availabilityTo"
+                   matInput
+                   [ngxTimepicker]="max" [format]="24" max="23:59" readonly>
             <ngx-material-timepicker #max></ngx-material-timepicker>
-        </mat-form-field>
+          </mat-form-field>
           <br>
-          <mat-form-field class="input-item"appearance="fill">
+          <mat-form-field class="input-item" appearance="fill">
             <mat-label>Specify your desired payment</mat-label>
-            <input  type="number" matInput formControlName ="payment">
+            <input type="number" matInput formControlName="payment">
             <mat-icon color="primary" matSuffix> monetization_on</mat-icon>
           </mat-form-field>
         </div>
@@ -50,38 +50,41 @@
           <div class="sitter-photo">
             <label class="image-upload-container btn btn-bwm">
               <button
-              mat-button
-              type="button"
-              (click)="imageInput.click()"
-              >Select photo <mat-icon color="primary" class="material-icons">get_app</mat-icon> </button>
+                mat-button
+                type="button"
+                (click)="imageInput.click()"
+              >Select photo
+                <mat-icon color="primary" class="material-icons">get_app</mat-icon>
+              </button>
               <br>
               <input #imageInput
-                style="display: none;"
-                type="file"
-                accept="image/jpeg"
-                (change)="processFile(imageInput)">
+                     style="display: none;"
+                     type="file"
+                     accept="image/jpeg"
+                     (change)="processFile(imageInput)">
             </label>
             <div *ngIf="selectedFile" class="img-preview-container">
 
               <div class="img-preview"
-                [ngStyle]="{'background-image': 'url('+ selectedFile.src +')'}">
+                   [ngStyle]="{'background-image': 'url('+ selectedFile.src +')'}">
 
               </div>
             </div>
           </div>
           <br>
-          <mat-form-field class="input-item"appearance="fill">
+          <mat-form-field class="input-item" appearance="fill">
             <mat-label>Your address</mat-label>
             <input matInput formControlName="address" [matAutocomplete]="address"
-                   placeholder="City"  [(ngModel)]="search">
+                   placeholder="City" [(ngModel)]="search">
             <mat-icon color="primary" matSuffix>location_on</mat-icon>
             <mat-autocomplete #address="matAutocomplete">
               <mat-option *ngFor="let city of cities | filter:search" [value]="city">
                 {{city}}
               </mat-option>
             </mat-autocomplete>
-          </mat-form-field><br>
-          <mat-form-field class="input-item"appearance="fill">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="input-item" appearance="fill">
             <mat-label>Your birthday</mat-label>
             <input matInput [matDatepicker]="years" formControlName="years">
             <mat-datepicker-toggle matSuffix [for]="years"></mat-datepicker-toggle>
@@ -91,7 +94,7 @@
         </div>
       </div>
       <div>
-        <mat-form-field class="about"appearance="fill">
+        <mat-form-field class="about" appearance="fill">
           <mat-label>Tell about you</mat-label>
           <textarea matInput formControlName="information"></textarea>
         </mat-form-field>
@@ -99,17 +102,19 @@
     </div>
     <div class="form-button">
       <button mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="!sitterPersonalInfo.valid"
-      (click)="onSubmit()"
-      class="btn"
-      >Create!</button>
+              color="primary"
+              type="submit"
+              [disabled]="!sitterPersonalInfo.valid"
+              (click)="onSubmit()"
+              class="btn"
+      >Create!
+      </button>
       <button
-      mat-raised-button
-      color="accent"
-      routerLink="/all-sitters"
-      class="btn">Go back</button>
+        mat-raised-button
+        color="accent"
+        routerLink="/all-sitters"
+        class="btn">Go back
+      </button>
     </div>
   </form>
 

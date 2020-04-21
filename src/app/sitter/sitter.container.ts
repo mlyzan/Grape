@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Sitter } from './../root-state/sitter/sitter.interfaces';
+import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Sitter} from './../root-state/sitter/sitter.interfaces';
 
 @Component({
   selector: 'grape-container-sitter',
@@ -10,7 +10,7 @@ import { Sitter } from './../root-state/sitter/sitter.interfaces';
 })
 
 export class SitterContainerComponent implements OnInit {
-  constructor(){
+  constructor() {
   }
 
   ngOnInit(): void {
