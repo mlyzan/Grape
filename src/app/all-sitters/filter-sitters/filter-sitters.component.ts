@@ -4,12 +4,11 @@ import {
   filterSittersByServices,
   refreshFilteredSitters
 } from './../../root-state/sitter/sitter.actions';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { MatSidenav } from '@angular/material/sidenav';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {MatSidenav} from '@angular/material/sidenav';
 import {CITIES} from '../../cities';
-
 
 
 @Component({
@@ -39,33 +38,34 @@ export class FilterSittersComponent implements OnInit {
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required)
-  })
+  });
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   find() {
     this.store.dispatch(refreshFilteredSitters());
     if (this.filters.value.services) {
       this.store.dispatch(filterSittersByServices({
         services: this.filters.value.services
-      }))
+      }));
     }
     if (this.filters.value.animals) {
       this.store.dispatch(filterSittersByAnimals({
         animals: this.filters.value.animals
-      }))
+      }));
     }
     if (this.filters.value.address) {
       this.store.dispatch(filterSittersByAddress({
         address: this.filters.value.address
-      }))
+      }));
     }
   }
 
- refresh() {
-  this.store.dispatch(refreshFilteredSitters());
-  this.filters.reset()
- }
+  refresh() {
+    this.store.dispatch(refreshFilteredSitters());
+    this.filters.reset();
+  }
 
   ngOnInit(): void {
     this.cities = CITIES;
