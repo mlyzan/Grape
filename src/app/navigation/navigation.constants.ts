@@ -40,6 +40,6 @@ export const sitterLinks = [
   },
   {
     link: '/sitter',
-    text: 'Your profile',    
+    text: 'Your profile',
   },
 ];
