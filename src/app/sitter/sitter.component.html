@@ -144,17 +144,22 @@
           <ng-template matTabLabel>
             <span><mat-icon color="primary" class="material-icons">history</mat-icon> My history </span>
           </ng-template>
-          <mat-card *ngFor="let book of books" class="history_block">
-            <div>
-              <img mat-card-image src="../../assets/img/default-user.png" alt="user">
-            </div>
-            <div>
-              <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>
-                {{book.name}}</span>
-              <p>{{book.contactInfo}}</p>
-            </div>
-          </mat-card>
-
+          <div style="text-align: center" *ngIf="!books.length; else history">
+            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+            <h2>History is empty</h2>
+          </div>
+          <ng-template #history>
+            <mat-card *ngFor="let book of books" class="history_block">
+              <div>
+                <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+              </div>
+              <div>
+                <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>
+                  {{book.name}}</span>
+                <p>{{book.contactInfo}}</p>
+              </div>
+            </mat-card>
+          </ng-template>
         </mat-tab>
       </mat-tab-group>
     </div>
