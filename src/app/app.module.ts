@@ -76,6 +76,8 @@ import { ConfirmationDialogComponent } from './sitter/confirmation-dialog/confir
 import { BookSitterComponent } from './board/book-sitter/book-sitter.component';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FilterPipe } from './pipes/filter.pipe';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
 
 
@@ -100,7 +102,8 @@ const MaterialComponents = [
   MatDialogModule,
   MatAutocompleteModule,
   MatNativeDateModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatBottomSheetModule
 ];
 
 @NgModule({
@@ -128,7 +131,8 @@ const MaterialComponents = [
     ProfileUpdateComponent,
     ConfirmationDialogComponent,
     BookSitterComponent,
-    FilterPipe
+    FilterPipe,
+    BottomSheetComponent
   ],
   imports: [
     BrowserModule,
