@@ -24,6 +24,9 @@
   color: white;
   margin: auto;
   text-align: center;
+  h1 {
+    font-size: 40px;
+  }
   p {
     font-size: 24px;
     font-weight: bold;
@@ -31,18 +34,8 @@
   }
 }
 
-.wiggly--vertical {
-  margin-top: -3px;
-  width: calc(75px + 70 * (100vw - 320px) / 1046);
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url("data:image/svg+xml;charset=utf8,<svg id='wiggly-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><style type='text/css'>.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-50%);}}</style><path fill='none' stroke='%23333333' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
-  height: 7px;
-  transform: rotate(90deg);
-}
-
 .wrapper {
-  width: 60%;
+  width: 70%;
   margin: auto;
   text-align: center;
 }
@@ -67,6 +60,7 @@ p {
 }
 
 ul {
+  padding: 0;
   font-size: 20px;
   line-height: 1.5rem;
   list-style-image: url(../../assets/img/paw.png);
@@ -74,7 +68,7 @@ ul {
 }
 
 .main {
-  padding: 100px 50px;
+  padding: 60px;
 }
 
 .features {
@@ -338,7 +332,7 @@ ul {
 .parallax__item {
   background-repeat: no-repeat;
   position: relative;
-  height: 640px;
+  height: 590px;
   background-size: 90%;
   &--walking{
     background-image: url('../../assets/img/dog_walking.jpg');
@@ -400,7 +394,6 @@ footer {
   margin: auto;
   font-size: 18px;
   h3 {
-    font-size: 29px;
     font-weight: 600;
   }
 }
@@ -411,7 +404,7 @@ footer {
 }
 
 .footer-col2 {
-  width: 38%;
+  width: 43%;
   line-height: 36px;
 }
 
@@ -508,4 +501,164 @@ box-shadow: 0 0 250px 20px #42F2A1;
 }
 
 to { box-shadow: 0 0 100px 15px #F4F6AD; }
+}
+
+@media screen and (min-width: 1680px) {
+  .wrapper {
+    width: 60%;
+  }
+
+  .parallax__item {
+    height: 640px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    width: 80%;
+  }
+  
+  h1 {
+    font-size: 30px;
+  }
+  
+  h2 {
+    font-size: 23px;
+  }
+  
+  h3 {
+    font-size: 25px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  ul {
+    font-size: 16px;
+  }
+
+  .main {
+    padding: 45px;
+  }
+
+  .parallax__item {
+    height: 440px;
+    background-size: 80%;
+  }
+
+  .parallax__text {
+    height: 230px;
+    width: 230px;
+    padding: 0 30px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    line-height: 1.1rem;
+  }
+
+  .parallax__item {
+    height: 340px;
+    background-size: 80%;
+  }
+
+  .parallax__text {
+    height: 190px;
+    width: 190px;
+    padding: 0 20px 0;
+    &.slide {
+      transform: translateY(70%);
+    }
+  }
+
+  .footer-wrap {
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .header-text {
+    h1 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .wrapper {
+    width: 95%;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+  .feature-info {
+    &-icon {
+      width: 50px;
+      height: 50px;
+    }
+    & .mat-icon {
+      font-size: 40px;
+    }
+  }
+
+  .icon__dog .svg {
+    height: 130px;
+  }
+
+  .front-page__parallax {
+    margin: 10px 0 0;
+  }
+
+  .parallax__item {
+    height: 200px;
+  }
+
+  .parallax__text {
+    height: 110px;
+    width: 110px;
+    padding: 0 5px 0;
+  }
+
+  h2 {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  footer {
+    margin-top: 0;
+  }
+
+  .footer-wrap {
+    width: 80%;
+    height: 170px;
+  }
+
+  .footer-col2 {
+    width: 48%;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  ul {
+    font-size: 10px;
+    line-height: 1rem;
+  }
+
 }
