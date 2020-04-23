@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
+// import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'grape-header',
@@ -7,12 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 
-
-
-
 export class HeaderComponent implements OnInit, DoCheck {
-
-  constructor(private router: Router) { }
+  // isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+  constructor(private router: Router, 
+    // private breakpointObserver: BreakpointObserver
+    ) { }
 
   ngOnInit(): void {
   }
@@ -29,8 +30,5 @@ export class HeaderComponent implements OnInit, DoCheck {
     } else {
       element.classList.remove('nav-transparent');
     }
-  }
- 
-  
- 
+  } 
 }
