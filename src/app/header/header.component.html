@@ -1,12 +1,58 @@
 <mat-toolbar color="primary" class="nav" (scroll)="onWindowScroll($event)">
-    <mat-toolbar-row class="nav_row">
-        <div>
-            <a mat-button [routerLink]="'/'"><span class="material-icons">pets</span><span class="logo">Petly</span></a>
-        </div>
-      <div>
-        
-        <app-navigation></app-navigation>
-
+  <mat-toolbar-row class="nav_row">
+    <div>
+      <a mat-button [routerLink]="'/'"
+        ><span class="material-icons">pets</span
+        ><span class="logo">Petly</span></a
+      >
+    </div>
+    <div>
+      <div class="nav-small">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <app-navigation class="burger-menu"></app-navigation>
+        </mat-menu>
       </div>
-    </mat-toolbar-row>
+
+      <app-navigation class="nav-content"></app-navigation>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
+
+<!-- <mat-sidenav-container (scroll)="onWindowScroll($event)">
+  <mat-sidenav 
+    #drawer 
+    class="sidenav" 
+    [ngClass]="{hidden: !(isHandset | async)!.matches}" 
+    fixedInViewport="false"
+    [attr.role]="isHandset ? 'dialog' : 'navigation'" 
+    [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar class="nav" color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <app-navigation></app-navigation>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+
+
+    <mat-toolbar class="nav" color="primary">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches">
+          <mat-icon aria-label="Side nav toggle icon">menu
+          </mat-icon>
+        </button>
+          <a mat-button [routerLink]="'/'"><span class="material-icons">pets</span><span class="logo">Petly</span></a>
+          <span class="spacer"></span>
+          <app-navigation></app-navigation>
+    </mat-toolbar>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
