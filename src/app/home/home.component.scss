@@ -60,6 +60,7 @@ p {
 }
 
 ul {
+  padding: 0;
   font-size: 20px;
   line-height: 1.5rem;
   list-style-image: url(../../assets/img/paw.png);
@@ -393,7 +394,6 @@ footer {
   margin: auto;
   font-size: 18px;
   h3 {
-    font-size: 29px;
     font-weight: 600;
   }
 }
@@ -404,7 +404,7 @@ footer {
 }
 
 .footer-col2 {
-  width: 38%;
+  width: 43%;
   line-height: 36px;
 }
 
@@ -587,5 +587,78 @@ to { box-shadow: 0 0 100px 15px #F4F6AD; }
       font-size: 16px;
     }
   }
-  
+
+  .wrapper {
+    width: 95%;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+  .feature-info {
+    &-icon {
+      width: 50px;
+      height: 50px;
+    }
+    & .mat-icon {
+      font-size: 40px;
+    }
+  }
+
+  .icon__dog .svg {
+    height: 130px;
+  }
+
+  .front-page__parallax {
+    margin: 10px 0 0;
+  }
+
+  .parallax__item {
+    height: 200px;
+  }
+
+  .parallax__text {
+    height: 110px;
+    width: 110px;
+    padding: 0 5px 0;
+  }
+
+  h2 {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  footer {
+    margin-top: 0;
+  }
+
+  .footer-wrap {
+    width: 80%;
+    height: 170px;
+  }
+
+  .footer-col2 {
+    width: 48%;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  ul {
+    font-size: 10px;
+    line-height: 1rem;
+  }
+
 }
