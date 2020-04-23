@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card border-card">
   <mat-card-header style="margin: 5px 10px 10px 25px; display: flex; flex-direction: row; justify-content: space-between;">
     <div mat-card-avatar class="example-header-image">
       <img *ngIf="order.userPhoto; else noPhoto"
@@ -43,7 +43,7 @@
   </div>
   <hr />
 
-  <mat-card-content>
+  <mat-card-content class="info">
     <p>  {{ order.info }}</p>
   </mat-card-content>
 </mat-card>

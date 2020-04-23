@@ -74,7 +74,7 @@
                   <div>
                     <img mat-card-image src="../../assets/img/default-user.png" alt="user">
                   </div>
-                  <div>
+                  <div style="word-break: break-all; max-width: 90%;">
                     <span>{{comment.name}}</span>
                     <p>{{comment.comment}}</p>
                   </div>
@@ -100,7 +100,7 @@
               <div>
                 <img mat-card-image src="../../assets/img/default-user.png" alt="user">
               </div>
-              <div>
+              <div style="max-width: 80%; word-break: break-all;">
                 <span>{{book['name']}}</span>
                 <mat-icon color="accent" *ngIf="isInProcess || book['isBooked']; else complete"
                           style="font-size: 2em;"
@@ -153,7 +153,7 @@
               <div>
                 <img mat-card-image src="../../assets/img/default-user.png" alt="user">
               </div>
-              <div>
+              <div style="max-width: 80%; word-break: break-all;">
                 <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>
                   {{book.name}}</span>
                 <p>{{book.contactInfo}}</p>
