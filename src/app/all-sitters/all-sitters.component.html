@@ -50,11 +50,11 @@
               <mat-icon color="primary" class="material-icons">room_service</mat-icon>
               {{ sitter.services.join(', ') }}
             </div>
-            <div class="about">
-              <mat-icon color="primary" class="material-icons"> info</mat-icon>
-              {{ sitter.information }}
-            </div>
           </mat-card-content>
+          <div class="about">
+            <mat-icon color="primary" class="material-icons"> info</mat-icon>
+            {{ sitter.information }}
+          </div>
           <button
             class="btn"
             mat-raised-button
@@ -89,7 +89,7 @@
                 <div>
                   <img mat-card-image src="../../assets/img/default-user.png" alt="user">
                 </div>
-                <div *ngIf="comment.userId === sitter.userId">
+                <div *ngIf="comment.userId === sitter.userId" style="max-width: 80%;">
                   <span>{{ comment.name }}</span>
                   <p>{{ comment.comment }}</p>
                 </div>

@@ -16,6 +16,10 @@
   }
 }
 
+.message {
+  width: 95%;
+}
+
 .img {
   display: flex;
   flex-direction: column;
@@ -62,6 +66,8 @@
 .response, .orders {
   border: 1px solid gray;
   margin-top: 8px;
+  width: 60%;
+  word-break: break-all;
 
   &_text {
     display: flex;
