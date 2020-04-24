@@ -13,27 +13,49 @@ body {
     position: relative;
 }
 
-@media screen and (min-width: 1400px) {
-    .login-bg {
-        background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
-    }
-    
-    .signup-bg {
-        background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
-        background-size: 35%;
-    }
+.login-bg {
+    background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
+}
+
+.signup-bg {
+    background: url('./assets/img/signup_bg.jpg') no-repeat bottom;
+    background-size: 35%;
 }
 
 @media screen and (max-width: 1399px) {
     .login-bg {
-        background: url('./assets/img/login_bg.jpg') no-repeat bottom right;
         background-size: 50%;
     }
     
     .signup-bg {
-        background: url('./assets/img/signup_bg.jpg') no-repeat 15% 100%;
         background-size: 30%;
+        background-position: 15% 100%;
     }
+}
+
+@media screen and (max-width: 1024px) {
+    .login-bg {
+        background-size: 90%;
+    }
+
+    .signup-bg {
+        background-size: 80%;
+        background-position: bottom;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .login-bg {
+        background-size: 85%;
+    }
+
+    .signup-bg {
+        background-size: 70%;
+    }
+
+    .mat-tab-labels {
+        flex-direction: column;
+      }
 }
 
 .error-page {

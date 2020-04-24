@@ -13,3 +13,9 @@
     margin-right: 5px;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .dialog_img {
+    max-height: 160px;
+  }
+}

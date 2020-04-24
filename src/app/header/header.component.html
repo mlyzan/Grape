@@ -24,35 +24,3 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<!-- <mat-sidenav-container (scroll)="onWindowScroll($event)">
-  <mat-sidenav 
-    #drawer 
-    class="sidenav" 
-    [ngClass]="{hidden: !(isHandset | async)!.matches}" 
-    fixedInViewport="false"
-    [attr.role]="isHandset ? 'dialog' : 'navigation'" 
-    [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
-    [opened]="!(isHandset | async)!.matches">
-    <mat-toolbar class="nav" color="primary">Menu</mat-toolbar>
-    <mat-nav-list>
-      <app-navigation></app-navigation>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-
-
-
-    <mat-toolbar class="nav" color="primary">
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches">
-          <mat-icon aria-label="Side nav toggle icon">menu
-          </mat-icon>
-        </button>
-          <a mat-button [routerLink]="'/'"><span class="material-icons">pets</span><span class="logo">Petly</span></a>
-          <span class="spacer"></span>
-          <app-navigation></app-navigation>
-    </mat-toolbar>
-
-
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
