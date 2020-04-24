@@ -78,6 +78,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 
@@ -132,7 +133,8 @@ const MaterialComponents = [
     ConfirmationDialogComponent,
     BookSitterComponent,
     FilterPipe,
-    BottomSheetComponent
+    BottomSheetComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
