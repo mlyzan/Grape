@@ -9,7 +9,7 @@ import {
 } from '../root-state/sitter/sitter.actions';
 import {
   getAllSitters, getError, getCommentsById, getCurrentSitterCommentsId,
-  getBookById, getSuccess
+  getBookById, getSuccess, getBooksByCustomerId
 } from '../root-state/sitter/sitter.selectors';
 import {getActiveName, getActiveId, getUserInfo} from '../root-state/user/user.selectors';
 import {Router} from '@angular/router';
@@ -106,7 +106,6 @@ export class AllSittersComponent implements OnInit, OnDestroy {
     this.panelOpenState = false;
     setTimeout(() => {
       this.store.dispatch(loadBooks());
-      this.router.navigateByUrl('profile');
     }, 1000);
   }
 
@@ -130,6 +129,22 @@ export class AllSittersComponent implements OnInit, OnDestroy {
     ).subscribe(res => {
       if (res) {
         isBook = res.isBooked;
+      }
+    }));
+    return isBook;
+  }
+
+  isSitterBookedByMe(id: string): boolean {
+    let isBook: boolean;
+    this.subscriptions.push(this.store.pipe(
+      select(getBooksByCustomerId(this.activeId))
+    ).subscribe(res => {
+      if (res) {
+        res.filter(e => {
+          if (e.userId === id) {
+            isBook = true
+          }
+        })
       }
     }));
     return isBook;
