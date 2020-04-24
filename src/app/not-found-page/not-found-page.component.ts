@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.scss']
 })
-export class NotFoundPageComponent implements OnInit {
+export class NotFoundPageComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
@@ -13,4 +13,7 @@ export class NotFoundPageComponent implements OnInit {
     document.body.classList.add('error-page');
   }
 
+  ngOnDestroy() {
+    document.body.classList.remove('error-page');
+  }
 }
