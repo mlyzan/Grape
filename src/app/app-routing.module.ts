@@ -10,7 +10,6 @@ import { SitterRegistrationComponent } from './sitter-registration/sitter-regist
 import { AllSittersComponent } from './all-sitters/all-sitters.component';
 import { AuthGuard } from './app.service';
 import { HomeComponent } from './home/home.component';
-import { DevelopersComponent } from './developers/developers.component'
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { BoardComponent } from './board/board.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -41,10 +40,7 @@ const routes: Routes = [
   {
     path: 'all-sitters', component: AllSittersComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'developers', component: DevelopersComponent
-  },
+  },  
   {
     path: 'sitter-edit', component: SitterEditComponent
   },
