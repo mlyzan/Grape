@@ -43,7 +43,7 @@
 
 .title_name {
   display: inline-block;
-  margin: auto 40px auto 20px;
+  margin: auto 40px;
 }
 
 .input {
@@ -177,4 +177,25 @@ ngx-stars {
 
 .tab-group {
   width: 100%;
+}
+
+@media screen and (max-width: 414px) {
+  .card {
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+  }
+  
+  .mat-tab-group {
+    align-items: center;
+  }
+
+  .comments {
+    margin: 5px;
+    width: 95%;
+  }
+
+  .title_name {
+    margin: auto 15px;
+  }
 }
