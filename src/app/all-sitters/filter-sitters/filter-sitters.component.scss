@@ -24,4 +24,13 @@ mat-form-field {
 
 .sidenav {
   position: fixed;
+  left: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .filters {
+    font-size: 15px;
+    padding: 3px 10px;
+    margin-left: -22px;
+  }
 }

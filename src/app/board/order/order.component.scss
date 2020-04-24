@@ -28,3 +28,9 @@
   display: flex;
   flex-direction: column;
 }
+
+@media screen and (max-width: 425px) {
+  .btn-offer {
+    padding-left: 6px;
+  }
+}

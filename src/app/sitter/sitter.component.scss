@@ -179,7 +179,7 @@ ngx-stars {
   width: 100%;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 425px) {
   .card {
     flex-direction: column;
     width: 80%;
@@ -197,5 +197,9 @@ ngx-stars {
 
   .title_name {
     margin: auto 15px;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 20px;
   }
 }

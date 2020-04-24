@@ -86,7 +86,7 @@
             </button>
             <div *ngIf="isShowComments && comments.length > 0" class="comments">
               <mat-card *ngFor="let comment of comments" class="comments_block">
-                <div>
+                <div class="img">
                   <img mat-card-image src="../../assets/img/default-user.png" alt="user">
                 </div>
                 <div *ngIf="comment.userId === sitter.userId">
