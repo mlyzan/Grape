@@ -8,10 +8,16 @@
     <grape-create-order></grape-create-order>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <p>
-      <button style="font-size: 1.2em;" mat-stroked-button (click)="sidenav.toggle()" *ngIf="!userInfo.isSitter">
-        <mat-icon color="primary">assignment</mat-icon>  Create
+      <button
+        style="font-size: 1.2em;"
+        mat-stroked-button
+        (click)="sidenav.toggle()"
+        *ngIf="!userInfo.isSitter"
+        class="btn-create"
+      >
+        <mat-icon color="primary">assignment</mat-icon> Create
       </button>
     </p>
     <div *ngIf="orders$ | async" class="orders">
