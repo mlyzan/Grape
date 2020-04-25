@@ -1,6 +1,6 @@
 .card {
   margin: 1% 5% 1% 5%;
-  height: 240px; 
+  height: 252px; 
 }
 
 .border-card {
@@ -47,6 +47,12 @@
 .example-header-image {
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    height: auto; 
+  }
 }
 
 @media screen and (max-width: 425px) {
