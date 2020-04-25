@@ -18,4 +18,9 @@
   .dialog_img {
     max-height: 160px;
   }
+  .dialog_btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
