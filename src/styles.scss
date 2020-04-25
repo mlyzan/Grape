@@ -22,6 +22,12 @@ body {
     background-size: 35%;
 }
 
+.sitter-registration-bg {
+    background: fixed url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
+    fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
+    fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
+}
+
 @media screen and (max-width: 1399px) {
     .login-bg {
         background-size: 50%;
@@ -42,6 +48,12 @@ body {
         background-size: 80%;
         background-position: bottom;
     }
+
+    .sitter-registration-bg {
+        background: fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center left,
+                    fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat center right;
+        background-size: 10%;        
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -56,6 +68,11 @@ body {
     .mat-tab-labels {
         flex-direction: column;
       }
+
+    .sitter-registration-bg {
+        background: fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat bottom left;
+        background-size: 10%;        
+    }
 }
 
 .error-page {
@@ -77,10 +94,13 @@ body {
     }
 }
 
-.sitter-registration-bg {
-    background: fixed url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center left,
-    fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center right,
-    fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat right bottom;
+@media screen and (max-width: 768px) {
+    .sitter-registration-bg {
+        background: fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center left,
+                    fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat bottom left,
+                    fixed url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center right;
+        background-size: 10%;        
+    }
 }
 
 .overlay {

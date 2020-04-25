@@ -15,3 +15,8 @@
     margin-right: 5px;
   }
 }
+@media screen and(max-width: 425px) {
+  h2.heading {
+    font-size: 12px;
+  }
+}
