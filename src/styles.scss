@@ -6,10 +6,10 @@ $teal-app-warn:    mat-palette($mat-deep-orange, 900);
 $teal-app-theme: mat-light-theme($teal-app-primary, $teal-app-accent, $teal-app-warn);
 @include angular-material-theme($teal-app-theme);
 
-body { 
-    height: calc(100vh - 100px); 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+body {
+    height: calc(100vh - 100px);
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     position: relative;
 }
 
@@ -32,7 +32,7 @@ body {
     .login-bg {
         background-size: 50%;
     }
-    
+
     .signup-bg {
         background-size: 30%;
         background-position: 15% 100%;
@@ -119,25 +119,25 @@ body {
     .timepicker__header {
         background-color: rgb(0, 105, 92) !important;
     }
-    
+
     .clock-face__clock-hand {
         background-color: rgb(0, 105, 92) !important;
-    
+
         &::after {
             background-color: rgb(0, 105, 92) !important;
         }
-    
+
         &::before {
             border-color: rgb(0, 105, 92) !important;
         }
     }
-    
+
     .clock-face__number {
         > span.active {
             background-color: rgb(0, 105, 92) !important;
         }
     }
-    
+
     button:not(.timepicker-dial__item) {
         color: rgb(0, 105, 92) !important;
     }
@@ -147,8 +147,8 @@ svg {
   color: #00695c;
 }
 html::-webkit-scrollbar, div::-webkit-scrollbar {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
 }
 html::-webkit-scrollbar-thumb, div::-webkit-scrollbar {
   background: -webkit-gradient(linear,left top,left bottom,from(#00695c),to(#fbc02d));

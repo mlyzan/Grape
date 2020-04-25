@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { getUserInfo } from './../root-state/user/user.selectors';
@@ -6,6 +6,7 @@ import { loadSitters } from 'src/app/root-state/sitter/sitter.actions';
 import { getOrders } from './../root-state/board/board.selectors';
 import { Order } from './../root-state/board/board.interfaces';
 import { loadOrders } from '../root-state/board/board.actions';
+import {MatSidenavContainer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'grape-board',
@@ -17,6 +18,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   orders$: Observable<Order[]>;
   showFiller = false;
   userInfo: any;
+  @ViewChild(MatSidenavContainer) sidenavContainer: MatSidenavContainer;
 
   constructor(private store: Store) {}
 
@@ -37,5 +39,9 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  close() {
+    this.sidenavContainer.start.toggle();
   }
 }
