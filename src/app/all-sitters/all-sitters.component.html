@@ -50,11 +50,11 @@
               <mat-icon color="primary" class="material-icons">room_service</mat-icon>
               {{ sitter.services.join(', ') }}
             </div>
-            <div class="about">
-              <mat-icon color="primary" class="material-icons"> info</mat-icon>
-              {{ sitter.information }}
-            </div>
           </mat-card-content>
+          <div class="about">
+            <mat-icon color="primary" class="material-icons"> info</mat-icon>
+            {{ sitter.information }}
+          </div>
           <button
             class="btn"
             mat-raised-button
@@ -86,10 +86,10 @@
             </button>
             <div *ngIf="isShowComments && comments.length > 0" class="comments">
               <mat-card *ngFor="let comment of comments" class="comments_block">
-                <div>
+                <div class="img">
                   <img mat-card-image src="../../assets/img/default-user.png" alt="user">
                 </div>
-                <div *ngIf="comment.userId === sitter.userId">
+                <div *ngIf="comment.userId === sitter.userId" style="max-width: 80%;">
                   <span>{{ comment.name }}</span>
                   <p>{{ comment.comment }}</p>
                 </div>
@@ -116,6 +116,7 @@
                 <mat-icon color="primary" class="material-icons">done_outline</mat-icon>
                 You alredy booked this user
               </h2>
+
             </ng-container>
             <ng-template #free>
               <div class="book-block" style="width: 80%; margin: 20px auto; text-align: center;">
@@ -149,6 +150,33 @@
                 </mat-expansion-panel>
               </mat-accordion>
             </ng-template>
+
+            </div>
+            <mat-accordion>
+              <mat-expansion-panel class="mat-expension-panel" 
+                                   (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Booking form</mat-panel-title>
+                  <mat-panel-description>Leave your contact info below</mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field class="book">
+                  <mat-label>You can write here</mat-label>
+                  <textarea #newBook style="resize: none;"
+                            rows="4" cols="50" matInput maxlength="200" #message
+                            [disabled]="sitter.userId === activeId || isBooked"></textarea>
+                  <mat-hint align="end">{{ message.value.length }} / 200</mat-hint>
+                </mat-form-field>
+                <button
+                  (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
+                  mat-raised-button
+                  [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
+                  <mat-icon color="primary" class="material-icons">pets</mat-icon>
+                  Book Sitter
+                </button>
+              </mat-expansion-panel>
+            </mat-accordion>
+
           </ng-template>
         </ng-template>
       </mat-tab>

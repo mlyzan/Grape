@@ -69,7 +69,7 @@ export class SitterComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(this.store.pipe(
       select(getCommentsById(this.activeId))
-    ).subscribe(comments => this.comments = comments));
+    ).subscribe(comments => this.comments = [...comments].reverse()));
 
     this.subscriptions.push(this.store.pipe(
       select(getBookById(this.activeId))

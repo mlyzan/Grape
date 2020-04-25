@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  .heading {
+    text-align: center;
+  }
   &_img {
     max-width: 200px;
     max-height: 200px;
@@ -13,9 +15,8 @@
     margin-right: 5px;
   }
 }
-
-@media screen and (max-width: 425px) {
-  .dialog_img {
-    max-height: 160px;
+@media screen and(max-width: 425px) {
+  h2.heading {
+    font-size: 12px;
   }
 }

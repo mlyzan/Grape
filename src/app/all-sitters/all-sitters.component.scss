@@ -7,7 +7,7 @@
   background-color: #f5f5f5;
 
   .img {
-    margin: 0 30px;
+    margin: 0 30px 0 10px;
 
     img {
       width: 120px;
@@ -40,6 +40,11 @@
     display: flex;
     align-items: center;
   }
+
+  .about {
+    word-break: break-all;
+  }
+
 }
 
 .spinner {
@@ -99,12 +104,13 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  word-wrap: break-word;
+  word-break: break-all;
 
   &_block {
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
+    word-break: break-all;
 
     span {
       font-weight: 600;
@@ -126,10 +132,48 @@
   }
 }
 
+.img {
+  min-width: 50px;
+}
+
 .tab-group {
   width: 100%;
 }
 
 .work-icon {
   margin: 0 20px;
+}
+
+.mat-expension-panel {
+  width: 80%; 
+  margin: 20px auto;
+  padding: 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .sitter {
+    flex-direction: column;
+  }
+  
+  .rate {
+    justify-content: flex-start;
+  }
+  
+  .information {
+    grid-template-columns: 1fr;
+  }
+
+  
+  .sitter .img {
+    margin: 0 auto;
+  }
+
+  .comments_block {
+    flex-direction: column;
+  }
+
+  .mat-expension-panel {
+    width: 100%; 
+    padding: 30px 10px;
+  }
 }

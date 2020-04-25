@@ -8,6 +8,8 @@ import {getUserInfo} from '../root-state/user/user.selectors';
 import {userBecomeSitter} from '../root-state/user/user.actions';
 import {CITIES} from '../cities';
 import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
 
 export class ImageSnippet {
   constructor(public src: string, public file: File) {
@@ -40,6 +42,17 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
+
+    if (file === undefined) {      
+      return;
+    }
+    
+    if (file.size > 40960 ) {
+      this.openDialog();
+      return;
+    } 
+    
+
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
@@ -49,7 +62,7 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }
 
-  constructor(private sitterService: SitterService, private store: Store, private router: Router) {
+  constructor(private sitterService: SitterService, private store: Store, private router: Router, public dialog: MatDialog) {
     this.subscriptions.push(this.store.pipe(
       select(getUserInfo)
     ).subscribe(userInfo => this.userInfo = userInfo));
@@ -63,6 +76,13 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
     document.body.classList.remove('sitter-registration-bg');
+  }
+  openDialog() {
+    this.dialog.open( AlertDialogComponent, {
+      width: '450px',
+      height: '400px',
+      data: 'Sorry, this image is too large. Please select an image size smaller than 40 KB.'
+    });    
   }
 
   onSubmit() {

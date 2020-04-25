@@ -43,7 +43,7 @@
 
 .title_name {
   display: inline-block;
-  margin: auto 40px auto 20px;
+  margin: auto 40px;
 }
 
 .input {
@@ -77,6 +77,8 @@
 
     &_descr {
       margin-left: 34px;
+      word-break: break-all;
+      width: 80%;
     }
   }
 }
@@ -129,17 +131,16 @@ ngx-stars {
 
 .history {
   display: flex;
-  flex-direction: row;
-  margin: 20px 25px 15px;
+  flex-direction: column;
+  margin: 20px auto 15px;
 
   &_block {
-    width: 70%;
+    width: 90%;
     margin: 10px auto 20px;
     @include block();
 
     i {
       font-size: 2em;
-      color: lawngreen;
     }
   }
 }
@@ -177,4 +178,120 @@ ngx-stars {
 
 .tab-group {
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    width: 90%;
+    margin-top: -30px;
+    padding: 16px 0;
+    align-items: center;
+    &_header {
+      justify-content: center;
+    }
+  }
+
+  .rate {
+     justify-content: center;
+     margin: 0 auto;
+  }
+  
+  .mat-tab-group {
+    align-items: center;
+  }
+
+  .comments {
+    margin: 5px 10px 5px 0px;
+    &_block {
+      margin-bottom: 20px;
+      @include block();
+      img {
+        max-width: 25px;
+        max-height: 25px;
+      }
+    }
+  }
+
+  .title_name {
+    margin: auto 15px;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 20px;
+  }
+
+  .profile-edit-btn {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    font-size: 2.5em;
+    cursor: pointer;
+  }
+
+  .request {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+  
+    &_block {
+      min-width: 320px;
+      width: 85%;
+      margin: 10px auto 20px;
+      @include block();
+      flex-direction: column;
+      align-items: flex-start;
+
+      img {
+        max-width: 35px;
+        max-height: 35px;
+      }
+      
+    }
+  
+    &_btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  
+      button {
+        margin-right: 2px;
+        margin-left: 2px;
+        padding: 1px 5px;
+        font-size: 0.8em;
+        width: 30%;
+      }
+  
+      mat-icon {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .history {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+  
+    &_block {
+      min-width: 320px;
+      width: 90%;
+      margin: 10px auto 20px;
+      @include block();
+
+      img {
+        max-width: 35px;
+        max-height: 35px;
+      }
+      
+    }
+  
+  }
+
 }

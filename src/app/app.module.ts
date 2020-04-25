@@ -61,7 +61,6 @@ import { AuthGuard } from './app.service';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { DevelopersComponent } from './developers/developers.component';
 import { SitterEditComponent } from './sitter/sitter-edit/sitter-edit.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
@@ -78,6 +77,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { FilterPipe } from './pipes/filter.pipe';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { AlertDialogComponent } from './sitter-registration/alert-dialog/alert-dialog.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 
@@ -120,7 +121,6 @@ const MaterialComponents = [
     HomeComponent,
     FilterSittersComponent,
     NavigationComponent,
-    DevelopersComponent,
     SitterEditComponent,
     SpinnerComponent,
     BoardComponent,
@@ -132,7 +132,9 @@ const MaterialComponents = [
     ConfirmationDialogComponent,
     BookSitterComponent,
     FilterPipe,
-    BottomSheetComponent
+    BottomSheetComponent,
+    AlertDialogComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,

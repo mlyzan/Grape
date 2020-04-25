@@ -51,3 +51,42 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 560px;
+  }
+
+  .input-item {
+    width: 270px;
+  }
+
+  .min-time-example,
+  .max-time-example {
+    width: 120px;
+  }
+
+  .about {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 300px;
+  }
+
+  .form-sitter {
+    flex-direction: column;
+  }
+
+  .input-item {
+    width: 300px;
+    margin: 0;
+  }
+
+  .about {
+    width: 280px;
+    margin: 0;
+  }
+}

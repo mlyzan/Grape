@@ -8,6 +8,8 @@ import {ImageSnippet} from './../../sitter-registration/sitter-registration.comp
 import {CITIES} from '../../cities';
 import {UpdateInfo, UserInterfaces} from '../../root-state/user/user.interfaces';
 import {Subscription} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {AlertDialogComponent} from '../../sitter-registration/alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-profile-update',
@@ -38,15 +40,24 @@ export class ProfileUpdateComponent implements OnInit, OnDestroy {
     photo: new FormControl(this.user.updateInfo.photo, Validators.required)
   });
 
-  constructor(private _router: Router, private _store: Store) {
+  constructor(private _router: Router, private _store: Store, public dialog: MatDialog) {
   }
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
+    
+    if (file === undefined) {      
+      return;
+    }
+    if (file.size > 40960 ) {
+      this.openDialog();
+      return;
+    } 
+
     const reader = new FileReader();
 
-    reader.addEventListener('load', (event: any) => {
-      this.selectedFile = new ImageSnippet(event.target.result, file);
+    reader.addEventListener('load', (event: any) => {  
+      this.selectedFile = new ImageSnippet(event.target.result, file,);      
     });
 
     reader.readAsDataURL(file);
@@ -67,6 +78,14 @@ export class ProfileUpdateComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  openDialog() {
+    this.dialog.open( AlertDialogComponent, {
+      width: '450px',
+      height: '400px',
+      data: 'Sorry, this image is too large. Please select an image size smaller than 40 KB.'
+    });    
   }
 
   onCancel(): void {

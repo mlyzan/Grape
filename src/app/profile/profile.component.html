@@ -55,11 +55,13 @@
                   <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
                 </ng-template>
                 {{book.sitterName}} accepted your offer. <span class="status-badge active">Active</span>
-                <mat-icon matTooltip="Delete offer" class="material-icons" color="primary"
+                <mat-icon matTooltip="Delete offer" class="material-icons" color="warn"
                           (click)="onDecline(book['_id'])">delete_forever
                 </mat-icon>
               </p>
-              <p class="message">Your message: {{book.contactInfo}} </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
             </ng-container>
             <ng-container *ngIf="!book.isBooked && !book.isComplete">
               <p class="response_text">
@@ -70,11 +72,13 @@
                   <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
                 </ng-template>
                 {{book.sitterName}} not replied to your offer yet. <span class="status-badge pending">Pending</span>
-                <mat-icon color="accent" matTooltip="Delete offer" class="material-icons"
+                <mat-icon color="warn" matTooltip="Delete offer" class="material-icons"
                           (click)="onDecline(book['_id'])">delete_forever
                 </mat-icon>
               </p>
-              <p class="message">Your message: {{book.contactInfo}} </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
             </ng-container>
             <ng-container *ngIf="book.isComplete">
               <p class="response_text">
@@ -85,11 +89,13 @@
                   <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
                 </ng-template>
                 {{book.sitterName}} completed your order. <span class="status-badge inactive">Inactive</span>
-                <mat-icon matTooltip="Delete offer" class="material-icons" color="primary"
+                <mat-icon matTooltip="Delete offer" class="material-icons" color="warn"
                           (click)="onDecline(book['_id'])">delete_forever
                 </mat-icon>
               </p>
-              <p class="message">Your message: {{book.contactInfo}} </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
             </ng-container>
           </mat-card>
         </ng-container>

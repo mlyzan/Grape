@@ -61,7 +61,7 @@
               <mat-expansion-panel
                 (opened)="panelOpenState = true"
                 (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header class="mat-expansion-panel-header">
                   <mat-panel-title>
                     <mat-icon color="primary" class="material-icons">comment</mat-icon>
                     Reviews
@@ -74,7 +74,7 @@
                   <div>
                     <img mat-card-image src="../../assets/img/default-user.png" alt="user">
                   </div>
-                  <div>
+                  <div style="word-break: break-all; max-width: 90%;">
                     <span>{{comment.name}}</span>
                     <p>{{comment.comment}}</p>
                   </div>
@@ -100,7 +100,7 @@
               <div>
                 <img mat-card-image src="../../assets/img/default-user.png" alt="user">
               </div>
-              <div>
+              <div style="max-width: 80%; word-break: break-all;">
                 <span>{{book['name']}}</span>
                 <mat-icon color="accent" *ngIf="isInProcess || book['isBooked']; else complete"
                           style="font-size: 2em;"
@@ -144,23 +144,48 @@
           <ng-template matTabLabel>
             <span><mat-icon color="primary" class="material-icons">history</mat-icon> My history </span>
           </ng-template>
-          <div style="text-align: center" *ngIf="!books.length; else history">
-            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
-            <h2>History is empty</h2>
+          <div *ngIf="books.length; else noHistory" class="history">
+            <mat-card *ngFor="let book of books"  class="history_block">
+                <div>
+                  <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+                </div>
+                <div style="max-width: 80%; word-break: break-all;">
+                  <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>
+                    {{book.name}}</span>
+                  <p>{{book.contactInfo}}</p>
+                </div>
+            </mat-card>
           </div>
+          <ng-template #noHistory>
+            <div style="text-align: center" >
+              <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+              <h2>History is empty</h2>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <!-- <mat-tab class="history">
+          <ng-template matTabLabel>
+            <span><mat-icon color="primary" class="material-icons">history</mat-icon> My history </span>
+          </ng-template>
+          <ng-template *ngIf="!books.length; else history">
+            <div style="text-align: center" >
+              <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+              <h2>History is empty</h2>
+            </div>
+          </ng-template>
           <ng-template #history>
             <mat-card *ngFor="let book of books" class="history_block">
               <div>
                 <img mat-card-image src="../../assets/img/default-user.png" alt="user">
               </div>
-              <div>
+              <div style="max-width: 80%; word-break: break-all;">
                 <span><mat-icon color="primary" class="material-icons"> done_outline</mat-icon>
                   {{book.name}}</span>
                 <p>{{book.contactInfo}}</p>
               </div>
             </mat-card>
           </ng-template>
-        </mat-tab>
+        </mat-tab> -->
       </mat-tab-group>
     </div>
   </mat-card>

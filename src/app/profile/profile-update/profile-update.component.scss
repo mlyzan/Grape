@@ -50,3 +50,36 @@ h2 {
 .form-button {
   margin-top: 15px;
 }
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 270px;
+  }
+
+  .form_inputs {
+    flex-direction: column;
+  }
+
+  .input-item {
+    width: 280px;
+    margin: 0;
+  }
+
+  .sitter-photo {
+    display: block;
+    .img-preview-container .img-preview {
+      height: 160px;
+      width: 160px;
+    }
+  }
+
+  .mat-select-panel-wrap {
+    flex-basis: 90%;
+  }
+
+  .old-photo {
+    border-radius: 10px;
+    max-height: 160px;
+    max-width: 240px;
+  }
+}
