@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, EventEmitter, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
@@ -31,6 +31,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   search = '';
   name: string;
   photo: string;
+  @Output() close = new EventEmitter();
 
   constructor(
     public orderService: BoardService,
@@ -59,8 +60,8 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       );
       this._NSBM.showSuccess('Order has been created');
       setTimeout(() => {
-        this.router.navigate(['profile']);
-      }, 2000);
+        this.close.emit();
+      }, 1000);
     }
   }
 
