@@ -1,5 +1,5 @@
 <mat-card class="container">
-  <mat-card-title>Create your own service</mat-card-title>
+  <mat-card-title class="container-heading">Create your own service</mat-card-title>
   <form [formGroup]="sitterPersonalInfo" class="form">
     <div>
       <div class="form-sitter">
@@ -52,6 +52,7 @@
               <button
                 mat-button
                 type="button"
+                style="padding: 0 8px;"
                 (click)="imageInput.click()"
               >Select photo
                 <mat-icon color="primary" class="material-icons">get_app</mat-icon>
