@@ -52,7 +52,7 @@ body {
     .sitter-registration-bg {
         background: fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center left,
                     fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat center right;
-        background-size: 10%;        
+        background-size: 10%;
     }
 }
 
@@ -71,7 +71,7 @@ body {
 
     .sitter-registration-bg {
         background: fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat bottom left;
-        background-size: 10%;        
+        background-size: 10%;
     }
 }
 
@@ -83,7 +83,7 @@ body {
 @media screen and (min-width: 768px ) {
     .error-page {
         background: url('./assets/img/error_page.png') no-repeat center 50%;
-        background-size: 70%; 
+        background-size: 70%;
     }
 }
 
@@ -99,7 +99,7 @@ body {
         background: fixed url('./assets/img/sit-reg-parrot.jpg') no-repeat center left,
                     fixed url('./assets/img/sit-reg-cat-bg.jpg') no-repeat bottom left,
                     fixed url('./assets/img/sit-reg-dog-bg.jpg') no-repeat center right;
-        background-size: 10%;        
+        background-size: 10%;
     }
 }
 
@@ -146,11 +146,11 @@ body {
 svg {
   color: #00695c;
 }
-html::-webkit-scrollbar, div::-webkit-scrollbar {
+*::-webkit-scrollbar,  {
   width: 10px;
   height: 10px;
 }
-html::-webkit-scrollbar-thumb, div::-webkit-scrollbar {
+*::-webkit-scrollbar {
   background: -webkit-gradient(linear,left top,left bottom,from(#00695c),to(#fbc02d));
   background: linear-gradient(180deg,#00695c,#fbc02d);
   border-radius: 30px;
