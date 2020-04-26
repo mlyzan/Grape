@@ -184,10 +184,11 @@
   text-align: center;
   .filter {
     width: 65%;
-    padding: 6px;
+    padding: 10px 10px 10px 38px;
     border-radius: 16px;
-    border: 1px #00695c solid;
+    border: 2px #8bbbb5 solid;
     outline: none;
+    background: url("../../assets/img/search.svg") 8px center / auto no-repeat;
   }
   .filter:focus{
     outline: 0;
