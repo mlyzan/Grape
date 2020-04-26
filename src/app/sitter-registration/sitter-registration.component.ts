@@ -10,6 +10,7 @@ import {CITIES} from '../cities';
 import {Subscription} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
+import {Title} from '@angular/platform-browser';
 
 export class ImageSnippet {
   constructor(public src: string, public file: File) {
@@ -43,15 +44,15 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
 
-    if (file === undefined) {      
+    if (file === undefined) {
       return;
     }
-    
+
     if (file.size > 40960 ) {
       this.openDialog();
       return;
-    } 
-    
+    }
+
 
     const reader = new FileReader();
 
@@ -62,13 +63,15 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
   }
 
-  constructor(private sitterService: SitterService, private store: Store, private router: Router, public dialog: MatDialog) {
+  constructor(private sitterService: SitterService, private store: Store, private router: Router, public dialog: MatDialog,
+              private title: Title) {
     this.subscriptions.push(this.store.pipe(
       select(getUserInfo)
     ).subscribe(userInfo => this.userInfo = userInfo));
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Become sitter');
     this.cities = CITIES;
     document.body.classList.add('sitter-registration-bg');
   }
@@ -82,7 +85,7 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
       width: '450px',
       height: '400px',
       data: 'Sorry, this image is too large. Please select an image size smaller than 40 KB.'
-    });    
+    });
   }
 
   onSubmit() {

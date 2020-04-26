@@ -8,6 +8,7 @@ import {Sitter} from 'src/app/root-state/sitter/sitter.interfaces';
 import {getActiveSitterById, getSuccess} from 'src/app/root-state/sitter/sitter.selectors';
 import {CITIES} from '../../cities';
 import {Subscription} from 'rxjs';
+import {Title} from '@angular/platform-browser';
 
 //import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
 
@@ -36,10 +37,11 @@ export class SitterEditComponent implements OnInit, OnDestroy {
     information: new FormControl('', Validators.required),
   });
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store, private router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Edit profile');
     this.cities = CITIES;
     this.subscriptions.push(this.store.pipe(
       select(getActiveId)

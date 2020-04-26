@@ -11,6 +11,7 @@ import {getUserOrders} from '../root-state/board/board.selectors';
 import {Order} from '../root-state/board/board.interfaces';
 import {loadOrders, deleteOrder, removeOffer} from '../root-state/board/board.actions';
 import {Subscription} from 'rxjs';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'grape-profile',
@@ -34,10 +35,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   activeId: string;
   myOrders: Order[] = [];
 
-  constructor(private _store: Store, private _router: Router) {
+  constructor(private _store: Store, private _router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Profile');
     this._store.dispatch(loadSitters());
     this._store.dispatch(loadBooks());
     this._store.dispatch(loadOrders());

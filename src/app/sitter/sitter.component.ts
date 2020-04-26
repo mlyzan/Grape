@@ -9,7 +9,7 @@ import {
 import {getActiveId} from '../root-state/user/user.selectors';
 import {Router} from '@angular/router';
 import {
-  deleteSitterSuccess, deleteSitter, loadSitters, loadComments,
+  deleteSitter, loadSitters, loadComments,
   updateBookStatus, declineBook, loadBooks
 } from '../root-state/sitter/sitter.actions';
 import {UserService} from '../root-state/user/user.service';
@@ -17,6 +17,7 @@ import {userLoaded} from '../root-state/user/user.actions';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 import {Subscription} from 'rxjs';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'grape-sitter',
@@ -42,10 +43,12 @@ export class SitterComponent implements OnInit, OnDestroy {
     private store: Store,
     private router: Router,
     private userService: UserService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Profile');
     this.store.dispatch(loadComments());
     this.store.dispatch(loadBooks());
 

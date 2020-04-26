@@ -13,6 +13,7 @@ import {
 } from '../root-state/sitter/sitter.selectors';
 import {getActiveName, getActiveId, getUserInfo} from '../root-state/user/user.selectors';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'grape-all-sitters',
@@ -33,10 +34,11 @@ export class AllSittersComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   isSitter: boolean;
 
-  constructor(private sitterService: SitterService, private store: Store, private router: Router) {
+  constructor(private sitterService: SitterService, private store: Store, private router: Router, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Find sitter');
     this.store.dispatch(loadSitters());
     this.store.dispatch(loadComments());
     this.store.dispatch(loadBooks());
