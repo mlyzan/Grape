@@ -13,7 +13,8 @@
       <ng-container *ngIf="sitter.photo; else defaultPhoto">
         <img mat-card-image [src]="sitter.photo" alt="photo"/>
         <div class="rate">
-          <ngx-stars [readonly]="activeId && sitter.userId !== activeId && !isSitter ? false : true" [maxStars]="5"
+          <ngx-stars [readonly]="activeId && sitter.userId !== activeId && !isSitter
+                      && isSitterBookedByMe(sitter.userId) === 'completed' ? false : true" [maxStars]="5"
                      [initialStars]="sitter.rate"
                      [color]="'#FFC92A'" [wholeStars]="false"
                      (ratingOutput)="onRatingSet(sitter.userId, $event)"></ngx-stars>
@@ -114,7 +115,7 @@
             </h2>
           </div>
           <ng-template #notBooked>
-            <ng-container *ngIf="isSitterBookedByMe(sitter.userId); else free">
+            <ng-container *ngIf="isSitterBookedByMe(sitter.userId) === 'booked'; else free">
               <h2>
                 <mat-icon color="primary" class="material-icons">done_outline</mat-icon>
                 You already booked this user

@@ -136,15 +136,17 @@ export class AllSittersComponent implements OnInit, OnDestroy {
     return isBook;
   }
 
-  isSitterBookedByMe(id: string): boolean {
-    let isBook: boolean;
+  isSitterBookedByMe(id: string): string {
+    let isBook: string;
     this.subscriptions.push(this.store.pipe(
       select(getBooksByCustomerId(this.activeId))
     ).subscribe(res => {
       if (res) {
         res.filter(e => {
           if (e.userId === id && !e.isComplete) {
-            isBook = true
+            isBook = 'booked'
+          } else if (e.userId === id && e.isComplete) {
+            isBook = 'completed'
           }
         })
       }

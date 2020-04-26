@@ -146,11 +146,11 @@ body {
 svg {
   color: #00695c;
 }
-*::-webkit-scrollbar,  {
+*::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-*::-webkit-scrollbar {
+*::-webkit-scrollbar-thumb {
   background: -webkit-gradient(linear,left top,left bottom,from(#00695c),to(#fbc02d));
   background: linear-gradient(180deg,#00695c,#fbc02d);
   border-radius: 30px;
