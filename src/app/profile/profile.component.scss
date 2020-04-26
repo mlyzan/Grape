@@ -66,6 +66,7 @@
 .response, .orders {
   border: 1px solid gray;
   margin-top: 8px;
+  max-width: 500px;
 
   &_text {
     display: flex;
