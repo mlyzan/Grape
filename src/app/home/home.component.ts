@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,10 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Petly');
   }
 
   @HostListener('window:scroll', ['$event']) onWindowScroll(e) {
@@ -30,6 +32,6 @@ export class HomeComponent implements OnInit {
         } else {
           text[i].classList.add('slide');
         }
-      }    
+      }
   }
 }

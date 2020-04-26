@@ -10,6 +10,7 @@ import {ofType} from '@ngrx/effects';
 
 import {Subscription} from 'rxjs';
 import {getActiveId} from 'src/app/root-state/user/user.selectors';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -26,10 +27,12 @@ export class SignInComponent implements OnInit, OnDestroy {
     password: ''
   };
 
-  constructor(private userService: UserService, private router: Router, private store: Store, private actionsSubj: ActionsSubject) {
+  constructor(private userService: UserService, private router: Router, private store: Store, private actionsSubj: ActionsSubject,
+              private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Login')
     document.body.classList.add('login-bg');
   }
 

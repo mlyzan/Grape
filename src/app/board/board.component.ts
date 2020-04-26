@@ -7,6 +7,7 @@ import { getOrders } from './../root-state/board/board.selectors';
 import { Order } from './../root-state/board/board.interfaces';
 import { loadOrders } from '../root-state/board/board.actions';
 import {MatSidenavContainer} from '@angular/material/sidenav';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'grape-board',
@@ -20,9 +21,10 @@ export class BoardComponent implements OnInit, OnDestroy {
   userInfo: any;
   @ViewChild(MatSidenavContainer) sidenavContainer: MatSidenavContainer;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private title: Title) {}
 
   ngOnInit() {
+    this.title.setTitle('Board');
     this.store.dispatch(loadSitters());
     setTimeout(() => {
       this.store.dispatch(loadOrders());

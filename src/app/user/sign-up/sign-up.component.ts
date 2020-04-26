@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 
 import {UserService} from '../../root-state/user/user.service';
 import {createUser} from '../../root-state/user/user.actions';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,10 +16,11 @@ export class SignUpComponent implements OnInit, OnDestroy {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   hide = true;
 
-  constructor(public userService: UserService, private router: Router, private store: Store) {
+  constructor(public userService: UserService, private router: Router, private store: Store, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Sign-up')
     document.body.classList.add('signup-bg');
   }
 
