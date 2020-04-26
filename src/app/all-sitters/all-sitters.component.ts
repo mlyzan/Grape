@@ -143,7 +143,7 @@ export class AllSittersComponent implements OnInit, OnDestroy {
     ).subscribe(res => {
       if (res) {
         res.filter(e => {
-          if (e.userId === id) {
+          if (e.userId === id && !e.isComplete) {
             isBook = true
           }
         })

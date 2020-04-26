@@ -1,6 +1,7 @@
 .card {
   margin: 1% 5% 1% 5%;
-  height: 252px; 
+  height: 252px;
+  background-color: #f5f5f5;
 }
 
 .border-card {
@@ -53,7 +54,7 @@
 
 @media screen and (max-width: 768px) {
   .card {
-    height: auto; 
+    height: auto;
   }
 }
 
