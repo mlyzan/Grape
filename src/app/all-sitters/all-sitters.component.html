@@ -5,7 +5,10 @@
   Something wrong. Please try again later.
 </div>
 <ng-container *ngIf="sitters$ | async as sitters">
-  <mat-card class="sitter" *ngFor="let sitter of sitters">
+  <div class="filter-block">
+    <input class="filter" type="text" [(ngModel)]="search" placeholder="Search by name">
+  </div>
+  <mat-card class="sitter" *ngFor="let sitter of sitters | filterByName:search">
     <div class="img">
       <ng-container *ngIf="sitter.photo; else defaultPhoto">
         <img mat-card-image [src]="sitter.photo" alt="photo"/>

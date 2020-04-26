@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Sitter, Comment} from '../root-state/sitter/sitter.interfaces';
 import {SitterService} from '../root-state/sitter/sitter.service';
@@ -33,7 +33,7 @@ export class AllSittersComponent implements OnInit, OnDestroy {
   bookId: string;
   panelOpenState = false;
   isSitter: boolean;
-
+  search = '';
   constructor(private sitterService: SitterService, private store: Store, private router: Router, private title: Title) {
   }
 
@@ -151,4 +151,5 @@ export class AllSittersComponent implements OnInit, OnDestroy {
     }));
     return isBook;
   }
+
 }

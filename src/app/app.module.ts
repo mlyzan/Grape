@@ -78,6 +78,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { AlertDialogComponent } from './sitter-registration/alert-dialog/alert-dialog.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
 
 
 
@@ -132,7 +133,8 @@ const MaterialComponents = [
     FilterPipe,
     BottomSheetComponent,
     AlertDialogComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    FilterByNamePipe
   ],
   imports: [
     BrowserModule,
