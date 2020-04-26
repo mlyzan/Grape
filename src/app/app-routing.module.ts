@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
-import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import { AllSittersComponent } from './all-sitters/all-sitters.component';
@@ -29,9 +28,8 @@ const routes: Routes = [
     children: [{ path: '', component: SignInComponent }]
   },
   {
-    path: 'sitter', component: SitterContainerComponent,
-    canActivate: [AuthGuard],
-    children: [{path: '', component: SitterComponent}]
+    path: 'sitter', component: SitterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create-sitter', component: SitterRegistrationComponent,
@@ -40,7 +38,7 @@ const routes: Routes = [
   {
     path: 'all-sitters', component: AllSittersComponent,
     canActivate: [AuthGuard]
-  },  
+  },
   {
     path: 'sitter-edit', component: SitterEditComponent
   },
@@ -49,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'profile', component: ProfileComponent,
-    canActivate: [AuthGuard]  
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile-update', component: ProfileUpdateComponent,

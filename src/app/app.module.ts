@@ -7,7 +7,6 @@ import { HttpClientModule} from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import { SitterContainerComponent } from './sitter/sitter.container';
 import { SitterComponent } from './sitter/sitter.component';
 import { SitterRegistrationComponent } from './sitter-registration/sitter-registration.component';
 import { UserComponent } from './user/user.component';
@@ -110,7 +109,6 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent,
-    SitterContainerComponent,
     SitterComponent,
     SitterRegistrationComponent,
     UserComponent,
