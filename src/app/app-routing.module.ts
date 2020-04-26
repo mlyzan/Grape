@@ -40,10 +40,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'sitter-edit', component: SitterEditComponent
+    path: 'sitter-edit', component: SitterEditComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'board', component: BoardComponent
+    path: 'board', component: BoardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile', component: ProfileComponent,
