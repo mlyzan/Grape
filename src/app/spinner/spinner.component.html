@@ -1,4 +1,4 @@
 
-<ng-container *ngIf="spinner$ | async">
+<ng-container *ngIf="spinner$ || loader$ | async">
     <div class="overlay"></div>
 </ng-container>

@@ -11,3 +11,4 @@ export const getUserOrders = (id: string) => createSelector(getState, (state) =>
   }
   return [];
 });
+export const getLoader = createSelector(getState, (state) => state.loading);

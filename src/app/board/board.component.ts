@@ -44,6 +44,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   close() {
+    this.store.dispatch(loadOrders());
     this.sidenavContainer.start.toggle();
   }
 }
