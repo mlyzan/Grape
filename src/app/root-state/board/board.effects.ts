@@ -51,9 +51,7 @@ export class BoardEffects {
           this.boardService.deleteOrder(id).pipe(
             tap(() => this._NSBM.showSuccess('Order was successfully deleted')),
             map(res => boardAction.deleteOrderSuccess(res)),
-            catchError(error => { 
-              this._NSBM.showError('Error! Can`t delete an order');
-              return of(boardAction.deleteOrderFail(error))})
+            catchError(error => of(boardAction.deleteOrderFail(error)))
           ),
       ),
     )
