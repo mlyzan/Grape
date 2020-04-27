@@ -44,7 +44,7 @@
   }
 
   .about {
-    word-break: break-all;
+    word-break: break-word;
   }
 
 }
@@ -106,13 +106,13 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  word-break: break-all;
+  word-break: break-word;
 
   &_block {
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    word-break: break-all;
+    word-break: break-word;
 
     span {
       font-weight: 600;
