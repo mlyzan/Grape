@@ -34,6 +34,7 @@ export class AllSittersComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   isSitter: boolean;
   search = '';
+  checked = false;
   constructor(private sitterService: SitterService, private store: Store, private router: Router, private title: Title) {
   }
 
