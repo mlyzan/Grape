@@ -7,8 +7,9 @@
 <ng-container *ngIf="sitters$ | async as sitters">
   <div class="filter-block">
     <input class="filter" type="text" [(ngModel)]="search" placeholder="Search by name">
+    <mat-slide-toggle [(ngModel)]="checked" color="accent">Sort by rate</mat-slide-toggle>
   </div>
-  <mat-card class="sitter" *ngFor="let sitter of sitters | filterByName:search">
+  <mat-card class="sitter" *ngFor="let sitter of sitters | filterByName:search | sortByRate:checked">
     <div class="img">
       <ng-container *ngIf="sitter.photo; else defaultPhoto">
         <img mat-card-image [src]="sitter.photo" alt="photo"/>

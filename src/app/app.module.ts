@@ -37,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { UserService } from './root-state/user/user.service';
 import { SitterService } from './root-state/sitter/sitter.service';
@@ -79,6 +80,7 @@ import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { AlertDialogComponent } from './sitter-registration/alert-dialog/alert-dialog.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
+import { SortByRatePipe } from './pipes/sort-by-rate.pipe';
 
 
 
@@ -104,7 +106,8 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatNativeDateModule,
   MatDatepickerModule,
-  MatBottomSheetModule
+  MatBottomSheetModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
@@ -134,7 +137,8 @@ const MaterialComponents = [
     BottomSheetComponent,
     AlertDialogComponent,
     NotFoundPageComponent,
-    FilterByNamePipe
+    FilterByNamePipe,
+    SortByRatePipe
   ],
   imports: [
     BrowserModule,
