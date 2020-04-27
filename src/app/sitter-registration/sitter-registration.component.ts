@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {SitterService} from '../root-state/sitter/sitter.service';
 import {Store, select} from '@ngrx/store';
-import {createSitter} from './../root-state/sitter/sitter.actions';
+import {createSitter, loadSitters} from './../root-state/sitter/sitter.actions';
 import {Router} from '@angular/router';
 import {getUserInfo} from '../root-state/user/user.selectors';
 import {userBecomeSitter} from '../root-state/user/user.actions';
@@ -98,7 +98,10 @@ export class SitterRegistrationComponent implements OnInit, OnDestroy {
     }));
     this.store.dispatch(userBecomeSitter());
     setTimeout(() => {
-      this.router.navigateByUrl('/all-sitters');
+      this.store.dispatch(loadSitters());
+    }, 1500);
+    setTimeout(() => {
+      this.router.navigateByUrl('/sitter');
     }, 3000);
   }
 }
