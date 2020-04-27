@@ -10,8 +10,6 @@ import {CITIES} from '../../cities';
 import {Subscription} from 'rxjs';
 import {Title} from '@angular/platform-browser';
 
-//import { MinutesFormatterPipe } from 'ngx-material-timepicker/src/app/material-timepicker/pipes/minutes-formatter.pipe';
-
 @Component({
   selector: 'app-sitter-edit',
   templateUrl: './sitter-edit.component.html',
@@ -23,9 +21,7 @@ export class SitterEditComponent implements OnInit, OnDestroy {
   search = '';
   activeId: string;
   sitter$: Sitter;
-  showSuccessMessage: boolean = false;
-  successMessage: object;
-
+  
   sitterEditInfo = new FormGroup({
     services: new FormControl('', Validators.required),
     animals: new FormControl('', Validators.required),
@@ -58,13 +54,8 @@ export class SitterEditComponent implements OnInit, OnDestroy {
   onUpdate() {
     console.log(this.sitterEditInfo.value);
     this.store.dispatch(updateSitter(this.activeId, {...this.sitterEditInfo.value}));
-    this.subscriptions.push(this.store.pipe(
-      select(getSuccess)
-    ).subscribe(success => this.successMessage = success));
-    this.showSuccessMessage = true;
-
+    
     setTimeout(() => {
-      this.showSuccessMessage = false;
       this.store.dispatch(loadSitters());
       this.router.navigateByUrl('sitter');
     }, 1500);

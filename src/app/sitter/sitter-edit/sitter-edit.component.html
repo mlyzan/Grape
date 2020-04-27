@@ -76,9 +76,6 @@
         </mat-form-field>
       </div>
     </div>
-    <div *ngIf="showSuccessMessage" style="text-align: center;">
-      <mat-label>{{successMessage['success']}}</mat-label>
-    </div>
     <div class="form-button">
       <button mat-raised-button type="submit" color="primary" style="margin-right: 10px;"
               [disabled]="!sitterEditInfo.valid"
