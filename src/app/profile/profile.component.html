@@ -98,7 +98,10 @@
           </mat-card>
         </ng-container>
         <ng-template #empty>
-          <p class="empty">You don't have active orders or users have not accepted your offers</p>
+          <div class="empty">
+            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+            <p>You don't have active orders or users have not accepted your offers</p>
+          </div>
         </ng-template>
       </mat-tab>
       <mat-tab>
@@ -142,8 +145,11 @@
           </ng-container>
         </ng-container>
         <ng-template #emptyOrders>
-          <p class="empty_orders">You do not have any orders yet. You can create your order <a [routerLink]="'/board'">here</a>
-          </p>
+          <div class="empty">
+            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+            <p class="empty">You do not have any orders yet. You can create your order <a [routerLink]="'/board'">here</a>
+            </p>
+          </div>
         </ng-template>
       </mat-tab>
     </mat-tab-group>
