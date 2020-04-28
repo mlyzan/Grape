@@ -14,10 +14,19 @@
 .orders {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-left: 7%;
   height: 100%;
 }
-
+.board {
+  display: flex;
+  align-items: flex-start;
+}
+.btn-create {
+  margin-top: 200px;
+  transform: rotate(-90deg);
+  border: 1px solid #00695c;
+  font-size: 20px;
+  padding: 5px 20px;
+}
 .content {
   height: 100%;
   background-color: #fff;
@@ -30,18 +39,10 @@ button:disabled {
   }
 }
 
-@media (min-width: 769px) {
-  .btn-create {
-    position: fixed;
-    top: 50%;
-    transform: rotate(-90deg);
-    border: 1px solid #00695c;
-    font-size: 20px;
-    padding: 5px 20px;
-  }
-}
-
 @media (max-width: 768px) {
+  .board {
+    display: block;
+  }
   .orders {
     display: block;
     margin: auto;
@@ -54,6 +55,7 @@ button:disabled {
     margin-top: 2%;
     padding: 10px 0 10px;
     width: 50%;
+    transform: rotate(-0deg);
   }
 }
 
