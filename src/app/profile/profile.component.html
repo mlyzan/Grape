@@ -27,17 +27,15 @@
           <div class="profile_title">
             <mat-icon class="material-icons" color="primary">email</mat-icon>
             {{user.userEmail}}</div>
-          <ng-container *ngIf="user.updateInfo.years">
-            <div class="profile_title">
-              <mat-icon class="material-icons" color="primary">cake</mat-icon>
-              {{user.updateInfo.years | date}}</div>
-            <div class="profile_title">
-              <mat-icon class="material-icons" color="primary">location_on</mat-icon>
-              {{user.updateInfo.address}}</div>
-            <div class="profile_title">
-              <mat-icon class="material-icons" color="primary">pets</mat-icon>
-              {{user.updateInfo.animals.join(', ')}}</div>
-          </ng-container>
+          <div *ngIf="user.updateInfo.years" class="profile_title">
+            <mat-icon class="material-icons" color="primary">cake</mat-icon>
+            {{user.updateInfo.years | date}}</div>
+          <div *ngIf="user.updateInfo.address" class="profile_title">
+            <mat-icon class="material-icons" color="primary">location_on</mat-icon>
+            {{user.updateInfo.address}}</div>
+          <div *ngIf="user.updateInfo.animals" class="profile_title">
+            <mat-icon class="material-icons" color="primary">pets</mat-icon>
+            {{user.updateInfo.animals.join(', ')}}</div>
         </div>
       </mat-tab>
       <mat-tab>
