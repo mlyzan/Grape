@@ -9,7 +9,7 @@ export const commonLinks = [
   },
   {
     href: '#services',
-    text: 'Services & Prices',
+    text: 'Services',
   },
 ];
 
