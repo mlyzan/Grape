@@ -1,0 +1,91 @@
+<mat-card class="container">
+  <mat-card-title><h2>Update profile</h2></mat-card-title>
+  <form [formGroup]="profileUpdate" class="form">
+    <div class="form_inputs">
+      <div>
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your Animals</mat-label>
+          <mat-select formControlName="animals" multiple [ngModel]="user.updateInfo.animals">
+            <mat-option value="Dog">Dog</mat-option>
+            <mat-option value="Cat">Cat</mat-option>
+            <mat-option value="Bird">Bird</mat-option>
+            <mat-option value="Rabbit">Rabbit</mat-option>
+            <mat-option value="Reptile">Reptile</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your address</mat-label>
+          <input matInput formControlName="address" [matAutocomplete]="address"
+                 placeholder="City" [(ngModel)]="search">
+          <mat-icon color="primary" matSuffix>location_on</mat-icon>
+          <mat-autocomplete #address="matAutocomplete">
+            <mat-option *ngFor="let city of cities | filter:search" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="input-item" appearance="fill">
+          <mat-label>Your birthday</mat-label>
+          <input matInput [matDatepicker]="years" formControlName="years" [ngModel]="user.updateInfo.years"/>
+          <mat-datepicker-toggle color="primary" matSuffix [for]="years"></mat-datepicker-toggle>
+          <mat-datepicker color="primary" #years startView="year"></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+      <div class="sitter-photo">
+        <label>
+          <button mat-button type="button" (click)="imageInput.click()">
+            Update photo
+            <mat-icon class="material-icons" color="primary">get_app</mat-icon>
+          </button>
+          <br/>
+          <input
+            formControlName="photo"
+            #imageInput
+            style="display: none;"
+            type="file"
+            accept="image/jpeg"
+            (change)="processFile(imageInput)"
+          />
+        </label>
+
+        <div *ngIf="selectedFile; else userPhoto" class="img-preview-container">
+          <div
+            class="img-preview"
+            [ngStyle]="{ 'background-image': 'url(' + selectedFile.src + ')' }"
+          ></div>
+        </div>
+        <ng-template #userPhoto>
+          <ng-container *ngIf="!user.updateInfo.photo; else emptyOldPhoto">
+            <div>
+              <img src="../../../assets/img/default-user.png" alt="photo" class="old-photo">
+            </div>
+          </ng-container>
+          <ng-template #emptyOldPhoto>
+            <div>
+              <img src="{{user.updateInfo.photo}}" alt="photo" class="old-photo">
+            </div>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="form-button">
+      <button
+        [disabled]="!profileUpdate.valid && !user.updateInfo.photo"
+        mat-raised-button
+        type="submit"
+        color="primary"
+        style="margin-right: 10px;"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+      <button mat-raised-button (click)="onCancel()" color="warn">
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>

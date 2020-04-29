@@ -1,0 +1,43 @@
+<ng-container *ngIf="!isUserLoggedIn" class="container">
+  <mat-card class="card">
+    Press <button mat-button>SingUp</button> to create your own account
+  </mat-card>
+  <mat-card class="card">
+    Press <button mat-button>LogIn</button> if you already have an account
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="isUserLoggedIn" class="container">
+  <ng-container *ngIf="!isSitter" class="container">
+    <mat-card class="card">
+      Press <button mat-button>Find Sitters</button> to see the list of sitters and their reviews,
+      and you can book them
+      <mat-card>
+        Press <button mat-button>Filters</button> to filter the list of sitters
+      </mat-card>
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Board</button> to see all user's orders and create your own
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Profile</button> to see your profile, replies from
+      sitters, and orders
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Become Sitter</button> if you want to become a
+      sitter
+    </mat-card>
+  </ng-container>
+  <ng-container *ngIf="isSitter" class="container">
+    <mat-card class="card">
+      Press <button mat-button>Find Sitters</button> to see list of sitters
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Board</button> to see the orders and offer your services
+    </mat-card>
+    <mat-card class="card">
+      Press <button mat-button>Your Profile</button> to see the profile, requests and
+      history
+    </mat-card>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,92 @@
+.form-sitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  font-size: large;
+  width: 830px;
+  margin: 10px auto 5px;
+}
+
+.input-item {
+  margin: 20px 5px 20px;
+  width: 400px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.min-time-example,
+.max-time-example {
+  width: 190px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.about {
+  margin: 5px;
+  width: 810px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.form-button {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 560px;
+  }
+
+  .input-item {
+    width: 270px;
+  }
+
+  .min-time-example,
+  .max-time-example {
+    width: 120px;
+  }
+
+  .about {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 300px;
+  }
+
+  .form-sitter {
+    flex-direction: column;
+  }
+
+  .input-item {
+    width: 300px;
+    margin: 0;
+  }
+
+  .about {
+    width: 280px;
+    margin: 0;
+  }
+}

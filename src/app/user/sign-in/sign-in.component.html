@@ -1,0 +1,45 @@
+<mat-card class="example-card">
+
+  <mat-card-title>Log in to continue</mat-card-title>
+
+  <mat-card-content>
+    <form class="example-form" #signInForm="ngForm" (ngSubmit)="signInForm.valid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput
+               placeholder="E-mail" required
+               name="email" #email="ngModel"
+               [pattern]="emailRegex"
+               [(ngModel)]="model.email">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="signInForm.submitted && email.errors">
+          <mat-error *ngIf="email.errors.required">This field is required</mat-error>
+          <mat-error *ngIf="email.errors.pattern">Invalid email address</mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput required
+               type="password" minlength="4"
+               name="password" #password="ngModel"
+               [type]="hide ? 'password' : 'text'"
+               [(ngModel)]="model.password">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="signInForm.submitted && !password.valid">
+          <mat-error *ngIf="password.errors.required">This field is required</mat-error>
+          <mat-error *ngIf="password.errors.minlength">Enter at least 4 characters</mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color='primary' type="submit" (click)="onSubmit(signInForm)">Log In</button>
+      </mat-card-actions>
+
+    </form>
+  </mat-card-content>
+
+</mat-card>

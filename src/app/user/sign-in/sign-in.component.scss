@@ -1,0 +1,33 @@
+mat-card {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+mat-form-field {
+  width: 70%;
+}
+
+@media screen and (max-width: 1399px) {
+  mat-card {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  mat-card {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  mat-form-field {
+    width: 90%;
+    margin-bottom: -1em;
+  }
+
+  .mat-card-actions {
+    margin-bottom: 0;
+  }
+}

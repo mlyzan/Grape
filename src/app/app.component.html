@@ -1,1 +1,13 @@
-<h1>Grape</h1>
+<grape-header></grape-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<grape-spinner></grape-spinner>
+<button
+  color="primary"
+  mat-fab
+  aria-label="Example icon-button with a heart icon"
+  class="btn-help"
+  (click)="openBottomSheet()"
+> ?
+</button>

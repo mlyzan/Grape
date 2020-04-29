@@ -1,0 +1,162 @@
+<grape-filter-sitters></grape-filter-sitters>
+
+<div class="error" *ngIf="error$ | async">
+  <div class="error_ops">Ooops!</div>
+  Something wrong. Please try again later.
+</div>
+<ng-container *ngIf="sitters$ | async as sitters">
+  <div class="filter-block">
+    <input class="filter" type="text" [(ngModel)]="search" placeholder="Search by name">
+    <mat-slide-toggle [(ngModel)]="checked" color="accent">Sort by rate</mat-slide-toggle>
+  </div>
+  <mat-card class="sitter" *ngFor="let sitter of sitters | filterByName:search | sortByRate:checked">
+    <div class="img">
+      <ng-container *ngIf="sitter.photo; else defaultPhoto">
+        <img mat-card-image [src]="sitter.photo" alt="photo"/>
+        <div class="rate">
+          <ngx-stars [readonly]="activeId && sitter.userId !== activeId && !isSitter
+                      && isSitterBookedByMe(sitter.userId) === 'completed' ? false : true" [maxStars]="5"
+                     [initialStars]="sitter.rate"
+                     [color]="'#FFC92A'" [wholeStars]="false"
+                     (ratingOutput)="onRatingSet(sitter.userId, $event)"></ngx-stars>
+          <div *ngIf="sitter.rate > 0.4" class="rate_num">Rate: {{sitter.rate | number:'1.0-1'}}</div>
+        </div>
+      </ng-container>
+      <ng-template #defaultPhoto>
+        <img
+          mat-card-image
+          src="../../assets/img/default-user.png"
+          alt="photo"
+        />
+      </ng-template>
+    </div>
+
+    <mat-tab-group dynamicHeight (focusChange)="getBookStatus(sitter.userId)" class="tab-group">
+      <mat-tab label="Sitter Info">
+        <mat-card-content class="description">
+          <mat-card-title class="name">
+            <mat-icon color="primary" class="material-icons">person_pin</mat-icon>
+            {{ sitter.userName }}
+          </mat-card-title>
+          <mat-card-content class="information">
+            <div class="payment">
+              <mat-icon color="primary" class="material-icons">attach_money</mat-icon>
+              {{ sitter.payment | currency }} per hour
+            </div>
+            <div class="location">
+              <mat-icon color="primary" class="material-icons">location_on</mat-icon>
+              {{ sitter.address }}
+            </div>
+            <div class="animals">
+              <mat-icon color="primary" class="material-icons">pets</mat-icon>
+              {{ sitter.animals.join(', ') }}
+            </div>
+            <div class="services">
+              <mat-icon color="primary" class="material-icons">room_service</mat-icon>
+              {{ sitter.services.join(', ') }}
+            </div>
+          </mat-card-content>
+          <div class="about">
+            <mat-icon color="primary" class="material-icons"> info</mat-icon>
+            {{ sitter.information }}
+          </div>
+          <button
+            class="btn"
+            mat-raised-button
+            color="primary"
+            (click)="onShow(sitter.userId)"
+          >
+            <mat-icon class="material-icons">pets</mat-icon>
+            Show comments
+          </button>
+
+          <div *ngIf="isShowComments && sitter.userId === currentSitterCommentId">
+            <h2>Comments</h2>
+            <mat-divider style="width: 87%;"></mat-divider>
+            <mat-form-field class="comment">
+              <mat-label>Leave a comment</mat-label>
+              <input [disabled]="sitter.userId === activeId"
+                     #newComment matInput maxlength="100" #message/>
+              <mat-hint align="start">{{ message.value.length }} / 100</mat-hint>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              (click)="
+                  onSubmit(newComment.value, sitter.userId); newComment.value = ''
+                "
+              [disabled]="sitter.userId === activeId || newComment.value === ''"
+            >
+              <mat-icon color="primary" class="material-icons" style="margin-right: 5px;">comment</mat-icon>
+              Add comment
+            </button>
+            <div *ngIf="isShowComments && comments.length > 0" class="comments">
+              <mat-card *ngFor="let comment of comments" class="comments_block">
+                <div class="img">
+                  <img mat-card-image src="../../assets/img/default-user.png" alt="user">
+                </div>
+                <div *ngIf="comment.userId === sitter.userId" style="max-width: 80%;">
+                  <span>{{ comment.name }}</span>
+                  <p>{{ comment.comment }}</p>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-tab>
+      <mat-tab label="Book">
+        <div *ngIf="isSitter; else notSitter" style="text-align: center;">
+          <img src="../../assets/img/isSitter_corgi.gif" alt="corgi" width="220" height="220">
+        </div>
+        <ng-template #notSitter>
+          <div style="width: 80%; margin: 20px auto; text-align: center;">
+            <h2 *ngIf="isSitterBooked(sitter.userId); else notBooked">
+              <mat-icon color="primary" style="font-size: 2em; margin-right: 15px;" class="material-icons">work_off
+              </mat-icon>
+              Sorry, this sitter is busy now.
+            </h2>
+          </div>
+          <ng-template #notBooked>
+            <ng-container *ngIf="isSitterBookedByMe(sitter.userId) === 'booked'; else free">
+              <h2>
+                <mat-icon color="primary" class="material-icons">done_outline</mat-icon>
+                You already booked this user
+              </h2>
+            </ng-container>
+            <ng-template #free>
+              <div class="book-block" style="width: 80%; margin: 20px auto; text-align: center;">
+                <h2>
+                  <mat-icon color="primary" style="font-size: 2em;" class="material-icons work-icon">work</mat-icon>
+                  Sitter is free now. You can book him.
+                </h2>
+              </div>
+              <mat-accordion>
+                <mat-expansion-panel class="mat-expension-panel"
+                                     (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>Booking form</mat-panel-title>
+                    <mat-panel-description>Leave your contact info below</mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <mat-form-field class="book">
+                    <mat-label>You can write here</mat-label>
+                    <textarea #newBook style="resize: none;"
+                              rows="4" cols="50" matInput maxlength="200" #message
+                              [disabled]="sitter.userId === activeId || isBooked"></textarea>
+                    <mat-hint align="end">{{ message.value.length }} / 200</mat-hint>
+                  </mat-form-field>
+                  <button
+                    (click)="onBook(newBook.value, sitter.userId, sitter.userName); newBook.value=''"
+                    mat-raised-button
+                    [disabled]="sitter.userId === activeId || isBooked || newBook.value===''">
+                    <mat-icon color="primary" class="material-icons">pets</mat-icon>
+                    Book Sitter
+                  </button>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </ng-template>
+          </ng-template>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</ng-container>

@@ -1,0 +1,53 @@
+<form [formGroup]="orderInfo" class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Additional information</mat-label>
+    <textarea matInput formControlName="info"></textarea>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Select type of pet</mat-label>
+    <mat-select formControlName="pet">
+      <mat-option value="Dog">Dog</mat-option>
+      <mat-option value="Cat">Cat</mat-option>
+      <mat-option value="Bird">Bird</mat-option>
+      <mat-option value="Rabbit">Rabbit</mat-option>
+      <mat-option value="Reptile">Reptile</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <mat-form-field class="input-item" appearance="fill">
+    <mat-label>Select service</mat-label>
+    <mat-select formControlName="services" multiple>
+      <mat-option value="Dog Walking">Dog Walking</mat-option>
+      <mat-option value="Pet Boarding">Pet Boarding</mat-option>
+      <mat-option value="House Sitting">House Sitting</mat-option>
+      <mat-option value="Pet Grooming">Pet Grooming</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Your city</mat-label>
+    <input
+      matInput
+      formControlName="city"
+      [matAutocomplete]="address"
+      placeholder="City"
+      [(ngModel)]="search"
+    />
+    <mat-autocomplete #address="matAutocomplete">
+      <mat-option *ngFor="let city of cities | filter: search" [value]="city">
+        {{ city }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <br />
+  <button color="primary" mat-raised-button class="btn" (click)="submit()">
+    <span class="material-icons">add</span>
+    Create
+  </button>
+</form>

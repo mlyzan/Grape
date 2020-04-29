@@ -1,0 +1,157 @@
+<mat-card class="card">
+  <div class="img">
+    <ng-container *ngIf="user.updateInfo.photo; else defaultPhoto">
+      <img src="{{user.updateInfo.photo}}" alt="photo" class="photo">
+    </ng-container>
+    <ng-template #defaultPhoto>
+      <img src="../../assets/img/default-user.png" alt="photo" class="photo">
+    </ng-template>
+    <mat-icon (click)="switchToUpdate()" color="primary" class="material-icons profile-edit-btn"
+              matTooltip="Edit profile">edit
+    </mat-icon>
+  </div>
+  <div class="card_header">
+    <div class="card_header_title">
+      <mat-icon aria-hidden="false" color="primary" aria-label="Example home icon">home</mat-icon>
+      <h2 class="title_name">{{user.userName}}</h2>
+    </div>
+    <mat-tab-group dynamicHeight (focusChange)="loadOrders()">
+      <mat-tab>
+        <ng-template matTabLabel>
+          <span><mat-icon color="primary" class="material-icons">account_circle</mat-icon> My profile </span>
+        </ng-template>
+        <div class="profile">
+          <div class="profile_title">
+            <mat-icon class="material-icons" color="primary">perm_identity</mat-icon>
+            {{user.userName}}</div>
+          <div class="profile_title">
+            <mat-icon class="material-icons" color="primary">email</mat-icon>
+            {{user.userEmail}}</div>
+          <div *ngIf="user.updateInfo.years" class="profile_title">
+            <mat-icon class="material-icons" color="primary">cake</mat-icon>
+            {{user.updateInfo.years | date}}</div>
+          <div *ngIf="user.updateInfo.address" class="profile_title">
+            <mat-icon class="material-icons" color="primary">location_on</mat-icon>
+            {{user.updateInfo.address}}</div>
+          <div *ngIf="user.updateInfo.animals" class="profile_title">
+            <mat-icon class="material-icons" color="primary">pets</mat-icon>
+            {{user.updateInfo.animals.join(', ')}}</div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template matTabLabel>
+          <span><mat-icon class="material-icons" color="primary">book</mat-icon> My responses</span>
+        </ng-template>
+        <ng-container *ngIf="responses.length > 0; else empty">
+          <mat-card class="response" *ngFor="let book of responses">
+            <ng-container *ngIf="book.isBooked && !book.isComplete">
+              <p class="response_text">
+                <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                  <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                </ng-container>
+                <ng-template #emptyOfferPhoto>
+                  <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                </ng-template>
+                {{book.sitterName}} accepted your offer. <span class="status-badge active">Active</span>
+                <mat-icon matTooltip="Delete offer" class="material-icons" color="warn"
+                          (click)="onDecline(book['_id'])">delete_forever
+                </mat-icon>
+              </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!book.isBooked && !book.isComplete">
+              <p class="response_text">
+                <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                  <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                </ng-container>
+                <ng-template #emptyOfferPhoto>
+                  <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                </ng-template>
+                {{book.sitterName}} not replied to your offer yet. <span class="status-badge pending">Pending</span>
+                <mat-icon color="warn" matTooltip="Delete offer" class="material-icons"
+                          (click)="onDecline(book['_id'])">delete_forever
+                </mat-icon>
+              </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="book.isComplete">
+              <p class="response_text">
+                <ng-container *ngIf="getUser(book.userId).photo; else emptyOfferPhoto">
+                  <img class="offer-photo" src="{{getUser(book.userId).photo}}" alt="photo">
+                </ng-container>
+                <ng-template #emptyOfferPhoto>
+                  <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                </ng-template>
+                {{book.sitterName}} completed your order. <span class="status-badge inactive">Inactive</span>
+                <mat-icon matTooltip="Delete offer" class="material-icons" color="warn"
+                          (click)="onDecline(book['_id'])">delete_forever
+                </mat-icon>
+              </p>
+              <div class="message">
+                <p><b>Your message:</b> {{book.contactInfo}} </p>
+              </div>
+            </ng-container>
+          </mat-card>
+        </ng-container>
+        <ng-template #empty>
+          <div class="empty">
+            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+            <p>You don't have active orders or users have not accepted your offers</p>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template matTabLabel>
+          <span> <mat-icon class="material-icons" color="primary">assignment</mat-icon> My advert </span>
+        </ng-template>
+        <ng-container *ngIf="myOrders.length > 0; else emptyOrders">
+          <ng-container *ngFor="let order of myOrders">
+            <mat-card class="orders">
+              <p class="orders_title">Title: <span class="orders_descr">{{order.title}}</span></p>
+              <p class="orders_title">Information: <span class="orders_descr">{{order.info}}</span></p>
+              <p class="orders_title">Animals: <span class="orders_descr">{{order.pet}}</span></p>
+              <p class="orders_title">Services: <span class="orders_descr">{{order.services}}</span></p>
+              <p class="orders_offers">Your offers </p>
+              <mat-icon class="material-icons clear_icon-block" color="accent" matTooltip="Delete advert"
+                        (click)="onDeleteOffer(order._id)">clear
+              </mat-icon>
+              <ng-container *ngIf="order.offers.length > 0; else emptyOffers">
+                <mat-card class="book" *ngFor="let offer of order.offers">
+                  <ng-container *ngIf="getUser(offer).photo; else emptyOfferPhoto">
+                    <img class="offer-photo" src="{{getUser(offer).photo}}" alt="photo">
+                  </ng-container>
+                  <ng-template #emptyOfferPhoto>
+                    <img class="offer-photo" src="../../assets/img/default-user.png" alt="photo">
+                  </ng-template>
+                  <div class="book_descr">{{getUser(offer).name}}</div>
+                  <div class="book_descr">{{getUser(offer).email}}</div>
+                  <button mat-raised-button color="primary"
+                          (click)="bookSitter(offer, order.info, order._id)"
+                  >Book
+                  </button>
+                  <mat-icon class="material-icons clear_icon-elem" color="accent" matTooltip="Delete offer"
+                            (click)="onRemoveOffer(order._id, offer)">clear
+                  </mat-icon>
+                </mat-card>
+              </ng-container>
+              <ng-template #emptyOffers>
+                <p class="empty_offers">You do not have any offers yet.</p>
+              </ng-template>
+            </mat-card>
+          </ng-container>
+        </ng-container>
+        <ng-template #emptyOrders>
+          <div class="empty">
+            <img src="../../assets/img/isSitter_corgi.gif" alt="dog">
+            <p class="empty">You do not have any orders yet. You can create your order <a [routerLink]="'/board'">here</a>
+            </p>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>

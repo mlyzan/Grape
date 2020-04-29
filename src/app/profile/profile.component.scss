@@ -1,0 +1,186 @@
+.card {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  width: 90%;
+  margin: 0 auto 25px;
+
+  &_header {
+    margin-bottom: 15px;
+
+    &_title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.message {
+  width: 95%;
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  width: 200px;
+  margin: 0 20px 20px 0;
+  border-radius: 10px;
+}
+
+.title_name {
+  display: inline-block;
+  margin: auto 40px auto 20px;
+}
+
+.profile {
+  margin-top: 8px;
+
+  .material-icons {
+    margin-right: 10px;
+  }
+
+  &_title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  &_about {
+    &_header {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    &_descr {
+      margin-left: 34px;
+    }
+  }
+}
+
+.response, .orders {
+  border: 1px solid gray;
+  margin-top: 8px;
+  max-width: 500px;
+
+  &_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 700;
+
+    .material-icons:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.empty {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.orders_title{
+  font-weight: bold;
+}
+
+.orders_descr {
+  font-weight: normal;
+}
+
+.empty_orders {
+  margin-top: 10px;
+}
+
+.profile-edit-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 2.5em;
+}
+
+.profile-edit-btn:hover {
+  cursor: pointer;
+}
+
+.orders_offers {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.book {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_descr {
+    font-weight: bold;
+  }
+}
+
+.empty_offers {
+  text-align: center;
+  font-style: italic;
+}
+
+.status-badge {
+  border: 1px solid;
+  font-size: 1em;
+  font-weight: 300;
+  padding: 1px 2px;
+  border-radius: 2px;
+  width: 55px;
+  text-align: center;
+}
+
+.active {
+  border-color: lawngreen;
+  color: lawngreen;
+}
+
+.inactive {
+  border-color: #000;
+  color: #000;
+}
+
+.pending {
+  border-color: gold;
+  color: gold;
+}
+
+.clear_icon-block {
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+}
+
+.clear_icon-elem {
+  cursor: pointer;
+}
+
+.offer-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+  }
+}

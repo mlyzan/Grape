@@ -1,0 +1,49 @@
+<mat-card class="card border-card">
+  <mat-card-header style="margin: 5px 10px 10px 25px; display: flex; flex-direction: row; justify-content: space-between;">
+    <div mat-card-avatar class="example-header-image">
+      <img *ngIf="order.userPhoto; else noPhoto"
+        mat-card-image
+        [src]="order.userPhoto"
+        alt="Photo"
+        class="user-photo"
+        style="margin: 0 -16px 0 -16px;"
+      />
+      <ng-template #noPhoto>
+        <img
+        mat-card-image
+        src="../../../assets/img/default-user.png"
+        alt="Photo"
+        class="user-photo"
+        style="margin: 0 -16px 0 -16px;"
+      />
+      </ng-template>
+    </div>
+    <mat-card-title style="margin-bottom: 8px; margin-left: 10px;">{{ order.title }}</mat-card-title>
+    
+    <mat-card-subtitle style="margin-bottom: 8px; margin-left: 10px;">{{ order.services }}</mat-card-subtitle>
+    <div class="add-info" style="margin: 0 10px 0 15px;">
+      <mat-card-content><mat-icon color="primary" class="material-icons">location_on</mat-icon> {{ order.city }}</mat-card-content>
+      <mat-card-content><mat-icon color="primary" class="material-icons">pets</mat-icon> {{ order.pet }}</mat-card-content>
+    </div>
+    
+  </mat-card-header>
+
+  <div style="margin: -25px 0 8px 10px; font-style: italic;">
+    <mat-card-subtitle *ngIf="order.userName; else noName">{{ order.userName }}</mat-card-subtitle>
+    <ng-template #noName>
+      <mat-card-subtitle>No Name</mat-card-subtitle>
+    </ng-template>
+  </div>
+  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+    <h2 style="margin-bottom: 5px;"> <mat-icon color="primary" class="material-icons"> info</mat-icon>Additional info</h2>  
+    <button mat-button (click)="onOffer(order._id)" class="btn-offer" *ngIf="userId !== order.userId && userInfo.isSitter">
+        <mat-icon class="material-icons" style="margin-right: 5px;"> local_offer</mat-icon>
+        Make Offer
+      </button>
+  </div>
+  <hr />
+
+  <mat-card-content class="info">
+    <p>  {{ order.info }}</p>
+  </mat-card-content>
+</mat-card>

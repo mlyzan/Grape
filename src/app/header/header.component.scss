@@ -1,0 +1,35 @@
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 1001;
+  &_row {
+      display: flex;
+      justify-content: space-between;
+  }
+}
+
+.logo {
+  font-size: 24px;
+  padding: 0 10px;
+}
+
+.nav-transparent {
+  background-color: transparent;
+}
+
+.nav-small {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    display: none;
+  }
+  .nav-small {
+    display: grid;
+  }
+  .burger-menu {
+    display: grid;
+    grid-template-rows: auto;
+  }
+}

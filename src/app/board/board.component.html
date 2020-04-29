@@ -1,0 +1,28 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" class="create-post">
+    <p>
+      <button mat-button (click)="sidenav.toggle()">
+        <span class="material-icons">close</span>
+      </button>
+    </p>
+    <grape-create-order (close)="close()" ></grape-create-order>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <div class="board">
+      <p *ngIf="!userInfo.isSitter">
+        <button
+          style="font-size: 1.2em;"
+          mat-stroked-button
+          (click)="sidenav.toggle()"
+          class="btn-create"
+        >
+          <mat-icon color="primary">assignment</mat-icon> Create
+        </button>
+      </p>
+      <div *ngIf="orders$ | async" class="orders">
+        <grape-order *ngFor="let o of orders$ | async" [order]="o"> </grape-order>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
